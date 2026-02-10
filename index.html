@@ -1,0 +1,1710 @@
+<html lang="zh-CN" id="html-element"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="meta-title">Vizzle - 轻量化AI 3D数码城市管理平台</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <!-- Tailwind 配置 -->
+    <!-- 语言包 -->
+    <script>
+        const translations = {
+            'zh-CN': {
+                'meta-title': 'Vizzle - 轻量化AI 3D数码城市管理平台',
+                'nav-solutions': '解决方案',
+                'nav-features': '产品功能',
+                'nav-cases': '客户案例',
+                'nav-advantage': '核心优势',
+                'nav-pricing': '定价模式',
+                'nav-contact': '联系我们',
+                'demo-btn': '预约演示',
+                'trial-btn': '免费试用',
+                'hero-tag': '轻量化AI 3D解决方案',
+                'hero-title': '让复杂的3D管理像浏览网页一样简单',
+                'hero-subtitle': 'Vizzle轻量化AI 3D数码城市管理平台，跨装置秒级加载，AI智能分析，无需专业技能，大幅降低3D管理成本。',
+                'hero-cta1': '立即咨询解决方案',
+                'hero-cta2': '预约产品演示',
+                'hero-clients': '50+ 企业客户的选择',
+                'trust-title': '受到行业领先企业的信任',
+                'solutions-title': '核心解决方案',
+                'solutions-subtitle': '解决传统3D管理的核心痛点',
+                'solutions-desc': '当前数码城市软件普遍专业且昂贵，需高性能电脑和专业软件，中小客户难以负担。Vizzle实现"降本、提效、简化"三重突破。',
+                'solution1-title': '低端设备，网页即开即用',
+                'solution1-desc': '极速加载巨型3D扫描模型，无需高阶显卡，8年前的旧设备也能秒速加载，支持多种模型格式，大幅降低硬件投入。',
+                'solution2-title': 'AI分析，无需人工繁琐处理',
+                'solution2-desc': 'AI自动分析3D场景、整合各类数据，替代人工筛选，无需大海捞针，大幅节省人力成本与时间成本。',
+                'solution3-title': '操作简便，无需专业知识',
+                'solution3-desc': '支持简易测量、标记功能，无需安装专业软件，普通员工一人即可操作，沟通效率10倍化。',
+                'solution-more': '了解更多',
+                'features-title': '产品功能',
+                'features-subtitle': '全面的3D管理功能',
+                'features-desc': '我们提供全面的3D管理功能，满足不同行业、不同规模客户的多样化需求。',
+                'feature1-title': 'GPU智能负载分配',
+                'feature1-desc': '智能分配渲染、AI推理与互动任务到单一次级GPU单元，无需多张显卡暴力处理，降低硬件成本。',
+                'feature2-title': '实时AI+3D融合处理',
+                'feature2-desc': '动作捕捉、抠像、镜头控制与3D场景渲染同帧对齐，无延迟即时交互，提升操作体验。',
+                'feature3-title': '超大3D模型轻量化',
+                'feature3-desc': '透过分层加载、压缩与快取，实现超大模型的即时浏览，适配各类低端设备。',
+                'feature4-title': '多数据导入整合',
+                'feature4-desc': '可导入风火水电、人流、物联网、图形设计等数据，进行全方位AI整合及分析，满足多场景需求。',
+                'feature-stats': '99.9% 系统稳定性',
+                'feature-stats-desc': '7x24小时稳定运行，满足企业级应用需求',
+                'cases-title': '客户案例',
+                'cases-subtitle': '顶级客户的成功实践',
+                'cases-desc': '用实力证明价值，我们的产品已获得行业头部客户认可，助力客户实现3D管理效率翻倍。',
+                'case-badge': '标杆案例',
+                'case-name': '香港国际机场',
+                'case-desc': '为香港国际机场提供3D扫描AI智能管理服务，实现机场场景1:1还原、多数据整合分析，沟通效率提升10倍。',
+                'case-cost': '服务费用',
+                'case-maintenance': '年度维护',
+                'case-tag1': '效率提升10倍',
+                'case-tag2': '无需专业技能',
+                'case-tag3': '成本降低60%',
+                'case-cta': '查看完整案例',
+                'case-more1': '数码城市管理',
+                'case-more1-desc': '为城市管理部门提供轻量化3D管理方案，实现城市设施的智能监控与管理。',
+                'case-more2': '物业管理',
+                'case-more2-desc': '为大型物业提供3D可视化管理，提升物业管理效率，降低运营成本。',
+                'advantage-title': '核心优势',
+                'advantage-subtitle': '产品差异化与技术实力',
+                'advantage-desc': '我们专注于轻量化、简单化、低成本的3D管理解决方案，填补市场空白。',
+                'diff-title': '核心差异化',
+                'diff1-title': '针对层级不同',
+                'diff1-desc': '聚焦"希望完成简单任务、快速看到效果"的用户，现有工具过于复杂，小问题无需专家操作。',
+                'diff2-title': '定位独特',
+                'diff2-desc': '极致轻量和简单化，以最低的成本、最简单的操作，快速见效，不取代专业软件，填补市场空白。',
+                'diff3-title': '营运成本低',
+                'diff3-desc': '采用轻量级硬件/云端模式，大幅降低用户营运成本，区别于竞品的重量级硬件投入。',
+                'tech-title': '技术实力',
+                'tech1-title': '算力基建层优势',
+                'tech1-desc': '透过优化让次级设备成为基建，降低成本及对第三方供应商的依赖，实现算力自给自足。',
+                'tech1-stats': '运算成本降低 90%',
+                'tech2-title': '全链路自主搭建',
+                'tech2-desc': '从基建层开始自行搭建，形成自给自足的基建与应用层，让应用成本更低、更可控。',
+                'tech2-stats': '技术自主可控率 85%',
+                'compare-title': '竞品对比',
+                'compare-dim': '对比维度',
+                'compare-vizzle': 'Vizzle',
+                'compare-competitor': '同类竞品',
+                'compare-cost': '营运成本',
+                'compare-cost-vizzle': '低（轻量级硬件/云端）',
+                'compare-cost-competitor': '高（重量级硬件/云端）',
+                'compare-expand': '扩展度',
+                'compare-expand-vizzle': '高（线上SaaS，无指定软硬件）',
+                'compare-expand-competitor': '低（指定软硬件，限制较多）',
+                'compare-position': '核心定位',
+                'compare-position-vizzle': '轻量化、简单化、快速见效',
+                'compare-position-competitor': '专业化、复杂化、功能全面',
+                'compare-threshold': '操作门槛',
+                'compare-threshold-vizzle': '低（无需专业知识）',
+                'compare-threshold-competitor': '高（需专业人员操作）',
+                'pricing-title': '营收模式',
+                'pricing-subtitle': '灵活的收费模式',
+                'pricing-desc': '我们采用灵活的收费模式，满足不同规模客户的需求，降低前期投入，实现双赢。',
+                'plan1-title': '基础版',
+                'plan1-subtitle': '适合小型企业使用',
+                'plan1-price': '¥19,800',
+                'plan1-period': '/年',
+                'plan1-feature1': '5个用户账号',
+                'plan1-feature2': '基础3D模型管理',
+                'plan1-feature3': '基础AI分析功能',
+                'plan1-feature4': '定制化功能',
+                'plan1-feature5': '专属客服',
+                'plan2-title': '企业版',
+                'plan2-subtitle': '适合中大型企业使用',
+                'plan2-price': '¥79,800',
+                'plan2-period': '/年',
+                'plan2-feature1': '20个用户账号',
+                'plan2-feature2': '高级3D模型管理',
+                'plan2-feature3': '高级AI分析功能',
+                'plan2-feature4': '基础定制化功能',
+                'plan2-feature5': '专属客服',
+                'plan3-title': '定制版',
+                'plan3-subtitle': '适合大型企业/政府机构',
+                'plan3-price': '定制报价',
+                'plan3-feature1': '无限用户账号',
+                'plan3-feature2': '全部功能',
+                'plan3-feature3': '深度定制化',
+                'plan3-feature4': '7×24小时技术支持',
+                'plan3-feature5': '私有化部署',
+                'plan-select': '选择套餐',
+                'plan-contact': '联系我们',
+                'pricing-model': '核心收费模式：服务订制 + 年度维护 + 用户数收费，三者结合，灵活适配不同客户需求。',
+                'pricing-cta': '获取专属报价',
+                'contact-title': '联系我们',
+                'contact-subtitle': '获取专属解决方案',
+                'contact-desc': '立即咨询，我们将为您提供专业的3D管理服务，助力企业降本增效。',
+                'contact-company': '公司名称',
+                'contact-company-name': 'Vizzle 炫幻视界',
+                'contact-company-hk': '香港：炫幻视界有限公司',
+                'contact-company-hz': '杭州：炫幻视界（杭州）科技有限公司',
+                'contact-phone': '联系电话',
+                'contact-phone-number': '+852 9660 5893',
+                'contact-email': '电子邮箱',
+                'contact-email-address': 'info@im-vizzle.com',
+                'contact-form-title': '立即咨询',
+                'contact-form-name': '姓名',
+                'contact-form-name-placeholder': '请输入您的姓名',
+                'contact-form-company': '公司名称',
+                'contact-form-company-placeholder': '请输入您的公司名称',
+                'contact-form-phone': '联系电话',
+                'contact-form-phone-placeholder': '请输入您的联系电话',
+                'contact-form-email': '电子邮箱',
+                'contact-form-email-placeholder': '请输入您的电子邮箱',
+                'contact-form-message': '咨询需求',
+                'contact-form-message-placeholder': '请简要描述您的需求',
+                'contact-form-submit': '提交咨询',
+                'cta-title': '开始您的轻量化3D管理之旅',
+                'cta-desc': '立即预约产品演示，了解Vizzle如何帮助您的企业降低3D管理成本，提升管理效率。',
+                'cta-btn1': '预约产品演示',
+                'cta-btn2': '免费试用14天',
+                'footer-product': '产品',
+                'footer-resources': '资源',
+                'footer-company': '公司',
+                'footer-help': '帮助中心',
+                'footer-docs': '文档中心',
+                'footer-blog': '技术博客',
+                'footer-faq': '常见问题',
+                'footer-partners': '合作伙伴',
+                'footer-about': '关于我们',
+                'footer-jobs': '招贤纳士',
+                'footer-privacy': '隐私政策',
+                'footer-terms': '服务条款',
+                'footer-copyright': '© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利',
+                'form-required': '请填写必填字段',
+                'form-success': '提交成功，我们将尽快与您联系',
+                'nav-awards': '奖项',
+                'awards-title': '奖项与政府支持',
+                'awards-subtitle': '受到权威机构认可',
+                'awards-desc': 'Vizzle凭借创新的轻量化AI 3D数码城市管理平台，获得多项行业大奖和政府支持，彰显技术实力与品牌公信力。',
+                'gov-university-title': '政府与大学支持',
+                'gov-support1': '香港理工大学天使创投支持',
+                'gov-support2': '香港初创企业资助',
+                'gov-support3': '香港数码港培育计划支持',
+                'gov-support4': '香港城市大学Tech 300基金支持',
+                'gov-support5': '杭州大运英才计划支持',
+                'industry-awards-title': '行业奖项',
+                'award-support1': '香港资讯及通讯科技奖2024：数码娱乐奖"互动设计"金奖、"最佳人工智能"应用奖',
+                'award-support2': '第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍',
+                'award-support3': '创客中国国际中小企业创新创业大赛10强队伍',
+                'award-support4': '亚洲智能应用程式大奖优异奖',
+                'award-support5': '杭州动力创未国际科技项目新创赛三等奖'
+            },
+            'zh-TW': {
+                'meta-title': 'Vizzle - 輕量化AI 3D數碼城市管理平台',
+                'nav-solutions': '解決方案',
+                'nav-features': '產品功能',
+                'nav-cases': '客戶案例',
+                'nav-advantage': '核心優勢',
+                'nav-pricing': '定價模式',
+                'nav-contact': '聯繫我們',
+                'demo-btn': '預約演示',
+                'trial-btn': '免費試用',
+                'hero-tag': '輕量化AI 3D解決方案',
+                'hero-title': '讓複雜的3D管理像瀏覽網頁一樣簡單',
+                'hero-subtitle': 'Vizzle輕量化AI 3D數碼城市管理平台，跨裝置秒級加載，AI智能分析，無需專業技能，大幅降低3D管理成本。',
+                'hero-cta1': '立即諮詢解決方案',
+                'hero-cta2': '預約產品演示',
+                'hero-clients': '50+ 企業客戶的選擇',
+                'trust-title': '受到行業領先企業的信任',
+                'solutions-title': '核心解決方案',
+                'solutions-subtitle': '解決傳統3D管理的核心痛點',
+                'solutions-desc': '當前數碼城市軟體普遍專業且昂貴，需高性能電腦和專業軟體，中小客戶難以負擔。Vizzle實現"降本、提效、簡化"三重突破。',
+                'solution1-title': '低端設備，網頁即開即用',
+                'solution1-desc': '極速加載巨型3D掃描模型，無需高階顯卡，8年前的舊設備也能秒速加載，支持多種模型格式，大幅降低硬體投入。',
+                'solution2-title': 'AI分析，無需人工繁瑣處理',
+                'solution2-desc': 'AI自動分析3D場景、整合各類數據，替代人工篩選，無需大海撈針，大幅節省人力成本與時間成本。',
+                'solution3-title': '操作簡便，無需專業知識',
+                'solution3-desc': '支持簡易測量、標記功能，無需安裝專業軟體，普通員工一人即可操作，溝通效率10倍化。',
+                'solution-more': '瞭解更多',
+                'features-title': '產品功能',
+                'features-subtitle': '全面的3D管理功能',
+                'features-desc': '我們提供全面的3D管理功能，滿足不同行業、不同規模客戶的多樣化需求。',
+                'feature1-title': 'GPU智能負載分配',
+                'feature1-desc': '智能分配渲染、AI推理與互動任務到單一次級GPU單元，無需多張顯卡暴力處理，降低硬體成本。',
+                'feature2-title': '實時AI+3D融合處理',
+                'feature2-desc': '動作捕捉、摳像、鏡頭控制與3D場景渲染同幀對齊，無延遲即時交互，提升操作體驗。',
+                'feature3-title': '超大3D模型輕量化',
+                'feature3-desc': '透過分層加載、壓縮與快取，實現超大模型的即時瀏覽，適配各類低端設備。',
+                'feature4-title': '多數據導入整合',
+                'feature4-desc': '可導入風火水電、人流、物聯網、圖形設計等數據，進行全方位AI整合及分析，滿足多場景需求。',
+                'feature-stats': '99.9% 系統穩定性',
+                'feature-stats-desc': '7x24小時穩定運行，滿足企業級應用需求',
+                'cases-title': '客戶案例',
+                'cases-subtitle': '頂級客戶的成功實踐',
+                'cases-desc': '用實力證明價值，我們的產品已獲得行業頭部客戶認可，助力客戶實現3D管理效率翻倍。',
+                'case-badge': '標桿案例',
+                'case-name': '香港國際機場',
+                'case-desc': '為香港國際機場提供3D掃描AI智能管理服務，實現機場場景1:1還原、多數據整合分析，溝通效率提升10倍。',
+                'case-cost': '服務費用',
+                'case-maintenance': '年度維護',
+                'case-tag1': '效率提升10倍',
+                'case-tag2': '無需專業技能',
+                'case-tag3': '成本降低60%',
+                'case-cta': '查看完整案例',
+                'case-more1': '數碼城市管理',
+                'case-more1-desc': '為城市管理部門提供輕量化3D管理方案，實現城市設施的智能監控與管理。',
+                'case-more2': '物業管理',
+                'case-more2-desc': '為大型物業提供3D可視化管理，提升物業管理效率，降低運營成本。',
+                'advantage-title': '核心優勢',
+                'advantage-subtitle': '產品差異化與技術實力',
+                'advantage-desc': '我們專注於輕量化、簡單化、低成本的3D管理解決方案，填補市場空白。',
+                'diff-title': '核心差異化',
+                'diff1-title': '針對層級不同',
+                'diff1-desc': '聚焦"希望完成簡單任務、快速看到效果"的用戶，現有工具過於複雜，小問題無需專家操作。',
+                'diff2-title': '定位獨特',
+                'diff2-desc': '極致輕量和簡單化，以最低的成本、最簡單的操作，快速見效，不取代專業軟體，填補市場空白。',
+                'diff3-title': '營運成本低',
+                'diff3-desc': '採用輕量級硬體/雲端模式，大幅降低用戶營運成本，區別於競品的重量級硬體投入。',
+                'tech-title': '技術實力',
+                'tech1-title': '算力基建層優勢',
+                'tech1-desc': '透過優化讓次級設備成為基建，降低成本及對第三方供應商的依賴，實現算力自給自足。',
+                'tech1-stats': '運算成本降低 90%',
+                'tech2-title': '全鏈路自主搭建',
+                'tech2-desc': '從基建層開始自行搭建，形成自給自足的基建與應用層，讓應用成本更低、更可控。',
+                'tech2-stats': '技術自主可控率 85%',
+                'compare-title': '競品對比',
+                'compare-dim': '對比維度',
+                'compare-vizzle': 'Vizzle',
+                'compare-competitor': '同類競品',
+                'compare-cost': '營運成本',
+                'compare-cost-vizzle': '低（輕量級硬體/雲端）',
+                'compare-cost-competitor': '高（重量級硬體/雲端）',
+                'compare-expand': '擴展度',
+                'compare-expand-vizzle': '高（線上SaaS，無指定軟硬體）',
+                'compare-expand-competitor': '低（指定軟硬體，限制較多）',
+                'compare-position': '核心定位',
+                'compare-position-vizzle': '輕量化、簡單化、快速見效',
+                'compare-position-competitor': '專業化、複雜化、功能全面',
+                'compare-threshold': '操作門檻',
+                'compare-threshold-vizzle': '低（無需專業知識）',
+                'compare-threshold-competitor': '高（需專業人員操作）',
+                'pricing-title': '營收模式',
+                'pricing-subtitle': '靈活的收費模式',
+                'pricing-desc': '我們採用靈活的收費模式，滿足不同規模客戶的需求，降低前期投入，實現雙贏。',
+                'plan1-title': '基礎版',
+                'plan1-subtitle': '適合小型企業使用',
+                'plan1-price': '¥19,800',
+                'plan1-period': '/年',
+                'plan1-feature1': '5個用戶賬號',
+                'plan1-feature2': '基礎3D模型管理',
+                'plan1-feature3': '基礎AI分析功能',
+                'plan1-feature4': '定制化功能',
+                'plan1-feature5': '專屬客服',
+                'plan2-title': '企業版',
+                'plan2-subtitle': '適合中大型企業使用',
+                'plan2-price': '¥79,800',
+                'plan2-period': '/年',
+                'plan2-feature1': '20個用戶賬號',
+                'plan2-feature2': '高級3D模型管理',
+                'plan2-feature3': '高級AI分析功能',
+                'plan2-feature4': '基礎定制化功能',
+                'plan2-feature5': '專屬客服',
+                'plan3-title': '定制版',
+                'plan3-subtitle': '適合大型企業/政府機構',
+                'plan3-price': '定制報價',
+                'plan3-feature1': '無限用戶賬號',
+                'plan3-feature2': '全部功能',
+                'plan3-feature3': '深度定制化',
+                'plan3-feature4': '7×24小時技術支持',
+                'plan3-feature5': '私有化部署',
+                'plan-select': '選擇套餐',
+                'plan-contact': '聯繫我們',
+                'pricing-model': '核心收費模式：服務訂製 + 年度維護 + 用戶數收費，三者結合，靈活適配不同客戶需求。',
+                'pricing-cta': '獲取專屬報價',
+                'contact-title': '聯繫我們',
+                'contact-subtitle': '獲取專屬解決方案',
+                'contact-desc': '立即諮詢，我們將為您提供專業的3D管理服務，助力企業降本增效。',
+                'contact-company': '公司名稱',
+                'contact-company-name': 'Vizzle 炫幻視界',
+                'contact-company-hk': '香港：炫幻視界有限公司',
+                'contact-company-hz': '杭州：炫幻視界（杭州）科技有限公司',
+                'contact-phone': '聯繫電話',
+                'contact-phone-number': '+852 9660 5893',
+                'contact-email': '電子郵箱',
+                'contact-email-address': 'info@im-vizzle.com',
+                'contact-form-title': '立即諮詢',
+                'contact-form-name': '姓名',
+                'contact-form-name-placeholder': '請輸入您的姓名',
+                'contact-form-company': '公司名稱',
+                'contact-form-company-placeholder': '請輸入您的公司名稱',
+                'contact-form-phone': '聯繫電話',
+                'contact-form-phone-placeholder': '請輸入您的聯繫電話',
+                'contact-form-email': '電子郵箱',
+                'contact-form-email-placeholder': '請輸入您的電子郵箱',
+                'contact-form-message': '諮詢需求',
+                'contact-form-message-placeholder': '請簡要描述您的需求',
+                'contact-form-submit': '提交諮詢',
+                'cta-title': '開始您的輕量化3D管理之旅',
+                'cta-desc': '立即預約產品演示，瞭解Vizzle如何幫助您的企業降低3D管理成本，提升管理效率。',
+                'cta-btn1': '預約產品演示',
+                'cta-btn2': '免費試用14天',
+                'footer-product': '產品',
+                'footer-resources': '資源',
+                'footer-company': '公司',
+                'footer-help': '幫助中心',
+                'footer-docs': '文檔中心',
+                'footer-blog': '技術博客',
+                'footer-faq': '常見問題',
+                'footer-partners': '合作夥伴',
+                'footer-about': '關於我們',
+                'footer-jobs': '招賢納士',
+                'footer-privacy': '隱私政策',
+                'footer-terms': '服務條款',
+                'footer-copyright': '© 2026 Vizzle Limited 炫幻視界有限公司 保留所有權利',
+                'form-required': '請填寫必填字段',
+                'form-success': '提交成功，我們將盡快與您聯繫',
+                'nav-awards': '獎項',
+                'awards-title': '獎項與政府支持',
+                'awards-subtitle': '受到權威機構認可',
+                'awards-desc': 'Vizzle憑藉創新的輕量化AI 3D數碼城市管理平台，獲得多項行業大獎和政府支持，彰顯技術實力與品牌公信力。',
+                'gov-university-title': '政府與大學支持',
+                'gov-support1': '香港理工大學天使創投支持',
+                'gov-support2': '香港初創企業資助',
+                'gov-support3': '香港數碼港培育計劃支持',
+                'gov-support4': '香港城市大學Tech 300基金支持',
+                'gov-support5': '杭州大運英才計劃支持',
+                'industry-awards-title': '行業獎項',
+                'award-support1': '香港資訊及通訊科技獎2024：數碼娛樂獎"互動設計"金獎、"最佳人工智能"應用獎',
+                'award-support2': '第八屆中關村國際前沿科技大賽境外賽區領域賽10強隊伍',
+                'award-support3': '創客中國國際中小企業創新創業大賽10強隊伍',
+                'award-support4': '亞洲智能應用程式大獎優異獎',
+                'award-support5': '杭州動力創未國際科技項目新創賽三等獎'
+            },
+            'en-US': {
+                'meta-title': 'Vizzle - Lightweight AI 3D Digital City Management Platform',
+                'nav-solutions': 'Solutions',
+                'nav-features': 'Features',
+                'nav-cases': 'Case Studies',
+                'nav-advantage': 'Advantages',
+                'nav-pricing': 'Pricing',
+                'nav-contact': 'Contact',
+                'demo-btn': 'Request Demo',
+                'trial-btn': 'Free Trial',
+                'hero-tag': 'Lightweight AI 3D Solution',
+                'hero-title': 'Make complex 3D management as simple as browsing the web',
+                'hero-subtitle': 'Vizzle lightweight AI 3D digital city management platform, cross-device second-level loading, AI intelligent analysis, no professional skills required, significantly reducing 3D management costs.',
+                'hero-cta1': 'Consult Solutions Now',
+                'hero-cta2': 'Request Product Demo',
+                'hero-clients': 'Trusted by 50+ enterprise clients',
+                'trust-title': 'Trusted by industry-leading enterprises',
+                'solutions-title': 'Core Solutions',
+                'solutions-subtitle': 'Solve core pain points of traditional 3D management',
+                'solutions-desc': 'Current digital city software is generally professional and expensive, requiring high-performance computers and professional software, which is difficult for small and medium-sized clients to afford. Vizzle achieves three breakthroughs: "cost reduction, efficiency improvement, and simplification".',
+                'solution1-title': 'Low-end devices, web-based instant access',
+                'solution1-desc': 'Ultra-fast loading of giant 3D scan models, no need for high-end graphics cards, 8-year-old devices can also load in seconds, supporting multiple model formats, significantly reducing hardware investment.',
+                'solution2-title': 'AI analysis, no manual tedious processing',
+                'solution2-desc': 'AI automatically analyzes 3D scenes, integrates various data, replaces manual screening, eliminates the need for needle-in-a-haystack searches, greatly saving labor and time costs.',
+                'solution3-title': 'Simple operation, no professional knowledge required',
+                'solution3-desc': 'Supports simple measurement and marking functions, no need to install professional software, ordinary employees can operate alone, communication efficiency increased by 10 times.',
+                'solution-more': 'Learn more',
+                'features-title': 'Product Features',
+                'features-subtitle': 'Comprehensive 3D management functions',
+                'features-desc': 'We provide comprehensive 3D management functions to meet the diverse needs of customers in different industries and scales.',
+                'feature1-title': 'GPU intelligent load distribution',
+                'feature1-desc': 'Intelligently distributes rendering, AI reasoning, and interactive tasks to a single secondary GPU unit, eliminating the need for multiple graphics cards for brute-force processing, reducing hardware costs.',
+                'feature2-title': 'Real-time AI+3D fusion processing',
+                'feature2-desc': 'Motion capture, keying, camera control, and 3D scene rendering aligned in the same frame, no latency real-time interaction, enhancing operating experience.',
+                'feature3-title': 'Ultra-large 3D model lightweighting',
+                'feature3-desc': 'Through layered loading, compression, and caching,实现 instant browsing of ultra-large models, adapting to various low-end devices.',
+                'feature4-title': 'Multi-data import integration',
+                'feature4-desc': 'Can import data such as utilities, crowd flow, IoT, graphic design, etc., for comprehensive AI integration and analysis, meeting multi-scenario needs.',
+                'feature-stats': '99.9% system stability',
+                'feature-stats-desc': '7x24 hours stable operation, meeting enterprise-level application needs',
+                'cases-title': 'Case Studies',
+                'cases-subtitle': 'Successful practices of top clients',
+                'cases-desc': 'Proving value with strength, our products have been recognized by industry-leading clients, helping clients double 3D management efficiency.',
+                'case-badge': 'Benchmark Case',
+                'case-name': 'Hong Kong International Airport',
+                'case-desc': 'Provided 3D scanning AI intelligent management services for Hong Kong International Airport, achieving 1:1还原 of airport scenes, multi-data integration analysis, communication efficiency increased by 10 times.',
+                'case-cost': 'Service Fee',
+                'case-maintenance': 'Annual Maintenance',
+                'case-tag1': 'Efficiency increased by 10x',
+                'case-tag2': 'No professional skills required',
+                'case-tag3': 'Cost reduced by 60%',
+                'case-cta': 'View Complete Case',
+                'case-more1': 'Digital City Management',
+                'case-more1-desc': 'Provide lightweight 3D management solutions for urban management departments, realizing intelligent monitoring and management of urban facilities.',
+                'case-more2': 'Property Management',
+                'case-more2-desc': 'Provide 3D visualization management for large properties, improving property management efficiency and reducing operating costs.',
+                'advantage-title': 'Core Advantages',
+                'advantage-subtitle': 'Product differentiation and technical strength',
+                'advantage-desc': 'We focus on lightweight, simplified, and low-cost 3D management solutions to fill market gaps.',
+                'diff-title': 'Core Differentiation',
+                'diff1-title': 'Different target levels',
+                'diff1-desc': 'Focus on users who "want to complete simple tasks and see results quickly". Existing tools are too complex, small problems do not require expert operation.',
+                'diff2-title': 'Unique positioning',
+                'diff2-desc': 'Extreme lightweight and simplification, with the lowest cost, simplest operation, quick results, not replacing professional software, filling market gaps.',
+                'diff3-title': 'Low operating costs',
+                'diff3-desc': 'Adopt lightweight hardware/cloud mode, significantly reducing user operating costs, different from competitors\' heavy hardware investment.',
+                'tech-title': 'Technical Strength',
+                'tech1-title': 'Computing infrastructure layer advantages',
+                'tech1-desc': 'Through optimization, make secondary equipment become infrastructure, reduce costs and dependence on third-party suppliers, achieve self-sufficiency in computing power.',
+                'tech1-stats': 'Computing cost reduced by 90%',
+                'tech2-title': 'Full-link independent construction',
+                'tech2-desc': 'Build from the infrastructure layer, forming self-sufficient infrastructure and application layers, making application costs lower and more controllable.',
+                'tech2-stats': 'Technology self-control rate 85%',
+                'compare-title': 'Competitor Comparison',
+                'compare-dim': 'Comparison Dimension',
+                'compare-vizzle': 'Vizzle',
+                'compare-competitor': 'Competitors',
+                'compare-cost': 'Operating Cost',
+                'compare-cost-vizzle': 'Low (lightweight hardware/cloud)',
+                'compare-cost-competitor': 'High (heavyweight hardware/cloud)',
+                'compare-expand': 'Expandability',
+                'compare-expand-vizzle': 'High (online SaaS, no specified hardware/software)',
+                'compare-expand-competitor': 'Low (specified hardware/software, many limitations)',
+                'compare-position': 'Core Positioning',
+                'compare-position-vizzle': 'Lightweight, simplified, quick results',
+                'compare-position-competitor': 'Professional, complex, comprehensive functions',
+                'compare-threshold': 'Operation Threshold',
+                'compare-threshold-vizzle': 'Low (no professional knowledge required)',
+                'compare-threshold-competitor': 'High (requires professional personnel)',
+                'pricing-title': 'Revenue Model',
+                'pricing-subtitle': 'Flexible pricing model',
+                'pricing-desc': 'We adopt a flexible pricing model to meet the needs of customers of different scales, reduce initial investment, and achieve win-win results.',
+                'plan1-title': 'Basic Version',
+                'plan1-subtitle': 'Suitable for small businesses',
+                'plan1-price': '¥19,800',
+                'plan1-period': '/year',
+                'plan1-feature1': '5 user accounts',
+                'plan1-feature2': 'Basic 3D model management',
+                'plan1-feature3': 'Basic AI analysis functions',
+                'plan1-feature4': 'Customization features',
+                'plan1-feature5': 'Dedicated customer service',
+                'plan2-title': 'Enterprise Version',
+                'plan2-subtitle': 'Suitable for medium to large enterprises',
+                'plan2-price': '¥79,800',
+                'plan2-period': '/year',
+                'plan2-feature1': '20 user accounts',
+                'plan2-feature2': 'Advanced 3D model management',
+                'plan2-feature3': 'Advanced AI analysis functions',
+                'plan2-feature4': 'Basic customization features',
+                'plan2-feature5': 'Dedicated customer service',
+                'plan3-title': 'Custom Version',
+                'plan3-subtitle': 'Suitable for large enterprises/government agencies',
+                'plan3-price': 'Custom Quote',
+                'plan3-feature1': 'Unlimited user accounts',
+                'plan3-feature2': 'All functions',
+                'plan3-feature3': 'Deep customization',
+                'plan3-feature4': '7×24 hour technical support',
+                'plan3-feature5': 'Private deployment',
+                'plan-select': 'Select Plan',
+                'plan-contact': 'Contact Us',
+                'pricing-model': 'Core pricing model: service customization + annual maintenance + user count pricing, combined to flexibly adapt to different customer needs.',
+                'pricing-cta': 'Get Exclusive Quote',
+                'contact-title': 'Contact Us',
+                'contact-subtitle': 'Get Exclusive Solutions',
+                'contact-desc': 'Consult now, we will provide you with professional 3D management services to help your enterprise reduce costs and increase efficiency.',
+                'contact-company': 'Company Name',
+                'contact-company-name': 'Vizzle Limited',
+                'contact-company-hk': 'Hong Kong: Vizzle Limited',
+                'contact-company-hz': 'Hangzhou: Vizzle (Hangzhou) Technology Co., Ltd.',
+                'contact-phone': 'Contact Phone',
+                'contact-phone-number': '+852 9660 5893',
+                'contact-email': 'Email Address',
+                'contact-email-address': 'info@im-vizzle.com',
+                'contact-form-title': 'Consult Now',
+                'contact-form-name': 'Name',
+                'contact-form-name-placeholder': 'Please enter your name',
+                'contact-form-company': 'Company Name',
+                'contact-form-company-placeholder': 'Please enter your company name',
+                'contact-form-phone': 'Contact Phone',
+                'contact-form-phone-placeholder': 'Please enter your contact phone',
+                'contact-form-email': 'Email Address',
+                'contact-form-email-placeholder': 'Please enter your email address',
+                'contact-form-message': 'Consultation Needs',
+                'contact-form-message-placeholder': 'Please briefly describe your needs',
+                'contact-form-submit': 'Submit Consultation',
+                'cta-title': 'Start your lightweight 3D management journey',
+                'cta-desc': 'Request a product demo now to learn how Vizzle can help your enterprise reduce 3D management costs and improve management efficiency.',
+                'cta-btn1': 'Request Product Demo',
+                'cta-btn2': 'Free 14-day Trial',
+                'footer-product': 'Product',
+                'footer-resources': 'Resources',
+                'footer-company': 'Company',
+                'footer-help': 'Help Center',
+                'footer-docs': 'Documentation Center',
+                'footer-blog': 'Technical Blog',
+                'footer-faq': 'FAQ',
+                'footer-partners': 'Partners',
+                'footer-about': 'About Us',
+                'footer-jobs': 'Careers',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Service Terms',
+                'footer-copyright': '© 2026 Vizzle Limited. All rights reserved.',
+                'form-required': 'Please fill in the required fields',
+                'form-success': 'Submission successful, we will contact you as soon as possible',
+                'nav-awards': 'Awards',
+                'awards-title': 'Awards & Government Support',
+                'awards-subtitle': 'Recognized by Authoritative Organizations',
+                'awards-desc': 'With its innovative lightweight AI 3D digital city management platform, Vizzle has received multiple industry awards and government support, demonstrating its technical strength and brand credibility.',
+                'gov-university-title': 'Government & University Support',
+                'gov-support1': 'Hong Kong Polytechnic University Angel Investment Support',
+                'gov-support2': 'Hong Kong Startup Enterprise Funding',
+                'gov-support3': 'Hong Kong Cyberport Incubation Program Support',
+                'gov-support4': 'Hong Kong City University Tech 300 Fund Support',
+                'gov-support5': 'Hangzhou Dayun Talent Program Support',
+                'industry-awards-title': 'Industry Awards',
+                'award-support1': 'Hong Kong ICT Awards 2024: Digital Entertainment Award "Interactive Design" Gold Award, "Best Artificial Intelligence" Application Award',
+                'award-support2': '8th Zhongguancun International Frontier Technology Competition Overseas Division Top 10 Team',
+                'award-support3': 'Maker China International SME Innovation and Entrepreneurship Competition Top 10 Team',
+                'award-support4': 'Asia Smart App Awards Merit Award',
+                'award-support5': 'Hangzhou Dynamic Innovation International Technology Project Startup Competition Third Prize'
+            }
+        };
+    </script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6b3d92', // 主色系
+                        secondary: '#a35dae', // 副色系
+                        accent: '#c98ed9',    // 浅紫强调色
+                        neutral: {
+                            100: '#F9FAFB',
+                            200: '#F3F4F6',
+                            300: '#E5E7EB',
+                            400: '#D1D5DB',
+                            500: '#9CA3AF',
+                            600: '#6B7280',
+                            700: '#4B5563',
+                            800: '#374151',
+                            900: '#1F2937',
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .section-padding {
+                @apply py-16 md:py-24;
+            }
+            .container-custom {
+                @apply container mx-auto px-4 sm:px-6 lg:px-8;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+            }
+            .btn-secondary {
+                @apply bg-white text-primary border border-primary px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-primary/5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-inter text-neutral-800 bg-neutral-100">
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50 transition-all duration-300">
+        <div class="container-custom">
+            <nav class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/75a9f9ccc20f46c9a52a4083756ab872.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&amp;rcl=202602101457230345415D2A153C20D520&amp;rrcfp=8a172a1a&amp;x-expires=1771311443&amp;x-signature=YatmYUcpT071JQtgh%2FBf2GbXFEo%3D" alt="Vizzle Logo" class="h-8 md:h-10 w-auto mr-3">
+                </div>
+                
+                <!-- 桌面端导航 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#solutions" class="text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-solutions">解决方案</a>
+                    <a href="#features" class="text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-features">产品功能</a>
+                    <a href="#cases" class="text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-cases">客户案例</a>
+                    <a href="#advantage" class="text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-advantage">核心优势</a>
+                    <a href="#pricing" class="text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-pricing">定价模式</a>
+                    <a href="#awards" class="text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-awards">奖项</a>
+                    <a href="#contact" class="text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-contact">联系我们</a>
+                </div>
+                
+                <!-- 语言切换 -->
+                <div class="hidden md:flex items-center mr-4">
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 px-3 py-1 rounded-md text-sm transition-all duration-300 hover:bg-secondary bg-primary text-white">
+                            <i class="fa fa-globe text-xs mr-1"></i>  
+                            <span id="current-lang-text">中</span>
+                            <i class="fa fa-chevron-down text-xs ml-1"></i>
+                        </button>
+                        <div class="absolute right-0 mt-1 w-32 bg-white rounded-md shadow-lg overflow-hidden z-50 hidden group-hover:block">
+                            <div class="py-1">
+                                <button class="lang-btn w-full text-left px-4 py-2 text-sm hover:bg-primary hover:text-white transition-colors" data-lang="zh-TW" data-lang-text="繁體中文">繁體中文</button>
+                                <button class="lang-btn w-full text-left px-4 py-2 text-sm hover:bg-primary hover:text-white transition-colors" data-lang="zh-CN" data-lang-text="简体中文">简体中文</button>
+                                <button class="lang-btn w-full text-left px-4 py-2 text-sm hover:bg-primary hover:text-white transition-colors" data-lang="en-US" data-lang-text="English">English</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 转化按钮 -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button class="btn-secondary" data-lang-key="demo-btn">预约演示</button>
+                    <button class="btn-primary" data-lang-key="trial-btn">免费试用</button>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <div class="relative">
+                        <button class="flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-primary text-white">
+                            <i class="fa fa-globe text-xs mr-1"></i>  
+                            <span id="current-lang-text-mobile">简</span>
+                            <i class="fa fa-chevron-down text-xs"></i>
+                        </button>
+                        <div id="mobile-lang-dropdown" class="absolute right-0 mt-1 w-24 bg-white rounded-md shadow-lg overflow-hidden z-50 hidden">
+                            <div class="py-1">
+                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-primary hover:text-white transition-colors" data-lang="zh-TW" data-lang-text="繁">繁</button>
+                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-primary hover:text-white transition-colors" data-lang="zh-CN" data-lang-text="中">简</button>
+                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-primary hover:text-white transition-colors" data-lang="en-US" data-lang-text="EN">EN</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="mobile-menu-button" class="text-neutral-700 focus:outline-none">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- 移动端菜单 -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#solutions" class="py-2 text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-solutions">解决方案</a>
+                    <a href="#features" class="py-2 text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-features">产品功能</a>
+                    <a href="#cases" class="py-2 text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-cases">客户案例</a>
+                    <a href="#advantage" class="py-2 text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-advantage">核心优势</a>
+                    <a href="#pricing" class="py-2 text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-pricing">定价模式</a>
+                    <a href="#awards" class="py-2 text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-awards">奖项</a>
+                    <a href="#contact" class="py-2 text-neutral-600 hover:text-primary transition-colors" data-lang-key="nav-contact">联系我们</a>
+                    <div class="flex space-x-3 pt-2">
+                        <button class="btn-secondary text-sm px-4 py-2 w-full">预约演示</button>
+                        <button class="btn-primary text-sm px-4 py-2 w-full">免费试用</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section class="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-primary/5 to-white">
+        <div class="container-custom">
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/2 space-y-6">
+                    <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium" data-lang-key="hero-tag">
+                        轻量化AI 3D解决方案
+                    </span>
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-balance" data-lang-key="hero-title">
+                        让复杂的3D管理<br>
+                        <span class="text-primary">像浏览网页一样简单</span>
+                    </h1>
+                    <p class="text-lg text-neutral-600 max-w-lg text-balance" data-lang-key="hero-subtitle">
+                        Vizzle轻量化AI 3D数码城市管理平台，跨装置秒级加载，AI智能分析，无需专业技能，大幅降低3D管理成本。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button class="btn-primary" data-lang-key="hero-cta1">立即咨询解决方案</button>
+                        <button class="btn-secondary" data-lang-key="hero-cta2">预约产品演示</button>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://picsum.photos/id/1001/60/60" alt="客户头像" class="w-12 h-12 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/id/1002/60/60" alt="客户头像" class="w-12 h-12 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/id/1003/60/60" alt="客户头像" class="w-12 h-12 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/id/1004/60/60" alt="客户头像" class="w-12 h-12 rounded-full border-2 border-white">
+                        </div>
+                        <p class="text-sm text-neutral-600" data-lang-key="hero-clients">
+                            <span class="font-semibold text-primary">50+</span> 企业客户的选择
+                        </p>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/22946379482e433c8e840dcfba9d999d~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260210143809300F9B46E0D8C927C434&amp;rrcfp=f06b921b&amp;x-expires=1773297521&amp;x-signature=MY8vjbri%2F3IvXdkg778ls9MVc5o%3D" alt="Vizzle 3D数码城市管理平台" class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户信任 -->
+    <section class="py-12 bg-white">
+        <div class="container-custom">
+            <p class="text-center text-neutral-500 mb-8" data-lang-key="trust-title">受到行业领先企业的信任</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
+                <img src="https://im-booth.com/assets/img/home/press10.jpg" alt="客户logo" class="h-6 md:h-8">
+                <img src="https://picsum.photos/id/11/120/40" alt="客户logo" class="h-6 md:h-8">
+                <img src="https://picsum.photos/id/12/120/40" alt="客户logo" class="h-6 md:h-8">
+                <img src="https://picsum.photos/id/13/120/40" alt="客户logo" class="h-6 md:h-8">
+                <img src="https://picsum.photos/id/14/120/40" alt="客户logo" class="h-6 md:h-8">
+            </div>
+        </div>
+    </section>
+
+    <!-- 解决方案 -->
+    <section id="solutions" class="section-padding bg-neutral-100">
+        <div class="container-custom">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    核心解决方案
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    解决传统3D管理的核心痛点
+                </h2>
+                <p class="text-lg text-neutral-600">
+                    当前数码城市软件普遍专业且昂贵，需高性能电脑和专业软件，中小客户难以负担。Vizzle实现"降本、提效、简化"三重突破。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 解决方案1 -->
+                <div class="bg-white rounded-lg shadow-card p-6 card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-mobile text-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-lang-key="solution1-title">低端设备，网页即开即用</h3>
+                    <p class="text-neutral-600 mb-4" data-lang-key="solution1-desc">
+                        极速加载巨型3D扫描模型，无需高阶显卡，8年前的旧设备也能秒速加载，支持多种模型格式，大幅降低硬件投入。
+                    </p>
+                    <a href="#" class="text-primary font-medium flex items-center gap-2 hover:underline" data-lang-key="solution-more">
+                        了解更多 <i class="fa fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+                
+                <!-- 解决方案2 -->
+                <div class="bg-white rounded-lg shadow-card p-6 card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-line-chart text-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-lang-key="solution2-title">AI分析，无需人工繁琐处理</h3>
+                    <p class="text-neutral-600 mb-4" data-lang-key="solution2-desc">
+                        AI自动分析3D场景、整合各类数据，替代人工筛选，无需大海捞针，大幅节省人力成本与时间成本。
+                    </p>
+                    <a href="#" class="text-primary font-medium flex items-center gap-2 hover:underline" data-lang-key="solution-more">
+                        了解更多 <i class="fa fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+                
+                <!-- 解决方案3 -->
+                <div class="bg-white rounded-lg shadow-card p-6 card-hover">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-mouse-pointer text-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3" data-lang-key="solution3-title">操作简便，无需专业知识</h3>
+                    <p class="text-neutral-600 mb-4" data-lang-key="solution3-desc">
+                        支持简易测量、标记功能，无需安装专业软件，普通员工一人即可操作，沟通效率10倍化。
+                    </p>
+                    <a href="#" class="text-primary font-medium flex items-center gap-2 hover:underline" data-lang-key="solution-more">
+                        了解更多 <i class="fa fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品功能 -->
+    <section id="features" class="section-padding bg-white">
+        <div class="container-custom">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    产品功能
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    全面的3D管理功能
+                </h2>
+                <p class="text-lg text-neutral-600">
+                    我们提供全面的3D管理功能，满足不同行业、不同规模客户的多样化需求。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <!-- 功能项1 -->
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa fa-bolt text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">GPU智能负载分配</h3>
+                            <p class="text-neutral-600">
+                                智能分配渲染、AI推理与互动任务到单一次级GPU单元，无需多张显卡暴力处理，降低硬件成本。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 功能项2 -->
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa fa-sync text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">实时AI+3D融合处理</h3>
+                            <p class="text-neutral-600">
+                                动作捕捉、抠像、镜头控制与3D场景渲染同帧对齐，无延迟即时交互，提升操作体验。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 功能项3 -->
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa fa-compress text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">超大3D模型轻量化</h3>
+                            <p class="text-neutral-600">
+                                透过分层加载、压缩与快取，实现超大模型的即时浏览，适配各类低端设备。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 功能项4 -->
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa fa-database text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">多数据导入整合</h3>
+                            <p class="text-neutral-600">
+                                可导入风火水电、人流、物联网、图形设计等数据，进行全方位AI整合及分析，满足多场景需求。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <img src="https://picsum.photos/id/20/600/400" alt="产品功能展示" class="w-full h-auto rounded-lg shadow-lg">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg max-w-xs">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fa fa-check text-green-600"></i>
+                            </div>
+                            <p class="font-semibold" data-lang-key="feature-stats">99.9% 系统稳定性</p>
+                        </div>
+                        <p class="text-sm text-neutral-600">
+                            <span data-lang-key="feature-stats-desc">7x24小时稳定运行，满足企业级应用需求</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户案例 -->
+    <section id="cases" class="section-padding bg-neutral-100">
+        <div class="container-custom">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    客户案例
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    顶级客户的成功实践
+                </h2>
+                <p class="text-lg text-neutral-600">
+                    用实力证明价值，我们的产品已获得行业头部客户认可，助力客户实现3D管理效率翻倍。
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-1/2">
+                        <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/5486dca2b29b4da3ab32731c8fb374c6~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260210143809300F9B46E0D8C927C434&amp;rrcfp=f06b921b&amp;x-expires=1773297542&amp;x-signature=ixOdGKKKUY8APIlw1%2Fhpg2%2F%2FvUQ%3D" alt="香港国际机场案例" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                        <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium mb-4" data-lang-key="case-badge">
+                            标杆案例
+                        </span>
+                        <h3 class="text-2xl font-bold mb-4" data-lang-key="case-name">香港国际机场</h3>
+                        <p class="text-neutral-600 mb-6" data-lang-key="case-desc">
+                            为香港国际机场提供3D扫描AI智能管理服务，实现机场场景1:1还原、多数据整合分析，沟通效率提升10倍。
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="bg-neutral-50 p-4 rounded-lg">
+                                <p class="text-sm text-neutral-500 mb-1" data-lang-key="case-cost">服务费用</p>
+                                <p class="text-xl font-semibold text-primary">470,000港元</p>
+                            </div>
+                            <div class="bg-neutral-50 p-4 rounded-lg">
+                                <p class="text-sm text-neutral-500 mb-1" data-lang-key="case-maintenance">年度维护</p>
+                                <p class="text-xl font-semibold text-primary">70,000港元/年</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm" data-lang-key="case-tag1">
+                                效率提升10倍
+                            </span>
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm" data-lang-key="case-tag2">
+                                无需专业技能
+                            </span>
+                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm" data-lang-key="case-tag3">
+                                成本降低60%
+                            </span>
+                        </div>
+                        
+                        <button class="btn-primary w-full sm:w-auto" data-lang-key="case-cta">查看完整案例</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="bg-white rounded-lg shadow-card p-6 card-hover">
+                    <h4 class="text-lg font-semibold mb-3" data-lang-key="case-more1">数码城市管理</h4>
+                    <p class="text-neutral-600 mb-4" data-lang-key="case-more1-desc">
+                        为城市管理部门提供轻量化3D管理方案，实现城市设施的智能监控与管理。
+                    </p>
+                    <a href="#" class="text-primary font-medium hover:underline" data-lang-key="case-cta">查看案例 →</a>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-card p-6 card-hover">
+                    <h4 class="text-lg font-semibold mb-3" data-lang-key="case-more2">物业管理</h4>
+                    <p class="text-neutral-600 mb-4" data-lang-key="case-more2-desc">
+                        为大型物业提供3D可视化管理，提升物业管理效率，降低运营成本。
+                    </p>
+                    <a href="#" class="text-primary font-medium hover:underline" data-lang-key="case-cta">查看案例 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心优势 -->
+    <section id="advantage" class="section-padding bg-white">
+        <div class="container-custom">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    核心优势
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    产品差异化与技术实力
+                </h2>
+                <p class="text-lg text-neutral-600">
+                    我们专注于轻量化、简单化、低成本的3D管理解决方案，填补市场空白。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6" data-lang-key="diff-title">核心差异化</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa fa-users text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2" data-lang-key="diff1-title">针对层级不同</h4>
+                                <p class="text-neutral-600" data-lang-key="diff1-desc">
+                                    聚焦"希望完成简单任务、快速看到效果"的用户，现有工具过于复杂，小问题无需专家操作。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa fa-bullseye text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2" data-lang-key="diff2-title">定位独特</h4>
+                                <p class="text-neutral-600" data-lang-key="diff2-desc">
+                                    极致轻量和简单化，以最低的成本、最简单的操作，快速见效，不取代专业软件，填补市场空白。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa fa-money text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2" data-lang-key="diff3-title">营运成本低</h4>
+                                <p class="text-neutral-600" data-lang-key="diff3-desc">
+                                    采用轻量级硬件/云端模式，大幅降低用户营运成本，区别于竞品的重量级硬件投入。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6" data-lang-key="tech-title">技术实力</h3>
+                    <div class="bg-neutral-50 rounded-lg p-6 mb-6">
+                        <h4 class="font-semibold mb-3" data-lang-key="tech1-title">算力基建层优势</h4>
+                        <p class="text-neutral-600 mb-4" data-lang-key="tech1-desc">
+                            透过优化让次级设备成为基建，降低成本及对第三方供应商的依赖，实现算力自给自足。
+                        </p>
+                        <div class="w-full bg-neutral-200 rounded-full h-2 mb-1">
+                            <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                        <p class="text-sm text-neutral-500" data-lang-key="tech1-stats">运算成本降低 90%</p>
+                    </div>
+                    
+                    <div class="bg-neutral-50 rounded-lg p-6">
+                        <h4 class="font-semibold mb-3" data-lang-key="tech2-title">全链路自主搭建</h4>
+                        <p class="text-neutral-600 mb-4" data-lang-key="tech2-desc">
+                            从基建层开始自行搭建，形成自给自足的基建与应用层，让应用成本更低、更可控。
+                        </p>
+                        <div class="w-full bg-neutral-200 rounded-full h-2 mb-1">
+                            <div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                        <p class="text-sm text-neutral-500" data-lang-key="tech2-stats">技术自主可控率 85%</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 竞品对比 -->
+            <div class="mt-16 overflow-hidden rounded-lg shadow-lg">
+                <h3 class="bg-primary text-white p-6 font-semibold" data-lang-key="compare-title">竞品对比</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-neutral-50 border-b border-neutral-200">
+                                <th class="px-6 py-4 text-left text-neutral-700 font-semibold" data-lang-key="compare-dim">对比维度</th>
+                                <th class="px-6 py-4 text-left text-primary font-semibold" data-lang-key="compare-vizzle">Vizzle</th>
+                                <th class="px-6 py-4 text-left text-neutral-700 font-semibold" data-lang-key="compare-competitor">同类竞品</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-neutral-200">
+                                <td class="px-6 py-4 text-neutral-700 font-medium" data-lang-key="compare-cost">营运成本</td>
+                                <td class="px-6 py-4 text-primary font-medium" data-lang-key="compare-cost-vizzle">低（轻量级硬件/云端）</td>
+                                <td class="px-6 py-4 text-neutral-600" data-lang-key="compare-cost-competitor">高（重量级硬件/云端）</td>
+                            </tr>
+                            <tr class="border-b border-neutral-200 bg-neutral-50">
+                                <td class="px-6 py-4 text-neutral-700 font-medium" data-lang-key="compare-expand">扩展度</td>
+                                <td class="px-6 py-4 text-primary font-medium" data-lang-key="compare-expand-vizzle">高（线上SaaS，无指定软硬件）</td>
+                                <td class="px-6 py-4 text-neutral-600" data-lang-key="compare-expand-competitor">低（指定软硬件，限制较多）</td>
+                            </tr>
+                            <tr class="border-b border-neutral-200">
+                                <td class="px-6 py-4 text-neutral-700 font-medium" data-lang-key="compare-position">核心定位</td>
+                                <td class="px-6 py-4 text-primary font-medium" data-lang-key="compare-position-vizzle">轻量化、简单化、快速见效</td>
+                                <td class="px-6 py-4 text-neutral-600" data-lang-key="compare-position-competitor">专业化、复杂化、功能全面</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 text-neutral-700 font-medium" data-lang-key="compare-threshold">操作门槛</td>
+                                <td class="px-6 py-4 text-primary font-medium" data-lang-key="compare-threshold-vizzle">低（无需专业知识）</td>
+                                <td class="px-6 py-4 text-neutral-600" data-lang-key="compare-threshold-competitor">高（需专业人员操作）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 定价模式 -->
+    <section id="pricing" class="section-padding bg-neutral-100">
+        <div class="container-custom">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                    营收模式
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    灵活的收费模式
+                </h2>
+                <p class="text-lg text-neutral-600">
+                    我们采用灵活的收费模式，满足不同规模客户的需求，降低前期投入，实现双赢。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 基础版 -->
+                <div class="bg-white rounded-lg shadow-card overflow-hidden card-hover">
+                    <div class="p-6 border-b border-neutral-200">
+                        <h3 class="text-xl font-semibold mb-2">基础版</h3>
+                        <p class="text-neutral-600 mb-4">适合小型企业使用</p>
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-3xl font-bold">¥19,800</span>
+                            <span class="text-neutral-500 ml-2">/年</span>
+                        </div>
+                        <button class="btn-secondary w-full">选择套餐</button>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan1-feature1">5个用户账号</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan1-feature2">基础3D模型管理</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan1-feature3">基础AI分析功能</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-neutral-400">
+                                <i class="fa fa-times"></i>
+                                <span data-lang-key="plan1-feature4">定制化功能</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-neutral-400">
+                                <i class="fa fa-times"></i>
+                                <span data-lang-key="plan1-feature5">专属客服</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 企业版 -->
+                <div class="bg-white rounded-lg shadow-card overflow-hidden card-hover border-2 border-primary relative">
+                    <div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-sm font-medium">
+                        推荐
+                    </div>
+                    <div class="p-6 border-b border-neutral-200">
+                        <h3 class="text-xl font-semibold mb-2">企业版</h3>
+                        <p class="text-neutral-600 mb-4">适合中大型企业使用</p>
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-3xl font-bold">¥79,800</span>
+                            <span class="text-neutral-500 ml-2">/年</span>
+                        </div>
+                        <button class="btn-primary w-full">选择套餐</button>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan2-feature1">20个用户账号</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan2-feature2">高级3D模型管理</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan2-feature3">高级AI分析功能</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan2-feature4">基础定制化功能</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan2-feature5">专属客服</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 定制版 -->
+                <div class="bg-white rounded-lg shadow-card overflow-hidden card-hover">
+                    <div class="p-6 border-b border-neutral-200">
+                        <h3 class="text-xl font-semibold mb-2">定制版</h3>
+                        <p class="text-neutral-600 mb-4">适合大型企业/政府机构</p>
+                        <div class="flex items-baseline mb-4">
+                            <span class="text-3xl font-bold">定制报价</span>
+                        </div>
+                        <button class="btn-secondary w-full">联系我们</button>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan3-feature1">无限用户账号</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan3-feature2">全部功能</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan3-feature3">深度定制化</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan3-feature4">7×24小时技术支持</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa fa-check text-green-500"></i>
+                                <span data-lang-key="plan3-feature5">私有化部署</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white rounded-lg p-6 shadow-card text-center">
+                <p class="text-neutral-600 mb-4">
+                    核心收费模式：服务订制 + 年度维护 + 用户数收费，三者结合，灵活适配不同客户需求。
+                </p>
+                <button class="btn-primary">获取专属报价</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 奖项与政府支持 -->
+    <section id="awards" class="section-padding bg-neutral-50">
+        <div class="container-custom">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4" data-lang-key="awards-title">
+                    奖项与政府支持
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" data-lang-key="awards-subtitle">
+                    受到权威机构认可
+                </h2>
+                <p class="text-lg text-neutral-600 max-w-3xl mx-auto" data-lang-key="awards-desc">
+                    Vizzle凭借创新的轻量化AI 3D数码城市管理平台，获得多项行业大奖和政府支持，彰显技术实力与品牌公信力。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 模块1：政府与大学支持 -->
+                <div class="bg-white rounded-lg shadow-card p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="gov-university-title">政府与大学支持</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-university text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="gov-support1">香港理工大学天使创投支持</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-building text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="gov-support2">香港初创企业资助</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-laptop text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="gov-support3">香港数码港培育计划支持</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-flask text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="gov-support4">香港城市大学Tech 300基金支持</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-rocket text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="gov-support5">杭州大运英才计划支持</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 模块2：行业奖项 -->
+                <div class="bg-white rounded-lg shadow-card p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="industry-awards-title">行业奖项</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-trophy text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="award-support1">香港资讯及通讯科技奖2024：数码娱乐奖"互动设计"金奖、"最佳人工智能"应用奖</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-star text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="award-support2">第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-certificate text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="award-support3">创客中国国际中小企业创新创业大赛10强队伍</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-award text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="award-support4">亚洲智能应用程式大奖优异奖</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-medal text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral-800" data-lang-key="award-support5">杭州动力创未国际科技项目新创赛三等奖</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="container-custom">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4" data-lang-key="contact-title">
+                        联系我们
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" data-lang-key="contact-subtitle">
+                        获取专属解决方案
+                    </h2>
+                    <p class="text-lg text-neutral-600 mb-8" data-lang-key="contact-desc">
+                        立即咨询，我们将为您提供专业的3D管理服务，助力企业降本增效。
+                    </p>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-building text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1" data-lang-key="contact-company">公司名称</h3>
+                                <p class="text-neutral-600" data-lang-key="contact-company-name">Vizzle 炫幻视界</p>
+                                <p class="text-neutral-600" data-lang-key="contact-company-hk">香港：炫幻视界有限公司</p>
+                                <p class="text-neutral-600" data-lang-key="contact-company-hz">杭州：炫幻视界（杭州）科技有限公司</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1" data-lang-key="contact-phone">联系电话</h3>
+                                <p class="text-neutral-600" data-lang-key="contact-phone-number">+852 9660 5893</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1" data-lang-key="contact-email">电子邮箱</h3>
+                                <p class="text-neutral-600" data-lang-key="contact-email-address">info@im-vizzle.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-neutral-50 rounded-lg p-8 shadow-card">
+                    <h3 class="text-xl font-semibold mb-6">立即咨询</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-neutral-700 font-medium mb-2">姓名</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的姓名" required="">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-neutral-700 font-medium mb-2">公司名称</label>
+                                <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的公司名称" required="">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-neutral-700 font-medium mb-2">联系电话</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的联系电话" required="">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-neutral-700 font-medium mb-2">电子邮箱</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的电子邮箱" required="">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-neutral-700 font-medium mb-2">咨询需求</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请简要描述您的需求"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary w-full">提交咨询</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部CTA -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container-custom text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">
+                开始您的轻量化3D管理之旅
+            </h2>
+            <p class="text-white/80 max-w-2xl mx-auto mb-8">
+                立即预约产品演示，了解Vizzle如何帮助您的企业降低3D管理成本，提升管理效率。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-white text-primary px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-white/90 hover:shadow-lg">
+                    预约产品演示
+                </button>
+                <button class="bg-transparent border border-white text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-white/10">
+                    免费试用14天
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-neutral-900 text-white pt-16 pb-8">
+        <div class="container-custom">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/75a9f9ccc20f46c9a52a4083756ab872.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&amp;rcl=202602101457230345415D2A153C20D520&amp;rrcfp=8a172a1a&amp;x-expires=1771311443&amp;x-signature=YatmYUcpT071JQtgh%2FBf2GbXFEo%3D" alt="Vizzle Logo" class="h-8 w-auto mr-3">
+                        <span class="text-xl font-semibold">Vizzle</span>
+                    </div>
+                    <p class="text-neutral-400 mb-6">
+                        轻量化AI 3D数码城市管理平台，让复杂的3D管理像浏览网页一样简单。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+                            <i class="fa fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">产品</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#solutions" class="text-neutral-400 hover:text-white transition-colors">解决方案</a></li>
+                        <li><a href="#features" class="text-neutral-400 hover:text-white transition-colors">产品功能</a></li>
+                        <li><a href="#cases" class="text-neutral-400 hover:text-white transition-colors">客户案例</a></li>
+                        <li><a href="#advantage" class="text-neutral-400 hover:text-white transition-colors">核心优势</a></li>
+                        <li><a href="#pricing" class="text-neutral-400 hover:text-white transition-colors">定价模式</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">资源</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">帮助中心</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">文档中心</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">技术博客</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">常见问题</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">合作伙伴</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">公司</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="#contact" class="text-neutral-400 hover:text-white transition-colors">联系我们</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">招贤纳士</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">隐私政策</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-neutral-800 pt-8 text-center text-neutral-500 text-sm">
+                <p>© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 语言切换功能
+        function setLanguage(lang) {
+            // 更新HTML lang属性
+            document.getElementById('html-element').lang = lang;
+            
+            // 更新所有带data-lang-key的元素
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            
+            // 更新表单占位符
+            document.querySelectorAll('input[data-lang-key], textarea[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key + '-placeholder']) {
+                    el.placeholder = translations[lang][key + '-placeholder'];
+                }
+            });
+            
+            // 保存语言偏好到localStorage
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // 更新语言按钮状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('bg-primary', 'text-white');
+                }
+            });
+        }
+        
+        // 根据用户地区自动检测语言
+        function detectUserLanguage() {
+            // 检查是否有保存的语言偏好
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang) {
+                setLanguage(savedLang);
+                return;
+            }
+            
+            // 尝试获取用户地区
+            let userLang = 'en-US'; // 默认英文
+            
+            if (navigator.language) {
+                const langCode = navigator.language.toLowerCase();
+                
+                // 检查是否为中文环境
+                if (langCode.includes('zh')) {
+                    // 检查是否为台湾或香港地区
+                    if (langCode.includes('tw') || langCode.includes('hk') || langCode.includes('mo')) {
+                        userLang = 'zh-TW'; // 繁体中文
+                    } else {
+                        userLang = 'zh-CN'; // 简体中文
+                    }
+                }
+            }
+            
+            setLanguage(userLang);
+        }
+        
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 移动端菜单关闭
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // 表单提交
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 简单验证
+            const name = document.getElementById('name').value;
+            const company = document.getElementById('company').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            
+            if (!name || !company || !phone || !email) {
+                alert('请填写必填字段');
+                return;
+            }
+            
+            // 模拟提交
+            alert('提交成功，我们将尽快与您联系');
+            this.reset();
+        });
+        
+
+        
+        // 语言切换按钮事件监听
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                const langText = this.getAttribute('data-lang-text');
+                
+                // 更新当前语言显示
+                document.getElementById('current-lang-text').textContent = langText;
+                document.getElementById('current-lang-text-mobile').textContent = langText;
+                
+                // 切换语言
+                setLanguage(lang);
+                
+                // 关闭移动端下拉菜单
+                document.getElementById('mobile-lang-dropdown').classList.add('hidden');
+            });
+        });
+
+        // 页面加载时初始化语言
+        document.addEventListener('DOMContentLoaded', function() {
+            detectUserLanguage();
+        });
+        
+        // 移动端语言下拉菜单切换
+        document.querySelector('.md\\:hidden .relative > button').addEventListener('click', function() {
+            const dropdown = document.getElementById('mobile-lang-dropdown');
+            dropdown.classList.toggle('hidden');
+        });
+        
+        // 点击其他地方关闭下拉菜单
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.md\\:hidden .relative')) {
+                document.getElementById('mobile-lang-dropdown').classList.add('hidden');
+            }
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.add('bg-white/95');
+                header.classList.add('backdrop-blur-sm');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.remove('bg-white/95');
+                header.classList.remove('backdrop-blur-sm');
+            }
+        });
+    </script>
+
+</body></html>

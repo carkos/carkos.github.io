@@ -1,0 +1,79 @@
+{
+	"editor.bracketPairColorization.enabled": true,
+	"editor.guides.bracketPairs": true,
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	"editor.codeActionsOnSave": [
+		"source.fixAll.eslint",
+		"source.fixAll.stylelint"
+	],
+	"eslint.useFlatConfig": true,
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"vue"
+	],
+	"stylelint.validate": [
+		"vue",
+		"css",
+		"scss",
+		"sass"
+	],
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"i18n-ally.localesPaths": [
+		"src/i18n"
+	],
+	"i18n-ally.pathMatcher": "{locale}.json",
+	"i18n-ally.keystyle": "nested",
+	"i18n-ally.sortKeys": true,
+	"i18n-ally.keepFulfilled": true,
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+	"actionButtons": {
+		"commands": [
+			{
+				"name": "$(symbol-function) Install",
+				"color": "white",
+				"singleInstance": true,
+				"command": "npm install"
+			},
+			{
+				"name": "$(symbol-function) Build",
+				"color": "white",
+				"singleInstance": true,
+				"command": "npm run build"
+			},
+			{
+				"name": "$(triangle-right) Preview",
+				"color": "white",
+				"singleInstance": true,
+				"command": "npm run preview"
+			},
+			{
+				"name": "$(symbol-function) UpdateTheme",
+				"color": "white",
+				"singleInstance": true,
+				"command": "npm run updateTheme"
+			},
+			{
+				"name": "$(triangle-right) Test",
+				"color": "white",
+				"singleInstance": true,
+				"command": "npx playwright test --ui"
+			},
+			{
+				"name": "$(triangle-right) Dev",
+				"color": "white",
+				"singleInstance": true,
+				"command": "npm run dev"
+			}
+		],
+		"defaultColor": "white",
+		"reloadButton": "↻",
+		"loadNpmCommands": false
+	},
+}
