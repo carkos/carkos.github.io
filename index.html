@@ -614,6 +614,17 @@
             .card-hover {
                 @apply transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
             }
+            @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+            .animate-marquee {
+                width: max-content;
+                animation: marquee 60s linear infinite;
+            }
+            .animate-marquee:hover {
+                animation-play-state: paused;
+            }
         }
     </style>
 </head>
@@ -743,16 +754,48 @@
     </section>
 
     <!-- 客户信任 -->
-    <section class="py-12 bg-white">
-        <div class="container-custom">
-            <p class="text-center text-neutral-500 mb-8" data-lang-key="trust-title">受到行业领先企业的信任</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
-                <img src="https://im-booth.com/assets/img/home/press10.jpg" alt="客户logo" class="h-6 md:h-8">
-                <img src="https://picsum.photos/id/11/120/40" alt="客户logo" class="h-6 md:h-8">
-                <img src="https://picsum.photos/id/12/120/40" alt="客户logo" class="h-6 md:h-8">
-                <img src="https://picsum.photos/id/13/120/40" alt="客户logo" class="h-6 md:h-8">
-                <img src="https://picsum.photos/id/14/120/40" alt="客户logo" class="h-6 md:h-8">
+    <section class="py-12 bg-white overflow-hidden">
+        <div class="container-custom relative">
+            <p class="text-center text-neutral-500 mb-10" data-lang-key="trust-title">受到行业领先企业的信任</p>
+            
+            <div class="relative overflow-x-hidden group">
+                <!-- Single scrolling container with duplicated content -->
+                <div class="animate-marquee flex items-center gap-12 md:gap-20 py-4">
+                    <!-- Original List -->
+                    <img src="assets/img/logo/HKIA.svg" alt="HKIA" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/BOC.svg" alt="BOC" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/MTR.svg" alt="MTR" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/PolyU.svg" alt="PolyU" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/chinamobile.avif" alt="China Mobile" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/Cyberport.png" alt="Cyberport" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/CityU.svg" alt="CityU" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/DBS.svg" alt="DBS" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/HKEduCity.svg" alt="HKEduCity" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/AWE.jpg" alt="AWE" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/centralmarket.jpg" alt="Central Market" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/techforgood.jpg" alt="Tech For Good" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/pinkpanther.jpg" alt="Pink Panther" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    
+                    <!-- Exact Duplicate for seamless loop -->
+                    <img src="assets/img/logo/HKIA.svg" alt="HKIA" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/BOC.svg" alt="BOC" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/MTR.svg" alt="MTR" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/PolyU.svg" alt="PolyU" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/chinamobile.avif" alt="China Mobile" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/Cyberport.png" alt="Cyberport" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/CityU.svg" alt="CityU" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/DBS.svg" alt="DBS" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/HKEduCity.svg" alt="HKEduCity" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/AWE.jpg" alt="AWE" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/centralmarket.jpg" alt="Central Market" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/techforgood.jpg" alt="Tech For Good" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                    <img src="assets/img/logo/pinkpanther.jpg" alt="Pink Panther" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
+                </div>
             </div>
+            
+            <!-- Side fades for high-end look -->
+            <div class="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-white via-white/80 to-transparent z-10"></div>
+            <div class="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-white via-white/80 to-transparent z-10"></div>
         </div>
     </section>
 
