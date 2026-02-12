@@ -621,7 +621,10 @@
                 @apply flex items-center gap-1 px-3 py-1 rounded-md text-sm transition-all duration-300 hover:bg-secondary bg-primary text-white;
             }
             .lang-menu {
-                @apply absolute right-0 mt-1 w-32 bg-white rounded-md shadow-lg overflow-hidden z-50 hidden group-hover:block;
+                @apply absolute right-0 top-full pt-2 w-32 z-50 opacity-0 invisible scale-95 -translate-y-2 transition-all duration-200 ease-out origin-top-right group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0;
+            }
+            .lang-menu-content {
+                @apply bg-white rounded-md shadow-lg overflow-hidden ring-1 ring-black ring-opacity-5;
             }
             .lang-option {
                 @apply w-full text-left px-4 py-2 text-sm hover:bg-primary hover:text-white transition-colors;
@@ -716,7 +719,7 @@
                             <span class="iconify text-xs ml-1" data-icon="fa-solid:chevron-down"></span>
                         </button>
                         <div class="lang-menu">
-                            <div class="py-1">
+                            <div class="lang-menu-content py-1">
                                 <button class="lang-btn lang-option" data-lang="zh-TW" data-lang-text="繁體中文">繁體中文</button>
                                 <button class="lang-btn lang-option" data-lang="zh-CN" data-lang-text="简体中文">简体中文</button>
                                 <button class="lang-btn lang-option" data-lang="en-US" data-lang-text="English">English</button>
