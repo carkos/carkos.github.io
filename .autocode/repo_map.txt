@@ -6,10 +6,10 @@ package.json
 assets/img/logo/AWE.jpg
 assets/img/logo/BOC.svg
 assets/img/logo/centralmarket.jpg
-assets/img/logo/chinamobile.jpg
+assets/img/logo/chinamobile.avif
 assets/img/logo/CityU.svg
 assets/img/logo/Cyberport.png
-assets/img/logo/DBS.jpg
+assets/img/logo/DBS.svg
 assets/img/logo/HKEduCity.svg
 assets/img/logo/HKIA.svg
 assets/img/logo/JPC.jpg
