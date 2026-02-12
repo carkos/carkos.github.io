@@ -1,16 +1,13 @@
-<html lang="zh-CN" id="html-element"><head>
+<html lang="zh-CN" id="html-element">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-lang-key="meta-title">Vizzle - 轻量化AI 3D数码城市管理平台</title>
-    <!-- Tailwind CSS v3 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
     <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
-    <!-- Google Fonts - Inter -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     
-    <!-- Tailwind 配置 -->
-    <!-- 语言包 -->
     <script>
         const translations = {
             'zh-CN': {
@@ -92,10 +89,10 @@
                 'compare-competitor': '同类竞品',
                 'compare-cost': '营运成本',
                 'compare-cost-vizzle': '低（轻量级硬件/云端）',
-                'compare-cost-competitor': '高（重量级硬件/云端）',
+                'compare-cost-competitor': '高（重量級硬件/云端）',
                 'compare-expand': '扩展度',
                 'compare-expand-vizzle': '高（线上SaaS，无指定软硬件）',
-                'compare-expand-competitor': '低（指定软硬件，限制较多）',
+                'compare-expand-competitor': '低（指定軟硬體，限制較多）',
                 'compare-position': '核心定位',
                 'compare-position-vizzle': '轻量化、简单化、快速见效',
                 'compare-position-competitor': '专业化、复杂化、功能全面',
@@ -559,139 +556,42 @@
         };
     </script>
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6b3d92', // 主色系
-                        secondary: '#a35dae', // 副色系
-                        accent: '#c98ed9',    // 浅紫强调色
-                        neutral: {
-                            100: '#F9FAFB',
-                            200: '#F3F4F6',
-                            300: '#E5E7EB',
-                            400: '#D1D5DB',
-                            500: '#9CA3AF',
-                            600: '#6B7280',
-                            700: '#4B5563',
-                            800: '#374151',
-                            900: '#1F2937',
-                        }
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-                        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
-                    }
-                }
-            }
-        }
-    </script>
-    
     <style type="text/tailwindcss">
         @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-balance {
-                text-wrap: balance;
-            }
-            .section-padding {
-                @apply py-16 md:py-24;
-            }
-            .container-custom {
-                @apply container mx-auto px-4 sm:px-6 lg:px-8;
-            }
-            .btn-primary {
-                @apply bg-primary text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-primary/90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
-            }
-            .btn-secondary {
-                @apply bg-white text-primary border border-primary px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-primary/5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
-            }
-            .card-hover {
-                @apply transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
-            }
-            .nav-link {
-                @apply text-neutral-600 hover:text-primary transition-colors;
-            }
-            .lang-trigger {
-                @apply flex items-center gap-1 px-3 py-1 rounded-md text-sm transition-all duration-300 hover:bg-secondary bg-primary text-white;
-            }
-            .lang-menu {
-                @apply absolute right-0 top-full pt-2 w-32 z-50 opacity-0 invisible scale-95 -translate-y-2 transition-all duration-200 ease-out origin-top-right group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0;
-            }
-            .lang-menu-content {
-                @apply bg-white rounded-md shadow-lg overflow-hidden ring-1 ring-black ring-opacity-5;
-            }
-            .lang-option {
-                @apply w-full text-left px-4 py-2 text-sm hover:bg-primary hover:text-white transition-colors;
-            }
-            .mobile-nav-link {
-                @apply py-2 text-neutral-600 hover:text-primary transition-colors;
-            }
-            .section-tag {
-                @apply inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4;
-            }
-            .section-title {
-                @apply text-3xl md:text-4xl font-bold mb-6;
-            }
-            .feature-card {
-                @apply bg-white rounded-lg shadow-card p-6 card-hover;
-            }
-            .icon-box-lg {
-                @apply w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6;
-            }
-            .icon-box-sm {
-                @apply w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0;
-            }
-            .icon-box-sm-mt {
-                @apply w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1;
-            }
-            .link-more {
-                @apply text-primary font-medium flex items-center gap-2 hover:underline;
-            }
-            .pricing-card {
-                @apply bg-white rounded-lg shadow-card overflow-hidden card-hover;
-            }
-            .pricing-item {
-                @apply flex items-center gap-2;
-            }
-            .form-input {
-                @apply w-full px-4 py-3 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
-            }
-            .footer-link {
-                @apply text-neutral-400 hover:text-white transition-colors;
-            }
-            .social-icon {
-                @apply w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors;
-            }
-            .footer-social-icon {
-                @apply text-neutral-400 hover:text-white transition-colors;
-            }
-            .hero-title {
-                @apply text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-balance;
-            }
-            @keyframes marquee {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-            }
-            .animate-marquee {
-                width: max-content;
-                animation: marquee 60s linear infinite;
-            }
-            .animate-marquee:hover {
-                animation-play-state: paused;
-            }
+            .section-padding { @apply py-16 md:py-24; }
+            .container-custom { @apply container mx-auto px-4 sm:px-6 lg:px-8; }
+            
+            /* Buttons */
+            .btn-primary { @apply bg-[#6b3d92] text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-[#5a327a] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6b3d92] focus:ring-opacity-50; }
+            .btn-secondary { @apply bg-white text-[#6b3d92] border border-[#6b3d92] px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-[#6b3d92]/5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#6b3d92] focus:ring-opacity-50; }
+            
+            /* Components */
+            .glass-card { @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-lg rounded-xl p-6 transition-all duration-300 hover:-translate-y-1; }
+            .nav-link { @apply text-neutral-600 hover:text-[#6b3d92] transition-colors cursor-pointer; }
+            .mobile-nav-link { @apply block py-2 text-neutral-600 hover:text-[#6b3d92] transition-colors cursor-pointer; }
+            
+            /* Language Switcher */
+            .lang-trigger { @apply flex items-center gap-1 px-3 py-1 rounded-md text-sm transition-all duration-300 hover:bg-[#a35dae] bg-[#6b3d92] text-white cursor-pointer; }
+            .lang-menu { @apply absolute right-0 top-full pt-2 w-32 z-50 opacity-0 invisible scale-95 -translate-y-2 transition-all duration-200 ease-out origin-top-right group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:translate-y-0; }
+            .lang-menu-content { @apply bg-white rounded-md shadow-lg overflow-hidden ring-1 ring-black ring-opacity-5; }
+            .lang-option { @apply w-full text-left px-4 py-2 text-sm hover:bg-[#6b3d92] hover:text-white transition-colors cursor-pointer; }
+            
+            /* Typography */
+            .text-balance { text-wrap: balance; }
+            .section-tag { @apply inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4; }
+            .section-title { @apply text-3xl md:text-4xl font-bold mb-6; }
+            .hero-title { @apply text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-balance; }
+            
+            /* Scrollbar */
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+            .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         }
     </style>
 </head>
+<body class="font-inter text-neutral-800 bg-[#f3f4f6] overflow-hidden">
+    <div id="canvas-container" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></div>
 
-<body class="font-inter text-neutral-800 bg-neutral-100">
-    <!-- 导航栏 -->
-    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50 transition-all duration-300">
+    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
         <div class="container-custom">
             <nav class="flex items-center justify-between h-16 md:h-20">
                 <!-- Logo -->
@@ -699,8 +599,9 @@
                     <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/75a9f9ccc20f46c9a52a4083756ab872.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&amp;rcl=202602101457230345415D2A153C20D520&amp;rrcfp=8a172a1a&amp;x-expires=1771311443&amp;x-signature=YatmYUcpT071JQtgh%2FBf2GbXFEo%3D" alt="Vizzle Logo" class="h-8 md:h-10 w-auto mr-3">
                 </div>
                 
-                <!-- 桌面端导航 -->
+                <!-- Desktop Nav -->
                 <div class="hidden md:flex items-center space-x-8">
+                    <a href="#hero" class="nav-link">首页</a>
                     <a href="#solutions" class="nav-link" data-lang-key="nav-solutions">解决方案</a>
                     <a href="#features" class="nav-link" data-lang-key="nav-features">产品功能</a>
                     <a href="#cases" class="nav-link" data-lang-key="nav-cases">客户案例</a>
@@ -710,7 +611,7 @@
                     <a href="#contact" class="nav-link" data-lang-key="nav-contact">联系我们</a>
                 </div>
                 
-                <!-- 语言切换 -->
+                <!-- Language Switcher -->
                 <div class="hidden md:flex items-center mr-4">
                     <div class="relative group">
                         <button class="lang-trigger">
@@ -728,25 +629,25 @@
                     </div>
                 </div>
                 
-                <!-- 转化按钮 -->
+                <!-- CTA Buttons -->
                 <div class="hidden md:flex items-center space-x-4">
                     <button class="btn-secondary" data-lang-key="demo-btn">预约演示</button>
                     <button class="btn-primary" data-lang-key="trial-btn">免费试用</button>
                 </div>
                 
-                <!-- 移动端菜单按钮 -->
+                <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center space-x-2">
                     <div class="relative">
-                        <button class="flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-primary text-white">
+                        <button class="flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-[#6b3d92] text-white">
                             <span class="iconify text-xs mr-1" data-icon="fa-solid:globe"></span>  
                             <span id="current-lang-text-mobile">简</span>
                             <span class="iconify text-xs" data-icon="fa-solid:chevron-down"></span>
                         </button>
                         <div id="mobile-lang-dropdown" class="absolute right-0 mt-1 w-24 bg-white rounded-md shadow-lg overflow-hidden z-50 hidden">
                             <div class="py-1">
-                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-primary hover:text-white transition-colors" data-lang="zh-TW" data-lang-text="繁">繁</button>
-                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-primary hover:text-white transition-colors" data-lang="zh-CN" data-lang-text="中">简</button>
-                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-primary hover:text-white transition-colors" data-lang="en-US" data-lang-text="EN">EN</button>
+                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors" data-lang="zh-TW" data-lang-text="繁">繁</button>
+                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors" data-lang="zh-CN" data-lang-text="中">简</button>
+                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors" data-lang="en-US" data-lang-text="EN">EN</button>
                             </div>
                         </div>
                     </div>
@@ -756,7 +657,7 @@
                 </div>
             </nav>
             
-            <!-- 移动端菜单 -->
+            <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden hidden pb-4">
                 <div class="flex flex-col space-y-3">
                     <a href="#solutions" class="mobile-nav-link" data-lang-key="nav-solutions">解决方案</a>
@@ -775,1039 +676,649 @@
         </div>
     </header>
 
-    <!-- 英雄区 -->
-    <section class="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-primary/5 to-white">
-        <div class="container-custom">
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                <div class="md:w-1/2 space-y-6">
-                    <span class="section-tag mb-0" data-lang-key="hero-tag">
-                        轻量化AI 3D解决方案
-                    </span>
-                    <h1 class="hero-title" data-lang-key="hero-title">
-                        让复杂的3D管理<br>
-                        <span class="text-primary">像浏览网页一样简单</span>
-                    </h1>
-                    <p class="text-lg text-neutral-600 max-w-lg text-balance" data-lang-key="hero-subtitle">
-                        Vizzle轻量化AI 3D数码城市管理平台，跨装置秒级加载，AI智能分析，无需专业技能，大幅降低3D管理成本。
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <button class="btn-primary" data-lang-key="hero-cta1">立即咨询解决方案</button>
-                        <button class="btn-secondary" data-lang-key="hero-cta2">预约产品演示</button>
-                    </div>
-                    <div class="flex items-center gap-4 pt-4">
-                        <div class="flex -space-x-2">
-                            <img src="https://picsum.photos/id/1001/60/60" alt="客户头像" class="w-12 h-12 rounded-full border-2 border-white">
-                            <img src="https://picsum.photos/id/1002/60/60" alt="客户头像" class="w-12 h-12 rounded-full border-2 border-white">
-                            <img src="https://picsum.photos/id/1003/60/60" alt="客户头像" class="w-12 h-12 rounded-full border-2 border-white">
-                            <img src="https://picsum.photos/id/1004/60/60" alt="客户头像" class="w-12 h-12 rounded-full border-2 border-white">
-                        </div>
-                        <p class="text-sm text-neutral-600" data-lang-key="hero-clients">
-                            <span class="font-semibold text-primary">50+</span> 企业客户的选择
-                        </p>
-                    </div>
-                </div>
-                <div class="md:w-1/2">
-                    <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/22946379482e433c8e840dcfba9d999d~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260210143809300F9B46E0D8C927C434&amp;rrcfp=f06b921b&amp;x-expires=1773297521&amp;x-signature=MY8vjbri%2F3IvXdkg778ls9MVc5o%3D" alt="Vizzle 3D数码城市管理平台" class="w-full h-auto rounded-lg shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 客户信任 -->
-    <section class="py-12 bg-white overflow-hidden">
-        <div class="container-custom relative">
-            <p class="text-center text-neutral-500 mb-10" data-lang-key="trust-title">受到行业领先企业的信任</p>
-            
-            <div class="relative overflow-x-hidden group">
-                <!-- Single scrolling container with duplicated content -->
-                <div class="animate-marquee flex items-center gap-12 md:gap-20 py-4">
-                    <!-- Original List -->
-                    <img src="assets/img/logo/HKIA.svg" alt="HKIA" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/BOC.svg" alt="BOC" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/MTR.svg" alt="MTR" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/PolyU.svg" alt="PolyU" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/chinamobile.avif" alt="China Mobile" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/Cyberport.png" alt="Cyberport" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/CityU.svg" alt="CityU" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/DBS.svg" alt="DBS" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/HKEduCity.svg" alt="HKEduCity" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/AWE.jpg" alt="AWE" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/centralmarket.jpg" alt="Central Market" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/techforgood.jpg" alt="Tech For Good" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/pinkpanther.jpg" alt="Pink Panther" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    
-                    <!-- Exact Duplicate for seamless loop -->
-                    <img src="assets/img/logo/HKIA.svg" alt="HKIA" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/BOC.svg" alt="BOC" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/MTR.svg" alt="MTR" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/PolyU.svg" alt="PolyU" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/chinamobile.avif" alt="China Mobile" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/Cyberport.png" alt="Cyberport" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/CityU.svg" alt="CityU" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/DBS.svg" alt="DBS" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/HKEduCity.svg" alt="HKEduCity" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/AWE.jpg" alt="AWE" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/centralmarket.jpg" alt="Central Market" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/techforgood.jpg" alt="Tech For Good" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                    <img src="assets/img/logo/pinkpanther.jpg" alt="Pink Panther" aria-hidden="true" class="h-8 md:h-12 w-auto flex-shrink-0 grayscale-0 opacity-100 lg:grayscale lg:opacity-60 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-500">
-                </div>
-            </div>
-            
-            <!-- Side fades for high-end look -->
-            <div class="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-white via-white/80 to-transparent z-10"></div>
-            <div class="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-white via-white/80 to-transparent z-10"></div>
-        </div>
-    </section>
-
-    <!-- 解决方案 -->
-    <section id="solutions" class="section-padding bg-neutral-100">
-        <div class="container-custom">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="section-tag">
-                    核心解决方案
-                </span>
-                <h2 class="section-title">
-                    解决传统3D管理的核心痛点
-                </h2>
-                <p class="text-lg text-neutral-600">
-                    当前数码城市软件普遍专业且昂贵，需高性能电脑和专业软件，中小客户难以负担。Vizzle实现"降本、提效、简化"三重突破。
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- 解决方案1 -->
-                <div class="feature-card">
-                    <div class="icon-box-lg">
-                        <span class="iconify text-xl text-primary" data-icon="fa6-solid:mobile-screen-button"></span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3" data-lang-key="solution1-title">低端设备，网页即开即用</h3>
-                    <p class="text-neutral-600 mb-4" data-lang-key="solution1-desc">
-                        极速加载巨型3D扫描模型，无需高阶显卡，8年前的旧设备也能秒速加载，支持多种模型格式，大幅降低硬件投入。
-                    </p>
-                    <a href="#" class="link-more" data-lang-key="solution-more">
-                        了解更多 <span class="iconify text-xs" data-icon="fa-solid:arrow-right"></span>
-                    </a>
-                </div>
-                
-                <!-- 解决方案2 -->
-                <div class="feature-card">
-                    <div class="icon-box-lg">
-                        <span class="iconify text-xl text-primary" data-icon="fa-solid:chart-line"></span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3" data-lang-key="solution2-title">AI分析，无需人工繁琐处理</h3>
-                    <p class="text-neutral-600 mb-4" data-lang-key="solution2-desc">
-                        AI自动分析3D场景、整合各类数据，替代人工筛选，无需大海捞针，大幅节省人力成本与时间成本。
-                    </p>
-                    <a href="#" class="link-more" data-lang-key="solution-more">
-                        了解更多 <span class="iconify text-xs" data-icon="fa-solid:arrow-right"></span>
-                    </a>
-                </div>
-                
-                <!-- 解决方案3 -->
-                <div class="feature-card">
-                    <div class="icon-box-lg">
-                        <span class="iconify text-xl text-primary" data-icon="fa-solid:mouse-pointer"></span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3" data-lang-key="solution3-title">操作简便，无需专业知识</h3>
-                    <p class="text-neutral-600 mb-4" data-lang-key="solution3-desc">
-                        支持简易测量、标记功能，无需安装专业软件，普通员工一人即可操作，沟通效率10倍化。
-                    </p>
-                    <a href="#" class="link-more" data-lang-key="solution-more">
-                        了解更多 <span class="iconify text-xs" data-icon="fa-solid:arrow-right"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 产品功能 -->
-    <section id="features" class="section-padding bg-white">
-        <div class="container-custom">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="section-tag">
-                    产品功能
-                </span>
-                <h2 class="section-title">
-                    全面的3D管理功能
-                </h2>
-                <p class="text-lg text-neutral-600">
-                    我们提供全面的3D管理功能，满足不同行业、不同规模客户的多样化需求。
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <!-- 功能项1 -->
-                    <div class="flex gap-4">
-                        <div class="icon-box-sm">
-                            <span class="iconify text-primary" data-icon="fa-solid:bolt"></span>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold mb-2">GPU智能负载分配</h3>
-                            <p class="text-neutral-600">
-                                智能分配渲染、AI推理与互动任务到单一次级GPU单元，无需多张显卡暴力处理，降低硬件成本。
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- 功能项2 -->
-                    <div class="flex gap-4">
-                        <div class="icon-box-sm">
-                            <span class="iconify text-primary" data-icon="uim:process"></span>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold mb-2">实时AI+3D融合处理</h3>
-                            <p class="text-neutral-600">
-                                动作捕捉、抠像、镜头控制与3D场景渲染同帧对齐，无延迟即时交互，提升操作体验。
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- 功能项3 -->
-                    <div class="flex gap-4">
-                        <div class="icon-box-sm">
-                            <span class="iconify text-primary" data-icon="fa-solid:compress"></span>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold mb-2">超大3D模型轻量化</h3>
-                            <p class="text-neutral-600">
-                                透过分层加载、压缩与快取，实现超大模型的即时浏览，适配各类低端设备。
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- 功能项4 -->
-                    <div class="flex gap-4">
-                        <div class="icon-box-sm">
-                            <span class="iconify text-primary" data-icon="fa-solid:database"></span>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold mb-2">多数据导入整合</h3>
-                            <p class="text-neutral-600">
-                                可导入风火水电、人流、物联网、图形设计等数据，进行全方位AI整合及分析，满足多场景需求。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="relative">
-                    <img src="https://picsum.photos/id/20/600/400" alt="产品功能展示" class="w-full h-auto rounded-lg shadow-lg">
-                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg max-w-xs">
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                                <span class="iconify text-green-600" data-icon="fa-solid:check"></span>
-                            </div>
-                            <p class="font-semibold" data-lang-key="feature-stats">99.9% 系统稳定性</p>
-                        </div>
-                        <p class="text-sm text-neutral-600">
-                            <span data-lang-key="feature-stats-desc">7x24小时稳定运行，满足企业级应用需求</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 客户案例 -->
-    <section id="cases" class="section-padding bg-neutral-100">
-        <div class="container-custom">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="section-tag">
-                    客户案例
-                </span>
-                <h2 class="section-title">
-                    顶级客户的成功实践
-                </h2>
-                <p class="text-lg text-neutral-600">
-                    用实力证明价值，我们的产品已获得行业头部客户认可，助力客户实现3D管理效率翻倍。
-                </p>
-            </div>
-            
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="lg:w-1/2">
-                        <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/5486dca2b29b4da3ab32731c8fb374c6~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260210143809300F9B46E0D8C927C434&amp;rrcfp=f06b921b&amp;x-expires=1773297542&amp;x-signature=ixOdGKKKUY8APIlw1%2Fhpg2%2F%2FvUQ%3D" alt="香港国际机场案例" class="w-full h-full object-cover">
-                    </div>
-                    
-                    <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                        <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium mb-4" data-lang-key="case-badge">
-                            标杆案例
+    <main class="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth no-scrollbar relative z-10" id="main-scroll">
+        <section id="hero" class="h-screen w-full snap-start flex items-center justify-center relative section-padding">
+            <div class="container-custom relative z-10">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="md:w-1/2 space-y-6 glass-card border-none shadow-none bg-white/40 md:bg-transparent">
+                        <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium" data-lang-key="hero-tag">
+                            轻量化AI 3D解决方案
                         </span>
+                        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-balance" data-lang-key="hero-title">
+                            让复杂的3D管理<br>
+                            <span class="text-[#6b3d92]">像浏览网页一样简单</span>
+                        </h1>
+                        <p class="text-lg text-neutral-700 max-w-lg text-balance" data-lang-key="hero-subtitle">
+                            Vizzle轻量化AI 3D数码城市管理平台，跨装置秒级加载，AI智能分析，无需专业技能，大幅降低3D管理成本。
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button class="btn-primary" data-lang-key="hero-cta1">立即咨询解决方案</button>
+                            <button class="btn-secondary" data-lang-key="hero-cta2">预约产品演示</button>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="solutions" class="h-screen w-full snap-start flex items-center justify-center relative section-padding bg-white/30 backdrop-blur-sm">
+            <div class="container-custom">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4">
+                        核心解决方案
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4" data-lang-key="solutions-title">
+                        解决传统3D管理的核心痛点
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-card">
+                        <div class="w-12 h-12 bg-[#6b3d92]/10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="iconify text-xl text-[#6b3d92]" data-icon="fa6-solid:mobile-screen-button"></span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3" data-lang-key="solution1-title">低端设备，网页即开即用</h3>
+                        <p class="text-neutral-600 mb-4" data-lang-key="solution1-desc">
+                            极速加载巨型3D扫描模型，无需高阶显卡，8年前的旧设备也能秒速加载，支持多种模型格式，大幅降低硬件投入。
+                        </p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="w-12 h-12 bg-[#6b3d92]/10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="iconify text-xl text-[#6b3d92]" data-icon="fa-solid:chart-line"></span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3" data-lang-key="solution2-title">AI分析，无需人工繁琐处理</h3>
+                        <p class="text-neutral-600 mb-4" data-lang-key="solution2-desc">
+                            AI自动分析3D场景、整合各类数据，替代人工筛选，无需大海捞针，大幅节省人力成本与时间成本。
+                        </p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="w-12 h-12 bg-[#6b3d92]/10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="iconify text-xl text-[#6b3d92]" data-icon="fa-solid:mouse-pointer"></span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3" data-lang-key="solution3-title">操作简便，无需专业知识</h3>
+                        <p class="text-neutral-600 mb-4" data-lang-key="solution3-desc">
+                            支持简易测量、标记功能，无需安装专业软件，普通员工一人即可操作，沟通效率10倍化。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="h-screen w-full snap-start flex items-center justify-center relative section-padding">
+            <div class="container-custom">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8 glass-card">
+                        <h2 class="text-3xl font-bold mb-6" data-lang-key="features-title">产品功能</h2>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-[#6b3d92]" data-icon="fa-solid:bolt"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1" data-lang-key="feature1-title">GPU智能负载分配</h3>
+                                <p class="text-neutral-600 text-sm" data-lang-key="feature1-desc">智能分配渲染、AI推理与互动任务到单一次级GPU单元，无需多张显卡暴力处理，降低硬件成本。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-[#6b3d92]" data-icon="uim:process"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1" data-lang-key="feature2-title">实时AI+3D融合处理</h3>
+                                <p class="text-neutral-600 text-sm" data-lang-key="feature2-desc">动作捕捉、抠像、镜头控制与3D场景渲染同帧对齐，无延迟即时交互，提升操作体验。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-[#6b3d92]" data-icon="fa-solid:compress"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1" data-lang-key="feature3-title">超大3D模型轻量化</h3>
+                                <p class="text-neutral-600 text-sm" data-lang-key="feature3-desc">透过分层加载、压缩与快取，实现超大模型的即时浏览，适配各类低端设备。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-[#6b3d92]" data-icon="fa-solid:database"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1" data-lang-key="feature4-title">多数据导入整合</h3>
+                                <p class="text-neutral-600 text-sm" data-lang-key="feature4-desc">可导入风火水电、人流、物联网、图形设计等数据，进行全方位AI整合及分析，满足多场景需求。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-2 flex items-center justify-center h-full">
+                        <img src="https://picsum.photos/id/20/600/400" alt="Features" class="rounded-lg shadow-lg w-full h-auto object-cover max-h-[400px]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cases" class="h-screen w-full snap-start flex items-center justify-center relative section-padding bg-white/30 backdrop-blur-sm">
+            <div class="container-custom">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold" data-lang-key="cases-title">客户案例</h2>
+                </div>
+                <div class="glass-card overflow-hidden p-0 flex flex-col lg:flex-row h-[60vh]">
+                    <div class="lg:w-1/2 h-48 lg:h-full relative">
+                        <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/5486dca2b29b4da3ab32731c8fb374c6~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260210143809300F9B46E0D8C927C434&amp;rrcfp=f06b921b&amp;x-expires=1773297542&amp;x-signature=ixOdGKKKUY8APIlw1%2Fhpg2%2F%2FvUQ%3D" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="lg:w-1/2 p-8 flex flex-col justify-center overflow-y-auto">
+                        <span class="inline-block px-3 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-xs font-medium mb-4 w-fit" data-lang-key="case-badge">标杆案例</span>
                         <h3 class="text-2xl font-bold mb-4" data-lang-key="case-name">香港国际机场</h3>
                         <p class="text-neutral-600 mb-6" data-lang-key="case-desc">
                             为香港国际机场提供3D扫描AI智能管理服务，实现机场场景1:1还原、多数据整合分析，沟通效率提升10倍。
                         </p>
-                        
-                        <div class="grid grid-cols-2 gap-4 mb-8">
-                            <div class="bg-neutral-50 p-4 rounded-lg">
-                                <p class="text-sm text-neutral-500 mb-1" data-lang-key="case-cost">服务费用</p>
-                                <p class="text-xl font-semibold text-primary">470,000港元</p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-white/50 p-3 rounded-lg">
+                                <p class="text-sm text-neutral-500" data-lang-key="case-cost">服务费用</p>
+                                <p class="text-lg font-bold text-[#6b3d92]">470,000港元</p>
                             </div>
-                            <div class="bg-neutral-50 p-4 rounded-lg">
-                                <p class="text-sm text-neutral-500 mb-1" data-lang-key="case-maintenance">年度维护</p>
-                                <p class="text-xl font-semibold text-primary">70,000港元/年</p>
+                            <div class="bg-white/50 p-3 rounded-lg">
+                                <p class="text-sm text-neutral-500" data-lang-key="case-maintenance">年度维护</p>
+                                <p class="text-lg font-bold text-[#6b3d92]">70,000港元/年</p>
                             </div>
                         </div>
-                        
-                        <div class="flex flex-wrap gap-3 mb-8">
-                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm" data-lang-key="case-tag1">
-                                效率提升10倍
-                            </span>
-                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm" data-lang-key="case-tag2">
-                                无需专业技能
-                            </span>
-                            <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm" data-lang-key="case-tag3">
-                                成本降低60%
-                            </span>
-                        </div>
-                        
-                        <button class="btn-primary w-full sm:w-auto" data-lang-key="case-cta">查看完整案例</button>
+                        <button class="btn-primary w-fit" data-lang-key="case-cta">查看完整案例</button>
                     </div>
                 </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-                <div class="feature-card">
-                    <h4 class="text-lg font-semibold mb-3" data-lang-key="case-more1">数码城市管理</h4>
-                    <p class="text-neutral-600 mb-4" data-lang-key="case-more1-desc">
-                        为城市管理部门提供轻量化3D管理方案，实现城市设施的智能监控与管理。
-                    </p>
-                    <a href="#" class="text-primary font-medium hover:underline" data-lang-key="case-cta">查看案例 →</a>
-                </div>
-                
-                <div class="feature-card">
-                    <h4 class="text-lg font-semibold mb-3" data-lang-key="case-more2">物业管理</h4>
-                    <p class="text-neutral-600 mb-4" data-lang-key="case-more2-desc">
-                        为大型物业提供3D可视化管理，提升物业管理效率，降低运营成本。
-                    </p>
-                    <a href="#" class="text-primary font-medium hover:underline" data-lang-key="case-cta">查看案例 →</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 核心优势 -->
-    <section id="advantage" class="section-padding bg-white">
-        <div class="container-custom">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="section-tag">
-                    核心优势
-                </span>
-                <h2 class="section-title">
-                    产品差异化与技术实力
-                </h2>
-                <p class="text-lg text-neutral-600">
-                    我们专注于轻量化、简单化、低成本的3D管理解决方案，填补市场空白。
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-xl font-semibold mb-6" data-lang-key="diff-title">核心差异化</h3>
-                    <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="icon-box-sm">
-                                <span class="iconify text-primary" data-icon="fa-solid:users"></span>
+        <section id="advantage" class="h-screen w-full snap-start flex items-center justify-center relative section-padding">
+            <div class="container-custom">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold" data-lang-key="advantage-title">核心优势</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass-card">
+                        <h3 class="text-xl font-semibold mb-6" data-lang-key="diff-title">核心差异化</h3>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <span class="iconify text-2xl text-[#6b3d92]" data-icon="fa-solid:users"></span>
+                                <div>
+                                    <h4 class="font-semibold" data-lang-key="diff1-title">针对层级不同</h4>
+                                    <p class="text-sm text-neutral-600" data-lang-key="diff1-desc">聚焦"希望完成简单任务、快速看到效果"的用户，现有工具过于复杂，小问题无需专家操作。</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="font-semibold mb-2" data-lang-key="diff1-title">针对层级不同</h4>
-                                <p class="text-neutral-600" data-lang-key="diff1-desc">
-                                    聚焦"希望完成简单任务、快速看到效果"的用户，现有工具过于复杂，小问题无需专家操作。
-                                </p>
+                            <div class="flex gap-4">
+                                <span class="iconify text-2xl text-[#6b3d92]" data-icon="fa-solid:bullseye"></span>
+                                <div>
+                                    <h4 class="font-semibold" data-lang-key="diff2-title">定位独特</h4>
+                                    <p class="text-sm text-neutral-600" data-lang-key="diff2-desc">极致轻量和简单化，以最低的成本、最简单的操作，快速见效，不取代专业软件，填补市场空白。</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="flex gap-4">
-                            <div class="icon-box-sm">
-                                <span class="iconify text-primary" data-icon="fa-solid:bullseye"></span>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-2" data-lang-key="diff2-title">定位独特</h4>
-                                <p class="text-neutral-600" data-lang-key="diff2-desc">
-                                    极致轻量和简单化，以最低的成本、最简单的操作，快速见效，不取代专业软件，填补市场空白。
-                                </p>
+                            <div class="flex gap-4">
+                                <span class="iconify text-2xl text-[#6b3d92]" data-icon="fa6-solid:money-bill-1-wave"></span>
+                                <div>
+                                    <h4 class="font-semibold" data-lang-key="diff3-title">营运成本低</h4>
+                                    <p class="text-sm text-neutral-600" data-lang-key="diff3-desc">采用轻量级硬件/云端模式，大幅降低用户营运成本，区别于竞品的重量级硬件投入。</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="flex gap-4">
-                            <div class="icon-box-sm">
-                                <span class="iconify text-primary" data-icon="fa6-solid:money-bill-1-wave"></span>
+                    </div>
+                    <div class="glass-card">
+                        <h3 class="text-xl font-semibold mb-6" data-lang-key="tech-title">技术实力</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold" data-lang-key="tech1-title">算力基建层优势</span>
+                                    <span class="text-[#6b3d92] font-bold">90%</span>
+                                </div>
+                                <div class="w-full bg-neutral-200 rounded-full h-2">
+                                    <div class="bg-[#6b3d92] h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                                <p class="text-xs text-neutral-500 mt-1" data-lang-key="tech1-stats">运算成本降低 90%</p>
                             </div>
                             <div>
-                                <h4 class="font-semibold mb-2" data-lang-key="diff3-title">营运成本低</h4>
-                                <p class="text-neutral-600" data-lang-key="diff3-desc">
-                                    采用轻量级硬件/云端模式，大幅降低用户营运成本，区别于竞品的重量级硬件投入。
-                                </p>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold" data-lang-key="tech2-title">全链路自主搭建</span>
+                                    <span class="text-[#6b3d92] font-bold">85%</span>
+                                </div>
+                                <div class="w-full bg-neutral-200 rounded-full h-2">
+                                    <div class="bg-[#6b3d92] h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                                <p class="text-xs text-neutral-500 mt-1" data-lang-key="tech2-stats">技术自主可控率 85%</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div>
-                    <h3 class="text-xl font-semibold mb-6" data-lang-key="tech-title">技术实力</h3>
-                    <div class="bg-neutral-50 rounded-lg p-6 mb-6">
-                        <h4 class="font-semibold mb-3" data-lang-key="tech1-title">算力基建层优势</h4>
-                        <p class="text-neutral-600 mb-4" data-lang-key="tech1-desc">
-                            透过优化让次级设备成为基建，降低成本及对第三方供应商的依赖，实现算力自给自足。
-                        </p>
-                        <div class="w-full bg-neutral-200 rounded-full h-2 mb-1">
-                            <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
-                        </div>
-                        <p class="text-sm text-neutral-500" data-lang-key="tech1-stats">运算成本降低 90%</p>
-                    </div>
-                    
-                    <div class="bg-neutral-50 rounded-lg p-6">
-                        <h4 class="font-semibold mb-3" data-lang-key="tech2-title">全链路自主搭建</h4>
-                        <p class="text-neutral-600 mb-4" data-lang-key="tech2-desc">
-                            从基建层开始自行搭建，形成自给自足的基建与应用层，让应用成本更低、更可控。
-                        </p>
-                        <div class="w-full bg-neutral-200 rounded-full h-2 mb-1">
-                            <div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
-                        </div>
-                        <p class="text-sm text-neutral-500" data-lang-key="tech2-stats">技术自主可控率 85%</p>
-                    </div>
-                </div>
             </div>
-            
-            <!-- 竞品对比 -->
-            <div class="mt-16 overflow-hidden rounded-lg shadow-lg">
-                <h3 class="bg-primary text-white p-6 font-semibold" data-lang-key="compare-title">竞品对比</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead>
-                            <tr class="bg-neutral-50 border-b border-neutral-200">
-                                <th class="px-6 py-4 text-left text-neutral-700 font-semibold" data-lang-key="compare-dim">对比维度</th>
-                                <th class="px-6 py-4 text-left text-primary font-semibold" data-lang-key="compare-vizzle">Vizzle</th>
-                                <th class="px-6 py-4 text-left text-neutral-700 font-semibold" data-lang-key="compare-competitor">同类竞品</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b border-neutral-200">
-                                <td class="px-6 py-4 text-neutral-700 font-medium" data-lang-key="compare-cost">营运成本</td>
-                                <td class="px-6 py-4 text-primary font-medium" data-lang-key="compare-cost-vizzle">低（轻量级硬件/云端）</td>
-                                <td class="px-6 py-4 text-neutral-600" data-lang-key="compare-cost-competitor">高（重量级硬件/云端）</td>
-                            </tr>
-                            <tr class="border-b border-neutral-200 bg-neutral-50">
-                                <td class="px-6 py-4 text-neutral-700 font-medium" data-lang-key="compare-expand">扩展度</td>
-                                <td class="px-6 py-4 text-primary font-medium" data-lang-key="compare-expand-vizzle">高（线上SaaS，无指定软硬件）</td>
-                                <td class="px-6 py-4 text-neutral-600" data-lang-key="compare-expand-competitor">低（指定软硬件，限制较多）</td>
-                            </tr>
-                            <tr class="border-b border-neutral-200">
-                                <td class="px-6 py-4 text-neutral-700 font-medium" data-lang-key="compare-position">核心定位</td>
-                                <td class="px-6 py-4 text-primary font-medium" data-lang-key="compare-position-vizzle">轻量化、简单化、快速见效</td>
-                                <td class="px-6 py-4 text-neutral-600" data-lang-key="compare-position-competitor">专业化、复杂化、功能全面</td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 text-neutral-700 font-medium" data-lang-key="compare-threshold">操作门槛</td>
-                                <td class="px-6 py-4 text-primary font-medium" data-lang-key="compare-threshold-vizzle">低（无需专业知识）</td>
-                                <td class="px-6 py-4 text-neutral-600" data-lang-key="compare-threshold-competitor">高（需专业人员操作）</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 定价模式 -->
-    <section id="pricing" class="section-padding bg-neutral-100">
-        <div class="container-custom">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="section-tag">
-                    营收模式
-                </span>
-                <h2 class="section-title">
-                    灵活的收费模式
-                </h2>
-                <p class="text-lg text-neutral-600">
-                    我们采用灵活的收费模式，满足不同规模客户的需求，降低前期投入，实现双赢。
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- 基础版 -->
-                <div class="pricing-card">
-                    <div class="p-6 border-b border-neutral-200">
-                        <h3 class="text-xl font-semibold mb-2">基础版</h3>
-                        <p class="text-neutral-600 mb-4">适合小型企业使用</p>
-                        <div class="flex items-baseline mb-4">
-                            <span class="text-3xl font-bold">¥19,800</span>
-                            <span class="text-neutral-500 ml-2">/年</span>
-                        </div>
-                        <button class="btn-secondary w-full">选择套餐</button>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3">
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan1-feature1">5个用户账号</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan1-feature2">基础3D模型管理</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan1-feature3">基础AI分析功能</span>
-                            </li>
-                            <li class="pricing-item text-neutral-400">
-                                <span class="iconify" data-icon="fa-solid:xmark"></span>
-                                <span data-lang-key="plan1-feature4">定制化功能</span>
-                            </li>
-                            <li class="pricing-item text-neutral-400">
-                                <span class="iconify" data-icon="fa-solid:xmark"></span>
-                                <span data-lang-key="plan1-feature5">专属客服</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- 企业版 -->
-                <div class="pricing-card border-2 border-primary relative">
-                    <div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-sm font-medium">
-                        推荐
-                    </div>
-                    <div class="p-6 border-b border-neutral-200">
-                        <h3 class="text-xl font-semibold mb-2">企业版</h3>
-                        <p class="text-neutral-600 mb-4">适合中大型企业使用</p>
-                        <div class="flex items-baseline mb-4">
-                            <span class="text-3xl font-bold">¥79,800</span>
-                            <span class="text-neutral-500 ml-2">/年</span>
-                        </div>
-                        <button class="btn-primary w-full">选择套餐</button>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3">
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan2-feature1">20个用户账号</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan2-feature2">高级3D模型管理</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan2-feature3">高级AI分析功能</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan2-feature4">基础定制化功能</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan2-feature5">专属客服</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- 定制版 -->
-                <div class="pricing-card">
-                    <div class="p-6 border-b border-neutral-200">
-                        <h3 class="text-xl font-semibold mb-2">定制版</h3>
-                        <p class="text-neutral-600 mb-4">适合大型企业/政府机构</p>
-                        <div class="flex items-baseline mb-4">
-                            <span class="text-3xl font-bold">定制报价</span>
-                        </div>
-                        <button class="btn-secondary w-full">联系我们</button>
-                    </div>
-                    <div class="p-6">
-                        <ul class="space-y-3">
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan3-feature1">无限用户账号</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan3-feature2">全部功能</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan3-feature3">深度定制化</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan3-feature4">7×24小时技术支持</span>
-                            </li>
-                            <li class="pricing-item">
-                                <span class="iconify text-green-500" data-icon="fa-solid:check"></span>
-                                <span data-lang-key="plan3-feature5">私有化部署</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-12 bg-white rounded-lg p-6 shadow-card text-center">
-                <p class="text-neutral-600 mb-4">
-                    核心收费模式：服务订制 + 年度维护 + 用户数收费，三者结合，灵活适配不同客户需求。
-                </p>
-                <button class="btn-primary">获取专属报价</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 奖项与政府支持 -->
-    <section id="awards" class="section-padding bg-neutral-50">
-        <div class="container-custom">
-            <div class="text-center mb-12">
-                <span class="section-tag" data-lang-key="awards-title">
-                    奖项与政府支持
-                </span>
-                <h2 class="section-title" data-lang-key="awards-subtitle">
-                    受到权威机构认可
-                </h2>
-                <p class="text-lg text-neutral-600 max-w-3xl mx-auto" data-lang-key="awards-desc">
-                    Vizzle凭借创新的轻量化AI 3D数码城市管理平台，获得多项行业大奖和政府支持，彰显技术实力与品牌公信力。
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 模块1：政府与大学支持 -->
-                <div class="bg-white rounded-lg shadow-card p-8">
-                    <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="gov-university-title">政府与大学支持</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="f7:building-columns-fill"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="gov-support1">香港理工大学天使创投支持</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:building"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="gov-support2">香港创新科技署大学科技初创企业资助计划</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:laptop"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="gov-support3">香港数码港培育计划</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:flask"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="gov-support4">香港城市大学Tech 300基金支持</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:rocket"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="gov-support5">杭州大运英才计划支持</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 模块2：行业奖项 -->
-                <div class="bg-white rounded-lg shadow-card p-8">
-                    <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="industry-awards-title">行业奖项</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:trophy"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="award-support1">2025年NEXX人工智能与创新奖</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:star"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="award-support2">第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:certificate"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="award-support3">创客中国国际中小企业创新创业大赛10强队伍</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:award"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="award-support4">亚洲智能应用程式大奖优异奖</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:medal"></span>
-                            </div>
-                            <div>
-                                <p class="font-medium text-neutral-800" data-lang-key="award-support5">杭州动力创未国际科技项目新创赛三等奖</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 联系我们 -->
-    <section id="contact" class="section-padding bg-white">
-        <div class="container-custom">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="section-tag" data-lang-key="contact-title">
-                        联系我们
+        <section id="pricing" class="h-screen w-full snap-start flex items-center justify-center relative section-padding bg-white/30 backdrop-blur-sm">
+            <div class="container-custom">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4">
+                        营收模式
                     </span>
-                    <h2 class="section-title" data-lang-key="contact-subtitle">
-                        获取专属解决方案
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4" data-lang-key="pricing-title">
+                        灵活的收费模式
                     </h2>
-                    <p class="text-lg text-neutral-600 mb-8" data-lang-key="contact-desc">
-                        立即咨询，我们将为您提供专业的3D管理服务，助力企业降本增效。
-                    </p>
-                    
-                    <div class="space-y-6 mb-8">
-                        <div class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:building"></span>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold mb-1" data-lang-key="contact-company">公司名称</h3>
-                                <p class="text-neutral-600" data-lang-key="contact-company-name">Vizzle 炫幻视界</p>
-                                <p class="text-neutral-600" data-lang-key="contact-company-hk">香港：炫幻视界有限公司</p>
-                                <p class="text-neutral-600" data-lang-key="contact-company-hz">杭州：炫幻视界（杭州）科技有限公司</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Basic -->
+                    <div class="glass-card">
+                        <div class="border-b border-neutral-200 pb-4 mb-4">
+                            <h3 class="text-xl font-semibold mb-2" data-lang-key="plan1-title">基础版</h3>
+                            <p class="text-neutral-600 text-sm mb-4" data-lang-key="plan1-subtitle">适合小型企业使用</p>
+                            <div class="flex items-baseline">
+                                <span class="text-3xl font-bold" data-lang-key="plan1-price">¥19,800</span>
+                                <span class="text-neutral-500 ml-2" data-lang-key="plan1-period">/年</span>
                             </div>
                         </div>
-                        
-                        <div class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:phone"></span>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold mb-1" data-lang-key="contact-phone">联系电话</h3>
-                                <p class="text-neutral-600" data-lang-key="contact-phone-number">+852 9660 5893</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-4">
-                            <div class="icon-box-sm-mt">
-                                <span class="iconify text-primary" data-icon="fa-solid:envelope"></span>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold mb-1" data-lang-key="contact-email">电子邮箱</h3>
-                                <p class="text-neutral-600" data-lang-key="contact-email-address">info@im-vizzle.com</p>
-                            </div>
-                        </div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan1-feature1">5个用户账号</span></li>
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan1-feature2">基础3D模型管理</span></li>
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan1-feature3">基础AI分析功能</span></li>
+                        </ul>
+                        <button class="btn-secondary w-full" data-lang-key="plan-select">选择套餐</button>
                     </div>
                     
-                    <div class="flex gap-4">
-                        <a href="#" class="social-icon">
-                            <span class="iconify" data-icon="fa-brands:weixin"></span>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <span class="iconify" data-icon="fa-brands:linkedin"></span>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <span class="iconify" data-icon="fa-brands:github"></span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="bg-neutral-50 rounded-lg p-8 shadow-card">
-                    <h3 class="text-xl font-semibold mb-6">立即咨询</h3>
-                    <form id="contact-form" class="space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-neutral-700 font-medium mb-2">姓名</label>
-                                <input type="text" id="name" name="name" class="form-input" placeholder="请输入您的姓名" required="">
-                            </div>
-                            <div>
-                                <label for="company" class="block text-neutral-700 font-medium mb-2">公司名称</label>
-                                <input type="text" id="company" name="company" class="form-input" placeholder="请输入您的公司名称" required="">
+                    <!-- Enterprise -->
+                    <div class="glass-card border-[#6b3d92] relative transform scale-105 z-10">
+                        <div class="absolute top-0 right-0 bg-[#6b3d92] text-white px-3 py-1 text-xs font-medium rounded-bl-lg rounded-tr-lg">推荐</div>
+                        <div class="border-b border-neutral-200 pb-4 mb-4">
+                            <h3 class="text-xl font-semibold mb-2" data-lang-key="plan2-title">企业版</h3>
+                            <p class="text-neutral-600 text-sm mb-4" data-lang-key="plan2-subtitle">适合中大型企业使用</p>
+                            <div class="flex items-baseline">
+                                <span class="text-3xl font-bold text-[#6b3d92]" data-lang-key="plan2-price">¥79,800</span>
+                                <span class="text-neutral-500 ml-2" data-lang-key="plan2-period">/年</span>
                             </div>
                         </div>
-                        
-                        <div>
-                            <label for="phone" class="block text-neutral-700 font-medium mb-2">联系电话</label>
-                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="请输入您的联系电话" required="">
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan2-feature1">20个用户账号</span></li>
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan2-feature2">高级3D模型管理</span></li>
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan2-feature3">高级AI分析功能</span></li>
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan2-feature4">基础定制化功能</span></li>
+                        </ul>
+                        <button class="btn-primary w-full" data-lang-key="plan-select">选择套餐</button>
+                    </div>
+                    
+                    <!-- Custom -->
+                    <div class="glass-card">
+                        <div class="border-b border-neutral-200 pb-4 mb-4">
+                            <h3 class="text-xl font-semibold mb-2" data-lang-key="plan3-title">定制版</h3>
+                            <p class="text-neutral-600 text-sm mb-4" data-lang-key="plan3-subtitle">适合大型企业/政府机构</p>
+                            <div class="flex items-baseline">
+                                <span class="text-3xl font-bold" data-lang-key="plan3-price">定制报价</span>
+                            </div>
                         </div>
-                        
-                        <div>
-                            <label for="email" class="block text-neutral-700 font-medium mb-2">电子邮箱</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="请输入您的电子邮箱" required="">
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block text-neutral-700 font-medium mb-2">咨询需求</label>
-                            <textarea id="message" name="message" rows="4" class="form-input" placeholder="请简要描述您的需求"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-primary w-full">提交咨询</button>
-                    </form>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan3-feature1">无限用户账号</span></li>
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan3-feature2">全部功能</span></li>
+                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="plan3-feature3">深度定制化</span></li>
+                        </ul>
+                        <button class="btn-secondary w-full" data-lang-key="plan-contact">联系我们</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 底部CTA -->
-    <section class="py-16 bg-primary text-white">
-        <div class="container-custom text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6">
-                开始您的轻量化3D管理之旅
-            </h2>
-            <p class="text-white/80 max-w-2xl mx-auto mb-8">
-                立即预约产品演示，了解Vizzle如何帮助您的企业降低3D管理成本，提升管理效率。
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="bg-white text-primary px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-white/90 hover:shadow-lg">
-                    预约产品演示
-                </button>
-                <button class="bg-transparent border border-white text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-white/10">
-                    免费试用14天
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="bg-neutral-900 text-white pt-16 pb-8">
-        <div class="container-custom">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div>
-                    <div class="flex items-center mb-6">
-                        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/75a9f9ccc20f46c9a52a4083756ab872.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&amp;rcl=202602101457230345415D2A153C20D520&amp;rrcfp=8a172a1a&amp;x-expires=1771311443&amp;x-signature=YatmYUcpT071JQtgh%2FBf2GbXFEo%3D" alt="Vizzle Logo" class="h-8 w-auto mr-3">
-                        <span class="text-xl font-semibold">Vizzle</span>
-                    </div>
-                    <p class="text-neutral-400 mb-6">
-                        轻量化AI 3D数码城市管理平台，让复杂的3D管理像浏览网页一样简单。
+        <!-- Awards Section -->
+        <section id="awards" class="h-screen w-full snap-start flex items-center justify-center relative section-padding">
+            <div class="container-custom">
+                <div class="text-center mb-12">
+                    <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4" data-lang-key="awards-title">
+                        奖项与政府支持
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6" data-lang-key="awards-subtitle">
+                        受到权威机构认可
+                    </h2>
+                    <p class="text-lg text-neutral-600 max-w-3xl mx-auto" data-lang-key="awards-desc">
+                        Vizzle凭借创新的轻量化AI 3D数码城市管理平台，获得多项行业大奖和政府支持，彰显技术实力与品牌公信力。
                     </p>
-                    <div class="flex gap-4">
-                        <a href="#" class="footer-link">
-                            <span class="iconify text-xl" data-icon="fa-brands:weixin"></span>
-                        </a>
-                        <a href="#" class="footer-link">
-                            <span class="iconify text-xl" data-icon="fa-brands:linkedin"></span>
-                        </a>
-                        <a href="#" class="footer-link">
-                            <span class="iconify text-xl" data-icon="fa-brands:github"></span>
-                        </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 模块1：政府与大学支持 -->
+                    <div class="glass-card">
+                        <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="gov-university-title">政府与大学支持</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="f7:building-columns-fill"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="gov-support1">香港理工大学天使创投支持</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="fa-solid:building"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="gov-support2">香港创新科技署大学科技初创企业资助计划</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="fa-solid:laptop"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="gov-support3">香港数码港培育计划</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="fa-solid:flask"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="gov-support4">香港城市大学Tech 300基金支持</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="fa-solid:rocket"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="gov-support5">杭州大运英才计划支持</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 模块2：行业奖项 -->
+                    <div class="glass-card">
+                        <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="industry-awards-title">行业奖项</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="fa-solid:trophy"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="award-support1">2025年NEXX人工智能与创新奖</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="fa-solid:star"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="award-support2">第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="fa-solid:certificate"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="award-support3">创客中国国际中小企业创新创业大赛10强队伍</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="fa-solid:award"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="award-support4">亚洲智能应用程式大奖优异奖</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="iconify text-[#6b3d92]" data-icon="fa-solid:medal"></span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-neutral-800" data-lang-key="award-support5">杭州动力创未国际科技项目新创赛三等奖</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-6">产品</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#solutions" class="footer-link">解决方案</a></li>
-                        <li><a href="#features" class="footer-link">产品功能</a></li>
-                        <li><a href="#cases" class="footer-link">客户案例</a></li>
-                        <li><a href="#advantage" class="footer-link">核心优势</a></li>
-                        <li><a href="#pricing" class="footer-link">定价模式</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-6">资源</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="footer-link">帮助中心</a></li>
-                        <li><a href="#" class="footer-link">文档中心</a></li>
-                        <li><a href="#" class="footer-link">技术博客</a></li>
-                        <li><a href="#" class="footer-link">常见问题</a></li>
-                        <li><a href="#" class="footer-link">合作伙伴</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-6">公司</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="footer-link">关于我们</a></li>
-                        <li><a href="#contact" class="footer-link">联系我们</a></li>
-                        <li><a href="#" class="footer-link">招贤纳士</a></li>
-                        <li><a href="#" class="footer-link">隐私政策</a></li>
-                        <li><a href="#" class="footer-link">服务条款</a></li>
-                    </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="h-screen w-full snap-start flex flex-col justify-between relative bg-white/30 backdrop-blur-sm">
+            <div class="flex-grow flex items-center justify-center section-padding">
+                <div class="container-custom">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="glass-card">
+                            <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4" data-lang-key="contact-title">
+                                联系我们
+                            </span>
+                            <h2 class="text-3xl font-bold mb-6" data-lang-key="contact-subtitle">获取专属解决方案</h2>
+                            <p class="mb-8 text-neutral-600" data-lang-key="contact-desc">立即咨询，我们将为您提供专业的3D管理服务，助力企业降本增效。</p>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="iconify text-[#6b3d92]" data-icon="fa-solid:building"></span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold mb-1" data-lang-key="contact-company">公司名称</h3>
+                                        <p class="text-neutral-600" data-lang-key="contact-company-name">Vizzle 炫幻视界</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="iconify text-[#6b3d92]" data-icon="fa-solid:phone"></span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold mb-1" data-lang-key="contact-phone">联系电话</h3>
+                                        <p class="text-neutral-600" data-lang-key="contact-phone-number">+852 9660 5893</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <span class="iconify text-[#6b3d92]" data-icon="fa-solid:envelope"></span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold mb-1" data-lang-key="contact-email">电子邮箱</h3>
+                                        <p class="text-neutral-600" data-lang-key="contact-email-address">info@im-vizzle.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card">
+                            <h3 class="text-xl font-semibold mb-6" data-lang-key="contact-form-title">立即咨询</h3>
+                            <form id="contact-form" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-neutral-700 font-medium mb-2" data-lang-key="contact-form-name">姓名</label>
+                                        <input type="text" data-lang-key="contact-form-name" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-neutral-700 font-medium mb-2" data-lang-key="contact-form-company">公司名称</label>
+                                        <input type="text" data-lang-key="contact-form-company" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-neutral-700 font-medium mb-2" data-lang-key="contact-form-phone">联系电话</label>
+                                    <input type="tel" data-lang-key="contact-form-phone" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none" required>
+                                </div>
+                                <div>
+                                    <label class="block text-neutral-700 font-medium mb-2" data-lang-key="contact-form-email">电子邮箱</label>
+                                    <input type="email" data-lang-key="contact-form-email" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none" required>
+                                </div>
+                                <div>
+                                    <label class="block text-neutral-700 font-medium mb-2" data-lang-key="contact-form-message">咨询需求</label>
+                                    <textarea rows="3" data-lang-key="contact-form-message" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none"></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary w-full" data-lang-key="contact-form-submit">提交咨询</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="border-t border-neutral-800 pt-8 text-center text-neutral-500 text-sm">
-                <p>© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利</p>
-            </div>
-        </div>
-    </footer>
+            <footer class="bg-neutral-900 text-white py-8 snap-end">
+                <div class="container-custom">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
+                        <div>
+                            <div class="flex items-center mb-4 font-bold text-lg">Vizzle</div>
+                            <p class="text-neutral-400 mb-4">轻量化AI 3D数码城市管理平台</p>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-neutral-400 hover:text-white"><span class="iconify text-lg" data-icon="fa-brands:weixin"></span></a>
+                                <a href="#" class="text-neutral-400 hover:text-white"><span class="iconify text-lg" data-icon="fa-brands:linkedin"></span></a>
+                                <a href="#" class="text-neutral-400 hover:text-white"><span class="iconify text-lg" data-icon="fa-brands:github"></span></a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-4" data-lang-key="footer-product">产品</h3>
+                            <ul class="space-y-2 text-neutral-400">
+                                <li><a href="#solutions" class="hover:text-white">解决方案</a></li>
+                                <li><a href="#features" class="hover:text-white">产品功能</a></li>
+                                <li><a href="#cases" class="hover:text-white">客户案例</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-4" data-lang-key="footer-resources">资源</h3>
+                            <ul class="space-y-2 text-neutral-400">
+                                <li><a href="#" class="hover:text-white">帮助中心</a></li>
+                                <li><a href="#" class="hover:text-white">文档中心</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-4" data-lang-key="footer-company">公司</h3>
+                            <ul class="space-y-2 text-neutral-400">
+                                <li><a href="#" class="hover:text-white">关于我们</a></li>
+                                <li><a href="#contact" class="hover:text-white">联系我们</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral-800 pt-6 text-center text-xs text-neutral-500">
+                        <p data-lang-key="footer-copyright">© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利</p>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </main>
 
-    <!-- JavaScript -->
     <script>
-        // 语言切换功能
+        // Three.js Logic
+        const canvasContainer = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xf3f4f6);
+        scene.fog = new THREE.Fog(0xf3f4f6, 10, 60);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 8, 15);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        canvasContainer.appendChild(renderer.domElement);
+
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshPhongMaterial({color:0xffffff, shininess:100});
+        const mesh = new THREE.InstancedMesh(geometry, material, 500);
+        
+        const dummy = new THREE.Object3D();
+        for(let i=0; i<500; i++){
+            dummy.position.set((Math.random()-0.5)*30, Math.random()*2, (Math.random()-0.5)*30);
+            dummy.scale.set(Math.random()+0.2, Math.random()*3+0.2, Math.random()+0.2);
+            dummy.updateMatrix();
+            mesh.setMatrixAt(i, dummy.matrix);
+        }
+        scene.add(mesh);
+        
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+        scene.add(ambientLight);
+        const light = new THREE.PointLight(0x6b3d92, 2, 50);
+        light.position.set(5, 10, 5);
+        scene.add(light);
+
+        // Scroll Sync
+        const mainScroll = document.getElementById('main-scroll');
+        let targetY = 0;
+        
+        mainScroll.addEventListener('scroll', () => {
+            const pct = mainScroll.scrollTop / (mainScroll.scrollHeight - window.innerHeight);
+            targetY = pct * 20; // Move camera along Z
+        });
+
+        function animate(){
+            requestAnimationFrame(animate);
+            mesh.rotation.y += 0.001;
+            camera.position.z += (15 - targetY - camera.position.z) * 0.05;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+
+        // Language Toggle Logic (Re-implemented)
         function setLanguage(lang) {
-            // 更新HTML lang属性
             document.getElementById('html-element').lang = lang;
-            
-            // 更新所有带data-lang-key的元素
             document.querySelectorAll('[data-lang-key]').forEach(el => {
                 const key = el.getAttribute('data-lang-key');
                 if (translations[lang] && translations[lang][key]) {
                     el.textContent = translations[lang][key];
                 }
             });
-            
-            // 更新表单占位符
             document.querySelectorAll('input[data-lang-key], textarea[data-lang-key]').forEach(el => {
                 const key = el.getAttribute('data-lang-key');
                 if (translations[lang] && translations[lang][key + '-placeholder']) {
                     el.placeholder = translations[lang][key + '-placeholder'];
                 }
             });
-            
-            // 保存语言偏好到localStorage
             localStorage.setItem('preferredLanguage', lang);
-            
-            // 更新语言按钮状态
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('bg-primary', 'text-white');
+                btn.classList.remove('bg-[#6b3d92]', 'text-white');
                 if (btn.getAttribute('data-lang') === lang) {
-                    btn.classList.add('bg-primary', 'text-white');
+                    btn.classList.add('bg-[#6b3d92]', 'text-white');
                 }
             });
         }
-        
-        // 根据用户地区自动检测语言
+
         function detectUserLanguage() {
-            // 检查是否有保存的语言偏好
             const savedLang = localStorage.getItem('preferredLanguage');
             if (savedLang) {
                 setLanguage(savedLang);
                 return;
             }
-            
-            // 尝试获取用户地区
-            let userLang = 'en-US'; // 默认英文
-            
+            let userLang = 'en-US';
             if (navigator.language) {
                 const langCode = navigator.language.toLowerCase();
-                
-                // 检查是否为中文环境
                 if (langCode.includes('zh')) {
-                    // 检查是否为台湾或香港地区
                     if (langCode.includes('tw') || langCode.includes('hk') || langCode.includes('mo')) {
-                        userLang = 'zh-TW'; // 繁体中文
+                        userLang = 'zh-TW';
                     } else {
-                        userLang = 'zh-CN'; // 简体中文
+                        userLang = 'zh-CN';
                     }
                 }
             }
-            
             setLanguage(userLang);
         }
-        
-        // 移动端菜单切换
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // 移动端菜单关闭
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
-            });
-        });
-        
-        // 表单提交
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // 简单验证
-            const name = document.getElementById('name').value;
-            const company = document.getElementById('company').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            
-            if (!name || !company || !phone || !email) {
-                alert('请填写必填字段');
-                return;
-            }
-            
-            // 模拟提交
-            alert('提交成功，我们将尽快与您联系');
-            this.reset();
-        });
-        
 
-        
-        // 语言切换按钮事件监听
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const lang = this.getAttribute('data-lang');
                 const langText = this.getAttribute('data-lang-text');
-                
-                // 更新当前语言显示
-                document.getElementById('current-lang-text').textContent = langText;
-                document.getElementById('current-lang-text-mobile').textContent = langText;
-                
-                // 切换语言
+                document.getElementById('current-lang-text').innerText = langText;
                 setLanguage(lang);
-                
-                // 关闭移动端下拉菜单
-                document.getElementById('mobile-lang-dropdown').classList.add('hidden');
             });
         });
 
-        // 页面加载时初始化语言
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Mobile Language Dropdown Toggle
+        const mobileLangBtn = document.querySelector('.md\\:hidden .relative > button');
+        const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+
+        if (mobileLangBtn && mobileLangDropdown) {
+            mobileLangBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileLangDropdown.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!mobileLangBtn.contains(e.target) && !mobileLangDropdown.contains(e.target)) {
+                    mobileLangDropdown.classList.add('hidden');
+                }
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             detectUserLanguage();
         });
-        
-        // 移动端语言下拉菜单切换
-        document.querySelector('.md\\:hidden .relative > button').addEventListener('click', function() {
-            const dropdown = document.getElementById('mobile-lang-dropdown');
-            dropdown.classList.toggle('hidden');
-        });
-        
-        // 点击其他地方关闭下拉菜单
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.md\\:hidden .relative')) {
-                document.getElementById('mobile-lang-dropdown').classList.add('hidden');
-            }
-        });
-        
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('shadow-md');
-                header.classList.add('bg-white/95');
-                header.classList.add('backdrop-blur-sm');
-            } else {
-                header.classList.remove('shadow-md');
-                header.classList.remove('bg-white/95');
-                header.classList.remove('backdrop-blur-sm');
-            }
-        });
     </script>
-
-</body></html>
+</body>
+</html>
