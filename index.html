@@ -1,4 +1,4 @@
-﻿<html lang="zh-CN" id="html-element">
+<html lang="zh-CN" id="html-element" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -617,10 +617,21 @@
                 height: 100vh; /* Fallback */
                 height: 100dvh;
             }
+            @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+            .animate-marquee {
+                width: max-content;
+                animation: marquee 60s linear infinite;
+            }
+            .animate-marquee:hover {
+                animation-play-state: paused;
+            }
         }
     </style>
 </head>
-<body class="font-inter text-neutral-800 bg-[#f3f4f6] overflow-y-auto md:overflow-hidden scroll-smooth">
+<body class="font-inter text-neutral-800 bg-[#f3f4f6]">
     <div id="canvas-container" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></div>
 
     <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
@@ -649,13 +660,13 @@
                     <div class="relative group">
                         <button class="lang-trigger">
                             <span class="iconify text-xs mr-1" data-icon="fa-solid:globe"></span>  
-                            <span id="current-lang-text">中</span>
+                            <span id="current-lang-text">繁</span>
                             <span class="iconify text-xs ml-1" data-icon="fa-solid:chevron-down"></span>
                         </button>
                         <div class="lang-menu">
                             <div class="lang-menu-content py-1">
-                                <button class="lang-btn lang-option" data-lang="zh-TW" data-lang-text="繁體中文">繁體中文</button>
-                                <button class="lang-btn lang-option" data-lang="zh-CN" data-lang-text="简体中文">简体中文</button>
+                                <button class="lang-btn lang-option" data-lang="zh-TW" data-lang-text="繁">繁</button>
+                                <button class="lang-btn lang-option" data-lang="zh-CN" data-lang-text="简">简</button>
                                 <button class="lang-btn lang-option" data-lang="en-US" data-lang-text="English">English</button>
                             </div>
                         </div>
@@ -673,7 +684,7 @@
                     <div class="relative">
                         <button class="flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-[#6b3d92] text-white">
                             <span class="iconify text-xs mr-1" data-icon="fa-solid:globe"></span>  
-                            <span id="current-lang-text-mobile">简</span>
+                            <span id="current-lang-text-mobile">繁</span>
                             <span class="iconify text-xs" data-icon="fa-solid:chevron-down"></span>
                         </button>
                         <div id="mobile-lang-dropdown" class="absolute right-0 mt-1 w-24 bg-white rounded-md shadow-lg overflow-hidden z-50 hidden">
@@ -709,13 +720,13 @@
         </div>
     </header>
 
-    <main class="w-full relative z-10 md:h-screen md:overflow-y-scroll md:snap-y md:snap-mandatory md:scroll-smooth md:no-scrollbar" id="main-scroll">
+    <main class="w-full relative z-10 scroll-smooth" id="main-scroll">
         
         <!-- Section 1: Hero -->
-        <section id="hero" class="min-h-screen md:h-screen w-full md:snap-start flex items-center justify-center relative py-20 md:py-0 section-padding">
-            <div class="container-custom relative z-10">
+        <section id="hero" class="min-h-screen w-full flex items-center justify-center relative section-padding">
+            <div class="container-custom relative z-10 w-full">
                 <div class="flex flex-col md:flex-row items-center gap-10">
-                    <div class="md:w-1/2 space-y-6 glass-card border-none shadow-none">
+                    <div class="w-full md:w-1/2 space-y-6 glass-card border-none shadow-none">
                         <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium" data-lang-key="hero-tag">
                             轻量化AI 3D解决方案
                         </span>
@@ -736,8 +747,39 @@
             </div>
         </section>
         
+        <!-- Section 1.5: Trust Marquee -->
+        <section class="py-8 bg-white/40 backdrop-blur-sm border-y border-white/20 overflow-hidden w-full relative z-20">
+            <div class="container-custom relative">
+                <p class="text-center text-neutral-500 mb-6 text-sm font-medium" data-lang-key="trust-title">受到行业领先企业的信任</p>
+                
+                <div class="relative overflow-hidden group">
+                    <!-- Javascript controlled scrolling container -->
+                    <div id="marquee-track" class="flex items-center gap-12 md:gap-20 py-2 overflow-x-auto no-scrollbar w-full">
+                        <!-- Original List -->
+                        <img src="assets/img/logo/HKIA.svg" alt="HKIA" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/BOC.svg" alt="BOC" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/MTR.svg" alt="MTR" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/PolyU.svg" alt="PolyU" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/chinamobile.avif" alt="China Mobile" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/Cyberport.png" alt="Cyberport" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/CityU.svg" alt="CityU" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/DBS.svg" alt="DBS" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/HKEduCity.svg" alt="HKEduCity" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/AWE.jpg" alt="AWE" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/centralmarket.jpg" alt="Central Market" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/techforgood.jpg" alt="Tech For Good" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/pinkpanther.jpg" alt="Pink Panther" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                    </div>
+                </div>
+                
+                <!-- Side fades for smooth edge effect -->
+                <div class="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-24 bg-gradient-to-r from-[#f3f4f6] to-transparent z-10"></div>
+                <div class="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-24 bg-gradient-to-l from-[#f3f4f6] to-transparent z-10"></div>
+            </div>
+        </section>
+        
         <!-- Section 2: Solutions -->
-        <section id="solutions" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
+        <section id="solutions" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4">
@@ -781,7 +823,7 @@
         </section>
 
         <!-- Section 3: Features -->
-        <section id="features" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
+        <section id="features" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-8 glass-card">
@@ -831,7 +873,7 @@
         </section>
 
         <!-- Section 4: Cases -->
-        <section id="cases" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
+        <section id="cases" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="text-center mb-8">
                     <h2 class="text-3xl font-bold" data-lang-key="cases-title">客户案例</h2>
@@ -863,7 +905,7 @@
         </section>
 
         <!-- Section 5: Advantage -->
-        <section id="advantage" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
+        <section id="advantage" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold" data-lang-key="advantage-title">核心优势</h2>
@@ -925,7 +967,7 @@
         </section>
 
         <!-- Section 6: Pricing -->
-        <section id="pricing" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
+        <section id="pricing" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4">
@@ -996,7 +1038,7 @@
         </section>
 
         <!-- Section 7: Awards -->
-        <section id="awards" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
+        <section id="awards" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="text-center mb-12">
                     <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4" data-lang-key="awards-title">
@@ -1109,7 +1151,7 @@
         </section>
 
         <!-- Section 8: Contact -->
-        <section id="contact" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-between relative pt-24 md:pt-0">
+        <section id="contact" class="min-h-screen w-full flex flex-col justify-between relative pt-24 md:pt-0">
             <div class="flex-grow flex items-center justify-center section-padding">
                 <div class="container-custom">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -1466,7 +1508,11 @@
             mouseY = (e.clientY / window.innerHeight) - 0.5;
         });
 
+        // Resize
         window.addEventListener('resize', () => {
+            // Ignore small vertical-only resizes on mobile (URL bar hide/show)
+            if (Math.abs(camera.aspect - (window.innerWidth / window.innerHeight)) < 0.1 && window.innerWidth === renderer.domElement.width) return;
+
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
@@ -1488,6 +1534,12 @@
             camera.position.x += (mouseX * 3 - camera.position.x) * 0.02;
             camera.lookAt(0, 0, 0);
 
+            // Mobile Adjustment: Look slightly lower to shift city UP in viewport
+            const isMobile = window.innerWidth < 768;
+            // Use targetY offset to stabilize camera during scroll
+            const lookAtY = isMobile ? -20 : 0;
+            camera.lookAt(0, lookAtY, 0);
+
             const positions = particles.geometry.attributes.position.array;
             for(let i=0; i<particleCount; i++) {
                 const i3 = i * 3;
@@ -1507,21 +1559,42 @@
 
 
         // Language Toggle Logic (Re-implemented)
+        const langDisplayNames = {
+            'zh-CN': '简',
+            'zh-TW': '繁',
+            'en-US': 'EN'
+        };
+
         function setLanguage(lang) {
             document.getElementById('html-element').lang = lang;
+            
+            // Update Translations
             document.querySelectorAll('[data-lang-key]').forEach(el => {
                 const key = el.getAttribute('data-lang-key');
                 if (translations[lang] && translations[lang][key]) {
                     el.textContent = translations[lang][key];
                 }
             });
+            
+            // Update Placeholders
             document.querySelectorAll('input[data-lang-key], textarea[data-lang-key]').forEach(el => {
                 const key = el.getAttribute('data-lang-key');
                 if (translations[lang] && translations[lang][key + '-placeholder']) {
                     el.placeholder = translations[lang][key + '-placeholder'];
                 }
             });
+
+            // Update Language Switcher Display Text (Desktop & Mobile)
+            const displayText = langDisplayNames[lang] || 'EN';
+            const desktopLabel = document.getElementById('current-lang-text');
+            const mobileLabel = document.getElementById('current-lang-text-mobile');
+            
+            if (desktopLabel) desktopLabel.textContent = displayText;
+            if (mobileLabel) mobileLabel.textContent = displayText;
+
             localStorage.setItem('preferredLanguage', lang);
+            
+            // Update Active State in Dropdown
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('bg-[#6b3d92]', 'text-white');
                 if (btn.getAttribute('data-lang') === lang) {
@@ -1553,11 +1626,88 @@
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const lang = this.getAttribute('data-lang');
-                const langText = this.getAttribute('data-lang-text');
-                document.getElementById('current-lang-text').innerText = langText;
+                // Removed manual text update here, relying on setLanguage instead
                 setLanguage(lang);
+                
+                // Hide mobile dropdown if open
+                const mobileDropdown = document.getElementById('mobile-lang-dropdown');
+                if (mobileDropdown) mobileDropdown.classList.add('hidden');
             });
         });
+
+        // Smooth Scrolling Logic
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                
+                // Special case for Home/Top
+                if (targetId === '#hero' || targetId === '#') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Calculate offset for fixed header
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                
+                // Close Mobile Menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Marquee Logic (Auto-scroll + Manual Drag Support)
+        const marqueeTrack = document.getElementById('marquee-track');
+        if (marqueeTrack) {
+            // Duplicate content for seamless scrolling
+            marqueeTrack.innerHTML += marqueeTrack.innerHTML;
+            
+            let scrollAmount = 0;
+            let isHovering = false;
+            let scrollSpeed = 0.5;
+
+            function scrollMarquee() {
+                if (!isHovering) {
+                    scrollAmount += scrollSpeed;
+                    
+                    // Reset if we've scrolled past half (since content is duplicated)
+                    if (scrollAmount >= marqueeTrack.scrollWidth / 2) {
+                        scrollAmount = 0;
+                    }
+                    marqueeTrack.scrollLeft = scrollAmount;
+                } else {
+                    // Sync scrollAmount to current scrollLeft so it resumes smoothly
+                    scrollAmount = marqueeTrack.scrollLeft;
+                }
+                requestAnimationFrame(scrollMarquee);
+            }
+
+            // Pause on touch start to allow drag, resume on touch end
+            marqueeTrack.addEventListener('touchstart', () => { isHovering = true; }, {passive: true});
+            marqueeTrack.addEventListener('touchend', () => { isHovering = false; }, {passive: true});
+            
+            // Optional: Pause on mouse hover for desktop
+            marqueeTrack.addEventListener('mouseenter', () => { isHovering = true; });
+            marqueeTrack.addEventListener('mouseleave', () => { isHovering = false; });
+
+            // Start loop
+            scrollMarquee();
+        }
 
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-button');
