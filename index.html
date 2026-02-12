@@ -1,4 +1,4 @@
-<html lang="zh-CN" id="html-element">
+﻿<html lang="zh-CN" id="html-element">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1210,43 +1210,226 @@
     </main>
 
     <script>
-        // Three.js Logic
+        // Three.js Logic - Microscopic CPU Smart City (Light Mode)
         const canvasContainer = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xf3f4f6);
-        scene.fog = new THREE.Fog(0xf3f4f6, 10, 60);
+        
+        // --- Configuration ---
+        const CONFIG = {
+            seed: 95894552,     // Change this to randomize layout
+            gridSize: 120,      // Size of the city area
+            
+            // 1. Building Density & Appearance
+            buildings: {
+                count: 1500,    // Total number of building blocks (Density)
+                color: 0xffffff,
+                maxHeight: 5,   // Maximum height of skyscrapers
+            },
+            
+            // 2. Floating Particles Parameters
+            particles: {
+                count: 1000,     // Number of floating data packets
+                size: 0.15,     // Size of each particle
+                color: 0xd27cff,// Color (Brand Purple)
+                opacity: 0.8,   // Transparency
+                speedMin: 0.01, // Minimum vertical speed
+                speedMax: 0.06, // Maximum vertical speed
+                rangeY: 10      // Vertical range before resetting
+            },
+
+            // 3. Line Settings
+            lines: {
+                count: 200,
+                colorBlue: 0x0ea5e9,
+                colorOrange: 0xffaa00,
+            },
+
+            // 4. Animation Settings
+            animation: {
+                rotationSpeed: 0.0002, // Speed of the background rotation (Oscillation speed)
+                rotationRange: 0.3     // Amplitude of rotation (How far it swings)
+            }
+        };
+
+        // Light Mode Background (Soft Grey/White)
+        const bgColor = 0xf3f4f6; 
+        scene.background = new THREE.Color(bgColor);
+        scene.fog = new THREE.FogExp2(bgColor, 0.025); // Soft fog
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 8, 15);
-        camera.lookAt(0, 0, 0);
-
-        const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+        camera.position.set(0, 10, 20);
+        
+        const renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         canvasContainer.appendChild(renderer.domElement);
 
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshPhongMaterial({color:0xffffff, shininess:100});
-        const mesh = new THREE.InstancedMesh(geometry, material, 500);
-        
-        const dummy = new THREE.Object3D();
-        for(let i=0; i<500; i++){
-            dummy.position.set((Math.random()-0.5)*30, Math.random()*2, (Math.random()-0.5)*30);
-            dummy.scale.set(Math.random()+0.2, Math.random()*3+0.2, Math.random()+0.2);
-            dummy.updateMatrix();
-            mesh.setMatrixAt(i, dummy.matrix);
+        // --- Random Seed Logic ---
+        function mulberry32(a) {
+            return function() {
+              var t = a += 0x6D2B79F5;
+              t = Math.imul(t ^ t >>> 15, t | 1);
+              t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+              return ((t ^ t >>> 14) >>> 0) / 4294967296;
+            }
         }
-        scene.add(mesh);
-        
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-        scene.add(ambientLight);
-        const light = new THREE.PointLight(0x6b3d92, 2, 50);
-        light.position.set(5, 10, 5);
-        scene.add(light);
+        const rand = mulberry32(CONFIG.seed); 
 
-        // Scroll Sync
-        const mainScroll = document.getElementById('main-scroll');
-        let targetY = 0;
+        // Group to hold the city
+        const cityGroup = new THREE.Group();
+        scene.add(cityGroup);
+
+        // --- 1. The Circuit Board / City Grid ---
+        const gridSize = CONFIG.gridSize;
+        // Light mode grid: Brand purple main axis, soft grey secondary
+        const gridHelper = new THREE.GridHelper(gridSize, 120, 0x6b3d92, 0xd1d5db);
+        cityGroup.add(gridHelper);
+
+        // --- 2. CPU Components (Buildings) ---
+        const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
+        // Material: White ceramic/clean plastic look for light mode
+        const chipMaterial = new THREE.MeshPhysicalMaterial({
+            color: CONFIG.buildings.color,
+            metalness: 0.1,
+            roughness: 0.2,
+            clearcoat: 1.0,
+            clearcoatRoughness: 0.1
+        });
         
+        const buildingCount = CONFIG.buildings.count;
+        const buildingsMesh = new THREE.InstancedMesh(boxGeometry, chipMaterial, buildingCount);
+        cityGroup.add(buildingsMesh);
+
+        const dummy = new THREE.Object3D();
+        const snap = (val) => Math.floor(val) + 0.5;
+
+        for (let i = 0; i < buildingCount; i++) {
+            const x = snap((rand() - 0.5) * gridSize);
+            const z = snap((rand() - 0.5) * gridSize);
+            
+            const type = rand();
+            let w = 0.8, h = 0.2, d = 0.8;
+            
+            // Taller buildings for more density feel
+            if (type > 0.92) { // Tall skyscraper
+                h = rand() * CONFIG.buildings.maxHeight + 1.5;
+                w = 0.6; d = 0.6;
+            } else if (type > 0.65) { // Medium block
+                h = rand() * 2 + 0.5;
+                w = rand() * 0.8 + 0.4;
+                d = w;
+            } else { // Flat chip
+                h = 0.2 + rand() * 0.2;
+                w = rand() * 1.5 + 0.5;
+                d = rand() * 1.5 + 0.5;
+            }
+
+            dummy.position.set(x, h/2, z);
+            dummy.scale.set(w, h, d);
+            dummy.updateMatrix();
+            buildingsMesh.setMatrixAt(i, dummy.matrix);
+        }
+
+        // --- 3. Intricate Pipelines (Data Lines) ---
+        const lineGroup = new THREE.Group();
+        cityGroup.add(lineGroup);
+        
+        // Darker colors for visibility on light background
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: CONFIG.lines.colorBlue, // Sky Blue
+            transparent: true,
+            opacity: 0.5
+        });
+
+        const orangeLineMaterial = new THREE.LineBasicMaterial({
+            color: CONFIG.lines.colorOrange, // Orange-Yellow
+            transparent: true,
+            opacity: 0.6
+        });
+
+        function createCircuitPath(material, yHeight) {
+            const points = [];
+            let cx = snap((rand() - 0.5) * gridSize);
+            let cz = snap((rand() - 0.5) * gridSize);
+            points.push(new THREE.Vector3(cx, yHeight, cz));
+            
+            const steps = Math.floor(rand() * 20) + 5;
+            for(let i=0; i<steps; i++) {
+                const dir = Math.floor(rand() * 4);
+                const len = Math.floor(rand() * 3) + 1;
+                
+                if(dir === 0) cx += len;
+                if(dir === 1) cx -= len;
+                if(dir === 2) cz += len;
+                if(dir === 3) cz -= len;
+                
+                cx = Math.max(-gridSize/2, Math.min(gridSize/2, cx));
+                cz = Math.max(-gridSize/2, Math.min(gridSize/2, cz));
+                
+                points.push(new THREE.Vector3(cx, yHeight, cz));
+            }
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+            return new THREE.Line(geometry, material);
+        }
+
+        // More lines for denser look
+        for(let i=0; i<CONFIG.lines.count; i++) {
+            // Use orange lines instead of brand purple
+            lineGroup.add(createCircuitPath(orangeLineMaterial, 0.05));
+            if (i % 2 === 0) lineGroup.add(createCircuitPath(lineMaterial, rand() * 2 + 1));
+        }
+
+        // --- 4. Data Packets (Particles) ---
+        const particleCount = CONFIG.particles.count;
+        const particleGeo = new THREE.BufferGeometry();
+        const pPos = new Float32Array(particleCount * 3);
+        const pSpeed = [];
+
+        for(let i=0; i<particleCount; i++) {
+            const i3 = i * 3;
+            pPos[i3] = (rand() - 0.5) * gridSize;
+            pPos[i3+1] = rand() * CONFIG.particles.rangeY;
+            pPos[i3+2] = (rand() - 0.5) * gridSize;
+            
+            pSpeed.push({
+                y: rand() * (CONFIG.particles.speedMax - CONFIG.particles.speedMin) + CONFIG.particles.speedMin,
+            });
+        }
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+        
+        // Darker particles for contrast
+        const particleMat = new THREE.PointsMaterial({
+            color: CONFIG.particles.color,
+            size: CONFIG.particles.size,
+            transparent: true,
+            opacity: CONFIG.particles.opacity,
+            map: null
+        });
+        const particles = new THREE.Points(particleGeo, particleMat);
+        cityGroup.add(particles);
+
+        // --- 5. Lighting (Bright & Clean) ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        scene.add(ambientLight);
+
+        // Directional light for shadows and definition
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(10, 20, 10);
+        scene.add(dirLight);
+
+        // Subtle accent lights
+        const light1 = new THREE.PointLight(CONFIG.lines.colorOrange, 1, 30); // Orange tint
+        light1.position.set(10, 5, 10);
+        scene.add(light1);
+        
+        const light2 = new THREE.PointLight(CONFIG.lines.colorBlue, 1, 30); // Blue tint
+        light2.position.set(-10, 5, -10);
+        scene.add(light2);
+
+        // --- Animation & Scroll ---
+        const mainScroll = document.getElementById('main-scroll');
+        let scrollPercent = 0;
+
         function handleScroll() {
             const isMobile = window.innerWidth < 768;
             const scrollElement = isMobile ? window : mainScroll;
@@ -1254,17 +1437,54 @@
             const scrollHeight = isMobile ? document.body.scrollHeight : mainScroll.scrollHeight;
             const clientHeight = window.innerHeight;
             
-            const pct = scrollTop / (scrollHeight - clientHeight);
-            targetY = pct * 20; // Move camera along Z
+            scrollPercent = scrollTop / (scrollHeight - clientHeight || 1);
         }
 
-        mainScroll.addEventListener('scroll', handleScroll);
+        if(mainScroll) mainScroll.addEventListener('scroll', handleScroll);
         window.addEventListener('scroll', handleScroll);
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) - 0.5;
+            mouseY = (e.clientY / window.innerHeight) - 0.5;
+        });
 
-        function animate(){
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function animate() {
             requestAnimationFrame(animate);
-            mesh.rotation.y += 0.001;
-            camera.position.z += (15 - targetY - camera.position.z) * 0.05;
+
+            // Use Config for rotation
+            cityGroup.rotation.y = Math.sin(Date.now() * CONFIG.animation.rotationSpeed) * CONFIG.animation.rotationRange;
+
+            // Camera moves IN and slightly DOWN
+            const targetZ = 25 - (scrollPercent * 18);
+            const targetY = 12 - (scrollPercent * 6);
+            
+            camera.position.z += (targetZ - camera.position.z) * 0.05;
+            camera.position.y += (targetY - camera.position.y) * 0.05;
+            
+            camera.position.x += (mouseX * 3 - camera.position.x) * 0.02;
+            camera.lookAt(0, 0, 0);
+
+            const positions = particles.geometry.attributes.position.array;
+            for(let i=0; i<particleCount; i++) {
+                const i3 = i * 3;
+                positions[i3+1] += pSpeed[i].y;
+                
+                if(positions[i3+1] > CONFIG.particles.rangeY) {
+                    positions[i3+1] = 0;
+                    positions[i3] = (rand() - 0.5) * gridSize;
+                    positions[i3+2] = (rand() - 0.5) * gridSize;
+                }
+            }
+            particles.geometry.attributes.position.needsUpdate = true;
+
             renderer.render(scene, camera);
         }
         animate();
