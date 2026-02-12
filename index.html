@@ -8,6 +8,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     
+    <!-- Performance Optimization: Preconnect -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://code.iconify.design">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://p11-flow-imagex-download-sign.byteimg.com">
+    
     <script>
         const translations = {
             'zh-CN': {
@@ -579,6 +585,26 @@
             .glass-card { @apply bg-white/50 backdrop-blur-md border border-white/60 shadow-lg rounded-xl p-6 transition-all duration-300 hover:-translate-y-1; }
             .nav-link { @apply text-neutral-600 hover:text-[#6b3d92] transition-colors cursor-pointer; }
             
+            /* Performance: Disable backdrop-blur on mobile to save GPU */
+            @media (max-width: 768px) {
+                .glass-card {
+                    backdrop-filter: none !important;
+                    -webkit-backdrop-filter: none !important;
+                    background-color: rgba(255, 255, 255, 0.95) !important;
+                }
+                section {
+                    backdrop-filter: none !important;
+                    -webkit-backdrop-filter: none !important;
+                }
+                /* Adjust section backgrounds for mobile (no blur) */
+                section:nth-of-type(even) {
+                    background-color: rgba(255, 255, 255, 0.85) !important;
+                }
+                section:nth-of-type(odd):not(#hero) {
+                    background-color: rgba(243, 244, 246, 0.85) !important;
+                }
+            }
+
             /* Section Backgrounds (Restored & Alternating) */
             /* Even sections: Darker base for contrast */
             section:nth-of-type(even) {
@@ -756,19 +782,19 @@
                     <!-- Javascript controlled scrolling container -->
                     <div id="marquee-track" class="flex items-center gap-12 md:gap-20 py-2 overflow-x-auto no-scrollbar w-full">
                         <!-- Original List -->
-                        <img src="assets/img/logo/HKIA.svg" alt="HKIA" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/BOC.svg" alt="BOC" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/MTR.svg" alt="MTR" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/PolyU.svg" alt="PolyU" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/chinamobile.avif" alt="China Mobile" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/Cyberport.png" alt="Cyberport" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/CityU.svg" alt="CityU" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/DBS.svg" alt="DBS" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/HKEduCity.svg" alt="HKEduCity" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/AWE.jpg" alt="AWE" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/centralmarket.jpg" alt="Central Market" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/techforgood.jpg" alt="Tech For Good" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
-                        <img src="assets/img/logo/pinkpanther.jpg" alt="Pink Panther" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/HKIA.svg" alt="HKIA" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/BOC.svg" alt="BOC" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/MTR.svg" alt="MTR" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/PolyU.svg" alt="PolyU" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/chinamobile.avif" alt="China Mobile" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/Cyberport.png" alt="Cyberport" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/CityU.svg" alt="CityU" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/DBS.svg" alt="DBS" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/HKEduCity.svg" alt="HKEduCity" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/AWE.jpg" alt="AWE" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/centralmarket.jpg" alt="Central Market" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/techforgood.jpg" alt="Tech For Good" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
+                        <img src="assets/img/logo/pinkpanther.jpg" alt="Pink Panther" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
                     </div>
                 </div>
                 
@@ -1274,52 +1300,66 @@
         
         // --- Configuration ---
         const CONFIG = {
-            seed: 95894552,     // Change this to randomize layout
-            gridSize: 120,      // Size of the city area
+            seed: 95894552,
+            gridSize: 120,
             
+            // Detect Mobile
+            isMobile: window.innerWidth < 768,
+
             // 1. Building Density & Appearance
             buildings: {
-                count: 1500,    // Total number of building blocks (Density)
+                // Reduce counts heavily on mobile
+                count: window.innerWidth < 768 ? 600 : 2000,
                 color: 0xffffff,
-                maxHeight: 5,   // Maximum height of skyscrapers
+                maxHeight: 5,
             },
             
             // 2. Floating Particles Parameters
             particles: {
-                count: 1000,     // Number of floating data packets
-                size: 0.15,     // Size of each particle
-                color: 0xd27cff,// Color (Brand Purple)
-                opacity: 0.8,   // Transparency
-                speedMin: 0.01, // Minimum vertical speed
-                speedMax: 0.06, // Maximum vertical speed
-                rangeY: 10      // Vertical range before resetting
+                // Reduce counts heavily on mobile
+                count: window.innerWidth < 768 ? 300 : 1000,
+                size: 0.15,
+                color: 0xd27cff,
+                opacity: 0.8,
+                speedMin: 0.01,
+                speedMax: 0.06,
+                rangeY: 10
             },
 
             // 3. Line Settings
             lines: {
-                count: 200,
+                // Reduce lines on mobile
+                count: window.innerWidth < 768 ? 80 : 200,
                 colorBlue: 0x0ea5e9,
                 colorOrange: 0xffaa00,
             },
 
             // 4. Animation Settings
             animation: {
-                rotationSpeed: 0.0002, // Speed of the background rotation (Oscillation speed)
-                rotationRange: 0.3     // Amplitude of rotation (How far it swings)
+                rotationSpeed: 0.0002,
+                rotationRange: 0.3
             }
         };
 
         // Light Mode Background (Soft Grey/White)
         const bgColor = 0xf3f4f6; 
         scene.background = new THREE.Color(bgColor);
-        scene.fog = new THREE.FogExp2(bgColor, 0.025); // Soft fog
+        scene.fog = new THREE.FogExp2(bgColor, 0.025);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
         camera.position.set(0, 10, 20);
         
-        const renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
+        // Performance: Adjust renderer based on device
+        const renderer = new THREE.WebGLRenderer({
+            antialias: !CONFIG.isMobile, // Disable antialias on mobile
+            alpha: true,
+            powerPreference: "high-performance",
+            precision: CONFIG.isMobile ? "mediump" : "highp"
+        });
+        
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        // Reduce pixel ratio on mobile (1x) vs desktop (max 2x)
+        renderer.setPixelRatio(CONFIG.isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
         canvasContainer.appendChild(renderer.domElement);
 
         // --- Random Seed Logic ---
