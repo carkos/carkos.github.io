@@ -576,8 +576,24 @@
             .btn-secondary { @apply bg-white text-[#6b3d92] border border-[#6b3d92] px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-[#6b3d92]/5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#6b3d92] focus:ring-opacity-50; }
             
             /* Components */
-            .glass-card { @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-lg rounded-xl p-6 transition-all duration-300 hover:-translate-y-1; }
+            .glass-card { @apply bg-white/50 backdrop-blur-md border border-white/60 shadow-lg rounded-xl p-6 transition-all duration-300 hover:-translate-y-1; }
             .nav-link { @apply text-neutral-600 hover:text-[#6b3d92] transition-colors cursor-pointer; }
+            
+            /* Section Backgrounds (Restored & Alternating) */
+            /* Even sections: Darker base for contrast */
+            section:nth-of-type(even) {
+                @apply bg-white/20 backdrop-blur-sm transition-colors duration-500;
+            }
+            /* Odd sections (except Hero): Lighter base */
+            section:nth-of-type(odd):not(#hero) {
+                @apply bg-gray-300/20 backdrop-blur-sm transition-colors duration-500;
+            }
+            /* Hero section: Transparent to show 3D background */
+            #hero {
+                @apply bg-transparent backdrop-blur-none;
+            }
+            
+            /* Remove specific alternating card styles as we moved hierarchy to section base */
             .mobile-nav-link { @apply block py-2 text-neutral-600 hover:text-[#6b3d92] transition-colors cursor-pointer; }
             
             /* Language Switcher */
@@ -699,7 +715,7 @@
         <section id="hero" class="min-h-screen md:h-screen w-full md:snap-start flex items-center justify-center relative py-20 md:py-0 section-padding">
             <div class="container-custom relative z-10">
                 <div class="flex flex-col md:flex-row items-center gap-10">
-                    <div class="md:w-1/2 space-y-6 glass-card border-none shadow-none bg-white/40 md:bg-transparent">
+                    <div class="md:w-1/2 space-y-6 glass-card border-none shadow-none">
                         <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium" data-lang-key="hero-tag">
                             轻量化AI 3D解决方案
                         </span>
@@ -721,7 +737,7 @@
         </section>
         
         <!-- Section 2: Solutions -->
-        <section id="solutions" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding bg-white/30 backdrop-blur-sm">
+        <section id="solutions" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4">
@@ -815,7 +831,7 @@
         </section>
 
         <!-- Section 4: Cases -->
-        <section id="cases" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding bg-white/30 backdrop-blur-sm">
+        <section id="cases" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="text-center mb-8">
                     <h2 class="text-3xl font-bold" data-lang-key="cases-title">客户案例</h2>
@@ -909,7 +925,7 @@
         </section>
 
         <!-- Section 6: Pricing -->
-        <section id="pricing" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding bg-white/30 backdrop-blur-sm">
+        <section id="pricing" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4">
@@ -1093,7 +1109,7 @@
         </section>
 
         <!-- Section 8: Contact -->
-        <section id="contact" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-between relative pt-24 md:pt-0 bg-white/30 backdrop-blur-sm">
+        <section id="contact" class="min-h-screen md:h-screen w-full md:snap-start flex flex-col justify-between relative pt-24 md:pt-0">
             <div class="flex-grow flex items-center justify-center section-padding">
                 <div class="container-custom">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
