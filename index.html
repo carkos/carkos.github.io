@@ -1312,6 +1312,15 @@
                 count: window.innerWidth < 768 ? 600 : 2000,
                 color: 0xffffff,
                 maxHeight: 5,
+                // Window colors for different building types
+                windowColors: [
+                    0x4a90e2, // Blue
+                    0x50c878, // Green
+                    0xffd700, // Gold
+                    0xff6b6b, // Red
+                    0x9b59b6, // Purple
+                    0x00bcd4  // Cyan
+                ]
             },
             
             // 2. Floating Particles Parameters
@@ -1395,20 +1404,64 @@
             // Define building sections based on type
             let sections = [];
             
-            if (type > 0.92) { // Tall skyscraper - multiple sections
-                const baseHeight = height * 0.6;
+            if (type > 0.95) { // Ultra-tall skyscraper with spire
+                const baseHeight = height * 0.5;
                 const midHeight = height * 0.3;
-                const topHeight = height * 0.1;
+                const topHeight = height * 0.15;
+                const spireHeight = height * 0.05;
                 
                 const baseWidth = width;
-                const midWidth = width * 0.8;
-                const topWidth = width * 0.6;
+                const midWidth = width * 0.7;
+                const topWidth = width * 0.4;
+                const spireWidth = width * 0.1;
                 
                 sections = [
-                    { w: baseWidth, d: depth, h: baseHeight, y: 0, color: 0xf0f0f0 },
+                    { w: baseWidth, d: depth, h: baseHeight, y: 0, color: 0xf5f5f5 },
                     { w: midWidth, d: depth * 0.8, h: midHeight, y: baseHeight, color: 0xe8e8e8 },
-                    { w: topWidth, d: depth * 0.6, h: topHeight, y: baseHeight + midHeight, color: 0xe0e0e0 }
+                    { w: topWidth, d: depth * 0.6, h: topHeight, y: baseHeight + midHeight, color: 0xdcdcdc },
+                    { w: spireWidth, d: spireWidth, h: spireHeight, y: baseHeight + midHeight + topHeight, color: 0xc0c0c0 }
                 ];
+            } else if (type > 0.88) { // Twin tower building
+                const towerHeight = height * 0.9;
+                const bridgeHeight = height * 0.1;
+                const towerWidth = width * 0.4;
+                const bridgeWidth = width * 0.8;
+                
+                sections = [
+                    { w: towerWidth, d: depth, h: towerHeight, y: 0, color: 0xf2f2f2 },
+                    { w: towerWidth, d: depth, h: towerHeight, y: 0, color: 0xf2f2f2 },
+                    { w: bridgeWidth, d: depth * 0.3, h: bridgeHeight, y: towerHeight, color: 0xe0e0e0 }
+                ];
+                // Position towers side by side
+                sections[0].x = -width * 0.3;
+                sections[1].x = width * 0.3;
+            } else if (type > 0.82) { // Pyramid/ziggurat style
+                const steps = 5;
+                for (let i = 0; i < steps; i++) {
+                    const stepHeight = height / steps;
+                    const stepWidth = width * (1 - i * 0.15);
+                    const stepDepth = depth * (1 - i * 0.15);
+                    const stepY = i * stepHeight;
+                    const brightness = 255 - i * 8;
+                    const color = (brightness << 16) | (brightness << 8) | brightness;
+                    
+                    sections.push({
+                        w: stepWidth, d: stepDepth, h: stepHeight, y: stepY, color: color
+                    });
+                }
+            } else if (type > 0.76) { // L-shaped building
+                const mainHeight = height * 0.8;
+                const wingHeight = height * 0.6;
+                const mainWidth = width;
+                const wingWidth = width * 0.5;
+                
+                sections = [
+                    { w: mainWidth, d: depth, h: mainHeight, y: 0, color: 0xf0f0f0 },
+                    { w: wingWidth, d: depth * 0.6, h: wingHeight, y: 0, color: 0xe8e8e8 }
+                ];
+                // Position L-shape
+                sections[1].x = mainWidth * 0.25;
+                sections[1].z = -depth * 0.2;
             } else if (type > 0.65) { // Medium building - simple box with slight taper
                 sections = [
                     { w: width, d: depth, h: height, y: 0, color: CONFIG.buildings.color }
@@ -1431,7 +1484,11 @@
                 });
                 
                 const mesh = new THREE.Mesh(geometry, material);
-                mesh.position.set(0, section.y + section.h / 2, 0);
+                mesh.position.set(
+                    (section.x || 0), 
+                    section.y + section.h / 2, 
+                    (section.z || 0)
+                );
                 buildingGroup.add(mesh);
                 
                 // Add windows for tall buildings
@@ -1446,8 +1503,12 @@
         
         // Function to add windows to buildings
         function addWindows(buildingGroup, section, buildingType) {
+            // Randomly select window color from CONFIG
+            const randomColorIndex = Math.floor(rand() * CONFIG.buildings.windowColors.length);
+            const windowColor = CONFIG.buildings.windowColors[randomColorIndex];
+            
             const windowMaterial = new THREE.MeshPhysicalMaterial({
-                color: 0x4a90e2,
+                color: windowColor,
                 metalness: 0.8,
                 roughness: 0.1,
                 transparent: true,
@@ -1534,9 +1595,20 @@
             let w = 0.8, h = 0.2, d = 0.8;
             
             // Taller buildings for more density feel
-            if (type > 0.92) { // Tall skyscraper
-                h = rand() * CONFIG.buildings.maxHeight + 1.5;
-                w = 0.6; d = 0.6;
+            if (type > 0.95) { // Ultra-tall skyscraper with spire
+                h = rand() * CONFIG.buildings.maxHeight + 2.5;
+                w = 0.5; d = 0.5;
+            } else if (type > 0.88) { // Twin tower building
+                h = rand() * CONFIG.buildings.maxHeight + 1.8;
+                w = 0.8; d = 0.6;
+            } else if (type > 0.82) { // Pyramid/ziggurat style
+                h = rand() * 3 + 1.0;
+                w = rand() * 1.2 + 0.8;
+                d = w;
+            } else if (type > 0.76) { // L-shaped building
+                h = rand() * 2.5 + 1.2;
+                w = rand() * 1.0 + 0.7;
+                d = rand() * 1.0 + 0.7;
             } else if (type > 0.65) { // Medium block
                 h = rand() * 2 + 0.5;
                 w = rand() * 0.8 + 0.4;
