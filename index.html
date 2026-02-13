@@ -1373,6 +1373,9 @@
         }
         const rand = mulberry32(CONFIG.seed); 
 
+        // Utility function
+        const snap = (val) => Math.floor(val) + 0.5;
+
         // Group to hold the city
         const cityGroup = new THREE.Group();
         scene.add(cityGroup);
@@ -1384,7 +1387,133 @@
         cityGroup.add(gridHelper);
 
         // --- 2. CPU Components (Buildings) ---
-        const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
+        
+        // Create building geometries with more complex shapes
+        function createBuildingMesh(type, width, depth, height, x, z) {
+            const buildingGroup = new THREE.Group();
+            
+            // Define building sections based on type
+            let sections = [];
+            
+            if (type > 0.92) { // Tall skyscraper - multiple sections
+                const baseHeight = height * 0.6;
+                const midHeight = height * 0.3;
+                const topHeight = height * 0.1;
+                
+                const baseWidth = width;
+                const midWidth = width * 0.8;
+                const topWidth = width * 0.6;
+                
+                sections = [
+                    { w: baseWidth, d: depth, h: baseHeight, y: 0, color: 0xf0f0f0 },
+                    { w: midWidth, d: depth * 0.8, h: midHeight, y: baseHeight, color: 0xe8e8e8 },
+                    { w: topWidth, d: depth * 0.6, h: topHeight, y: baseHeight + midHeight, color: 0xe0e0e0 }
+                ];
+            } else if (type > 0.65) { // Medium building - simple box with slight taper
+                sections = [
+                    { w: width, d: depth, h: height, y: 0, color: CONFIG.buildings.color }
+                ];
+            } else { // Low building - wider base
+                sections = [
+                    { w: width, d: depth, h: height, y: 0, color: CONFIG.buildings.color }
+                ];
+            }
+            
+            // Create material for each section
+            sections.forEach((section, sectionIndex) => {
+                const geometry = new THREE.BoxGeometry(section.w, section.h, section.d);
+                const material = new THREE.MeshPhysicalMaterial({
+                    color: section.color,
+                    metalness: 0.1,
+                    roughness: 0.2,
+                    clearcoat: 1.0,
+                    clearcoatRoughness: 0.1
+                });
+                
+                const mesh = new THREE.Mesh(geometry, material);
+                mesh.position.set(0, section.y + section.h / 2, 0);
+                buildingGroup.add(mesh);
+                
+                // Add windows for tall buildings
+                if (type > 0.8 && section.h > 1.0) {
+                    addWindows(buildingGroup, section, type);
+                }
+            });
+            
+            buildingGroup.position.set(x, 0, z);
+            return buildingGroup;
+        }
+        
+        // Function to add windows to buildings
+        function addWindows(buildingGroup, section, buildingType) {
+            const windowMaterial = new THREE.MeshPhysicalMaterial({
+                color: 0x4a90e2,
+                metalness: 0.8,
+                roughness: 0.1,
+                transparent: true,
+                opacity: 0.7
+            });
+            
+            const windowSize = 0.08;
+            const windowSpacing = 0.2;
+            const floors = Math.max(3, Math.floor(section.h * 2));
+            
+            // Windows on front and back faces
+            for (let floor = 1; floor < floors; floor++) {
+                const y = section.y + (floor / floors) * section.h;
+                const windowsPerRow = Math.max(2, Math.floor(section.w / windowSpacing));
+                
+                for (let w = 0; w < windowsPerRow; w++) {
+                    const x = (w - windowsPerRow / 2 + 0.5) * windowSpacing;
+                    
+                    // Front face windows
+                    if (Math.random() > 0.3) { // Not all windows are lit
+                        const windowGeometry = new THREE.PlaneGeometry(windowSize, windowSize);
+                        const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+                        windowMesh.position.set(x, y, section.d / 2 + 0.01);
+                        buildingGroup.add(windowMesh);
+                    }
+                    
+                    // Back face windows
+                    if (Math.random() > 0.3) {
+                        const windowGeometry = new THREE.PlaneGeometry(windowSize, windowSize);
+                        const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+                        windowMesh.position.set(x, y, -section.d / 2 - 0.01);
+                        windowMesh.rotation.y = Math.PI;
+                        buildingGroup.add(windowMesh);
+                    }
+                }
+            }
+            
+            // Windows on side faces
+            const sideWindowsPerRow = Math.max(1, Math.floor(section.d / windowSpacing));
+            for (let floor = 1; floor < floors; floor++) {
+                const y = section.y + (floor / floors) * section.h;
+                
+                for (let d = 0; d < sideWindowsPerRow; d++) {
+                    const z = (d - sideWindowsPerRow / 2 + 0.5) * windowSpacing;
+                    
+                    // Left face windows
+                    if (Math.random() > 0.4) {
+                        const windowGeometry = new THREE.PlaneGeometry(windowSize, windowSize);
+                        const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+                        windowMesh.position.set(-section.w / 2 - 0.01, y, z);
+                        windowMesh.rotation.y = -Math.PI / 2;
+                        buildingGroup.add(windowMesh);
+                    }
+                    
+                    // Right face windows
+                    if (Math.random() > 0.4) {
+                        const windowGeometry = new THREE.PlaneGeometry(windowSize, windowSize);
+                        const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+                        windowMesh.position.set(section.w / 2 + 0.01, y, z);
+                        windowMesh.rotation.y = Math.PI / 2;
+                        buildingGroup.add(windowMesh);
+                    }
+                }
+            }
+        }
+        
         // Material: White ceramic/clean plastic look for light mode
         const chipMaterial = new THREE.MeshPhysicalMaterial({
             color: CONFIG.buildings.color,
@@ -1395,12 +1524,8 @@
         });
         
         const buildingCount = CONFIG.buildings.count;
-        const buildingsMesh = new THREE.InstancedMesh(boxGeometry, chipMaterial, buildingCount);
-        cityGroup.add(buildingsMesh);
-
-        const dummy = new THREE.Object3D();
-        const snap = (val) => Math.floor(val) + 0.5;
-
+        
+        // Generate all buildings
         for (let i = 0; i < buildingCount; i++) {
             const x = snap((rand() - 0.5) * gridSize);
             const z = snap((rand() - 0.5) * gridSize);
@@ -1421,11 +1546,9 @@
                 w = rand() * 1.5 + 0.5;
                 d = rand() * 1.5 + 0.5;
             }
-
-            dummy.position.set(x, h/2, z);
-            dummy.scale.set(w, h, d);
-            dummy.updateMatrix();
-            buildingsMesh.setMatrixAt(i, dummy.matrix);
+            
+            const buildingMesh = createBuildingMesh(type, w, d, h, x, z);
+            cityGroup.add(buildingMesh);
         }
 
         // --- 3. Intricate Pipelines (Data Lines) ---
