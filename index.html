@@ -1878,10 +1878,9 @@
         let scrollPercent = 0;
 
         function handleScroll() {
-            const isMobile = window.innerWidth < 768;
-            const scrollElement = isMobile ? window : mainScroll;
-            const scrollTop = isMobile ? window.scrollY : mainScroll.scrollTop;
-            const scrollHeight = isMobile ? document.body.scrollHeight : mainScroll.scrollHeight;
+            // Support both window scroll (mobile/default) and potential container scroll
+            const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || mainScroll.scrollTop || 0;
+            const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight || mainScroll.scrollHeight;
             const clientHeight = window.innerHeight;
             
             scrollPercent = scrollTop / (scrollHeight - clientHeight || 1);
@@ -1915,23 +1914,24 @@
         function animate() {
             requestAnimationFrame(animate);
 
+            const isMobile = window.innerWidth < 768;
+
             // Use Config for rotation
             cityGroup.rotation.y = Math.sin(Date.now() * CONFIG.animation.rotationSpeed) * CONFIG.animation.rotationRange;
 
             // Camera moves IN and slightly DOWN
-            const targetZ = 25 - (scrollPercent * 18);
-            const targetY = 12 - (scrollPercent * 6);
+            // PC needs a bit more zoom-in to feel as dramatic as mobile's vertical screen
+            const targetZ = 25 - (scrollPercent * (isMobile ? 18 : 22));
+            const targetY = 12 - (scrollPercent * (isMobile ? 6 : 9));
             
             camera.position.z += (targetZ - camera.position.z) * 0.05;
             camera.position.y += (targetY - camera.position.y) * 0.05;
             
             camera.position.x += (mouseX * 3 - camera.position.x) * 0.02;
-            camera.lookAt(0, 0, 0);
 
             // Mobile Adjustment: Look slightly lower to shift city UP in viewport
-            const isMobile = window.innerWidth < 768;
             // Use targetY offset to stabilize camera during scroll
-            const lookAtY = isMobile ? -20 : 0;
+            const lookAtY = isMobile ? -20 : -5; // Also look slightly down on PC for better perspective
             camera.lookAt(0, lookAtY, 0);
 
             // Update frustum for culling (performance optimization)
