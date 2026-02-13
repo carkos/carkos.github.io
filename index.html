@@ -1309,9 +1309,9 @@
             // 1. Building Density & Appearance
             buildings: {
                 // Reduce counts heavily on mobile
-                count: window.innerWidth < 768 ? 600 : 2000,
+                count: window.innerWidth < 768 ? 300 : 1200, // Reduced from 600/2000
                 color: 0xffffff,
-                maxHeight: 5,
+                maxHeight: 4, // Reduced from 5
                 // Window colors for different building types
                 windowColors: [
                     0x4a90e2, // Blue
@@ -1320,6 +1320,46 @@
                     0xff6b6b, // Red
                     0x9b59b6, // Purple
                     0x00bcd4  // Cyan
+                ],
+                // Performance settings
+                performance: {
+                    maxWindowsPerBuilding: window.innerWidth < 768 ? 20 : 50, // Limit windows
+                    enableComplexWindows: window.innerWidth >= 768, // Disable on mobile
+                    useSimpleMaterials: window.innerWidth < 768 // Simpler materials on mobile
+                },
+                // Predefined building types for performance (8 types)
+                buildingTypes: [
+                    // Type 0: Simple low-rise
+                    { name: 'lowRise', weight: 40, sections: [{ w: 1.0, d: 1.0, h: 0.3, y: 0, color: 0xf8f8f8 }], windows: false },
+                    // Type 1: Medium box
+                    { name: 'mediumBox', weight: 30, sections: [{ w: 0.8, d: 0.8, h: 1.0, y: 0, color: 0xf5f5f5 }], windows: true },
+                    // Type 2: Tall simple
+                    { name: 'tallSimple', weight: 15, sections: [{ w: 0.6, d: 0.6, h: 2.5, y: 0, color: 0xf0f0f0 }], windows: true },
+                    // Type 3: Two-section building
+                    { name: 'twoSection', weight: 10, sections: [
+                        { w: 0.7, d: 0.7, h: 1.5, y: 0, color: 0xf0f0f0 },
+                        { w: 0.5, d: 0.5, h: 0.8, y: 1.5, color: 0xe8e8e8 }
+                    ], windows: true },
+                    // Type 4: Three-section skyscraper (more realistic proportions)
+                    { name: 'skyscraper', weight: 5, sections: [
+                        { w: 0.9, d: 0.9, h: 1.8, y: 0, color: 0xf5f5f5 },
+                        { w: 0.7, d: 0.7, h: 1.0, y: 1.8, color: 0xe8e8e8 },
+                        { w: 0.4, d: 0.4, h: 0.4, y: 2.8, color: 0xdcdcdc }
+                    ], windows: true },
+                    // Type 5: Wide building
+                    { name: 'wideBuilding', weight: 15, sections: [{ w: 1.2, d: 0.8, h: 0.8, y: 0, color: 0xf2f2f2 }], windows: true },
+                    // Type 6: Pyramid style
+                    { name: 'pyramid', weight: 10, sections: [
+                        { w: 1.0, d: 1.0, h: 0.4, y: 0, color: 0xf0f0f0 },
+                        { w: 0.8, d: 0.8, h: 0.4, y: 0.4, color: 0xe8e8e8 },
+                        { w: 0.6, d: 0.6, h: 0.4, y: 0.8, color: 0xe0e0e0 }
+                    ], windows: true },
+                    // Type 7: Complex building (more realistic, desktop only)
+                    { name: 'complex', weight: 3, sections: [
+                        { w: 0.8, d: 0.8, h: 1.5, y: 0, color: 0xf5f5f5 },
+                        { w: 0.6, d: 0.6, h: 1.0, y: 1.5, color: 0xe8e8e8 },
+                        { w: 0.3, d: 0.3, h: 0.5, y: 2.5, color: 0xdcdcdc }
+                    ], windows: true, desktopOnly: true }
                 ]
             },
             
@@ -1356,7 +1396,7 @@
         scene.fog = new THREE.FogExp2(bgColor, 0.025);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 10, 20);
+        camera.position.set(0, 8, 25); // Lower and further back for better city perspective
         
         // Performance: Adjust renderer based on device
         const renderer = new THREE.WebGLRenderer({
@@ -1382,6 +1422,19 @@
         }
         const rand = mulberry32(CONFIG.seed); 
 
+        // Weighted random building type selector
+        const getWeightedBuildingTypeIndex = () => {
+            const totalWeight = CONFIG.buildings.buildingTypes.reduce((sum, type) => sum + type.weight, 0);
+            let randomValue = rand() * totalWeight;
+            for (let i = 0; i < CONFIG.buildings.buildingTypes.length; i++) {
+                if (randomValue < CONFIG.buildings.buildingTypes[i].weight) {
+                    return i;
+                }
+                randomValue -= CONFIG.buildings.buildingTypes[i].weight;
+            }
+            return 0;
+        };
+
         // Utility function
         const snap = (val) => Math.floor(val) + 0.5;
 
@@ -1397,103 +1450,42 @@
 
         // --- 2. CPU Components (Buildings) ---
         
-        // Create building geometries with more complex shapes
-        function createBuildingMesh(type, width, depth, height, x, z) {
+        // Create building geometries with optimized performance
+        function createBuildingMesh(buildingTypeIndex, width, depth, height, x, z) {
             const buildingGroup = new THREE.Group();
+            const buildingType = CONFIG.buildings.buildingTypes[buildingTypeIndex];
             
-            // Define building sections based on type
-            let sections = [];
-            
-            if (type > 0.95) { // Ultra-tall skyscraper with spire
-                const baseHeight = height * 0.5;
-                const midHeight = height * 0.3;
-                const topHeight = height * 0.15;
-                const spireHeight = height * 0.05;
-                
-                const baseWidth = width;
-                const midWidth = width * 0.7;
-                const topWidth = width * 0.4;
-                const spireWidth = width * 0.1;
-                
-                sections = [
-                    { w: baseWidth, d: depth, h: baseHeight, y: 0, color: 0xf5f5f5 },
-                    { w: midWidth, d: depth * 0.8, h: midHeight, y: baseHeight, color: 0xe8e8e8 },
-                    { w: topWidth, d: depth * 0.6, h: topHeight, y: baseHeight + midHeight, color: 0xdcdcdc },
-                    { w: spireWidth, d: spireWidth, h: spireHeight, y: baseHeight + midHeight + topHeight, color: 0xc0c0c0 }
-                ];
-            } else if (type > 0.88) { // Twin tower building
-                const towerHeight = height * 0.9;
-                const bridgeHeight = height * 0.1;
-                const towerWidth = width * 0.4;
-                const bridgeWidth = width * 0.8;
-                
-                sections = [
-                    { w: towerWidth, d: depth, h: towerHeight, y: 0, color: 0xf2f2f2 },
-                    { w: towerWidth, d: depth, h: towerHeight, y: 0, color: 0xf2f2f2 },
-                    { w: bridgeWidth, d: depth * 0.3, h: bridgeHeight, y: towerHeight, color: 0xe0e0e0 }
-                ];
-                // Position towers side by side
-                sections[0].x = -width * 0.3;
-                sections[1].x = width * 0.3;
-            } else if (type > 0.82) { // Pyramid/ziggurat style
-                const steps = 5;
-                for (let i = 0; i < steps; i++) {
-                    const stepHeight = height / steps;
-                    const stepWidth = width * (1 - i * 0.15);
-                    const stepDepth = depth * (1 - i * 0.15);
-                    const stepY = i * stepHeight;
-                    const brightness = 255 - i * 8;
-                    const color = (brightness << 16) | (brightness << 8) | brightness;
-                    
-                    sections.push({
-                        w: stepWidth, d: stepDepth, h: stepHeight, y: stepY, color: color
-                    });
-                }
-            } else if (type > 0.76) { // L-shaped building
-                const mainHeight = height * 0.8;
-                const wingHeight = height * 0.6;
-                const mainWidth = width;
-                const wingWidth = width * 0.5;
-                
-                sections = [
-                    { w: mainWidth, d: depth, h: mainHeight, y: 0, color: 0xf0f0f0 },
-                    { w: wingWidth, d: depth * 0.6, h: wingHeight, y: 0, color: 0xe8e8e8 }
-                ];
-                // Position L-shape
-                sections[1].x = mainWidth * 0.25;
-                sections[1].z = -depth * 0.2;
-            } else if (type > 0.65) { // Medium building - simple box with slight taper
-                sections = [
-                    { w: width, d: depth, h: height, y: 0, color: CONFIG.buildings.color }
-                ];
-            } else { // Low building - wider base
-                sections = [
-                    { w: width, d: depth, h: height, y: 0, color: CONFIG.buildings.color }
-                ];
+            // Skip desktop-only buildings on mobile
+            if (buildingType.desktopOnly && CONFIG.isMobile) {
+                return buildingGroup; // Return empty group
             }
             
-            // Create material for each section
-            sections.forEach((section, sectionIndex) => {
-                const geometry = new THREE.BoxGeometry(section.w, section.h, section.d);
-                const material = new THREE.MeshPhysicalMaterial({
-                    color: section.color,
-                    metalness: 0.1,
-                    roughness: 0.2,
-                    clearcoat: 1.0,
-                    clearcoatRoughness: 0.1
-                });
+            // Use predefined sections for performance
+            buildingType.sections.forEach((section, sectionIndex) => {
+                const geometry = new THREE.BoxGeometry(section.w * width, section.h * height, section.d * depth);
+                
+                // Use simpler materials on mobile
+                const material = CONFIG.buildings.performance.useSimpleMaterials ? 
+                    new THREE.MeshLambertMaterial({ color: section.color }) :
+                    new THREE.MeshPhysicalMaterial({
+                        color: section.color,
+                        metalness: 0.1,
+                        roughness: 0.2,
+                        clearcoat: 1.0,
+                        clearcoatRoughness: 0.1
+                    });
                 
                 const mesh = new THREE.Mesh(geometry, material);
                 mesh.position.set(
-                    (section.x || 0), 
-                    section.y + section.h / 2, 
-                    (section.z || 0)
+                    (section.x || 0) * width, 
+                    section.y * height + section.h * height / 2, 
+                    (section.z || 0) * depth
                 );
                 buildingGroup.add(mesh);
                 
-                // Add windows for tall buildings
-                if (type > 0.8 && section.h > 1.0) {
-                    addWindows(buildingGroup, section, type);
+                // Add windows only if enabled and building has windows
+                if (buildingType.windows && CONFIG.buildings.performance.enableComplexWindows && section.h > 1.0) {
+                    addOptimizedWindows(buildingGroup, section, width, depth, height);
                 }
             });
             
@@ -1502,74 +1494,44 @@
         }
         
         // Function to add windows to buildings
-        function addWindows(buildingGroup, section, buildingType) {
+        function addOptimizedWindows(buildingGroup, section, width, depth, height) {
             // Randomly select window color from CONFIG
             const randomColorIndex = Math.floor(rand() * CONFIG.buildings.windowColors.length);
             const windowColor = CONFIG.buildings.windowColors[randomColorIndex];
             
-            const windowMaterial = new THREE.MeshPhysicalMaterial({
-                color: windowColor,
-                metalness: 0.8,
-                roughness: 0.1,
-                transparent: true,
-                opacity: 0.7
-            });
+            // Use simpler material for windows on mobile
+            const windowMaterial = CONFIG.buildings.performance.useSimpleMaterials ?
+                new THREE.MeshBasicMaterial({ color: windowColor }) :
+                new THREE.MeshPhysicalMaterial({
+                    color: windowColor,
+                    metalness: 0.8,
+                    roughness: 0.1,
+                    transparent: true,
+                    opacity: 0.7
+                });
             
-            const windowSize = 0.08;
-            const windowSpacing = 0.2;
-            const floors = Math.max(3, Math.floor(section.h * 2));
+            const windowSize = CONFIG.isMobile ? 0.06 : 0.08; // Smaller windows on mobile
+            const windowSpacing = CONFIG.isMobile ? 0.25 : 0.2; // Wider spacing on mobile
+            const maxWindows = CONFIG.buildings.performance.maxWindowsPerBuilding;
+            let windowCount = 0;
             
-            // Windows on front and back faces
-            for (let floor = 1; floor < floors; floor++) {
-                const y = section.y + (floor / floors) * section.h;
-                const windowsPerRow = Math.max(2, Math.floor(section.w / windowSpacing));
+            const floors = Math.min(4, Math.max(2, Math.floor(section.h * height * 2))); // Max 4 floors
+            const windowsPerRow = Math.min(3, Math.max(1, Math.floor(section.w * width / windowSpacing))); // Max 3 windows per row
+            
+            // Windows on front and back faces only (reduce by half)
+            for (let floor = 1; floor < floors && windowCount < maxWindows; floor++) {
+                const y = section.y * height + (floor / floors) * section.h * height;
                 
-                for (let w = 0; w < windowsPerRow; w++) {
+                for (let w = 0; w < windowsPerRow && windowCount < maxWindows; w++) {
                     const x = (w - windowsPerRow / 2 + 0.5) * windowSpacing;
                     
-                    // Front face windows
-                    if (Math.random() > 0.3) { // Not all windows are lit
+                    // Front face windows (only front to reduce calculations)
+                    if (Math.random() > 0.4) { // Reduced window density
                         const windowGeometry = new THREE.PlaneGeometry(windowSize, windowSize);
                         const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                        windowMesh.position.set(x, y, section.d / 2 + 0.01);
+                        windowMesh.position.set(x, y, depth * 0.51);
                         buildingGroup.add(windowMesh);
-                    }
-                    
-                    // Back face windows
-                    if (Math.random() > 0.3) {
-                        const windowGeometry = new THREE.PlaneGeometry(windowSize, windowSize);
-                        const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                        windowMesh.position.set(x, y, -section.d / 2 - 0.01);
-                        windowMesh.rotation.y = Math.PI;
-                        buildingGroup.add(windowMesh);
-                    }
-                }
-            }
-            
-            // Windows on side faces
-            const sideWindowsPerRow = Math.max(1, Math.floor(section.d / windowSpacing));
-            for (let floor = 1; floor < floors; floor++) {
-                const y = section.y + (floor / floors) * section.h;
-                
-                for (let d = 0; d < sideWindowsPerRow; d++) {
-                    const z = (d - sideWindowsPerRow / 2 + 0.5) * windowSpacing;
-                    
-                    // Left face windows
-                    if (Math.random() > 0.4) {
-                        const windowGeometry = new THREE.PlaneGeometry(windowSize, windowSize);
-                        const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                        windowMesh.position.set(-section.w / 2 - 0.01, y, z);
-                        windowMesh.rotation.y = -Math.PI / 2;
-                        buildingGroup.add(windowMesh);
-                    }
-                    
-                    // Right face windows
-                    if (Math.random() > 0.4) {
-                        const windowGeometry = new THREE.PlaneGeometry(windowSize, windowSize);
-                        const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                        windowMesh.position.set(section.w / 2 + 0.01, y, z);
-                        windowMesh.rotation.y = Math.PI / 2;
-                        buildingGroup.add(windowMesh);
+                        windowCount++;
                     }
                 }
             }
@@ -1586,40 +1548,50 @@
         
         const buildingCount = CONFIG.buildings.count;
         
-        // Generate all buildings
+        // Generate all buildings using predefined types for performance
         for (let i = 0; i < buildingCount; i++) {
             const x = snap((rand() - 0.5) * gridSize);
             const z = snap((rand() - 0.5) * gridSize);
             
-            const type = rand();
+            // Use predefined building types with weights
+            const buildingTypeIndex = getWeightedBuildingTypeIndex();
             let w = 0.8, h = 0.2, d = 0.8;
             
-            // Taller buildings for more density feel
-            if (type > 0.95) { // Ultra-tall skyscraper with spire
-                h = rand() * CONFIG.buildings.maxHeight + 2.5;
-                w = 0.5; d = 0.5;
-            } else if (type > 0.88) { // Twin tower building
-                h = rand() * CONFIG.buildings.maxHeight + 1.8;
-                w = 0.8; d = 0.6;
-            } else if (type > 0.82) { // Pyramid/ziggurat style
-                h = rand() * 3 + 1.0;
-                w = rand() * 1.2 + 0.8;
-                d = w;
-            } else if (type > 0.76) { // L-shaped building
-                h = rand() * 2.5 + 1.2;
-                w = rand() * 1.0 + 0.7;
-                d = rand() * 1.0 + 0.7;
-            } else if (type > 0.65) { // Medium block
-                h = rand() * 2 + 0.5;
-                w = rand() * 0.8 + 0.4;
-                d = w;
-            } else { // Flat chip
+            // Set dimensions based on building type
+            const buildingType = CONFIG.buildings.buildingTypes[buildingTypeIndex];
+            if (buildingType.name === 'lowRise') {
                 h = 0.2 + rand() * 0.2;
                 w = rand() * 1.5 + 0.5;
                 d = rand() * 1.5 + 0.5;
+            } else if (buildingType.name === 'mediumBox') {
+                h = rand() * 2 + 0.5;
+                w = rand() * 0.8 + 0.4;
+                d = w;
+            } else if (buildingType.name === 'tallSimple') {
+                h = rand() * 2.5 + 1.2;
+                w = rand() * 1.2 + 0.8; // Made wider
+                d = rand() * 1.2 + 0.8; // Made wider
+            } else if (buildingType.name === 'twoSection') {
+                h = rand() * 2.8 + 1.5;
+                w = rand() * 1.0 + 0.9; // Adjusted for better proportions
+                d = w;
+            } else if (buildingType.name === 'skyscraper') {
+                h = rand() * 1.0 + 2.5; // Reduced to 2.5-3.5 range (20% above average)
+                w = 0.8; d = 0.8; // Made wider for better proportions
+            } else if (buildingType.name === 'wideBuilding') {
+                h = rand() * 1.8 + 1.0;
+                w = rand() * 1.5 + 1.0;
+                d = rand() * 1.0 + 0.8;
+            } else if (buildingType.name === 'pyramid') {
+                h = rand() * 3 + 1.0;
+                w = rand() * 1.2 + 0.8;
+                d = w;
+            } else if (buildingType.name === 'complex') {
+                h = rand() * 1.5 + 3.0; // Reduced to 3.0-4.5 range
+                w = 0.6; d = 0.6; // Made slightly wider
             }
             
-            const buildingMesh = createBuildingMesh(type, w, d, h, x, z);
+            const buildingMesh = createBuildingMesh(buildingTypeIndex, w, d, h, x, z);
             cityGroup.add(buildingMesh);
         }
 
