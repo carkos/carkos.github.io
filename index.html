@@ -1317,13 +1317,18 @@
                     0x4a90e2, // Blue
                     0x50c878, // Green
                     0xffd700, // Gold
-                    0xff6b6b, // Red
-                    0x9b59b6, // Purple
-                    0x00bcd4  // Cyan
+                    0xffffff  // Cyan
                 ],
+                // Window appearance & distribution settings
+                windowSettings: {
+                    width: window.innerWidth < 768 ? 0.06 : 0.08,
+                    height: window.innerWidth < 768 ? 0.06 : 0.2,
+                    spacing: window.innerWidth < 768 ? 0.25 : 0.3,
+                },
                 // Performance settings
                 performance: {
-                    maxWindowsPerBuilding: window.innerWidth < 768 ? 20 : 50, // Limit windows
+                    maxWindowsPerBuilding: window.innerWidth < 768 ? 30 : 70, // Doubled from 20/50
+                    windowDensity: 0.6, // New: probability of a window appearing (0.0 to 1.0)
                     enableComplexWindows: window.innerWidth >= 768, // Disable on mobile
                     useSimpleMaterials: window.innerWidth < 768 // Simpler materials on mobile
                 },
@@ -1504,32 +1509,42 @@
                 new THREE.MeshBasicMaterial({ color: windowColor }) :
                 new THREE.MeshPhysicalMaterial({
                     color: windowColor,
-                    metalness: 0.8,
+                    emissive: windowColor,
+                    emissiveIntensity: 0.8,
+                    metalness: 0.2,
                     roughness: 0.1,
                     transparent: true,
-                    opacity: 0.7
+                    opacity: 0.9
                 });
             
-            const windowSize = CONFIG.isMobile ? 0.06 : 0.08; // Smaller windows on mobile
-            const windowSpacing = CONFIG.isMobile ? 0.25 : 0.2; // Wider spacing on mobile
+            const windowWidth = CONFIG.buildings.windowSettings.width;
+            const windowHeight = CONFIG.buildings.windowSettings.height;
+            const windowSpacing = CONFIG.buildings.windowSettings.spacing;
             const maxWindows = CONFIG.buildings.performance.maxWindowsPerBuilding;
             let windowCount = 0;
             
-            const floors = Math.min(4, Math.max(2, Math.floor(section.h * height * 2))); // Max 4 floors
-            const windowsPerRow = Math.min(3, Math.max(1, Math.floor(section.w * width / windowSpacing))); // Max 3 windows per row
+            // Calculate actual section dimensions
+            const actualW = section.w * width;
+            const actualD = section.d * depth;
+            const actualH = section.h * height;
+            const offsetX = (section.x || 0) * width;
+            const offsetZ = (section.z || 0) * depth;
+            
+            const floors = Math.min(8, Math.max(2, Math.floor(actualH * 4))); // Doubled: Max 8 floors, higher frequency
+            const windowsPerRow = Math.min(6, Math.max(1, Math.floor(actualW / (windowSpacing * 0.5)))); // Doubled: Max 6 windows, half spacing
             
             // Windows on front and back faces only (reduce by half)
             for (let floor = 1; floor < floors && windowCount < maxWindows; floor++) {
-                const y = section.y * height + (floor / floors) * section.h * height;
+                const y = section.y * height + (floor / floors) * actualH;
                 
                 for (let w = 0; w < windowsPerRow && windowCount < maxWindows; w++) {
-                    const x = (w - windowsPerRow / 2 + 0.5) * windowSpacing;
+                    const x = offsetX + (w - windowsPerRow / 2 + 0.5) * (windowSpacing * 0.5);
                     
-                    // Front face windows (only front to reduce calculations)
-                    if (Math.random() > 0.4) { // Reduced window density
-                        const windowGeometry = new THREE.PlaneGeometry(windowSize, windowSize);
+                    // Front face windows - use actualD to calculate z position
+                    if (rand() < CONFIG.buildings.performance.windowDensity) {
+                        const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
                         const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                        windowMesh.position.set(x, y, depth * 0.51);
+                        windowMesh.position.set(x, y, offsetZ + actualD * 0.505); // 稍微偏移以防 Z-fighting
                         buildingGroup.add(windowMesh);
                         windowCount++;
                     }
@@ -1678,7 +1693,7 @@
         scene.add(ambientLight);
 
         // Directional light for shadows and definition
-        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
         dirLight.position.set(10, 20, 10);
         scene.add(dirLight);
 
