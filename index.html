@@ -1300,7 +1300,8 @@
         
         // --- Configuration ---
         const CONFIG = {
-            seed: 95894552,
+            IS_DEV: true, // [DEV_MODE] Set to false for production
+            seed: 349280, //25848, 896564, 349280
             gridSize: 120,
             
             // Detect Mobile
@@ -1392,6 +1393,24 @@
             animation: {
                 rotationSpeed: 0.0002,
                 rotationRange: 0.3
+            },
+
+            // 5. LOD Settings
+            lod: {
+                // Distance thresholds for LOD levels (in units)
+                distances: {
+                    highDetail: 15,    // Full density windows on 3 sides
+                    mediumDetail: 25,  // Medium density windows on 3 sides
+                    lowDetail: 35,     // Low density windows on 1 side only
+                    noWindows: 50     // No windows, just building
+                },
+                // Window density multipliers for each LOD level
+                windowDensity: {
+                    highDetail: 1.0,   // Full density
+                    mediumDetail: 0.6,   // 60% density
+                    lowDetail: 0.3,    // 30% density
+                    noWindows: 0.0     // No windows
+                }
             }
         };
 
@@ -1425,7 +1444,55 @@
               return ((t ^ t >>> 14) >>> 0) / 4294967296;
             }
         }
-        const rand = mulberry32(CONFIG.seed); 
+        let rand = mulberry32(CONFIG.seed); 
+        let particles, pSpeed; // [DEV_MODE] Required for city regeneration
+        const particleCount = CONFIG.particles.count;
+
+        // [DEV_MODE] Development UI and Logic
+        if (CONFIG.IS_DEV) {
+            const devUI = document.createElement('div');
+            devUI.id = 'dev-mode-ui';
+            devUI.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:9999;background:rgba(0,0,0,0.7);color:white;padding:15px;border-radius:8px;font-family:monospace;display:flex;flex-direction:column;gap:10px;box-shadow:0 4px 12px rgba(0,0,0,0.3);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1);';
+            devUI.innerHTML = `
+                <div style="font-weight:bold;color:#ffd700;margin-bottom:5px;display:flex;justify-content:space-between;">
+                    <span>DEV MODE</span>
+                    <span style="font-size:10px;opacity:0.6;">v1.0</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="opacity:0.8;">Seed:</span>
+                    <span id="dev-seed-display" style="color:#4a90e2;font-weight:bold;">${CONFIG.seed}</span>
+                </div>
+                <button id="dev-random-seed-btn" style="background:#4a90e2;color:white;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;font-weight:bold;transition:all 0.2s;">
+                    Randomize City
+                </button>
+                <div style="font-size:10px;opacity:0.5;max-width:150px;">
+                    City layout is deterministic based on the seed.
+                </div>
+            `;
+            document.body.appendChild(devUI);
+
+            const btn = document.getElementById('dev-random-seed-btn');
+            btn.onmouseover = () => btn.style.background = '#357abd';
+            btn.onmouseout = () => btn.style.background = '#4a90e2';
+
+            btn.addEventListener('click', () => {
+                const newSeed = Math.floor(Math.random() * 1000000);
+                CONFIG.seed = newSeed;
+                document.getElementById('dev-seed-display').textContent = newSeed;
+                console.log(`[DEV] New Seed: ${newSeed}`);
+                
+                // Clear existing city
+                while(cityGroup.children.length > 0){ 
+                    cityGroup.remove(cityGroup.children[0]); 
+                }
+                
+                // Re-initialize random generator with new seed
+                rand = mulberry32(CONFIG.seed);
+                
+                // Re-generate city
+                generateCity();
+            });
+        }
 
         // Weighted random building type selector
         const getWeightedBuildingTypeIndex = () => {
@@ -1490,22 +1557,51 @@
                 
                 // Add windows only if enabled and building has windows
                 if (buildingType.windows && CONFIG.buildings.performance.enableComplexWindows && section.h > 1.0) {
-                    addOptimizedWindows(buildingGroup, section, width, depth, height);
+                    addOptimizedWindows(buildingGroup, section, width, depth, height, x, z);
                 }
             });
             
             buildingGroup.position.set(x, 0, z);
+            buildingGroup.userData.isBuilding = true; // Mark as building for culling
             return buildingGroup;
         }
         
-        // Function to add windows to buildings
-        function addOptimizedWindows(buildingGroup, section, width, depth, height) {
+        // Function to add windows to buildings with LOD and camera-facing optimization
+        function addOptimizedWindows(buildingGroup, section, width, depth, height, buildingX, buildingZ) {
+            // Calculate building world position (since buildingGroup position will be set later)
+            const buildingWorldPos = new THREE.Vector3(buildingX, 0, buildingZ);
+            
+            // Calculate distance from camera to building
+            const distance = camera.position.distanceTo(buildingWorldPos);
+            
+            // Determine LOD level based on distance
+            let lodLevel = 'highDetail';
+            let windowDensityMultiplier = CONFIG.lod.windowDensity.highDetail;
+            
+            if (distance > CONFIG.lod.distances.noWindows) {
+                return; // No windows at all
+            } else if (distance > CONFIG.lod.distances.lowDetail) {
+                lodLevel = 'lowDetail';
+                windowDensityMultiplier = CONFIG.lod.windowDensity.lowDetail;
+            } else if (distance > CONFIG.lod.distances.mediumDetail) {
+                lodLevel = 'mediumDetail';
+                windowDensityMultiplier = CONFIG.lod.windowDensity.mediumDetail;
+            } else if (distance > CONFIG.lod.distances.highDetail) {
+                // Between high and medium
+                lodLevel = 'mediumDetail'; 
+                windowDensityMultiplier = (CONFIG.lod.windowDensity.highDetail + CONFIG.lod.windowDensity.mediumDetail) / 2;
+            } else {
+                lodLevel = 'highDetail';
+                windowDensityMultiplier = CONFIG.lod.windowDensity.highDetail;
+            }
+            
             // Randomly select window color from CONFIG
             const randomColorIndex = Math.floor(rand() * CONFIG.buildings.windowColors.length);
             const windowColor = CONFIG.buildings.windowColors[randomColorIndex];
             
-            // Use simpler material for windows on mobile
-            const windowMaterial = CONFIG.buildings.performance.useSimpleMaterials ?
+            // Use simpler material for windows on mobile or low LOD
+            const useSimpleMaterials = CONFIG.buildings.performance.useSimpleMaterials || lodLevel !== 'highDetail';
+            const windowMaterial = useSimpleMaterials ?
                 new THREE.MeshBasicMaterial({ color: windowColor }) :
                 new THREE.MeshPhysicalMaterial({
                     color: windowColor,
@@ -1530,163 +1626,234 @@
             const offsetX = (section.x || 0) * width;
             const offsetZ = (section.z || 0) * depth;
             
-            const floors = Math.min(8, Math.max(2, Math.floor(actualH * 4))); // Doubled: Max 8 floors, higher frequency
-            const windowsPerRow = Math.min(6, Math.max(1, Math.floor(actualW / (windowSpacing * 0.5)))); // Doubled: Max 6 windows, half spacing
+            // Determine which faces should have windows based on camera position
+            const toCamera = new THREE.Vector3().subVectors(camera.position, buildingWorldPos);
+            toCamera.y = 0;
+            toCamera.normalize();
             
-            // Windows on front and back faces only (reduce by half)
+            // vertical faces normals
+            const faces = [
+                { name: 'front', normal: new THREE.Vector3(0, 0, 1) },
+                { name: 'back', normal: new THREE.Vector3(0, 0, -1) },
+                { name: 'right', normal: new THREE.Vector3(1, 0, 0) },
+                { name: 'left', normal: new THREE.Vector3(-1, 0, 0) }
+            ];
+            
+            // Calculate visibility for each face
+            faces.forEach(f => {
+                f.dot = f.normal.dot(toCamera);
+            });
+            
+            // Sort by visibility
+            faces.sort((a, b) => b.dot - a.dot);
+            
+            // We want to render the top 3 most visible faces for high/medium LOD
+            // For low LOD, just the most visible one
+            const visibleFaceNames = (lodLevel === 'lowDetail') ? [faces[0].name] : [faces[0].name, faces[1].name, faces[2].name];
+            
+            const renderFace = (name) => visibleFaceNames.includes(name);
+            
+            const floors = Math.min(8, Math.max(2, Math.floor(actualH * 4)));
+            let windowsPerRow = Math.min(6, Math.max(1, Math.floor(actualW / (windowSpacing * 0.5))));
+            let sideWindowsPerRow = Math.min(4, Math.max(1, Math.floor(actualD / (windowSpacing * 0.6))));
+            
+            // Reduce window density based on LOD
+            const effectiveWindowDensity = CONFIG.buildings.performance.windowDensity * windowDensityMultiplier;
+            
+            // Render Windows on selected faces
             for (let floor = 1; floor < floors && windowCount < maxWindows; floor++) {
                 const y = section.y * height + (floor / floors) * actualH;
                 
-                for (let w = 0; w < windowsPerRow && windowCount < maxWindows; w++) {
-                    const x = offsetX + (w - windowsPerRow / 2 + 0.5) * (windowSpacing * 0.5);
-                    
-                    // Front face windows - use actualD to calculate z position
-                    if (rand() < CONFIG.buildings.performance.windowDensity) {
-                        const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
-                        const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                        windowMesh.position.set(x, y, offsetZ + actualD * 0.505); // 稍微偏移以防 Z-fighting
-                        buildingGroup.add(windowMesh);
-                        windowCount++;
+                // Front/Back faces (Z-aligned)
+                if (renderFace('front') || renderFace('back')) {
+                    for (let w = 0; w < windowsPerRow && windowCount < maxWindows; w++) {
+                        const x = offsetX + (w - windowsPerRow / 2 + 0.5) * (windowSpacing * 0.5);
+                        
+                        if (renderFace('front') && rand() < effectiveWindowDensity) {
+                            const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
+                            const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+                            windowMesh.position.set(x, y, offsetZ + actualD * 0.505);
+                            buildingGroup.add(windowMesh);
+                            windowCount++;
+                        }
+                        
+                        if (renderFace('back') && windowCount < maxWindows && rand() < effectiveWindowDensity) {
+                            const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
+                            const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+                            windowMesh.position.set(x, y, offsetZ - actualD * 0.505);
+                            windowMesh.rotation.y = Math.PI;
+                            buildingGroup.add(windowMesh);
+                            windowCount++;
+                        }
+                    }
+                }
+                
+                // Left/Right faces (X-aligned)
+                if (renderFace('left') || renderFace('right')) {
+                    for (let w = 0; w < sideWindowsPerRow && windowCount < maxWindows; w++) {
+                        const z = offsetZ + (w - sideWindowsPerRow / 2 + 0.5) * (windowSpacing * 0.6);
+                        
+                        if (renderFace('left') && windowCount < maxWindows && rand() < effectiveWindowDensity) {
+                            const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
+                            const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+                            windowMesh.position.set(offsetX - actualW * 0.505, y, z);
+                            windowMesh.rotation.y = -Math.PI / 2;
+                            buildingGroup.add(windowMesh);
+                            windowCount++;
+                        }
+                        
+                        if (renderFace('right') && windowCount < maxWindows && rand() < effectiveWindowDensity) {
+                            const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
+                            const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+                            windowMesh.position.set(offsetX + actualW * 0.505, y, z);
+                            windowMesh.rotation.y = Math.PI / 2;
+                            buildingGroup.add(windowMesh);
+                            windowCount++;
+                        }
                     }
                 }
             }
         }
         
-        // Material: White ceramic/clean plastic look for light mode
-        const chipMaterial = new THREE.MeshPhysicalMaterial({
-            color: CONFIG.buildings.color,
-            metalness: 0.1,
-            roughness: 0.2,
-            clearcoat: 1.0,
-            clearcoatRoughness: 0.1
-        });
-        
-        const buildingCount = CONFIG.buildings.count;
-        
-        // Generate all buildings using predefined types for performance
-        for (let i = 0; i < buildingCount; i++) {
-            const x = snap((rand() - 0.5) * gridSize);
-            const z = snap((rand() - 0.5) * gridSize);
-            
-            // Use predefined building types with weights
-            const buildingTypeIndex = getWeightedBuildingTypeIndex();
-            let w = 0.8, h = 0.2, d = 0.8;
-            
-            // Set dimensions based on building type
-            const buildingType = CONFIG.buildings.buildingTypes[buildingTypeIndex];
-            if (buildingType.name === 'lowRise') {
-                h = 0.2 + rand() * 0.2;
-                w = rand() * 1.5 + 0.5;
-                d = rand() * 1.5 + 0.5;
-            } else if (buildingType.name === 'mediumBox') {
-                h = rand() * 2 + 0.5;
-                w = rand() * 0.8 + 0.4;
-                d = w;
-            } else if (buildingType.name === 'tallSimple') {
-                h = rand() * 2.5 + 1.2;
-                w = rand() * 1.2 + 0.8; // Made wider
-                d = rand() * 1.2 + 0.8; // Made wider
-            } else if (buildingType.name === 'twoSection') {
-                h = rand() * 2.8 + 1.5;
-                w = rand() * 1.0 + 0.9; // Adjusted for better proportions
-                d = w;
-            } else if (buildingType.name === 'skyscraper') {
-                h = rand() * 1.0 + 2.5; // Reduced to 2.5-3.5 range (20% above average)
-                w = 0.8; d = 0.8; // Made wider for better proportions
-            } else if (buildingType.name === 'wideBuilding') {
-                h = rand() * 1.8 + 1.0;
-                w = rand() * 1.5 + 1.0;
-                d = rand() * 1.0 + 0.8;
-            } else if (buildingType.name === 'pyramid') {
-                h = rand() * 3 + 1.0;
-                w = rand() * 1.2 + 0.8;
-                d = w;
-            } else if (buildingType.name === 'complex') {
-                h = rand() * 1.5 + 3.0; // Reduced to 3.0-4.5 range
-                w = 0.6; d = 0.6; // Made slightly wider
-            }
-            
-            const buildingMesh = createBuildingMesh(buildingTypeIndex, w, d, h, x, z);
-            cityGroup.add(buildingMesh);
-        }
-
-        // --- 3. Intricate Pipelines (Data Lines) ---
-        const lineGroup = new THREE.Group();
-        cityGroup.add(lineGroup);
-        
-        // Darker colors for visibility on light background
-        const lineMaterial = new THREE.LineBasicMaterial({
-            color: CONFIG.lines.colorBlue, // Sky Blue
-            transparent: true,
-            opacity: 0.5
-        });
-
-        const orangeLineMaterial = new THREE.LineBasicMaterial({
-            color: CONFIG.lines.colorOrange, // Orange-Yellow
-            transparent: true,
-            opacity: 0.6
-        });
-
-        function createCircuitPath(material, yHeight) {
-            const points = [];
-            let cx = snap((rand() - 0.5) * gridSize);
-            let cz = snap((rand() - 0.5) * gridSize);
-            points.push(new THREE.Vector3(cx, yHeight, cz));
-            
-            const steps = Math.floor(rand() * 20) + 5;
-            for(let i=0; i<steps; i++) {
-                const dir = Math.floor(rand() * 4);
-                const len = Math.floor(rand() * 3) + 1;
-                
-                if(dir === 0) cx += len;
-                if(dir === 1) cx -= len;
-                if(dir === 2) cz += len;
-                if(dir === 3) cz -= len;
-                
-                cx = Math.max(-gridSize/2, Math.min(gridSize/2, cx));
-                cz = Math.max(-gridSize/2, Math.min(gridSize/2, cz));
-                
-                points.push(new THREE.Vector3(cx, yHeight, cz));
-            }
-            const geometry = new THREE.BufferGeometry().setFromPoints(points);
-            return new THREE.Line(geometry, material);
-        }
-
-        // More lines for denser look
-        for(let i=0; i<CONFIG.lines.count; i++) {
-            // Use orange lines instead of brand purple
-            lineGroup.add(createCircuitPath(orangeLineMaterial, 0.05));
-            if (i % 2 === 0) lineGroup.add(createCircuitPath(lineMaterial, rand() * 2 + 1));
-        }
-
-        // --- 4. Data Packets (Particles) ---
-        const particleCount = CONFIG.particles.count;
-        const particleGeo = new THREE.BufferGeometry();
-        const pPos = new Float32Array(particleCount * 3);
-        const pSpeed = [];
-
-        for(let i=0; i<particleCount; i++) {
-            const i3 = i * 3;
-            pPos[i3] = (rand() - 0.5) * gridSize;
-            pPos[i3+1] = rand() * CONFIG.particles.rangeY;
-            pPos[i3+2] = (rand() - 0.5) * gridSize;
-            
-            pSpeed.push({
-                y: rand() * (CONFIG.particles.speedMax - CONFIG.particles.speedMin) + CONFIG.particles.speedMin,
+        function generateCity() {
+            // Material: White ceramic/clean plastic look for light mode
+            const chipMaterial = new THREE.MeshPhysicalMaterial({
+                color: CONFIG.buildings.color,
+                metalness: 0.1,
+                roughness: 0.2,
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.1
             });
+            
+            const buildingCount = CONFIG.buildings.count;
+            
+            // Generate all buildings using predefined types for performance
+            for (let i = 0; i < buildingCount; i++) {
+                const x = snap((rand() - 0.5) * gridSize);
+                const z = snap((rand() - 0.5) * gridSize);
+                
+                // Use predefined building types with weights
+                const buildingTypeIndex = getWeightedBuildingTypeIndex();
+                let w = 0.8, h = 0.2, d = 0.8;
+                
+                // Set dimensions based on building type
+                const buildingType = CONFIG.buildings.buildingTypes[buildingTypeIndex];
+                if (buildingType.name === 'lowRise') {
+                    h = 0.2 + rand() * 0.2;
+                    w = rand() * 1.5 + 0.5;
+                    d = rand() * 1.5 + 0.5;
+                } else if (buildingType.name === 'mediumBox') {
+                    h = rand() * 2 + 0.5;
+                    w = rand() * 0.8 + 0.4;
+                    d = w;
+                } else if (buildingType.name === 'tallSimple') {
+                    h = rand() * 2.5 + 1.2;
+                    w = rand() * 1.2 + 0.8; // Made wider
+                    d = rand() * 1.2 + 0.8; // Made wider
+                } else if (buildingType.name === 'twoSection') {
+                    h = rand() * 2.8 + 1.5;
+                    w = rand() * 1.0 + 0.9; // Adjusted for better proportions
+                    d = w;
+                } else if (buildingType.name === 'skyscraper') {
+                    h = rand() * 1.0 + 2.5; // Reduced to 2.5-3.5 range (20% above average)
+                    w = 0.8; d = 0.8; // Made wider for better proportions
+                } else if (buildingType.name === 'wideBuilding') {
+                    h = rand() * 1.8 + 1.0;
+                    w = rand() * 1.5 + 1.0;
+                    d = rand() * 1.0 + 0.8;
+                } else if (buildingType.name === 'pyramid') {
+                    h = rand() * 3 + 1.0;
+                    w = rand() * 1.2 + 0.8;
+                    d = w;
+                } else if (buildingType.name === 'complex') {
+                    h = rand() * 1.5 + 3.0; // Reduced to 3.0-4.5 range
+                    w = 0.6; d = 0.6; // Made slightly wider
+                }
+                
+                const buildingMesh = createBuildingMesh(buildingTypeIndex, w, d, h, x, z);
+                cityGroup.add(buildingMesh);
+            }
+
+            // --- 3. Intricate Pipelines (Data Lines) ---
+            const lineGroup = new THREE.Group();
+            cityGroup.add(lineGroup);
+            
+            // Darker colors for visibility on light background
+            const lineMaterial = new THREE.LineBasicMaterial({
+                color: CONFIG.lines.colorBlue, // Sky Blue
+                transparent: true,
+                opacity: 0.5
+            });
+
+            const orangeLineMaterial = new THREE.LineBasicMaterial({
+                color: CONFIG.lines.colorOrange, // Orange-Yellow
+                transparent: true,
+                opacity: 0.6
+            });
+
+            function createCircuitPath(material, yHeight) {
+                const points = [];
+                let cx = snap((rand() - 0.5) * gridSize);
+                let cz = snap((rand() - 0.5) * gridSize);
+                points.push(new THREE.Vector3(cx, yHeight, cz));
+                
+                const steps = Math.floor(rand() * 20) + 5;
+                for(let i=0; i<steps; i++) {
+                    const dir = Math.floor(rand() * 4);
+                    const len = Math.floor(rand() * 3) + 1;
+                    
+                    if(dir === 0) cx += len;
+                    if(dir === 1) cx -= len;
+                    if(dir === 2) cz += len;
+                    if(dir === 3) cz -= len;
+                    
+                    cx = Math.max(-gridSize/2, Math.min(gridSize/2, cx));
+                    cz = Math.max(-gridSize/2, Math.min(gridSize/2, cz));
+                    
+                    points.push(new THREE.Vector3(cx, yHeight, cz));
+                }
+                const geometry = new THREE.BufferGeometry().setFromPoints(points);
+                return new THREE.Line(geometry, material);
+            }
+
+            // More lines for denser look
+            for(let i=0; i<CONFIG.lines.count; i++) {
+                // Use orange lines instead of brand purple
+                lineGroup.add(createCircuitPath(orangeLineMaterial, 0.05));
+                if (i % 2 === 0) lineGroup.add(createCircuitPath(lineMaterial, rand() * 2 + 1));
+            }
+
+            // --- 4. Data Packets (Particles) ---
+            const particleGeo = new THREE.BufferGeometry();
+            const pPos = new Float32Array(particleCount * 3);
+            pSpeed = [];
+
+            for(let i=0; i<particleCount; i++) {
+                const i3 = i * 3;
+                pPos[i3] = (rand() - 0.5) * gridSize;
+                pPos[i3+1] = rand() * CONFIG.particles.rangeY;
+                pPos[i3+2] = (rand() - 0.5) * gridSize;
+                
+                pSpeed.push({
+                    y: rand() * (CONFIG.particles.speedMax - CONFIG.particles.speedMin) + CONFIG.particles.speedMin,
+                });
+            }
+            particleGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+            
+            // Darker particles for contrast
+            const particleMat = new THREE.PointsMaterial({
+                color: CONFIG.particles.color,
+                size: CONFIG.particles.size,
+                transparent: true,
+                opacity: CONFIG.particles.opacity,
+                map: null
+            });
+            particles = new THREE.Points(particleGeo, particleMat);
+            cityGroup.add(particles);
         }
-        particleGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-        
-        // Darker particles for contrast
-        const particleMat = new THREE.PointsMaterial({
-            color: CONFIG.particles.color,
-            size: CONFIG.particles.size,
-            transparent: true,
-            opacity: CONFIG.particles.opacity,
-            map: null
-        });
-        const particles = new THREE.Points(particleGeo, particleMat);
-        cityGroup.add(particles);
+
+        // Initial generation
+        generateCity();
 
         // --- 5. Lighting (Bright & Clean) ---
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
@@ -1740,6 +1907,11 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
+        // Create reusable objects for dynamic culling
+        const frustum = new THREE.Frustum();
+        const cameraMatrix = new THREE.Matrix4();
+        const cullingSphere = new THREE.Sphere();
+
         function animate() {
             requestAnimationFrame(animate);
 
@@ -1761,6 +1933,23 @@
             // Use targetY offset to stabilize camera during scroll
             const lookAtY = isMobile ? -20 : 0;
             camera.lookAt(0, lookAtY, 0);
+
+            // Update frustum for culling (performance optimization)
+            cameraMatrix.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+            frustum.setFromProjectionMatrix(cameraMatrix);
+
+            if (!particles || !pSpeed) return; // [DEV_MODE] Safety check for regeneration
+
+            // Dynamic Culling for buildings
+            cityGroup.children.forEach(child => {
+                if (child.userData.isBuilding) {
+                    // Check visibility using the frustum
+                    // Use a conservative sphere to ensure tall buildings aren't cut off early
+                    cullingSphere.center.copy(child.position);
+                    cullingSphere.radius = 8;
+                    child.visible = frustum.intersectsSphere(cullingSphere);
+                }
+            });
 
             const positions = particles.geometry.attributes.position.array;
             for(let i=0; i<particleCount; i++) {
