@@ -15,9 +15,10 @@
     <link rel="preconnect" href="https://p11-flow-imagex-download-sign.byteimg.com">
     
     <script>
-        const translations = {
+        let translations = {
     "zh-CN": {
-        "Page_Meta_Title": "Vizzle - 轻量化AI 3D数码城市管理平台",
+        "Language_Display_Name": "简",
+        "Page_Meta_Title": "炫幻视界",
         "Navigation_Menu_Solutions": "解决方案",
         "Navigation_Menu_Features": "产品功能",
         "Navigation_Menu_Cases": "客户案例",
@@ -198,7 +199,8 @@
         "Home_Awards_List2_Item5": "杭州动力创未国际科技项目新创赛三等奖"
     },
     "zh-TW": {
-        "Page_Meta_Title": "Vizzle - 輕量化AI 3D數碼城市管理平台",
+        "Language_Display_Name": "繁",
+        "Page_Meta_Title": "炫幻視界",
         "Navigation_Menu_Solutions": "解決方案",
         "Navigation_Menu_Features": "產品功能",
         "Navigation_Menu_Cases": "客戶案例",
@@ -379,7 +381,8 @@
         "Home_Awards_List2_Item5": "杭州動力創未國際科技項目新創賽三等獎"
     },
     "en-US": {
-        "Page_Meta_Title": "Vizzle - Lightweight AI 3D Digital City Management Platform",
+        "Language_Display_Name": "EN",
+        "Page_Meta_Title": "Vizzle",
         "Navigation_Menu_Solutions": "Solutions",
         "Navigation_Menu_Features": "Features",
         "Navigation_Menu_Cases": "Case Studies",
@@ -559,7 +562,7 @@
         "Home_Awards_List2_Item4": "Maker in China SME Innovation and Entrepreneurship Global Contest - Top 10",
         "Home_Awards_List2_Item5": "Hangzhou Internatival Sci-Tech New Venture Competition 2024 - 3rd Prize"
     }
-};;
+};
     </script>
     
     <style type="text/tailwindcss">
@@ -1477,6 +1480,9 @@
                 Import Locale CSV
                 <input type="file" onchange="importFromCSV(this.files[0])" accept=".csv" style="display:none;">
             </label>
+            <button onclick="downloadUpdatedHTML()" style="background:#38a169;color:white;border:none;padding:5px;border-radius:4px;cursor:pointer;font-size:11px;">
+                Download Updated HTML
+            </button>
         </div>
     
             `;
@@ -1980,50 +1986,48 @@
         animate();
 
 
-        // Language Toggle Logic (Re-implemented)
-        const langDisplayNames = {
-            'zh-CN': '简',
-            'zh-TW': '繁',
-            'en-US': 'EN'
-        };
+    // Language Toggle Logic (Re-implemented)
+    // langDisplayNames removed - using translations object directly
 
-        function setLanguage(lang) {
-            document.getElementById('html-element').lang = lang;
-            
-            // Update Translations
-            document.querySelectorAll('[data-lang-key]').forEach(el => {
-                const key = el.getAttribute('data-lang-key');
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-            
-            // Update Placeholders
-            document.querySelectorAll('input[data-lang-key], textarea[data-lang-key]').forEach(el => {
-                const key = el.getAttribute('data-lang-key');
-                if (translations[lang] && translations[lang][key + '-placeholder']) {
-                    el.placeholder = translations[lang][key + '-placeholder'];
-                }
-            });
+    function setLanguage(lang) {
+        document.getElementById('html-element').lang = lang;
+        
+        // Update Translations
+        document.querySelectorAll('[data-lang-key]').forEach(el => {
+            const key = el.getAttribute('data-lang-key');
+            // Check for undefined only, allowing empty strings
+            if (translations[lang] && translations[lang][key] !== undefined) {
+                el.textContent = translations[lang][key];
+            }
+        });
+        
+        // Update Placeholders
+        document.querySelectorAll('input[data-lang-key], textarea[data-lang-key]').forEach(el => {
+            const key = el.getAttribute('data-lang-key');
+            if (translations[lang] && translations[lang][key + '-placeholder'] !== undefined) {
+                el.placeholder = translations[lang][key + '-placeholder'];
+            }
+        });
 
-            // Update Language Switcher Display Text (Desktop & Mobile)
-            const displayText = langDisplayNames[lang] || 'EN';
-            const desktopLabel = document.getElementById('current-lang-text');
-            const mobileLabel = document.getElementById('current-lang-text-mobile');
-            
-            if (desktopLabel) desktopLabel.textContent = displayText;
-            if (mobileLabel) mobileLabel.textContent = displayText;
+        // Update Language Switcher Display Text (Desktop & Mobile)
+        // Fallback to lang code if display name not set
+        const displayText = (translations[lang] && translations[lang]['Language_Display_Name']) || lang;
+        const desktopLabel = document.getElementById('current-lang-text');
+        const mobileLabel = document.getElementById('current-lang-text-mobile');
+        
+        if (desktopLabel) desktopLabel.textContent = displayText;
+        if (mobileLabel) mobileLabel.textContent = displayText;
 
-            localStorage.setItem('preferredLanguage', lang);
-            
-            // Update Active State in Dropdown
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('bg-[#6b3d92]', 'text-white');
-                if (btn.getAttribute('data-lang') === lang) {
-                    btn.classList.add('bg-[#6b3d92]', 'text-white');
-                }
-            });
-        }
+        localStorage.setItem('preferredLanguage', lang);
+        
+        // Update Active State in Dropdown
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('bg-[#6b3d92]', 'text-white');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('bg-[#6b3d92]', 'text-white');
+            }
+        });
+    }
 
         function detectUserLanguage() {
             const savedLang = localStorage.getItem('preferredLanguage');
@@ -2159,6 +2163,10 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Rebuild language dropdown based on current translations (which might be loaded from storage)
+            if (typeof updateLanguageDropdown === 'function') {
+                updateLanguageDropdown();
+            }
             detectUserLanguage();
         });
     
@@ -2205,10 +2213,12 @@
         let inQuote = false;
         for (let i = 0; i < line.length; i++) {
             const char = line[i];
+            const nextChar = line[i+1];
+            
             if (char === '"') {
-                if (inQuote && line[i+1] === '"') {
+                if (inQuote && nextChar === '"') {
                     current += '"';
-                    i++;
+                    i++; // skip next quote (unescape)
                 } else {
                     inQuote = !inQuote;
                 }
@@ -2228,45 +2238,108 @@
         const reader = new FileReader();
         reader.onload = function(e) {
             const text = e.target.result;
-            const lines = text.split(/\r\n|\n/);
+            // Split lines and filter empty ones
+            const lines = text.split(/\r\n|\n/).filter(line => line.trim() !== '');
             
             if (lines.length < 1) return;
-            const headerRow = lines[0];
-            const headers = parseCSVLine(headerRow).map(h => h.trim().replace(/^"|"$/g, ''));
             
+            // Header parsing
+            const headerRow = lines[0];
+            // Clean BOM and quotes
+            const headers = parseCSVLine(headerRow).map(h => h.trim().replace(/^"|"$/g, '').replace(/^\uFEFF/, ''));
+            
+            // Map languages
             const langMap = {};
             for (let i = 0; i < headers.length; i++) {
                 const h = headers[i];
-                if (h !== 'Key' && h !== 'Description' && h !== '') {
+                if (h && h !== 'Key' && h !== 'Description') {
                     langMap[h] = i;
-                    if (!translations[h]) {
-                        translations[h] = {};
+                }
+            }
+
+            // Parse and store CSV content for validation
+            const parsedRows = [];
+            const csvKeySet = new Set();
+
+            for (let i = 1; i < lines.length; i++) {
+                const row = parseCSVLine(lines[i]);
+                if (row.length > 0) {
+                    const key = row[0].replace(/^"|"$/g, '');
+                    if (key) {
+                        parsedRows.push({ key, row });
+                        csvKeySet.add(key);
                     }
                 }
             }
 
-            let count = 0;
-            for (let i = 1; i < lines.length; i++) {
-                if (!lines[i].trim()) continue;
-                const row = parseCSVLine(lines[i]);
-                const key = row[0].replace(/^"|"$/g, '');
-                if (!key) continue;
+            // --- VALIDATION START ---
+            // Source of Truth: The current webpage's translations object (using the first available language)
+            const baseLang = Object.keys(translations)[0];
+            const appKeySet = new Set(Object.keys(translations[baseLang]));
 
+            const missingKeys = [...appKeySet].filter(k => !csvKeySet.has(k));
+            const unknownKeys = [...csvKeySet].filter(k => !appKeySet.has(k));
+
+            if (missingKeys.length > 0 || unknownKeys.length > 0) {
+                let errorMsg = 'Import Failed: Translation key mismatch detected.\n\n';
+                
+                if (missingKeys.length > 0) {
+                    errorMsg += `[Missing ${missingKeys.length} keys required by page]\n`;
+                    errorMsg += `Examples: ${missingKeys.slice(0, 3).join(', ')}${missingKeys.length > 3 ? '...' : ''}\n\n`;
+                }
+                
+                if (unknownKeys.length > 0) {
+                    errorMsg += `[Found ${unknownKeys.length} unknown keys in CSV]\n`;
+                    errorMsg += `Examples: ${unknownKeys.slice(0, 3).join(', ')}${unknownKeys.length > 3 ? '...' : ''}\n\n`;
+                }
+                
+                errorMsg += 'Action Cancelled. Please use a CSV exported from this version of the webpage.';
+                alert(errorMsg);
+                return; // ABORT IMPORT
+            }
+            // --- VALIDATION END ---
+
+            // Initialize new languages if any
+            Object.keys(langMap).forEach(lang => {
+                if (!translations[lang]) {
+                    translations[lang] = {};
+                }
+            });
+
+            // Update Translations
+            // 1. Identify languages in CSV
+            const csvLanguages = Object.keys(langMap);
+
+            // 2. Remove languages from global 'translations' that are NOT in CSV
+            // (Sync deletion)
+            Object.keys(translations).forEach(existingLang => {
+                if (!csvLanguages.includes(existingLang)) {
+                    delete translations[existingLang];
+                }
+            });
+
+            // 3. Update/Add keys
+            parsedRows.forEach(item => {
+                const { key, row } = item;
                 Object.keys(langMap).forEach(lang => {
                     const idx = langMap[lang];
-                    if (idx < row.length) {
-                        translations[lang][key] = row[idx];
-                    }
+                    const val = (idx < row.length) ? row[idx] : "";
+                    translations[lang][key] = val;
                 });
-                count++;
-            }
+            });
 
+            // 4. Update UI for Preview
             updateLanguageDropdown();
             
-            const currentLang = localStorage.getItem('preferredLanguage') || 'en-US';
+            // Validate current language still exists, fallback if needed
+            let currentLang = localStorage.getItem('preferredLanguage') || 'en-US';
+            if (!translations[currentLang]) {
+                currentLang = Object.keys(translations)[0] || 'en-US';
+            }
             setLanguage(currentLang);
             
-            alert(`Imported ${count} keys. Languages: ${Object.keys(langMap).join(', ')}`);
+            const languagesFound = Object.keys(translations).join(', ');
+            alert(`Preview Loaded! Synced ${parsedRows.length} keys.\nCurrent Languages: ${languagesFound}\n\nIMPORTANT: These changes are in PREVIEW ONLY.\nClick "Download Updated HTML" to save these changes to your project file.`);
         };
         reader.readAsText(file);
     }
@@ -2276,7 +2349,9 @@
         
         const createBtn = (lang, isMobile) => {
             const btn = document.createElement('button');
-            const name = langDisplayNames[lang] || lang;
+            // Use Language_Display_Name if available, else code
+            const name = (translations[lang] && translations[lang]['Language_Display_Name']) || lang;
+            
             if (isMobile) {
                 btn.className = 'lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors';
             } else {
@@ -2303,6 +2378,39 @@
         if (mobileDropdown) {
             mobileDropdown.innerHTML = '';
             languages.forEach(lang => mobileDropdown.appendChild(createBtn(lang, true)));
+        }
+    }
+    async function downloadUpdatedHTML() {
+        try {
+            // Fetch original source
+            const response = await fetch('index.html');
+            if (!response.ok) throw new Error('Cannot read source file');
+            let source = await response.text();
+            
+            // Replace translations object
+            const newJson = JSON.stringify(translations, null, 4);
+            // Match 'let translations = { ... };' block accurately
+            // Using a simpler regex that looks for the start and assumes indentation pattern or ends with };
+            const regex = /(let|const)\s+translations\s*=\s*\{[\s\S]*?\};/;
+            
+            if (regex.test(source)) {
+                source = source.replace(regex, `let translations = ${newJson};`);
+                
+                // Trigger download
+                const blob = new Blob([source], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.setAttribute("href", url);
+                link.setAttribute("download", "index.html");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                alert("Success! Updated index.html downloaded.\nPlease replace your project file with this new file.");
+            } else {
+                throw new Error('Translations object not found in source.');
+            }
+        } catch (e) {
+            alert('Error generating updated HTML: ' + e.message);
         }
     }
 </script>

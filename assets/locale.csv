@@ -1,180 +1,181 @@
-﻿Key,Description,zh-CN,zh-TW,en-US
-Page_Meta_Title,Page Meta Title,炫幻视界,炫幻視界,Vizzle
-Navigation_Menu_Solutions,Navigation Menu Solutions,解决方案,解決方案,Solutions
-Navigation_Menu_Features,Navigation Menu Features,产品功能,產品功能,Features
-Navigation_Menu_Cases,Navigation Menu Cases,客户案例,客戶案例,Case Studies
-Navigation_Menu_Advantages,Navigation Menu Advantages,核心优势,核心優勢,Advantages
-Navigation_Menu_Pricing,Navigation Menu Pricing,定价模式,定價模式,Pricing
-Navigation_Menu_ContactUs,Navigation Menu ContactUs,联系我们,聯繫我們,Contact
-Button_BookDemo,Button BookDemo,预约演示,預約演示,Request Demo
-Button_FreeTrial,Button FreeTrial,免费试用,免費試用,Free Trial
-Home_Hero_Tagline,Home Hero Tagline,轻量化AI 3D解决方案,輕量化AI 3D解決方案,Lightweight AI 3D Solution
-Home_Hero_MainTitle,Home Hero MainTitle,让复杂的3D管理像浏览网页一样简单,讓複雜的3D管理像瀏覽網頁一樣簡單,Make complex 3D management as simple as browsing the web
-Home_Hero_Subtitle,Home Hero Subtitle,Vizzle轻量化AI 3D数码城市管理平台，跨装置秒级加载，AI智能分析，无需专业技能，大幅降低3D管理成本。,Vizzle輕量化AI 3D數碼城市管理平台，跨裝置秒級加載，AI智能分析，無需專業技能，大幅降低3D管理成本。,"Vizzle lightweight AI 3D digital city management platform, cross-device second-level loading, AI intelligent analysis, no professional skills required, significantly reducing 3D management costs."
-Home_Hero_Button_Consult,Home Hero Button Consult,立即咨询解决方案,立即諮詢解決方案,Consult Solutions Now
-Home_Hero_Button_Demo,Home Hero Button Demo,预约产品演示,預約產品演示,Request Product Demo
-Home_Hero_ClientCount,Home Hero ClientCount,50+ 企业客户的选择,50+ 企業客戶的選擇,Trusted by 50+ enterprise clients
-Home_Trust_Title,Home Trust Title,受到行业领先企业的信任,受到行業領先企業的信任,Trusted by industry-leading enterprises
-Home_Solutions_Title,Home Solutions Title,核心解决方案,核心解決方案,Core Solutions
-Home_Solutions_Subtitle,Home Solutions Subtitle,解决传统3D管理的核心痛点,解決傳統3D管理的核心痛點,Solve core pain points of traditional 3D management
-Home_Solutions_Description,Home Solutions Description,"当前数码城市软件普遍专业且昂贵，需高性能电脑和专业软件，中小客户难以负担。Vizzle实现""降本、提效、简化""三重突破。","當前數碼城市軟體普遍專業且昂貴，需高性能電腦和專業軟體，中小客戶難以負擔。Vizzle實現""降本、提效、簡化""三重突破。","Current digital city software is generally professional and expensive, requiring high-performance computers and professional software, which is difficult for small and medium-sized clients to afford. Vizzle achieves three breakthroughs: ""cost reduction, efficiency improvement, and simplification""."
-Home_Solutions_Item1_Title,Home Solutions Item1 Title,低端设备，网页即开即用,低端設備，網頁即開即用,"Low-end devices, web-based instant access"
-Home_Solutions_Item1_Desc,Home Solutions Item1 Desc,极速加载巨型3D扫描模型，无需高阶显卡，8年前的旧设备也能秒速加载，支持多种模型格式，大幅降低硬件投入。,極速加載巨型3D掃描模型，無需高階顯卡，8年前的舊設備也能秒速加載，支持多種模型格式，大幅降低硬體投入。,"Ultra-fast loading of giant 3D scan models, no need for high-end graphics cards, 8-year-old devices can also load in seconds, supporting multiple model formats, significantly reducing hardware investment."
-Home_Solutions_Item2_Title,Home Solutions Item2 Title,AI分析，无需人工繁琐处理,AI分析，無需人工繁瑣處理,"AI analysis, no manual tedious processing"
-Home_Solutions_Item2_Desc,Home Solutions Item2 Desc,AI自动分析3D场景、整合各类数据，替代人工筛选，无需大海捞针，大幅节省人力成本与时间成本。,AI自動分析3D場景、整合各類數據，替代人工篩選，無需大海撈針，大幅節省人力成本與時間成本。,"AI automatically analyzes 3D scenes, integrates various data, replaces manual screening, eliminates the need for needle-in-a-haystack searches, greatly saving labor and time costs."
-Home_Solutions_Item3_Title,Home Solutions Item3 Title,操作简便，无需专业知识,操作簡便，無需專業知識,"Simple operation, no professional knowledge required"
-Home_Solutions_Item3_Desc,Home Solutions Item3 Desc,支持简易测量、标记功能，无需安装专业软件，普通员工一人即可操作，沟通效率10倍化。,支持簡易測量、標記功能，無需安裝專業軟體，普通員工一人即可操作，溝通效率10倍化。,"Supports simple measurement and marking functions, no need to install professional software, ordinary employees can operate alone, communication efficiency increased by 10 times."
-Home_Solutions_Link_LearnMore,Home Solutions Link LearnMore,了解更多,瞭解更多,Learn more
-Home_Features_Title,Home Features Title,产品功能,產品功能,Product Features
-Home_Features_Subtitle,Home Features Subtitle,全面的3D管理功能,全面的3D管理功能,Comprehensive 3D management functions
-Home_Features_Description,Home Features Description,我们提供全面的3D管理功能，满足不同行业、不同规模客户的多样化需求。,我們提供全面的3D管理功能，滿足不同行業、不同規模客戶的多樣化需求。,We provide comprehensive 3D management functions to meet the diverse needs of customers in different industries and scales.
-Home_Features_Item1_Title,Home Features Item1 Title,GPU智能负载分配,GPU智能負載分配,GPU intelligent load distribution
-Home_Features_Item1_Desc,Home Features Item1 Desc,智能分配渲染、AI推理与互动任务到单一次级GPU单元，无需多张显卡暴力处理，降低硬件成本。,智能分配渲染、AI推理與互動任務到單一次級GPU單元，無需多張顯卡暴力處理，降低硬體成本。,"Intelligently distributes rendering, AI reasoning, and interactive tasks to a single secondary GPU unit, eliminating the need for multiple graphics cards for brute-force processing, reducing hardware costs."
-Home_Features_Item2_Title,Home Features Item2 Title,实时AI+3D融合处理,實時AI+3D融合處理,Real-time AI+3D fusion processing
-Home_Features_Item2_Desc,Home Features Item2 Desc,动作捕捉、抠像、镜头控制与3D场景渲染同帧对齐，无延迟即时交互，提升操作体验。,動作捕捉、摳像、鏡頭控制與3D場景渲染同幀對齊，無延遲即時交互，提升操作體驗。,"Motion capture, keying, camera control, and 3D scene rendering aligned in the same frame, no latency real-time interaction, enhancing operating experience."
-Home_Features_Item3_Title,Home Features Item3 Title,超大3D模型轻量化,超大3D模型輕量化,Ultra-large 3D model lightweighting
-Home_Features_Item3_Desc,Home Features Item3 Desc,透过分层加载、压缩与快取，实现超大模型的即时浏览，适配各类低端设备。,透過分層加載、壓縮與快取，實現超大模型的即時瀏覽，適配各類低端設備。,"Through layered loading, compression, and caching,实现 instant browsing of ultra-large models, adapting to various low-end devices."
-Home_Features_Item4_Title,Home Features Item4 Title,多数据导入整合,多數據導入整合,Multi-data import integration
-Home_Features_Item4_Desc,Home Features Item4 Desc,可导入风火水电、人流、物联网、图形设计等数据，进行全方位AI整合及分析，满足多场景需求。,可導入風火水電、人流、物聯網、圖形設計等數據，進行全方位AI整合及分析，滿足多場景需求。,"Can import data such as utilities, crowd flow, IoT, graphic design, etc., for comprehensive AI integration and analysis, meeting multi-scenario needs."
-Home_Features_Stats_Title,Home Features Stats Title,99.9% 系统稳定性,99.9% 系統穩定性,99.9% system stability
-Home_Features_Stats_Desc,Home Features Stats Desc,7x24小时稳定运行，满足企业级应用需求,7x24小時穩定運行，滿足企業級應用需求,"7x24 hours stable operation, meeting enterprise-level application needs"
-Home_Cases_Title,Home Cases Title,客户案例,客戶案例,Case Studies
-Home_Cases_Subtitle,Home Cases Subtitle,顶级客户的成功实践,頂級客戶的成功實踐,Successful practices of top clients
-Home_Cases_Description,Home Cases Description,用实力证明价值，我们的产品已获得行业头部客户认可，助力客户实现3D管理效率翻倍。,用實力證明價值，我們的產品已獲得行業頭部客戶認可，助力客戶實現3D管理效率翻倍。,"Proving value with strength, our products have been recognized by industry-leading clients, helping clients double 3D management efficiency."
-Home_Cases_Featured_Badge,Home Cases Featured Badge,标杆案例,標桿案例,Benchmark Case
-Home_Cases_Featured_Name,Home Cases Featured Name,香港国际机场,香港國際機場,Hong Kong International Airport
-Home_Cases_Featured_Desc,Home Cases Featured Desc,为香港国际机场提供3D扫描AI智能管理服务，实现机场场景1:1还原、多数据整合分析，沟通效率提升10倍。,為香港國際機場提供3D掃描AI智能管理服務，實現機場場景1:1還原、多數據整合分析，溝通效率提升10倍。,"Provided 3D scanning AI intelligent management services for Hong Kong International Airport, achieving 1:1还原 of airport scenes, multi-data integration analysis, communication efficiency increased by 10 times."
-Home_Cases_Featured_Label_Cost,Home Cases Featured Label Cost,服务费用,服務費用,Service Fee
-Home_Cases_Featured_Label_Maintenance,Home Cases Featured Label Maintenance,年度维护,年度維護,Annual Maintenance
-Home_Cases_Featured_Tag1,Home Cases Featured Tag1,效率提升10倍,效率提升10倍,Efficiency increased by 10x
-Home_Cases_Featured_Tag2,Home Cases Featured Tag2,无需专业技能,無需專業技能,No professional skills required
-Home_Cases_Featured_Tag3,Home Cases Featured Tag3,成本降低60%,成本降低60%,Cost reduced by 60%
-Home_Cases_Button_ViewFull,Home Cases Button ViewFull,查看完整案例,查看完整案例,View Complete Case
-Home_Cases_More1_Title,Home Cases More1 Title,数码城市管理,數碼城市管理,Digital City Management
-Home_Cases_More1_Desc,Home Cases More1 Desc,为城市管理部门提供轻量化3D管理方案，实现城市设施的智能监控与管理。,為城市管理部門提供輕量化3D管理方案，實現城市設施的智能監控與管理。,"Provide lightweight 3D management solutions for urban management departments, realizing intelligent monitoring and management of urban facilities."
-Home_Cases_More2_Title,Home Cases More2 Title,物业管理,物業管理,Property Management
-Home_Cases_More2_Desc,Home Cases More2 Desc,为大型物业提供3D可视化管理，提升物业管理效率，降低运营成本。,為大型物業提供3D可視化管理，提升物業管理效率，降低運營成本。,"Provide 3D visualization management for large properties, improving property management efficiency and reducing operating costs."
-Home_Advantage_Title,Home Advantage Title,核心优势,核心優勢,Core Advantages
-Home_Advantage_Subtitle,Home Advantage Subtitle,产品差异化与技术实力,產品差異化與技術實力,Product differentiation and technical strength
-Home_Advantage_Description,Home Advantage Description,我们专注于轻量化、简单化、低成本的3D管理解决方案，填补市场空白。,我們專注於輕量化、簡單化、低成本的3D管理解決方案，填補市場空白。,"We focus on lightweight, simplified, and low-cost 3D management solutions to fill market gaps."
-Home_Advantage_Diff_Title,Home Advantage Diff Title,核心差异化,核心差異化,Core Differentiation
-Home_Advantage_Diff_Item1_Title,Home Advantage Diff Item1 Title,针对层级不同,針對層級不同,Different target levels
-Home_Advantage_Diff_Item1_Desc,Home Advantage Diff Item1 Desc,"聚焦""希望完成简单任务、快速看到效果""的用户，现有工具过于复杂，小问题无需专家操作。","聚焦""希望完成簡單任務、快速看到效果""的用戶，現有工具過於複雜，小問題無需專家操作。","Focus on users who ""want to complete simple tasks and see results quickly"". Existing tools are too complex, small problems do not require expert operation."
-Home_Advantage_Diff_Item2_Title,Home Advantage Diff Item2 Title,定位独特,定位獨特,Unique positioning
-Home_Advantage_Diff_Item2_Desc,Home Advantage Diff Item2 Desc,极致轻量和简单化，以最低的成本、最简单的操作，快速见效，不取代专业软件，填补市场空白。,極致輕量和簡單化，以最低的成本、最簡單的操作，快速見效，不取代專業軟體，填補市場空白。,"Extreme lightweight and simplification, with the lowest cost, simplest operation, quick results, not replacing professional software, filling market gaps."
-Home_Advantage_Diff_Item3_Title,Home Advantage Diff Item3 Title,营运成本低,營運成本低,Low operating costs
-Home_Advantage_Diff_Item3_Desc,Home Advantage Diff Item3 Desc,采用轻量级硬件/云端模式，大幅降低用户营运成本，区别于竞品的重量级硬件投入。,採用輕量級硬體/雲端模式，大幅降低用戶營運成本，區別於競品的重量級硬體投入。,"Adopt lightweight hardware/cloud mode, significantly reducing user operating costs, different from competitors' heavy hardware investment."
-Home_Advantage_Tech_Title,Home Advantage Tech Title,技术实力,技術實力,Technical Strength
-Home_Advantage_Tech_Item1_Title,Home Advantage Tech Item1 Title,算力基建层优势,算力基建層優勢,Computing infrastructure layer advantages
-Home_Advantage_Tech_Item1_Desc,Home Advantage Tech Item1 Desc,透过优化让次级设备成为基建，降低成本及对第三方供应商的依赖，实现算力自给自足。,透過優化讓次級設備成為基建，降低成本及對第三方供應商的依賴，實現算力自給自足。,"Through optimization, make secondary equipment become infrastructure, reduce costs and dependence on third-party suppliers, achieve self-sufficiency in computing power."
-Home_Advantage_Tech_Item1_Stats,Home Advantage Tech Item1 Stats,运算成本降低 90%,運算成本降低 90%,Computing cost reduced by 90%
-Home_Advantage_Tech_Item2_Title,Home Advantage Tech Item2 Title,全链路自主搭建,全鏈路自主搭建,Full-link independent construction
-Home_Advantage_Tech_Item2_Desc,Home Advantage Tech Item2 Desc,从基建层开始自行搭建，形成自给自足的基建与应用层，让应用成本更低、更可控。,從基建層開始自行搭建，形成自給自足的基建與應用層，讓應用成本更低、更可控。,"Build from the infrastructure layer, forming self-sufficient infrastructure and application layers, making application costs lower and more controllable."
-Home_Advantage_Tech_Item2_Stats,Home Advantage Tech Item2 Stats,技术自主可控率 85%,技術自主可控率 85%,Technology self-control rate 85%
-Home_Compare_Title,Home Compare Title,竞品对比,競品對比,Competitor Comparison
-Home_Compare_Header_Dimension,Home Compare Header Dimension,对比维度,對比維度,Comparison Dimension
-Home_Compare_Header_Vizzle,Home Compare Header Vizzle,Vizzle,Vizzle,Vizzle
-Home_Compare_Header_Competitor,Home Compare Header Competitor,同类竞品,同類競品,Competitors
-Home_Compare_Row1_Label,Home Compare Row1 Label,营运成本,營運成本,Operating Cost
-Home_Compare_Row1_Vizzle,Home Compare Row1 Vizzle,低（轻量级硬件/云端）,低（輕量級硬體/雲端）,Low (lightweight hardware/cloud)
-Home_Compare_Row1_Competitor,Home Compare Row1 Competitor,高（重量級硬件/云端）,高（重量級硬體/雲端）,High (heavyweight hardware/cloud)
-Home_Compare_Row2_Label,Home Compare Row2 Label,扩展度,擴展度,Expandability
-Home_Compare_Row2_Vizzle,Home Compare Row2 Vizzle,高（线上SaaS，无指定软硬件）,高（線上SaaS，無指定軟硬體）,"High (online SaaS, no specified hardware/software)"
-Home_Compare_Row2_Competitor,Home Compare Row2 Competitor,低（指定軟硬體，限制較多）,低（指定軟硬體，限制較多）,"Low (specified hardware/software, many limitations)"
-Home_Compare_Row3_Label,Home Compare Row3 Label,核心定位,核心定位,Core Positioning
-Home_Compare_Row3_Vizzle,Home Compare Row3 Vizzle,轻量化、简单化、快速见效,輕量化、簡單化、快速見效,"Lightweight, simplified, quick results"
-Home_Compare_Row3_Competitor,Home Compare Row3 Competitor,专业化、复杂化、功能全面,專業化、複雜化、功能全面,"Professional, complex, comprehensive functions"
-Home_Compare_Row4_Label,Home Compare Row4 Label,操作门槛,操作門檻,Operation Threshold
-Home_Compare_Row4_Vizzle,Home Compare Row4 Vizzle,低（无需专业知识）,低（無需專業知識）,Low (no professional knowledge required)
-Home_Compare_Row4_Competitor,Home Compare Row4 Competitor,高（需专业人员操作）,高（需專業人員操作）,High (requires professional personnel)
-Home_Pricing_Title,Home Pricing Title,营收模式,營收模式,Revenue Model
-Home_Pricing_Subtitle,Home Pricing Subtitle,灵活的收费模式,靈活的收費模式,Flexible pricing model
-Home_Pricing_Description,Home Pricing Description,我们采用灵活的收费模式，满足不同规模客户的需求，降低前期投入，实现双赢。,我們採用靈活的收費模式，滿足不同規模客戶的需求，降低前期投入，實現雙贏。,"We adopt a flexible pricing model to meet the needs of customers of different scales, reduce initial investment, and achieve win-win results."
-Home_Pricing_Plan1_Title,Home Pricing Plan1 Title,基础版,基礎版,Basic Version
-Home_Pricing_Plan1_Subtitle,Home Pricing Plan1 Subtitle,适合小型企业使用,適合小型企業使用,Suitable for small businesses
-Home_Pricing_Plan1_Price,Home Pricing Plan1 Price,"¥19,800","¥19,800","¥19,800"
-Home_Pricing_Plan1_Period,Home Pricing Plan1 Period,/年,/年,/year
-Home_Pricing_Plan1_Feature1,Home Pricing Plan1 Feature1,5个用户账号,5個用戶賬號,5 user accounts
-Home_Pricing_Plan1_Feature2,Home Pricing Plan1 Feature2,基础3D模型管理,基礎3D模型管理,Basic 3D model management
-Home_Pricing_Plan1_Feature3,Home Pricing Plan1 Feature3,基础AI分析功能,基礎AI分析功能,Basic AI analysis functions
-Home_Pricing_Plan1_Feature4,Home Pricing Plan1 Feature4,定制化功能,定制化功能,Customization features
-Home_Pricing_Plan1_Feature5,Home Pricing Plan1 Feature5,专属客服,專屬客服,Dedicated customer service
-Home_Pricing_Plan2_Title,Home Pricing Plan2 Title,企业版,企業版,Enterprise Version
-Home_Pricing_Plan2_Subtitle,Home Pricing Plan2 Subtitle,适合中大型企业使用,適合中大型企業使用,Suitable for medium to large enterprises
-Home_Pricing_Plan2_Price,Home Pricing Plan2 Price,"¥79,800","¥79,800","¥79,800"
-Home_Pricing_Plan2_Period,Home Pricing Plan2 Period,/年,/年,/year
-Home_Pricing_Plan2_Feature1,Home Pricing Plan2 Feature1,20个用户账号,20個用戶賬號,20 user accounts
-Home_Pricing_Plan2_Feature2,Home Pricing Plan2 Feature2,高级3D模型管理,高級3D模型管理,Advanced 3D model management
-Home_Pricing_Plan2_Feature3,Home Pricing Plan2 Feature3,高级AI分析功能,高級AI分析功能,Advanced AI analysis functions
-Home_Pricing_Plan2_Feature4,Home Pricing Plan2 Feature4,基础定制化功能,基礎定制化功能,Basic customization features
-Home_Pricing_Plan2_Feature5,Home Pricing Plan2 Feature5,专属客服,專屬客服,Dedicated customer service
-Home_Pricing_Plan3_Title,Home Pricing Plan3 Title,定制版,定制版,Custom Version
-Home_Pricing_Plan3_Subtitle,Home Pricing Plan3 Subtitle,适合大型企业/政府机构,適合大型企業/政府機構,Suitable for large enterprises/government agencies
-Home_Pricing_Plan3_Price,Home Pricing Plan3 Price,定制报价,定制報價,Custom Quote
-Home_Pricing_Plan3_Feature1,Home Pricing Plan3 Feature1,无限用户账号,無限用戶賬號,Unlimited user accounts
-Home_Pricing_Plan3_Feature2,Home Pricing Plan3 Feature2,全部功能,全部功能,All functions
-Home_Pricing_Plan3_Feature3,Home Pricing Plan3 Feature3,深度定制化,深度定制化,Deep customization
-Home_Pricing_Plan3_Feature4,Home Pricing Plan3 Feature4,7×24小时技术支持,7×24小時技術支持,7×24 hour technical support
-Home_Pricing_Plan3_Feature5,Home Pricing Plan3 Feature5,私有化部署,私有化部署,Private deployment
-Home_Pricing_Button_Select,Home Pricing Button Select,选择套餐,選擇套餐,Select Plan
-Home_Pricing_Button_Contact,Home Pricing Button Contact,联系我们,聯繫我們,Contact Us
-Home_Pricing_Model_Note,Home Pricing Model Note,核心收费模式：服务订制 + 年度维护 + 用户数收费，三者结合，灵活适配不同客户需求。,核心收費模式：服務訂製 + 年度維護 + 用戶數收費，三者結合，靈活適配不同客戶需求。,"Core pricing model: service customization + annual maintenance + user count pricing, combined to flexibly adapt to different customer needs."
-Home_Pricing_Button_GetQuote,Home Pricing Button GetQuote,获取专属报价,獲取專屬報價,Get Exclusive Quote
-Home_Contact_Title,Home Contact Title,联系我们,聯繫我們,Contact Us
-Home_Contact_Subtitle,Home Contact Subtitle,获取专属解决方案,獲取專屬解決方案,Get Exclusive Solutions
-Home_Contact_Description,Home Contact Description,立即咨询，我们将为您提供专业的3D管理服务，助力企业降本增效。,立即諮詢，我們將為您提供專業的3D管理服務，助力企業降本增效。,"Consult now, we will provide you with professional 3D management services to help your enterprise reduce costs and increase efficiency."
-Home_Contact_Info_Company_Label,Home Contact Info Company Label,公司名称,公司名稱,Company Name
-Home_Contact_Info_Company_Value,Home Contact Info Company Value,Vizzle 炫幻视界,Vizzle 炫幻視界,Vizzle Limited
-Home_Contact_Info_Company_HK,Home Contact Info Company HK,香港：炫幻视界有限公司,香港：炫幻視界有限公司,Hong Kong: Vizzle Limited
-Home_Contact_Info_Company_HZ,Home Contact Info Company HZ,杭州：炫幻视界（杭州）科技有限公司,杭州：炫幻視界（杭州）科技有限公司,"Hangzhou: Vizzle (Hangzhou) Technology Co., Ltd."
-Home_Contact_Info_Phone_Label,Home Contact Info Phone Label,联系电话,聯繫電話,Contact Phone
-Home_Contact_Info_Phone_Value,Home Contact Info Phone Value,+852 9660 5893,+852 9660 5893,+852 9660 5893
-Home_Contact_Info_Email_Label,Home Contact Info Email Label,电子邮箱,電子郵箱,Email Address
-Home_Contact_Info_Email_Value,Home Contact Info Email Value,info@im-vizzle.com,info@im-vizzle.com,info@im-vizzle.com
-Home_Contact_Form_Title,Home Contact Form Title,立即咨询,立即諮詢,Consult Now
-Home_Contact_Form_Field_Name,Home Contact Form Field Name,姓名,姓名,Name
-Home_Contact_Form_Placeholder_Name,Home Contact Form Placeholder Name,请输入您的姓名,請輸入您的姓名,Please enter your name
-Home_Contact_Form_Field_Company,Home Contact Form Field Company,公司名称,公司名稱,Company Name
-Home_Contact_Form_Placeholder_Company,Home Contact Form Placeholder Company,请输入您的公司名称,請輸入您的公司名稱,Please enter your company name
-Home_Contact_Form_Field_Phone,Home Contact Form Field Phone,联系电话,聯繫電話,Contact Phone
-Home_Contact_Form_Placeholder_Phone,Home Contact Form Placeholder Phone,请输入您的联系电话,請輸入您的聯繫電話,Please enter your contact phone
-Home_Contact_Form_Field_Email,Home Contact Form Field Email,电子邮箱,電子郵箱,Email Address
-Home_Contact_Form_Placeholder_Email,Home Contact Form Placeholder Email,请输入您的电子邮箱,請輸入您的電子郵箱,Please enter your email address
-Home_Contact_Form_Field_Message,Home Contact Form Field Message,咨询需求,諮詢需求,Consultation Needs
-Home_Contact_Form_Placeholder_Message,Home Contact Form Placeholder Message,请简要描述您的需求,請簡要描述您的需求,Please briefly describe your needs
-Home_Contact_Form_Button_Submit,Home Contact Form Button Submit,提交咨询,提交諮詢,Submit Consultation
-Home_BottomCTA_Title,Home BottomCTA Title,开始您的轻量化3D管理之旅,開始您的輕量化3D管理之旅,Start your lightweight 3D management journey
-Home_BottomCTA_Desc,Home BottomCTA Desc,立即预约产品演示，了解Vizzle如何帮助您的企业降低3D管理成本，提升管理效率。,立即預約產品演示，瞭解Vizzle如何幫助您的企業降低3D管理成本，提升管理效率。,Request a product demo now to learn how Vizzle can help your enterprise reduce 3D management costs and improve management efficiency.
-Home_BottomCTA_Button_Demo,Home BottomCTA Button Demo,预约产品演示,預約產品演示,Request Product Demo
-Home_BottomCTA_Button_Trial,Home BottomCTA Button Trial,免费试用14天,免費試用14天,Free 14-day Trial
-Footer_Column_Product,Footer Column Product,产品,產品,Product
-Footer_Column_Resources,Footer Column Resources,资源,資源,Resources
-Footer_Column_Company,Footer Column Company,公司,公司,Company
-Footer_Link_Help,Footer Link Help,帮助中心,幫助中心,Help Center
-Footer_Link_Docs,Footer Link Docs,文档中心,文檔中心,Documentation Center
-Footer_Link_Blog,Footer Link Blog,技术博客,技術博客,Technical Blog
-Footer_Link_FAQ,Footer Link FAQ,常见问题,常見問題,FAQ
-Footer_Link_Partners,Footer Link Partners,合作伙伴,合作夥伴,Partners
-Footer_Link_About,Footer Link About,关于我们,關於我們,About Us
-Footer_Link_Jobs,Footer Link Jobs,招贤纳士,招賢納士,Careers
-Footer_Link_Privacy,Footer Link Privacy,隐私政策,隱私政策,Privacy Policy
-Footer_Link_Terms,Footer Link Terms,服务条款,服務條款,Service Terms
-Footer_Copyright,Footer Copyright,© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利,© 2026 Vizzle Limited 炫幻視界有限公司 保留所有權利,© 2026 Vizzle Limited. All rights reserved.
-Global_Form_Error_Required,Global Form Error Required,请填写必填字段,請填寫必填字段,Please fill in the required fields
-Global_Form_Success_Message,Global Form Success Message,提交成功，我们将尽快与您联系,提交成功，我們將盡快與您聯繫,"Submission successful, we will contact you as soon as possible"
-Navigation_Menu_Awards,Navigation Menu Awards,奖项,獎項,Awards
-Home_Awards_Title,Home Awards Title,奖项与政府支持,獎項與政府支持,Awards & Government Support
-Home_Awards_Subtitle,Home Awards Subtitle,受到权威机构认可,受到權威機構認可,Recognized by Authoritative Organizations
-Home_Awards_Description,Home Awards Description,Vizzle凭借创新的轻量化AI 3D数码城市管理平台，获得多项行业大奖和政府支持，彰显技术实力与品牌公信力。,Vizzle憑藉創新的輕量化AI 3D數碼城市管理平台，獲得多項行業大獎和政府支持，彰顯技術實力與品牌公信力。,"With its innovative lightweight AI 3D digital city management platform, Vizzle has received multiple industry awards and government support, demonstrating its technical strength and brand credibility."
-Home_Awards_List1_Title,Home Awards List1 Title,政府与大学支持,政府與大學支持,Government & University Support
-Home_Awards_List1_Item1,Home Awards List1 Item1,香港理工大学天使创投支持,香港理工大學天使創投支持,"Hong Kong Polytechnic University, PolyVentures Angel Investment"
-Home_Awards_List1_Item2,Home Awards List1 Item2,香港创新科技署大学科技初创企业资助计划,香港創新科技署大學科技初創企業資助計劃,"The Innovation and Technology Commission, The Technology Start-up Support Scheme for Universities (“TSSSU”)"
-Home_Awards_List1_Item3,Home Awards List1 Item3,香港数码港培育计划支持,香港數碼港培育計劃支持,Cyberport Incubation Program
-Home_Awards_List1_Item4,Home Awards List1 Item4,香港城市大学Tech 300基金支持,香港城市大學Tech 300基金支持,"Hong Kong City University, Tech 300 Fund"
-Home_Awards_List1_Item5,Home Awards List1 Item5,杭州大运英才计划支持,杭州大運英才計劃支持,Hangzhou Entrepreneurship Talent Project for “Grand Canal” Plan
-Home_Awards_List2_Title,Home Awards List2 Title,行业奖项,行業獎項,Industry Awards
-Home_Awards_List2_Item1,Home Awards List2 Item1,2025年NEXX人工智能与创新奖,2025年NEXX人工智能與創新獎,NEXX AI and Innovation Awards 2025
-Home_Awards_List2_Item2,Home Awards List2 Item2,第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍,第八屆中關村國際前沿科技大賽境外賽區領域賽10強隊伍,Beijing The 8th Zhongguancun International Advanced Technology Competition Web 3.0 Oversea Track - Top 10
-Home_Awards_List2_Item3,Home Awards List2 Item3,"香港资讯及通讯科技奖2024：数码娱乐奖""互动设计""金奖、""最佳人工智能""应用奖","香港資訊及通訊科技獎2024：數碼娛樂獎""互動設計""金獎、""最佳人工智能""應用獎","Hong Kong ICT Awards 2024: Digital Entertainment Award ""Interactive Design"" Gold Award, ""Best Artificial Intelligence"" Application Award"
-Home_Awards_List2_Item4,Home Awards List2 Item4,创客中国国际中小企业创新创业大赛10强队伍,創客中國國際中小企業創新創業大賽10強隊伍,Maker in China SME Innovation and Entrepreneurship Global Contest - Top 10
-Home_Awards_List2_Item5,Home Awards List2 Item5,杭州动力创未国际科技项目新创赛三等奖,杭州動力創未國際科技項目新創賽三等獎,Hangzhou Internatival Sci-Tech New Venture Competition 2024 - 3rd Prize
+﻿Key,Description,zh-CN,zh-TW,en-US,test
+Button_BookDemo,Button BookDemo,预约演示,預約演示,Request Demo,test
+Button_FreeTrial,Button FreeTrial,免费试用,免費試用,Free Trial,test
+Footer_Column_Company,Footer Column Company,公司,公司,Company,test
+Footer_Column_Product,Footer Column Product,产品,產品,Product,test
+Footer_Column_Resources,Footer Column Resources,资源,資源,Resources,test
+Footer_Copyright,Footer Copyright,© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利,© 2026 Vizzle Limited 炫幻視界有限公司 保留所有權利,© 2026 Vizzle Limited. All rights reserved.,test
+Footer_Link_About,Footer Link About,关于我们,關於我們,About Us,test
+Footer_Link_Blog,Footer Link Blog,技术博客,技術博客,Technical Blog,test
+Footer_Link_Docs,Footer Link Docs,文档中心,文檔中心,Documentation Center,test
+Footer_Link_FAQ,Footer Link FAQ,常见问题,常見問題,FAQ,test
+Footer_Link_Help,Footer Link Help,帮助中心,幫助中心,Help Center,test
+Footer_Link_Jobs,Footer Link Jobs,招贤纳士,招賢納士,Careers,test
+Footer_Link_Partners,Footer Link Partners,合作伙伴,合作夥伴,Partners,test
+Footer_Link_Privacy,Footer Link Privacy,隐私政策,隱私政策,Privacy Policy,test
+Footer_Link_Terms,Footer Link Terms,服务条款,服務條款,Service Terms,test
+Global_Form_Error_Required,Global Form Error Required,请填写必填字段,請填寫必填字段,Please fill in the required fields,test
+Global_Form_Success_Message,Global Form Success Message,提交成功，我们将尽快与您联系,提交成功，我們將盡快與您聯繫,"Submission successful, we will contact you as soon as possible",test
+Home_Advantage_Description,Home Advantage Description,我们专注于轻量化、简单化、低成本的3D管理解决方案，填补市场空白。,我們專注於輕量化、簡單化、低成本的3D管理解決方案，填補市場空白。,"We focus on lightweight, simplified, and low-cost 3D management solutions to fill market gaps.",test
+Home_Advantage_Diff_Item1_Desc,Home Advantage Diff Item1 Desc,"聚焦""希望完成简单任务、快速看到效果""的用户，现有工具过于复杂，小问题无需专家操作。","聚焦""希望完成簡單任務、快速看到效果""的用戶，現有工具過於複雜，小問題無需專家操作。","Focus on users who ""want to complete simple tasks and see results quickly"". Existing tools are too complex, small problems do not require expert operation.",test
+Home_Advantage_Diff_Item1_Title,Home Advantage Diff Item1 Title,针对层级不同,針對層級不同,Different target levels,test
+Home_Advantage_Diff_Item2_Desc,Home Advantage Diff Item2 Desc,极致轻量和简单化，以最低的成本、最简单的操作，快速见效，不取代专业软件，填补市场空白。,極致輕量和簡單化，以最低的成本、最簡單的操作，快速見效，不取代專業軟體，填補市場空白。,"Extreme lightweight and simplification, with the lowest cost, simplest operation, quick results, not replacing professional software, filling market gaps.",test
+Home_Advantage_Diff_Item2_Title,Home Advantage Diff Item2 Title,定位独特,定位獨特,Unique positioning,test
+Home_Advantage_Diff_Item3_Desc,Home Advantage Diff Item3 Desc,采用轻量级硬件/云端模式，大幅降低用户营运成本，区别于竞品的重量级硬件投入。,採用輕量級硬體/雲端模式，大幅降低用戶營運成本，區別於競品的重量級硬體投入。,"Adopt lightweight hardware/cloud mode, significantly reducing user operating costs, different from competitors' heavy hardware investment.",test
+Home_Advantage_Diff_Item3_Title,Home Advantage Diff Item3 Title,营运成本低,營運成本低,Low operating costs,test
+Home_Advantage_Diff_Title,Home Advantage Diff Title,核心差异化,核心差異化,Core Differentiation,test
+Home_Advantage_Subtitle,Home Advantage Subtitle,产品差异化与技术实力,產品差異化與技術實力,Product differentiation and technical strength,test
+Home_Advantage_Tech_Item1_Desc,Home Advantage Tech Item1 Desc,透过优化让次级设备成为基建，降低成本及对第三方供应商的依赖，实现算力自给自足。,透過優化讓次級設備成為基建，降低成本及對第三方供應商的依賴，實現算力自給自足。,"Through optimization, make secondary equipment become infrastructure, reduce costs and dependence on third-party suppliers, achieve self-sufficiency in computing power.",test
+Home_Advantage_Tech_Item1_Stats,Home Advantage Tech Item1 Stats,运算成本降低 90%,運算成本降低 90%,Computing cost reduced by 90%,test
+Home_Advantage_Tech_Item1_Title,Home Advantage Tech Item1 Title,算力基建层优势,算力基建層優勢,Computing infrastructure layer advantages,test
+Home_Advantage_Tech_Item2_Desc,Home Advantage Tech Item2 Desc,从基建层开始自行搭建，形成自给自足的基建与应用层，让应用成本更低、更可控。,從基建層開始自行搭建，形成自給自足的基建與應用層，讓應用成本更低、更可控。,"Build from the infrastructure layer, forming self-sufficient infrastructure and application layers, making application costs lower and more controllable.",test
+Home_Advantage_Tech_Item2_Stats,Home Advantage Tech Item2 Stats,技术自主可控率 85%,技術自主可控率 85%,Technology self-control rate 85%,test
+Home_Advantage_Tech_Item2_Title,Home Advantage Tech Item2 Title,全链路自主搭建,全鏈路自主搭建,Full-link independent construction,test
+Home_Advantage_Tech_Title,Home Advantage Tech Title,技术实力,技術實力,Technical Strength,test
+Home_Advantage_Title,Home Advantage Title,核心优势,核心優勢,Core Advantages,test
+Home_Awards_Description,Home Awards Description,Vizzle凭借创新的轻量化AI 3D数码城市管理平台，获得多项行业大奖和政府支持，彰显技术实力与品牌公信力。,Vizzle憑藉創新的輕量化AI 3D數碼城市管理平台，獲得多項行業大獎和政府支持，彰顯技術實力與品牌公信力。,"With its innovative lightweight AI 3D digital city management platform, Vizzle has received multiple industry awards and government support, demonstrating its technical strength and brand credibility.",test
+Home_Awards_List1_Item1,Home Awards List1 Item1,香港理工大学天使创投支持,香港理工大學天使創投支持,"Hong Kong Polytechnic University, PolyVentures Angel Investment",test
+Home_Awards_List1_Item2,Home Awards List1 Item2,香港创新科技署大学科技初创企业资助计划,香港創新科技署大學科技初創企業資助計劃,"The Innovation and Technology Commission, The Technology Start-up Support Scheme for Universities (“TSSSU”)",test
+Home_Awards_List1_Item3,Home Awards List1 Item3,香港数码港培育计划支持,香港數碼港培育計劃支持,Cyberport Incubation Program,test
+Home_Awards_List1_Item4,Home Awards List1 Item4,香港城市大学Tech 300基金支持,香港城市大學Tech 300基金支持,"Hong Kong City University, Tech 300 Fund",test
+Home_Awards_List1_Item5,Home Awards List1 Item5,杭州大运英才计划支持,杭州大運英才計劃支持,Hangzhou Entrepreneurship Talent Project for “Grand Canal” Plan,test
+Home_Awards_List1_Title,Home Awards List1 Title,政府与大学支持,政府與大學支持,Government & University Support,test
+Home_Awards_List2_Item1,Home Awards List2 Item1,2025年NEXX人工智能与创新奖,2025年NEXX人工智能與創新獎,NEXX AI and Innovation Awards 2025,test
+Home_Awards_List2_Item2,Home Awards List2 Item2,第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍,第八屆中關村國際前沿科技大賽境外賽區領域賽10強隊伍,Beijing The 8th Zhongguancun International Advanced Technology Competition Web 3.0 Oversea Track - Top 10,test
+Home_Awards_List2_Item3,Home Awards List2 Item3,"香港资讯及通讯科技奖2024：数码娱乐奖""互动设计""金奖、""最佳人工智能""应用奖","香港資訊及通訊科技獎2024：數碼娛樂獎""互動設計""金獎、""最佳人工智能""應用獎","Hong Kong ICT Awards 2024: Digital Entertainment Award ""Interactive Design"" Gold Award, ""Best Artificial Intelligence"" Application Award",test
+Home_Awards_List2_Item4,Home Awards List2 Item4,创客中国国际中小企业创新创业大赛10强队伍,創客中國國際中小企業創新創業大賽10強隊伍,Maker in China SME Innovation and Entrepreneurship Global Contest - Top 10,test
+Home_Awards_List2_Item5,Home Awards List2 Item5,杭州动力创未国际科技项目新创赛三等奖,杭州動力創未國際科技項目新創賽三等獎,Hangzhou Internatival Sci-Tech New Venture Competition 2024 - 3rd Prize,test
+Home_Awards_List2_Title,Home Awards List2 Title,行业奖项,行業獎項,Industry Awards,test
+Home_Awards_Subtitle,Home Awards Subtitle,受到权威机构认可,受到權威機構認可,Recognized by Authoritative Organizations,test
+Home_Awards_Title,Home Awards Title,奖项与政府支持,獎項與政府支持,Awards & Government Support,test
+Home_BottomCTA_Button_Demo,Home BottomCTA Button Demo,预约产品演示,預約產品演示,Request Product Demo,test
+Home_BottomCTA_Button_Trial,Home BottomCTA Button Trial,免费试用14天,免費試用14天,Free 14-day Trial,test
+Home_BottomCTA_Desc,Home BottomCTA Desc,立即预约产品演示，了解Vizzle如何帮助您的企业降低3D管理成本，提升管理效率。,立即預約產品演示，瞭解Vizzle如何幫助您的企業降低3D管理成本，提升管理效率。,Request a product demo now to learn how Vizzle can help your enterprise reduce 3D management costs and improve management efficiency.,test
+Home_BottomCTA_Title,Home BottomCTA Title,开始您的轻量化3D管理之旅,開始您的輕量化3D管理之旅,Start your lightweight 3D management journey,test
+Home_Cases_Button_ViewFull,Home Cases Button ViewFull,查看完整案例,查看完整案例,View Complete Case,test
+Home_Cases_Description,Home Cases Description,用实力证明价值，我们的产品已获得行业头部客户认可，助力客户实现3D管理效率翻倍。,用實力證明價值，我們的產品已獲得行業頭部客戶認可，助力客戶實現3D管理效率翻倍。,"Proving value with strength, our products have been recognized by industry-leading clients, helping clients double 3D management efficiency.",test
+Home_Cases_Featured_Badge,Home Cases Featured Badge,标杆案例,標桿案例,Benchmark Case,test
+Home_Cases_Featured_Desc,Home Cases Featured Desc,为香港国际机场提供3D扫描AI智能管理服务，实现机场场景1:1还原、多数据整合分析，沟通效率提升10倍。,為香港國際機場提供3D掃描AI智能管理服務，實現機場場景1:1還原、多數據整合分析，溝通效率提升10倍。,"Provided 3D scanning AI intelligent management services for Hong Kong International Airport, achieving 1:1还原 of airport scenes, multi-data integration analysis, communication efficiency increased by 10 times.",test
+Home_Cases_Featured_Label_Cost,Home Cases Featured Label Cost,服务费用,服務費用,Service Fee,test
+Home_Cases_Featured_Label_Maintenance,Home Cases Featured Label Maintenance,年度维护,年度維護,Annual Maintenance,test
+Home_Cases_Featured_Name,Home Cases Featured Name,香港国际机场,香港國際機場,Hong Kong International Airport,test
+Home_Cases_Featured_Tag1,Home Cases Featured Tag1,效率提升10倍,效率提升10倍,Efficiency increased by 10x,test
+Home_Cases_Featured_Tag2,Home Cases Featured Tag2,无需专业技能,無需專業技能,No professional skills required,test
+Home_Cases_Featured_Tag3,Home Cases Featured Tag3,成本降低60%,成本降低60%,Cost reduced by 60%,test
+Home_Cases_More1_Desc,Home Cases More1 Desc,为城市管理部门提供轻量化3D管理方案，实现城市设施的智能监控与管理。,為城市管理部門提供輕量化3D管理方案，實現城市設施的智能監控與管理。,"Provide lightweight 3D management solutions for urban management departments, realizing intelligent monitoring and management of urban facilities.",test
+Home_Cases_More1_Title,Home Cases More1 Title,数码城市管理,數碼城市管理,Digital City Management,test
+Home_Cases_More2_Desc,Home Cases More2 Desc,为大型物业提供3D可视化管理，提升物业管理效率，降低运营成本。,為大型物業提供3D可視化管理，提升物業管理效率，降低運營成本。,"Provide 3D visualization management for large properties, improving property management efficiency and reducing operating costs.",test
+Home_Cases_More2_Title,Home Cases More2 Title,物业管理,物業管理,Property Management,test
+Home_Cases_Subtitle,Home Cases Subtitle,顶级客户的成功实践,頂級客戶的成功實踐,Successful practices of top clients,test
+Home_Cases_Title,Home Cases Title,客户案例,客戶案例,Case Studies,test
+Home_Compare_Header_Competitor,Home Compare Header Competitor,同类竞品,同類競品,Competitors,test
+Home_Compare_Header_Dimension,Home Compare Header Dimension,对比维度,對比維度,Comparison Dimension,test
+Home_Compare_Header_Vizzle,Home Compare Header Vizzle,Vizzle,Vizzle,Vizzle,test
+Home_Compare_Row1_Competitor,Home Compare Row1 Competitor,高（重量級硬件/云端）,高（重量級硬體/雲端）,High (heavyweight hardware/cloud),test
+Home_Compare_Row1_Label,Home Compare Row1 Label,营运成本,營運成本,Operating Cost,test
+Home_Compare_Row1_Vizzle,Home Compare Row1 Vizzle,低（轻量级硬件/云端）,低（輕量級硬體/雲端）,Low (lightweight hardware/cloud),test
+Home_Compare_Row2_Competitor,Home Compare Row2 Competitor,低（指定軟硬體，限制較多）,低（指定軟硬體，限制較多）,"Low (specified hardware/software, many limitations)",test
+Home_Compare_Row2_Label,Home Compare Row2 Label,扩展度,擴展度,Expandability,test
+Home_Compare_Row2_Vizzle,Home Compare Row2 Vizzle,高（线上SaaS，无指定软硬件）,高（線上SaaS，無指定軟硬體）,"High (online SaaS, no specified hardware/software)",test
+Home_Compare_Row3_Competitor,Home Compare Row3 Competitor,专业化、复杂化、功能全面,專業化、複雜化、功能全面,"Professional, complex, comprehensive functions",test
+Home_Compare_Row3_Label,Home Compare Row3 Label,核心定位,核心定位,Core Positioning,test
+Home_Compare_Row3_Vizzle,Home Compare Row3 Vizzle,轻量化、简单化、快速见效,輕量化、簡單化、快速見效,"Lightweight, simplified, quick results",test
+Home_Compare_Row4_Competitor,Home Compare Row4 Competitor,高（需专业人员操作）,高（需專業人員操作）,High (requires professional personnel),test
+Home_Compare_Row4_Label,Home Compare Row4 Label,操作门槛,操作門檻,Operation Threshold,test
+Home_Compare_Row4_Vizzle,Home Compare Row4 Vizzle,低（无需专业知识）,低（無需專業知識）,Low (no professional knowledge required),test
+Home_Compare_Title,Home Compare Title,竞品对比,競品對比,Competitor Comparison,test
+Home_Contact_Description,Home Contact Description,立即咨询，我们将为您提供专业的3D管理服务，助力企业降本增效。,立即諮詢，我們將為您提供專業的3D管理服務，助力企業降本增效。,"Consult now, we will provide you with professional 3D management services to help your enterprise reduce costs and increase efficiency.",test
+Home_Contact_Form_Button_Submit,Home Contact Form Button Submit,提交咨询,提交諮詢,Submit Consultation,test
+Home_Contact_Form_Field_Company,Home Contact Form Field Company,公司名称,公司名稱,Company Name,test
+Home_Contact_Form_Field_Email,Home Contact Form Field Email,电子邮箱,電子郵箱,Email Address,test
+Home_Contact_Form_Field_Message,Home Contact Form Field Message,咨询需求,諮詢需求,Consultation Needs,test
+Home_Contact_Form_Field_Name,Home Contact Form Field Name,姓名,姓名,Name,test
+Home_Contact_Form_Field_Phone,Home Contact Form Field Phone,联系电话,聯繫電話,Contact Phone,test
+Home_Contact_Form_Placeholder_Company,Home Contact Form Placeholder Company,请输入您的公司名称,請輸入您的公司名稱,Please enter your company name,test
+Home_Contact_Form_Placeholder_Email,Home Contact Form Placeholder Email,请输入您的电子邮箱,請輸入您的電子郵箱,Please enter your email address,test
+Home_Contact_Form_Placeholder_Message,Home Contact Form Placeholder Message,请简要描述您的需求,請簡要描述您的需求,Please briefly describe your needs,test
+Home_Contact_Form_Placeholder_Name,Home Contact Form Placeholder Name,请输入您的姓名,請輸入您的姓名,Please enter your name,test
+Home_Contact_Form_Placeholder_Phone,Home Contact Form Placeholder Phone,请输入您的联系电话,請輸入您的聯繫電話,Please enter your contact phone,test
+Home_Contact_Form_Title,Home Contact Form Title,立即咨询,立即諮詢,Consult Now,test
+Home_Contact_Info_Company_HK,Home Contact Info Company HK,香港：炫幻视界有限公司,香港：炫幻視界有限公司,Hong Kong: Vizzle Limited,test
+Home_Contact_Info_Company_HZ,Home Contact Info Company HZ,杭州：炫幻视界（杭州）科技有限公司,杭州：炫幻視界（杭州）科技有限公司,"Hangzhou: Vizzle (Hangzhou) Technology Co., Ltd.",test
+Home_Contact_Info_Company_Label,Home Contact Info Company Label,公司名称,公司名稱,Company Name,test
+Home_Contact_Info_Company_Value,Home Contact Info Company Value,Vizzle 炫幻视界,Vizzle 炫幻視界,Vizzle Limited,test
+Home_Contact_Info_Email_Label,Home Contact Info Email Label,电子邮箱,電子郵箱,Email Address,test
+Home_Contact_Info_Email_Value,Home Contact Info Email Value,info@im-vizzle.com,info@im-vizzle.com,info@im-vizzle.com,test
+Home_Contact_Info_Phone_Label,Home Contact Info Phone Label,联系电话,聯繫電話,Contact Phone,test
+Home_Contact_Info_Phone_Value,Home Contact Info Phone Value,+852 9660 5893,+852 9660 5893,+852 9660 5893,test
+Home_Contact_Subtitle,Home Contact Subtitle,获取专属解决方案,獲取專屬解決方案,Get Exclusive Solutions,test
+Home_Contact_Title,Home Contact Title,联系我们,聯繫我們,Contact Us,test
+Home_Features_Description,Home Features Description,我们提供全面的3D管理功能，满足不同行业、不同规模客户的多样化需求。,我們提供全面的3D管理功能，滿足不同行業、不同規模客戶的多樣化需求。,We provide comprehensive 3D management functions to meet the diverse needs of customers in different industries and scales.,test
+Home_Features_Item1_Desc,Home Features Item1 Desc,智能分配渲染、AI推理与互动任务到单一次级GPU单元，无需多张显卡暴力处理，降低硬件成本。,智能分配渲染、AI推理與互動任務到單一次級GPU單元，無需多張顯卡暴力處理，降低硬體成本。,"Intelligently distributes rendering, AI reasoning, and interactive tasks to a single secondary GPU unit, eliminating the need for multiple graphics cards for brute-force processing, reducing hardware costs.",test
+Home_Features_Item1_Title,Home Features Item1 Title,GPU智能负载分配,GPU智能負載分配,GPU intelligent load distribution,test
+Home_Features_Item2_Desc,Home Features Item2 Desc,动作捕捉、抠像、镜头控制与3D场景渲染同帧对齐，无延迟即时交互，提升操作体验。,動作捕捉、摳像、鏡頭控制與3D場景渲染同幀對齊，無延遲即時交互，提升操作體驗。,"Motion capture, keying, camera control, and 3D scene rendering aligned in the same frame, no latency real-time interaction, enhancing operating experience.",test
+Home_Features_Item2_Title,Home Features Item2 Title,实时AI+3D融合处理,實時AI+3D融合處理,Real-time AI+3D fusion processing,test
+Home_Features_Item3_Desc,Home Features Item3 Desc,透过分层加载、压缩与快取，实现超大模型的即时浏览，适配各类低端设备。,透過分層加載、壓縮與快取，實現超大模型的即時瀏覽，適配各類低端設備。,"Through layered loading, compression, and caching,实现 instant browsing of ultra-large models, adapting to various low-end devices.",test
+Home_Features_Item3_Title,Home Features Item3 Title,超大3D模型轻量化,超大3D模型輕量化,Ultra-large 3D model lightweighting,test
+Home_Features_Item4_Desc,Home Features Item4 Desc,可导入风火水电、人流、物联网、图形设计等数据，进行全方位AI整合及分析，满足多场景需求。,可導入風火水電、人流、物聯網、圖形設計等數據，進行全方位AI整合及分析，滿足多場景需求。,"Can import data such as utilities, crowd flow, IoT, graphic design, etc., for comprehensive AI integration and analysis, meeting multi-scenario needs.",test
+Home_Features_Item4_Title,Home Features Item4 Title,多数据导入整合,多數據導入整合,Multi-data import integration,test
+Home_Features_Stats_Desc,Home Features Stats Desc,7x24小时稳定运行，满足企业级应用需求,7x24小時穩定運行，滿足企業級應用需求,"7x24 hours stable operation, meeting enterprise-level application needs",test
+Home_Features_Stats_Title,Home Features Stats Title,99.9% 系统稳定性,99.9% 系統穩定性,99.9% system stability,test
+Home_Features_Subtitle,Home Features Subtitle,全面的3D管理功能,全面的3D管理功能,Comprehensive 3D management functions,test
+Home_Features_Title,Home Features Title,产品功能,產品功能,Product Features,test
+Home_Hero_Button_Consult,Home Hero Button Consult,立即咨询解决方案,立即諮詢解決方案,Consult Solutions Now,test
+Home_Hero_Button_Demo,Home Hero Button Demo,预约产品演示,預約產品演示,Request Product Demo,test
+Home_Hero_ClientCount,Home Hero ClientCount,50+ 企业客户的选择,50+ 企業客戶的選擇,Trusted by 50+ enterprise clients,test
+Home_Hero_MainTitle,Home Hero MainTitle,让复杂的3D管理像浏览网页一样简单,讓複雜的3D管理像瀏覽網頁一樣簡單,Make complex 3D management as simple as browsing the web,test
+Home_Hero_Subtitle,Home Hero Subtitle,Vizzle轻量化AI 3D数码城市管理平台，跨装置秒级加载，AI智能分析，无需专业技能，大幅降低3D管理成本。,Vizzle輕量化AI 3D數碼城市管理平台，跨裝置秒級加載，AI智能分析，無需專業技能，大幅降低3D管理成本。,"Vizzle lightweight AI 3D digital city management platform, cross-device second-level loading, AI intelligent analysis, no professional skills required, significantly reducing 3D management costs.",test
+Home_Hero_Tagline,Home Hero Tagline,轻量化AI 3D解决方案,輕量化AI 3D解決方案,Lightweight AI 3D Solution,test
+Home_Pricing_Button_Contact,Home Pricing Button Contact,联系我们,聯繫我們,Contact Us,test
+Home_Pricing_Button_GetQuote,Home Pricing Button GetQuote,获取专属报价,獲取專屬報價,Get Exclusive Quote,test
+Home_Pricing_Button_Select,Home Pricing Button Select,选择套餐,選擇套餐,Select Plan,test
+Home_Pricing_Description,Home Pricing Description,我们采用灵活的收费模式，满足不同规模客户的需求，降低前期投入，实现双赢。,我們採用靈活的收費模式，滿足不同規模客戶的需求，降低前期投入，實現雙贏。,"We adopt a flexible pricing model to meet the needs of customers of different scales, reduce initial investment, and achieve win-win results.",test
+Home_Pricing_Model_Note,Home Pricing Model Note,核心收费模式：服务订制 + 年度维护 + 用户数收费，三者结合，灵活适配不同客户需求。,核心收費模式：服務訂製 + 年度維護 + 用戶數收費，三者結合，靈活適配不同客戶需求。,"Core pricing model: service customization + annual maintenance + user count pricing, combined to flexibly adapt to different customer needs.",test
+Home_Pricing_Plan1_Feature1,Home Pricing Plan1 Feature1,5个用户账号,5個用戶賬號,5 user accounts,test
+Home_Pricing_Plan1_Feature2,Home Pricing Plan1 Feature2,基础3D模型管理,基礎3D模型管理,Basic 3D model management,test
+Home_Pricing_Plan1_Feature3,Home Pricing Plan1 Feature3,基础AI分析功能,基礎AI分析功能,Basic AI analysis functions,test
+Home_Pricing_Plan1_Feature4,Home Pricing Plan1 Feature4,定制化功能,定制化功能,Customization features,test
+Home_Pricing_Plan1_Feature5,Home Pricing Plan1 Feature5,专属客服,專屬客服,Dedicated customer service,test
+Home_Pricing_Plan1_Period,Home Pricing Plan1 Period,/年,/年,/year,test
+Home_Pricing_Plan1_Price,Home Pricing Plan1 Price,"¥19,800","¥19,800","¥19,800",test
+Home_Pricing_Plan1_Subtitle,Home Pricing Plan1 Subtitle,适合小型企业使用,適合小型企業使用,Suitable for small businesses,test
+Home_Pricing_Plan1_Title,Home Pricing Plan1 Title,基础版,基礎版,Basic Version,test
+Home_Pricing_Plan2_Feature1,Home Pricing Plan2 Feature1,20个用户账号,20個用戶賬號,20 user accounts,test
+Home_Pricing_Plan2_Feature2,Home Pricing Plan2 Feature2,高级3D模型管理,高級3D模型管理,Advanced 3D model management,test
+Home_Pricing_Plan2_Feature3,Home Pricing Plan2 Feature3,高级AI分析功能,高級AI分析功能,Advanced AI analysis functions,test
+Home_Pricing_Plan2_Feature4,Home Pricing Plan2 Feature4,基础定制化功能,基礎定制化功能,Basic customization features,test
+Home_Pricing_Plan2_Feature5,Home Pricing Plan2 Feature5,专属客服,專屬客服,Dedicated customer service,test
+Home_Pricing_Plan2_Period,Home Pricing Plan2 Period,/年,/年,/year,test
+Home_Pricing_Plan2_Price,Home Pricing Plan2 Price,"¥79,800","¥79,800","¥79,800",test
+Home_Pricing_Plan2_Subtitle,Home Pricing Plan2 Subtitle,适合中大型企业使用,適合中大型企業使用,Suitable for medium to large enterprises,test
+Home_Pricing_Plan2_Title,Home Pricing Plan2 Title,企业版,企業版,Enterprise Version,test
+Home_Pricing_Plan3_Feature1,Home Pricing Plan3 Feature1,无限用户账号,無限用戶賬號,Unlimited user accounts,test
+Home_Pricing_Plan3_Feature2,Home Pricing Plan3 Feature2,全部功能,全部功能,All functions,test
+Home_Pricing_Plan3_Feature3,Home Pricing Plan3 Feature3,深度定制化,深度定制化,Deep customization,test
+Home_Pricing_Plan3_Feature4,Home Pricing Plan3 Feature4,7×24小时技术支持,7×24小時技術支持,7×24 hour technical support,test
+Home_Pricing_Plan3_Feature5,Home Pricing Plan3 Feature5,私有化部署,私有化部署,Private deployment,test
+Home_Pricing_Plan3_Price,Home Pricing Plan3 Price,定制报价,定制報價,Custom Quote,test
+Home_Pricing_Plan3_Subtitle,Home Pricing Plan3 Subtitle,适合大型企业/政府机构,適合大型企業/政府機構,Suitable for large enterprises/government agencies,test
+Home_Pricing_Plan3_Title,Home Pricing Plan3 Title,定制版,定制版,Custom Version,test
+Home_Pricing_Subtitle,Home Pricing Subtitle,灵活的收费模式,靈活的收費模式,Flexible pricing model,test
+Home_Pricing_Title,Home Pricing Title,营收模式,營收模式,Revenue Model,test
+Home_Solutions_Description,Home Solutions Description,"当前数码城市软件普遍专业且昂贵，需高性能电脑和专业软件，中小客户难以负担。Vizzle实现""降本、提效、简化""三重突破。","當前數碼城市軟體普遍專業且昂貴，需高性能電腦和專業軟體，中小客戶難以負擔。Vizzle實現""降本、提效、簡化""三重突破。","Current digital city software is generally professional and expensive, requiring high-performance computers and professional software, which is difficult for small and medium-sized clients to afford. Vizzle achieves three breakthroughs: ""cost reduction, efficiency improvement, and simplification"".",test
+Home_Solutions_Item1_Desc,Home Solutions Item1 Desc,极速加载巨型3D扫描模型，无需高阶显卡，8年前的旧设备也能秒速加载，支持多种模型格式，大幅降低硬件投入。,極速加載巨型3D掃描模型，無需高階顯卡，8年前的舊設備也能秒速加載，支持多種模型格式，大幅降低硬體投入。,"Ultra-fast loading of giant 3D scan models, no need for high-end graphics cards, 8-year-old devices can also load in seconds, supporting multiple model formats, significantly reducing hardware investment.",test
+Home_Solutions_Item1_Title,Home Solutions Item1 Title,低端设备，网页即开即用,低端設備，網頁即開即用,"Low-end devices, web-based instant access",test
+Home_Solutions_Item2_Desc,Home Solutions Item2 Desc,AI自动分析3D场景、整合各类数据，替代人工筛选，无需大海捞针，大幅节省人力成本与时间成本。,AI自動分析3D場景、整合各類數據，替代人工篩選，無需大海撈針，大幅節省人力成本與時間成本。,"AI automatically analyzes 3D scenes, integrates various data, replaces manual screening, eliminates the need for needle-in-a-haystack searches, greatly saving labor and time costs.",test
+Home_Solutions_Item2_Title,Home Solutions Item2 Title,AI分析，无需人工繁琐处理,AI分析，無需人工繁瑣處理,"AI analysis, no manual tedious processing",test
+Home_Solutions_Item3_Desc,Home Solutions Item3 Desc,支持简易测量、标记功能，无需安装专业软件，普通员工一人即可操作，沟通效率10倍化。,支持簡易測量、標記功能，無需安裝專業軟體，普通員工一人即可操作，溝通效率10倍化。,"Supports simple measurement and marking functions, no need to install professional software, ordinary employees can operate alone, communication efficiency increased by 10 times.",test
+Home_Solutions_Item3_Title,Home Solutions Item3 Title,操作简便，无需专业知识,操作簡便，無需專業知識,"Simple operation, no professional knowledge required",test
+Home_Solutions_Link_LearnMore,Home Solutions Link LearnMore,了解更多,瞭解更多,Learn more,test
+Home_Solutions_Subtitle,Home Solutions Subtitle,解决传统3D管理的核心痛点,解決傳統3D管理的核心痛點,Solve core pain points of traditional 3D management,test
+Home_Solutions_Title,Home Solutions Title,核心解决方案,核心解決方案,Core Solutions,test
+Home_Trust_Title,Home Trust Title,受到行业领先企业的信任,受到行業領先企業的信任,Trusted by industry-leading enterprises,test
+Language_Display_Name,Language Display Name,简,繁,EN,test
+Navigation_Menu_Advantages,Navigation Menu Advantages,核心优势,核心優勢,Advantages,test
+Navigation_Menu_Awards,Navigation Menu Awards,奖项,獎項,Awards,test
+Navigation_Menu_Cases,Navigation Menu Cases,客户案例,客戶案例,Case Studies,test
+Navigation_Menu_ContactUs,Navigation Menu ContactUs,联系我们,聯繫我們,Contact,test
+Navigation_Menu_Features,Navigation Menu Features,产品功能,產品功能,Features,test
+Navigation_Menu_Pricing,Navigation Menu Pricing,定价模式,定價模式,Pricing,test
+Navigation_Menu_Solutions,Navigation Menu Solutions,解决方案,解決方案,Solutions,test
+Page_Meta_Title,Page Meta Title,Vizzle - 轻量化AI 3D数码城市管理平台,Vizzle - 輕量化AI 3D數碼城市管理平台,Vizzle - Lightweight AI 3D Digital City Management Platform,test
