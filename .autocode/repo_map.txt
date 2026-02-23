@@ -21,3 +21,4 @@ assets/img/logo/octagon.jpg
 assets/img/logo/pinkpanther.jpg
 assets/img/logo/PolyU.svg
 assets/img/logo/techforgood.jpg
+assets/img/logo/Vizzle.png
