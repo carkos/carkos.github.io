@@ -1424,8 +1424,9 @@
         
         // Performance: Adjust renderer based on device
         const renderer = new THREE.WebGLRenderer({
-            antialias: !CONFIG.isMobile, // Disable antialias on mobile
-            alpha: true,
+            //antialias: !CONFIG.isMobile, // Disable antialias on mobile
+            antialias: true,
+			alpha: true,
             powerPreference: "high-performance",
             precision: CONFIG.isMobile ? "mediump" : "highp"
         });
