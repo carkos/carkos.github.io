@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vizzle Admin Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .login-overlay { position: fixed; inset: 0; background: #1a1a1a; z-index: 50; display: flex; align-items: center; justify-content: center; }
+        .glass-panel { background: white; border: 1px solid #e5e7eb; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .sidebar-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border-radius: 0.5rem; color: #4b5563; transition: all 0.2s; cursor: pointer; }
+        .sidebar-link:hover, .sidebar-link.active { background-color: #6b3d92; color: white; }
+        .btn-primary { background-color: #6b3d92; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; transition: background 0.2s; }
+        .btn-primary:hover { background-color: #5a327a; }
+        .btn-danger { background-color: #ef4444; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; transition: background 0.2s; }
+        .btn-danger:hover { background-color: #dc2626; }
+        /* Table Styles */
+        .trans-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        .trans-table th { text-align: left; padding: 0.75rem; background: #f9fafb; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; }
+        .trans-table td { padding: 0.75rem; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+        .trans-input { width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.25rem; font-size: 0.875rem; }
+        .trans-input:focus { outline: none; border-color: #6b3d92; ring: 2px solid #6b3d92; }
+    </style>
+</head>
+<body>
+
+    <!-- Login Overlay -->
+    <div id="login-screen" class="login-overlay">
+        <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
+            <div class="text-center mb-8">
+                <img src="assets/img/logo/Vizzle.png" alt="Vizzle" class="h-12 mx-auto mb-4">
+                <h1 class="text-2xl font-bold text-gray-800">Admin Portal</h1>
+                <p class="text-gray-500 text-sm">請登入以管理系統</p>
+            </div>
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Admin ID</label>
+                    <input type="text" id="admin-id" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] focus:border-transparent outline-none" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="admin-pass" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] focus:border-transparent outline-none" required>
+                </div>
+                <div id="login-error" class="text-red-500 text-sm text-center hidden">帳號或密碼錯誤</div>
+                <button type="submit" class="w-full bg-[#6b3d92] text-white py-2.5 rounded-lg font-medium hover:bg-[#5a327a] transition-colors">登入系統</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="flex h-screen overflow-hidden hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-gray-200 flex-shrink-0 flex flex-col">
+            <div class="p-6 flex items-center justify-center border-b border-gray-100">
+                <img src="assets/img/logo/Vizzle.png" alt="Vizzle" class="h-8">
+            </div>
+            <nav class="flex-1 p-4 space-y-2">
+                <div class="sidebar-link active" onclick="switchTab('knowledge')">
+                    <span class="iconify text-xl" data-icon="fluent:brain-circuit-24-filled"></span>
+                    <span>知識庫管理</span>
+                </div>
+                <div class="sidebar-link" onclick="switchTab('language')">
+                    <span class="iconify text-xl" data-icon="fluent:local-language-24-filled"></span>
+                    <span>多語言管理</span>
+                </div>
+            </nav>
+            <div class="p-4 border-t border-gray-200">
+                <button onclick="logout()" class="flex items-center gap-2 text-red-600 hover:text-red-800 transition-colors px-4 py-2 w-full">
+                    <span class="iconify" data-icon="fluent:sign-out-24-filled"></span>
+                    <span>登出</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 overflow-y-auto p-8">
+            
+            <!-- Knowledge Base Section -->
+            <div id="tab-knowledge" class="max-w-5xl mx-auto">
+                <header class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800">知識庫管理</h2>
+                    <p class="text-gray-500">上傳公司內部資料，讓 Vizzle 萬事通實時學習。</p>
+                </header>
+
+                <div class="glass-panel p-6 mb-8">
+                    <div id="upload-zone" class="border-2 border-dashed border-[#6b3d92]/30 rounded-xl p-12 text-center transition-all hover:border-[#6b3d92] hover:bg-[#6b3d92]/5 cursor-pointer bg-gray-50">
+                        <input type="file" id="file-input" multiple accept=".pdf,.xls,.xlsx,.html,.htm,.doc,.docx,.txt,.json,.csv" class="hidden">
+                        <span class="iconify text-5xl text-[#6b3d92]/50 mb-4 mx-auto block" data-icon="fa-solid:cloud-arrow-up"></span>
+                        <p class="text-gray-700 font-medium mb-2">拖放文件到這裡，或點擊選擇文件</p>
+                        <p class="text-sm text-gray-400">支援 PDF, Excel, Word, HTML, TXT 等格式</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-gray-700">已上傳文件列表</h3>
+                        <div class="flex items-center gap-4">
+                            <span id="knowledge-count" class="text-sm text-gray-500">0 個文件</span>
+                            <button onclick="clearKnowledgeBase()" class="text-sm text-red-500 hover:text-red-700 font-medium">清空所有</button>
+                        </div>
+                    </div>
+                    <div id="knowledge-list" class="space-y-2">
+                        <!-- File items will be injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Language Management Section -->
+            <div id="tab-language" class="max-w-6xl mx-auto hidden">
+                <header class="mb-8 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">多語言管理</h2>
+                        <p class="text-gray-500">直接編輯網站上的文字內容，修改後即時生效。</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="resetTranslations()" class="btn-danger text-sm">重置為預設</button>
+                        <button onclick="saveTranslations()" class="btn-primary flex items-center gap-2">
+                            <span class="iconify" data-icon="fa-solid:save"></span>
+                            保存修改
+                        </button>
+                    </div>
+                </header>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto max-h-[70vh]">
+                        <table class="trans-table">
+                            <thead>
+                                <tr>
+                                    <th class="w-1/4">Key (開發標識)</th>
+                                    <th class="w-1/4">繁體中文 (zh-HK)</th>
+                                    <th class="w-1/4">简体中文 (zh-CN)</th>
+                                    <th class="w-1/4">English (en-US)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trans-tbody">
+                                <!-- Rows injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Default Translations Data (Must match index.html initially) -->
+    <script>
+        // Copy of the default translations from index.html to serve as a base
+        const DEFAULT_TRANSLATIONS = {
+            "zh-HK": {
+                "Language_Display_Name": "繁",
+                "Page_Meta_Title": "炫幻視界 - 萬事通",
+                "AI_Welcome_Title": "您好，我是 Vizzle 萬事通",
+                "AI_Welcome_Subtitle": "有任何關於我們產品、服務或公司的問題，請隨時向我提問",
+                "AI_Input_Placeholder": "輸入您的問題...",
+                "AI_Send_Button": "發送",
+                "AI_Suggested_Questions_Title": "常見問題",
+                "AI_Suggested_Q1": "Vizzle 提供什麼服務？",
+                "AI_Suggested_Q2": "如何開始使用 Vizzle？",
+                "AI_Suggested_Q3": "你們的定價方案是什麼？",
+                "AI_Suggested_Q4": "如何聯繫你們？",
+                "AI_Typing": "正在思考中...",
+                "Home_Trust_Title": "受到行業領先企業的信任",
+                "Home_About_Title": "關於 Vizzle",
+                "Home_About_Subtitle": "輕量化AI 3D數碼城市管理平台",
+                "Home_About_Description": "Vizzle 專注於輕量化、簡單化、低成本的 3D 管理解決方案。我們讓複雜的 3D 管理像瀏覽網頁一樣簡單，實現跨裝置秒級加載、AI 智能分析，無需專業技能，大幅降低 3D 管理成本。",
+                "Home_About_Stat1": "50+",
+                "Home_About_Stat1_Label": "企業客戶",
+                "Home_About_Stat2": "10x",
+                "Home_About_Stat2_Label": "效率提升",
+                "Home_About_Stat3": "60%",
+                "Home_About_Stat3_Label": "成本降低",
+                "Home_Awards_Title": "獎項與政府支持",
+                "Home_Awards_Subtitle": "受到權威機構認可",
+                "Home_Awards_Gov_Title": "政府與大學支持",
+                "Home_Awards_Gov_1": "香港理工大學天使創投支持",
+                "Home_Awards_Gov_2": "香港創新科技署大學科技初創企業資助計劃",
+                "Home_Awards_Gov_3": "香港數碼港培育計劃支持",
+                "Home_Awards_Gov_4": "香港城市大學Tech 300基金支持",
+                "Home_Awards_Gov_5": "杭州大運英才計劃支持",
+                "Home_Awards_Industry_Title": "行業獎項",
+                "Home_Awards_Industry_1": "2025年NEXX人工智能與創新獎",
+                "Home_Awards_Industry_2": "第八屆中關村國際前沿科技大賽境外賽區領域賽10強隊伍",
+                "Home_Awards_Industry_3": "香港資訊及通訊科技獎2024：數碼娛樂獎\"互動設計\"金獎、\"最佳人工智能\"應用獎",
+                "Home_Awards_Industry_4": "創客中國國際中小企業創新創業大賽10強隊伍",
+                "Home_Awards_Industry_5": "杭州動力創未國際科技項目新創賽三等獎",
+                "Navigation_Menu_Home": "首頁",
+                "Navigation_Menu_About": "關於我們",
+                "Navigation_Menu_Awards": "獎項",
+                "Navigation_Menu_Contact": "聯繫我們",
+                "Footer_Copyright": "© 2026 Vizzle Limited 炫幻視界有限公司 保留所有權利",
+                "Contact_Info_Company": "Vizzle 炫幻視界",
+                "Contact_Info_Phone": "+852 9660 5893",
+                "Contact_Info_Email": "info@im-vizzle.com"
+            },
+            "zh-CN": {
+                "Language_Display_Name": "简",
+                "Page_Meta_Title": "炫幻视界 - 万事通",
+                "AI_Welcome_Title": "您好，我是 Vizzle 万事通",
+                "AI_Welcome_Subtitle": "有任何关于我们产品、服务或公司的问题，请随时向我提问",
+                "AI_Input_Placeholder": "输入您的问题...",
+                "AI_Send_Button": "发送",
+                "AI_Suggested_Questions_Title": "常见问题",
+                "AI_Suggested_Q1": "Vizzle 提供什么服务？",
+                "AI_Suggested_Q2": "如何开始使用 Vizzle？",
+                "AI_Suggested_Q3": "你们的定价方案是什么？",
+                "AI_Suggested_Q4": "如何联系你们？",
+                "AI_Typing": "正在思考中...",
+                "Home_Trust_Title": "受到行业领先企业的信任",
+                "Home_About_Title": "关于 Vizzle",
+                "Home_About_Subtitle": "轻量化AI 3D数码城市管理平台",
+                "Home_About_Description": "Vizzle 专注于轻量化、简单化、低成本的 3D 管理解决方案。我们让复杂的 3D 管理像浏览网页一样简单，实现跨装置秒级加载、AI 智能分析，无需专业技能，大幅降低 3D 管理成本。",
+                "Home_About_Stat1": "50+",
+                "Home_About_Stat1_Label": "企业客户",
+                "Home_About_Stat2": "10x",
+                "Home_About_Stat2_Label": "效率提升",
+                "Home_About_Stat3": "60%",
+                "Home_About_Stat3_Label": "成本降低",
+                "Home_Awards_Title": "奖项与政府支持",
+                "Home_Awards_Subtitle": "受到权威机构认可",
+                "Home_Awards_Gov_Title": "政府与大学支持",
+                "Home_Awards_Gov_1": "香港理工大学天使创投支持",
+                "Home_Awards_Gov_2": "香港创新科技署大学科技初创企业资助计划",
+                "Home_Awards_Gov_3": "香港数码港培育计划支持",
+                "Home_Awards_Gov_4": "香港城市大学Tech 300基金支持",
+                "Home_Awards_Gov_5": "杭州大运英才计划支持",
+                "Home_Awards_Industry_Title": "行业奖项",
+                "Home_Awards_Industry_1": "2025年NEXX人工智能与创新奖",
+                "Home_Awards_Industry_2": "第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍",
+                "Home_Awards_Industry_3": "香港资讯及通讯科技奖2024：数码娱乐奖\"互动设计\"金奖、\"最佳人工智能\"应用奖",
+                "Home_Awards_Industry_4": "创客中国国际中小企业创新创业大赛10强队伍",
+                "Home_Awards_Industry_5": "杭州动力创未国际科技项目新创赛三等奖",
+                "Navigation_Menu_Home": "首页",
+                "Navigation_Menu_About": "关于我们",
+                "Navigation_Menu_Awards": "奖项",
+                "Navigation_Menu_Contact": "联系我们",
+                "Footer_Copyright": "© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利",
+                "Contact_Info_Company": "Vizzle 炫幻视界",
+                "Contact_Info_Phone": "+852 9660 5893",
+                "Contact_Info_Email": "info@im-vizzle.com"
+            },
+            "en-US": {
+                "Language_Display_Name": "EN",
+                "Page_Meta_Title": "Vizzle - AI Assistant",
+                "AI_Welcome_Title": "Hello, I'm Vizzle AI Assistant",
+                "AI_Welcome_Subtitle": "Feel free to ask me any questions about our products, services, or company",
+                "AI_Input_Placeholder": "Type your question...",
+                "AI_Send_Button": "Send",
+                "AI_Suggested_Questions_Title": "Common Questions",
+                "AI_Suggested_Q1": "What services does Vizzle provide?",
+                "AI_Suggested_Q2": "How to get started with Vizzle?",
+                "AI_Suggested_Q3": "What are your pricing plans?",
+                "AI_Suggested_Q4": "How can I contact you?",
+                "AI_Typing": "Thinking...",
+                "Home_Trust_Title": "Trusted by industry-leading enterprises",
+                "Home_About_Title": "About Vizzle",
+                "Home_About_Subtitle": "Lightweight AI 3D Digital City Management Platform",
+                "Home_About_Description": "Vizzle focuses on lightweight, simplified, and low-cost 3D management solutions. We make complex 3D management as simple as browsing the web, with cross-device instant loading, AI intelligent analysis, no professional skills required, significantly reducing 3D management costs.",
+                "Home_About_Stat1": "50+",
+                "Home_About_Stat1_Label": "Enterprise Clients",
+                "Home_About_Stat2": "10x",
+                "Home_About_Stat2_Label": "Efficiency Boost",
+                "Home_About_Stat3": "60%",
+                "Home_About_Stat3_Label": "Cost Reduction",
+                "Home_Awards_Title": "Awards & Government Support",
+                "Home_Awards_Subtitle": "Recognized by Authoritative Organizations",
+                "Home_Awards_Gov_Title": "Government & University Support",
+                "Home_Awards_Gov_1": "Hong Kong Polytechnic University Angel Investment",
+                "Home_Awards_Gov_2": "Innovation and Technology Commission TSSSU",
+                "Home_Awards_Gov_3": "Cyberport Incubation Program",
+                "Home_Awards_Gov_4": "Hong Kong City University Tech 300 Fund",
+                "Home_Awards_Gov_5": "Hangzhou Grand Canal Talent Program",
+                "Home_Awards_Industry_Title": "Industry Awards",
+                "Home_Awards_Industry_1": "NEXX AI and Innovation Awards 2025",
+                "Home_Awards_Industry_2": "Zhongguancun International Advanced Technology Competition Top 10",
+                "Home_Awards_Industry_3": "Hong Kong ICT Awards 2024: Gold Award",
+                "Home_Awards_Industry_4": "Maker in China SME Innovation Competition Top 10",
+                "Home_Awards_Industry_5": "Hangzhou International Sci-Tech Competition 3rd Prize",
+                "Navigation_Menu_Home": "Home",
+                "Navigation_Menu_About": "About",
+                "Navigation_Menu_Awards": "Awards",
+                "Navigation_Menu_Contact": "Contact",
+                "Footer_Copyright": "© 2026 Vizzle Limited. All rights reserved.",
+                "Contact_Info_Company": "Vizzle Limited",
+                "Contact_Info_Phone": "+852 9660 5893",
+                "Contact_Info_Email": "info@im-vizzle.com"
+            }
+        };
+    </script>
+
+    <script>
+        // ===================================
+        // Authentication System
+        // ===================================
+        const CREDENTIALS = {
+            id: 'nexus',
+            pass: 'Billion8436'
+        };
+
+        function checkAuth() {
+            if (sessionStorage.getItem('vizzle_admin_auth') === 'true') {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                initDashboard();
+            }
+        }
+
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const id = document.getElementById('admin-id').value;
+            const pass = document.getElementById('admin-pass').value;
+
+            if (id === CREDENTIALS.id && pass === CREDENTIALS.pass) {
+                sessionStorage.setItem('vizzle_admin_auth', 'true');
+                checkAuth();
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        });
+
+        function logout() {
+            sessionStorage.removeItem('vizzle_admin_auth');
+            location.reload();
+        }
+
+        // ===================================
+        // Dashboard Navigation
+        // ===================================
+        function switchTab(tabName) {
+            // UI Toggles
+            document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            document.getElementById('tab-knowledge').classList.add('hidden');
+            document.getElementById('tab-language').classList.add('hidden');
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+        }
+
+        function initDashboard() {
+            loadKnowledgeBase();
+            loadLanguageEditor();
+        }
+
+        // ===================================
+        // Knowledge Base Logic (Mirrored from index.html)
+        // ===================================
+        let knowledgeBase = { files: [], lastUpdate: null, content: [] };
+
+        function loadKnowledgeBase() {
+            const saved = localStorage.getItem('vizzle_knowledge_base');
+            if (saved) {
+                knowledgeBase = JSON.parse(saved);
+                renderKnowledgeList();
+            }
+        }
+
+        function saveKnowledgeBase() {
+            knowledgeBase.lastUpdate = new Date().toISOString();
+            localStorage.setItem('vizzle_knowledge_base', JSON.stringify(knowledgeBase));
+            renderKnowledgeList();
+        }
+
+        function renderKnowledgeList() {
+            const list = document.getElementById('knowledge-list');
+            const count = document.getElementById('knowledge-count');
+            
+            count.textContent = `${knowledgeBase.files.length} 個文件`;
+            
+            if (knowledgeBase.files.length === 0) {
+                list.innerHTML = `<div class="text-center py-4 text-gray-400 border border-dashed rounded-lg">暫無數據</div>`;
+                return;
+            }
+
+            list.innerHTML = knowledgeBase.files.map((file, index) => `
+                <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:shadow-sm transition-shadow">
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 text-[#6b3d92]">
+                            <span class="iconify text-xl" data-icon="fa-solid:file-alt"></span>
+                        </div>
+                        <div class="truncate">
+                            <p class="font-medium text-gray-800 text-sm truncate">${file.name}</p>
+                            <p class="text-xs text-gray-500">${(file.size / 1024).toFixed(1)} KB • ${new Date(file.uploadedAt).toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                    <button onclick="removeFile(${index})" class="p-2 text-gray-400 hover:text-red-500 transition-colors">
+                        <span class="iconify" data-icon="fa-solid:trash"></span>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function removeFile(index) {
+            if(confirm('確定要移除此文件嗎？')) {
+                knowledgeBase.files.splice(index, 1);
+                knowledgeBase.content.splice(index, 1);
+                saveKnowledgeBase();
+            }
+        }
+
+        function clearKnowledgeBase() {
+            if(confirm('警告：這將清空所有知識庫數據，前台 AI 將無法回答基於文檔的問題。確定繼續？')) {
+                knowledgeBase = { files: [], lastUpdate: null, content: [] };
+                saveKnowledgeBase();
+            }
+        }
+
+        // Upload Handling
+        const uploadZone = document.getElementById('upload-zone');
+        const fileInput = document.getElementById('file-input');
+
+        uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('border-[#6b3d92]', 'bg-[#6b3d92]/5'); });
+        uploadZone.addEventListener('dragleave', () => { uploadZone.classList.remove('border-[#6b3d92]', 'bg-[#6b3d92]/5'); });
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('border-[#6b3d92]', 'bg-[#6b3d92]/5');
+            handleFiles(e.dataTransfer.files);
+        });
+        uploadZone.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON') fileInput.click();
+        });
+        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+        async function handleFiles(files) {
+            let addedCount = 0;
+            for (const file of files) {
+                const content = await readFileContent(file);
+                knowledgeBase.files.push({
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    uploadedAt: new Date().toISOString()
+                });
+                knowledgeBase.content.push({ filename: file.name, text: content });
+                addedCount++;
+            }
+            saveKnowledgeBase();
+            alert(`成功上傳 ${addedCount} 個文件！`);
+        }
+
+        function readFileContent(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                // Basic text extraction simulation
+                if (file.type.match(/text.*/) || file.type.match(/.*json.*/)) {
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.readAsText(file);
+                } else {
+                    // For binaries, just store metadata placeholder for now
+                    reader.onload = () => resolve(`[BINARY_FILE: ${file.name}]`);
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // ===================================
+        // Language Editor Logic
+        // ===================================
+        let currentTranslations = {};
+
+        function loadLanguageEditor() {
+            // Try to load custom translations from storage, otherwise use defaults
+            const saved = localStorage.getItem('vizzle_custom_translations');
+            currentTranslations = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_TRANSLATIONS));
+            
+            renderTranslationTable();
+        }
+
+        function renderTranslationTable() {
+            const tbody = document.getElementById('trans-tbody');
+            tbody.innerHTML = '';
+
+            // Get all keys from default translations (Base source of truth)
+            const keys = Object.keys(DEFAULT_TRANSLATIONS['zh-HK']).sort();
+
+            keys.forEach(key => {
+                const tr = document.createElement('tr');
+                
+                // Key Column
+                const tdKey = document.createElement('td');
+                tdKey.className = 'font-mono text-xs text-purple-600 font-medium select-all';
+                tdKey.textContent = key;
+                tr.appendChild(tdKey);
+
+                // Language Columns
+                ['zh-HK', 'zh-CN', 'en-US'].forEach(lang => {
+                    const td = document.createElement('td');
+                    const input = document.createElement('textarea');
+                    input.className = 'trans-input resize-y';
+                    input.rows = 2;
+                    // Use custom if exists, else default
+                    input.value = currentTranslations[lang][key] || DEFAULT_TRANSLATIONS[lang][key] || '';
+                    
+                    input.addEventListener('change', (e) => {
+                        currentTranslations[lang][key] = e.target.value;
+                    });
+                    
+                    td.appendChild(input);
+                    tr.appendChild(td);
+                });
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        function saveTranslations() {
+            localStorage.setItem('vizzle_custom_translations', JSON.stringify(currentTranslations));
+            alert('語言設定已保存！刷新前台頁面即可看到更改。');
+        }
+
+        function resetTranslations() {
+            if(confirm('確定要重置所有語言翻譯為系統預設值嗎？')) {
+                localStorage.removeItem('vizzle_custom_translations');
+                loadLanguageEditor(); // Reloads from defaults
+                alert('已重置為預設值。');
+            }
+        }
+
+        // Init
+        checkAuth();
+
+    </script>
+</body>
+</html>
