@@ -1,11 +1,13 @@
 .gitignore
+admin.html
+AI_WEB_DESIGN_README.md
 index.html
 package-lock.json
 package.json
 .vscode/launch.json
 .vscode/settings.json
-assets/locale.csv
 assets/img/HKIA_SmartCity.png
+assets/img/VizzleAI.png
 assets/img/logo/AWE.jpg
 assets/img/logo/BOC.svg
 assets/img/logo/centralmarket.jpg
