@@ -402,7 +402,7 @@
             <div class="container-custom relative z-10 w-full">
                 <div class="max-w-4xl mx-auto">
                     <!-- AI Chat Card -->
-                    <div class="flex flex-col h-[60vh] md:h-[600px] bg-white/50 backdrop-blur-md border border-white/60 shadow-lg rounded-xl overflow-hidden transition-all duration-300">
+                    <div class="flex flex-col h-[75vh] md:h-[600px] bg-white/50 backdrop-blur-md border border-white/60 shadow-lg rounded-xl overflow-hidden transition-all duration-300">
                         <!-- Chat Header -->
                         <div class="bg-gradient-to-r from-[#6a3d92] to-[#a25dae] text-white p-4 md:p-6">
                             <div class="flex items-center justify-between">
@@ -682,6 +682,20 @@
             </footer>
         </section>
     </main>
+
+    <!-- Floating AI Assistant Button -->
+    <button 
+        id="floating-ai-btn" 
+        onclick="scrollToAIChat()"
+        class="fixed z-[100] w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-r from-[#6a3d92] to-[#a25dae] shadow-lg hover:shadow-xl hover:scale-110 flex items-center justify-center group cursor-pointer"
+        aria-label="Jump to AI Chat"
+        style="right: 1.5rem; bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); opacity: 0; transform: translateY(1rem); -webkit-transform: translateY(1rem); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease; -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease; will-change: opacity, transform; touch-action: manipulation;"
+    >
+        <img src="assets/img/VizzleAI.png" alt="AI Assistant" class="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover pointer-events-none">
+        <span class="absolute -top-10 right-0 bg-white px-3 py-1.5 rounded-lg shadow-md text-sm font-medium text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap hidden md:block" data-lang-key="FloatingAI_Tooltip">
+            與 AI 對話
+        </span>
+    </button>
 
     <script>
         // ============================================
@@ -1434,8 +1448,70 @@
         document.addEventListener('DOMContentLoaded', function() {
             detectUserLanguage();
             loadKnowledgeBase();
-            updateLastUpdateTime();
+            initFloatingAIBtn();
         });
+
+        // ============================================
+        // Floating AI Button
+        // ============================================
+        function initFloatingAIBtn() {
+            const floatingBtn = document.getElementById('floating-ai-btn');
+            const heroSection = document.getElementById('hero');
+            
+            if (!floatingBtn || !heroSection) {
+                console.log('Floating AI button or hero section not found');
+                return;
+            }
+
+            // 監聽滾動事件，控制按鈕顯示/隱藏
+            function checkBtnVisibility() {
+                // 使用多種方式獲取滾動位置，兼容不同瀏覽器
+                const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                const heroHeight = heroSection.offsetHeight;
+                
+                // 當滾動超過 hero section 高度的一半時顯示按鈕
+                const threshold = heroHeight * 0.5;
+                
+                if (scrollY > threshold) {
+                    floatingBtn.style.setProperty('opacity', '1', 'important');
+                    floatingBtn.style.setProperty('transform', 'translateY(0)', 'important');
+                    floatingBtn.style.setProperty('-webkit-transform', 'translateY(0)', 'important');
+                    floatingBtn.style.setProperty('pointer-events', 'auto', 'important');
+                } else {
+                    floatingBtn.style.setProperty('opacity', '0', 'important');
+                    floatingBtn.style.setProperty('transform', 'translateY(1rem)', 'important');
+                    floatingBtn.style.setProperty('-webkit-transform', 'translateY(1rem)', 'important');
+                    floatingBtn.style.setProperty('pointer-events', 'none', 'important');
+                }
+            }
+
+            // 初始檢查
+            checkBtnVisibility();
+            
+            // 滾動時檢查
+            window.addEventListener('scroll', checkBtnVisibility, { passive: true });
+            
+            // 也在 touchmove 時檢查（mobile）
+            document.addEventListener('touchmove', checkBtnVisibility, { passive: true });
+            
+            // iOS 特定：在 resize 和 orientation change 時重新檢查
+            window.addEventListener('resize', checkBtnVisibility, { passive: true });
+            window.addEventListener('orientationchange', function() {
+                setTimeout(checkBtnVisibility, 100);
+            });
+            
+            console.log('Floating AI button initialized');
+        }
+
+        // 滾動到 AI Chat
+        function scrollToAIChat() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // 聚焦到輸入框
+            setTimeout(() => {
+                const chatInput = document.getElementById('chat-input');
+                if (chatInput) chatInput.focus();
+            }, 500);
+        }
     </script>
 </body>
 </html>
