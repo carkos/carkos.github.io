@@ -4,14 +4,14 @@
 const DEFAULT_TRANSLATIONS = {
     "zh-HK": {
         "Language_Display_Name": "繁",
-        "Page_Meta_Title": "炫幻視界 - 萬事通",
+        "Page_Meta_Title": "炫幻視界",
         "AI_Welcome_Title": "您好，我是 Vizzle 萬事通",
         "AI_Welcome_Subtitle": "有任何關於我們產品、服務或公司的問題，請隨時向我提問",
         "AI_Input_Placeholder": "輸入您的問題...",
         "AI_Send_Button": "發送",
         "AI_Suggested_Questions_Title": "常見問題",
         "AI_Suggested_Q1": "Vizzle 提供什麼服務？",
-        "AI_Suggested_Q2": "如何開始使用 Vizzle？",
+        "AI_Suggested_Q2": "如何開始使用 Vizzle AI助手？",
         "AI_Suggested_Q3": "你們的定價方案是什麼？",
         "AI_Suggested_Q4": "如何聯繫你們？",
         "AI_Typing": "正在思考中...",
@@ -64,14 +64,14 @@ const DEFAULT_TRANSLATIONS = {
     },
     "zh-CN": {
         "Language_Display_Name": "简",
-        "Page_Meta_Title": "炫幻视界 - 万事通",
+        "Page_Meta_Title": "炫幻视界",
         "AI_Welcome_Title": "您好，我是 Vizzle 万事通",
         "AI_Welcome_Subtitle": "有任何关于我们产品、服务或公司的问题，请随时向我提问",
         "AI_Input_Placeholder": "输入您的问题...",
         "AI_Send_Button": "发送",
         "AI_Suggested_Questions_Title": "常见问题",
         "AI_Suggested_Q1": "Vizzle 提供什么服务？",
-        "AI_Suggested_Q2": "如何开始使用 Vizzle？",
+        "AI_Suggested_Q2": "如何开始使用 Vizzle AI助手？",
         "AI_Suggested_Q3": "你们的定价方案是什么？",
         "AI_Suggested_Q4": "如何联系你们？",
         "AI_Typing": "正在思考中...",
@@ -124,14 +124,14 @@ const DEFAULT_TRANSLATIONS = {
     },
     "en-US": {
         "Language_Display_Name": "EN",
-        "Page_Meta_Title": "Vizzle - AI Assistant",
+        "Page_Meta_Title": "Vizzle",
         "AI_Welcome_Title": "Hello, I'm Vizzle AI Assistant",
         "AI_Welcome_Subtitle": "Feel free to ask me any questions about our products, services, or company",
         "AI_Input_Placeholder": "Type your question...",
         "AI_Send_Button": "Send",
         "AI_Suggested_Questions_Title": "Common Questions",
         "AI_Suggested_Q1": "What services does Vizzle provide?",
-        "AI_Suggested_Q2": "How to get started with Vizzle?",
+        "AI_Suggested_Q2": "How to get started with Vizzle AI assistant?",
         "AI_Suggested_Q3": "What are your pricing plans?",
         "AI_Suggested_Q4": "How can I contact you?",
         "AI_Typing": "Thinking...",
@@ -188,8 +188,6 @@ const DEFAULT_TRANSLATIONS = {
 const KEY_DESCRIPTIONS = {
     "Language_Display_Name": "語言選擇器顯示名稱",
     "Page_Meta_Title": "瀏覽器標籤頁標題",
-    
-    // AI Chat
     "AI_Welcome_Title": "AI 聊天窗口歡迎標題",
     "AI_Welcome_Subtitle": "AI 聊天窗口歡迎副標題",
     "AI_Input_Placeholder": "聊天輸入框提示文字",
@@ -200,11 +198,7 @@ const KEY_DESCRIPTIONS = {
     "AI_Suggested_Q3": "建議問題 3 (定價方案)",
     "AI_Suggested_Q4": "建議問題 4 (聯繫方式)",
     "AI_Typing": "AI 正在輸入提示",
-
-    // Home - Trust
     "Home_Trust_Title": "合作夥伴/信任企業標題",
-
-    // Home - About
     "Home_About_Title": "關於我們區塊 - 標籤",
     "Home_About_Subtitle": "關於我們區塊 - 主標題",
     "Home_About_Description": "關於我們區塊 - 描述文本",
@@ -214,8 +208,6 @@ const KEY_DESCRIPTIONS = {
     "Home_About_Stat2_Label": "統計數據 2 (標籤)",
     "Home_About_Stat3": "統計數據 3 (數值)",
     "Home_About_Stat3_Label": "統計數據 3 (標籤)",
-
-    // Home - Awards
     "Home_Awards_Title": "獎項區塊 - 標籤",
     "Home_Awards_Subtitle": "獎項區塊 - 主標題",
     "Home_Awards_Gov_Title": "政府支持列表標題",
@@ -230,14 +222,10 @@ const KEY_DESCRIPTIONS = {
     "Home_Awards_Industry_3": "行業獎項 3",
     "Home_Awards_Industry_4": "行業獎項 4",
     "Home_Awards_Industry_5": "行業獎項 5",
-
-    // Navigation
     "Navigation_Menu_Home": "導航菜單 - 首頁",
     "Navigation_Menu_About": "導航菜單 - 關於我們",
     "Navigation_Menu_Awards": "導航菜單 - 獎項",
     "Navigation_Menu_Contact": "導航菜單 - 聯繫我們",
-    
-    // Footer & Contact
     "Footer_Copyright": "頁腳版權聲明",
     "Contact_Info_Company": "聯繫信息 - 公司名稱",
     "Contact_Info_Phone": "聯繫信息 - 電話",
