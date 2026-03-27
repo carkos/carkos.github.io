@@ -302,12 +302,23 @@
 
     <script>
         // ===================================
-        // Authentication System
+        // Authentication System (SHA-256 Secured)
         // ===================================
-        const CREDENTIALS = {
-            id: 'nexus',
-            pass: 'Billion8436'
+        
+        // Storing HASHES only. Even if someone sees this code, they cannot know the real password.
+        const AUTH_HASH = {
+            id: 'c775e7b757ede630cd0aa1113bd102661ab38829ca52a6422ab782862f268646', 
+            pass: '00676420f67daec780a52bd853359d8779eb56d77bd837d9967266743820257e' 
         };
+
+        // Helper function to convert string to SHA-256 hash
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
 
         function checkAuth() {
             if (sessionStorage.getItem('vizzle_admin_auth') === 'true') {
@@ -317,16 +328,24 @@
             }
         }
 
-        document.getElementById('login-form').addEventListener('submit', (e) => {
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const id = document.getElementById('admin-id').value;
-            const pass = document.getElementById('admin-pass').value;
+            const inputId = document.getElementById('admin-id').value;
+            const inputPass = document.getElementById('admin-pass').value;
+            
+            // Hash the inputs and compare with stored hashes
+            const hashedId = await sha256(inputId);
+            const hashedPass = await sha256(inputPass);
 
-            if (id === CREDENTIALS.id && pass === CREDENTIALS.pass) {
+            if (hashedId === AUTH_HASH.id && hashedPass === AUTH_HASH.pass) {
                 sessionStorage.setItem('vizzle_admin_auth', 'true');
                 checkAuth();
             } else {
                 document.getElementById('login-error').classList.remove('hidden');
+                // Shake effect for error
+                const form = document.getElementById('login-screen').children[0];
+                form.classList.add('animate-pulse');
+                setTimeout(() => form.classList.remove('animate-pulse'), 500);
             }
         });
 
