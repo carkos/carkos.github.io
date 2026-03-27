@@ -236,36 +236,61 @@
         function renderKnowledgeList() {
             const list = document.getElementById('knowledge-list');
             const count = document.getElementById('knowledge-count');
-            
-            // KB.data accesses the global knowledgeBase object
-            // Note: In knowledge-base.js, we exposed window.knowledgeBase. 
-            // We should use window.knowledgeBase directly or KB.data if we mapped it.
-            // Let's assume window.knowledgeBase is available.
             const kb = window.knowledgeBase;
             
-            count.textContent = `${kb.files.length} 個文件`;
+            const totalFiles = (kb.files.length || 0) + (kb.serverFiles.length || 0);
+            count.textContent = `${totalFiles} 個文件`;
             
-            if (kb.files.length === 0) {
+            if (totalFiles === 0) {
                 list.innerHTML = `<div class="text-center py-4 text-gray-400 border border-dashed rounded-lg">暫無數據</div>`;
                 return;
             }
 
-            list.innerHTML = kb.files.map((file, index) => `
-                <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:shadow-sm transition-shadow">
-                    <div class="flex items-center gap-3 overflow-hidden">
-                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 text-[#6b3d92]">
-                            <span class="iconify text-xl" data-icon="${KB.utils.getIcon(file.type)}"></span>
+            let html = '';
+
+            // 1. Render Server Files (Read-only)
+            if (kb.serverFiles && kb.serverFiles.length > 0) {
+                html += `<div class="text-xs font-bold text-gray-400 uppercase mb-2 mt-2 px-1">系統預載文件</div>`;
+                html += kb.serverFiles.map(file => `
+                    <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg opacity-80">
+                        <div class="flex items-center gap-3 overflow-hidden">
+                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 text-blue-600">
+                                <span class="iconify text-xl" data-icon="fa-solid:server"></span>
+                            </div>
+                            <div class="truncate">
+                                <p class="font-medium text-gray-700 text-sm truncate">${file.name}</p>
+                                <p class="text-xs text-gray-500">系統文件 • ${file.desc || 'System'}</p>
+                            </div>
                         </div>
-                        <div class="truncate">
-                            <p class="font-medium text-gray-800 text-sm truncate">${file.name}</p>
-                            <p class="text-xs text-gray-500">${KB.utils.formatSize(file.size)} • ${new Date(file.uploadedAt).toLocaleDateString()}</p>
+                        <div class="p-2 text-gray-400 cursor-not-allowed" title="系統文件無法刪除">
+                            <span class="iconify" data-icon="fa-solid:lock"></span>
                         </div>
                     </div>
-                    <button onclick="removeFile(${index})" class="p-2 text-gray-400 hover:text-red-500 transition-colors">
-                        <span class="iconify" data-icon="fa-solid:trash"></span>
-                    </button>
-                </div>
-            `).join('');
+                `).join('');
+            }
+
+            // 2. Render User Files
+            if (kb.files && kb.files.length > 0) {
+                html += `<div class="text-xs font-bold text-gray-400 uppercase mb-2 mt-4 px-1">已上傳文件</div>`;
+                html += kb.files.map((file, index) => `
+                    <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:shadow-sm transition-shadow">
+                        <div class="flex items-center gap-3 overflow-hidden">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 text-[#6b3d92]">
+                                <span class="iconify text-xl" data-icon="${KB.utils.getIcon(file.type)}"></span>
+                            </div>
+                            <div class="truncate">
+                                <p class="font-medium text-gray-800 text-sm truncate">${file.name}</p>
+                                <p class="text-xs text-gray-500">${KB.utils.formatSize(file.size)} • ${new Date(file.uploadedAt).toLocaleDateString()}</p>
+                            </div>
+                        </div>
+                        <button onclick="removeFile(${index})" class="p-2 text-gray-400 hover:text-red-500 transition-colors">
+                            <span class="iconify" data-icon="fa-solid:trash"></span>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            list.innerHTML = html;
         }
 
         function removeFile(index) {
