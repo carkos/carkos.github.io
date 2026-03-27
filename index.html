@@ -269,7 +269,7 @@
                 @apply flex justify-end;
             }
             .chat-message-ai {
-                @apply flex justify-start;
+                @apply flex flex-col items-start;
             }
             .chat-bubble-user {
                 @apply bg-[#6b3d92] text-white px-4 py-3 rounded-2xl rounded-br-md max-w-[80%] md:max-w-[70%];
@@ -282,6 +282,9 @@
             }
             .suggested-question {
                 @apply px-4 py-2 bg-white/60 backdrop-blur-sm border border-[#6b3d92]/30 rounded-full text-sm text-neutral-700 hover:bg-[#6b3d92]/10 hover:border-[#6b3d92] transition-all cursor-pointer;
+            }
+            .chat-suggestion-btn {
+                @apply inline-block px-3 py-1 mt-2 mr-2 bg-white border border-[#6b3d92]/20 text-[#6b3d92] text-xs rounded-full hover:bg-[#6b3d92] hover:text-white transition-colors cursor-pointer shadow-sm;
             }
 
             /* Knowledge Base Admin */
@@ -1063,46 +1066,67 @@
             
             // Simulated responses based on common questions
             if (lowerMsg.includes('服務') || lowerMsg.includes('service') || lowerMsg.includes('提供')) {
-                return lang === 'en-US' 
-                    ? "Vizzle provides a lightweight AI 3D digital city management platform. Our core services include:\n\n• **Instant 3D Model Loading** - Load giant 3D scan models instantly on any device\n• **AI Analysis** - Automatic scene analysis and data integration\n• **Simple Operation** - No professional skills required\n\nWe help enterprises reduce 3D management costs by 60% and improve efficiency by 10x."
-                    : "Vizzle 提供輕量化 AI 3D 數碼城市管理平台。我們的核心服務包括：\n\n• **即時 3D 模型加載** - 任何裝置都能秒速加載巨型 3D 掃描模型\n• **AI 智能分析** - 自動場景分析和數據整合\n• **簡易操作** - 無需專業技能\n\n我們幫助企業降低 60% 的 3D 管理成本，提升 10 倍效率。";
+                return {
+                    text: lang === 'en-US' 
+                        ? "Vizzle provides a lightweight AI 3D digital city management platform. Our core services include:\n\n• **Instant 3D Model Loading** - Load giant 3D scan models instantly on any device\n• **AI Analysis** - Automatic scene analysis and data integration\n• **Simple Operation** - No professional skills required\n\nWe help enterprises reduce 3D management costs by 60% and improve efficiency by 10x."
+                        : "Vizzle 提供輕量化 AI 3D 數碼城市管理平台。我們的核心服務包括：\n\n• **即時 3D 模型加載** - 任何裝置都能秒速加載巨型 3D 掃描模型\n• **AI 智能分析** - 自動場景分析和數據整合\n• **簡易操作** - 無需專業技能\n\n我們幫助企業降低 60% 的 3D 管理成本，提升 10 倍效率。",
+                    suggestions: lang === 'en-US' ? ["View Pricing", "See Case Studies", "Book Demo"] : ["查看定價", "查看案例", "預約演示"]
+                };
             }
             
             if (lowerMsg.includes('開始') || lowerMsg.includes('start') || lowerMsg.includes('使用')) {
-                return lang === 'en-US'
-                    ? "Getting started with Vizzle is easy:\n\n1. **Contact Us** - Reach out for a consultation\n2. **Demo** - We'll show you how our platform works\n3. **Customization** - We tailor the solution to your needs\n4. **Training** - Quick onboarding for your team\n\nWould you like to schedule a demo?"
-                    : "開始使用 Vizzle 很簡單：\n\n1. **聯繫我們** - 預約諮詢\n2. **產品演示** - 我們會展示平台如何運作\n3. **定制方案** - 根據您的需求定制解決方案\n4. **培訓** - 快速上手指導\n\n您想預約產品演示嗎？";
+                return {
+                    text: lang === 'en-US'
+                        ? "Getting started with Vizzle is easy:\n\n1. **Contact Us** - Reach out for a consultation\n2. **Demo** - We'll show you how our platform works\n3. **Customization** - We tailor the solution to your needs\n4. **Training** - Quick onboarding for your team\n\nWould you like to schedule a demo?"
+                        : "開始使用 Vizzle 很簡單：\n\n1. **聯繫我們** - 預約諮詢\n2. **產品演示** - 我們會展示平台如何運作\n3. **定制方案** - 根據您的需求定制解決方案\n4. **培訓** - 快速上手指導\n\n您想預約產品演示嗎？",
+                    suggestions: lang === 'en-US' ? ["Book Demo Now", "Contact Sales", "Read Docs"] : ["立即預約演示", "聯繫銷售", "閱讀文檔"]
+                };
             }
             
             if (lowerMsg.includes('價格') || lowerMsg.includes('定價') || lowerMsg.includes('pricing') || lowerMsg.includes('price')) {
-                return lang === 'en-US'
-                    ? "We offer flexible pricing plans:\n\n• **Basic Version** - ¥19,800/year (5 users)\n• **Enterprise Version** - ¥79,800/year (20 users)\n• **Custom Version** - Tailored pricing for large enterprises\n\nAll plans include 3D model management and AI analysis features. Would you like a custom quote?"
-                    : "我們提供靈活的定價方案：\n\n• **基礎版** - ¥19,800/年（5 個用戶）\n• **企業版** - ¥79,800/年（20 個用戶）\n• **定制版** - 為大型企業量身定制的報價\n\n所有方案都包含 3D 模型管理和 AI 分析功能。您需要獲取專屬報價嗎？";
+                return {
+                    text: lang === 'en-US'
+                        ? "We offer flexible pricing plans:\n\n• **Basic Version** - ¥19,800/year (5 users)\n• **Enterprise Version** - ¥79,800/year (20 users)\n• **Custom Version** - Tailored pricing for large enterprises\n\nAll plans include 3D model management and AI analysis features. Would you like a custom quote?"
+                        : "我們提供靈活的定價方案：\n\n• **基礎版** - ¥19,800/年（5 個用戶）\n• **企業版** - ¥79,800/年（20 個用戶）\n• **定制版** - 為大型企業量身定制的報價\n\n所有方案都包含 3D 模型管理和 AI 分析功能。您需要獲取專屬報價嗎？",
+                    suggestions: lang === 'en-US' ? ["Get Custom Quote", "Compare Plans", "Contact Sales"] : ["獲取專屬報價", "對比方案", "聯繫銷售"]
+                };
             }
             
             if (lowerMsg.includes('聯繫') || lowerMsg.includes('contact') || lowerMsg.includes('電話') || lowerMsg.includes('email')) {
-                return lang === 'en-US'
-                    ? "You can reach us through:\n\n📞 **Phone**: +852 9660 5893\n📧 **Email**: info@im-vizzle.com\n\nOur team is ready to assist you with any questions about our 3D management solutions!"
-                    : "您可以通過以下方式聯繫我們：\n\n📞 **電話**: +852 9660 5893\n📧 **電郵**: info@im-vizzle.com\n\n我們的團隊隨時準備為您解答關於 3D 管理解決方案的任何問題！";
+                return {
+                    text: lang === 'en-US'
+                        ? "You can reach us through:\n\n📞 **Phone**: +852 9660 5893\n📧 **Email**: info@im-vizzle.com\n\nOur team is ready to assist you with any questions about our 3D management solutions!"
+                        : "您可以通過以下方式聯繫我們：\n\n📞 **電話**: +852 9660 5893\n📧 **電郵**: info@im-vizzle.com\n\n我們的團隊隨時準備為您解答關於 3D 管理解決方案的任何問題！",
+                    suggestions: lang === 'en-US' ? ["Book a Demo", "Visit Office", "Tech Support"] : ["預約演示", "拜訪辦公室", "技術支持"]
+                };
             }
 
             if (lowerMsg.includes('客戶') || lowerMsg.includes('client') || lowerMsg.includes('案例')) {
-                return lang === 'en-US'
-                    ? "We are trusted by 50+ enterprise clients including:\n\n🏢 **Hong Kong International Airport** - Achieved 10x efficiency improvement in 3D facility management\n🚇 **MTR Corporation** - Digital city management solutions\n🏛️ **Government Departments** - Smart city infrastructure management\n\nOur clients typically see 60% cost reduction and 10x efficiency gains."
-                    : "我們受到 50+ 企業客戶的信任，包括：\n\n🏢 **香港國際機場** - 實現 3D 設施管理效率提升 10 倍\n🚇 **港鐵公司** - 數碼城市管理解決方案\n🏛️ **政府部門** - 智慧城市基礎設施管理\n\n我們的客戶通常能看到 60% 的成本降低和 10 倍的效率提升。";
+                return {
+                    text: lang === 'en-US'
+                        ? "We are trusted by 50+ enterprise clients including:\n\n🏢 **Hong Kong International Airport** - Achieved 10x efficiency improvement in 3D facility management\n🚇 **MTR Corporation** - Digital city management solutions\n🏛️ **Government Departments** - Smart city infrastructure management\n\nOur clients typically see 60% cost reduction and 10x efficiency gains."
+                        : "我們受到 50+ 企業客戶的信任，包括：\n\n🏢 **香港國際機場** - 實現 3D 設施管理效率提升 10 倍\n🚇 **港鐵公司** - 數碼城市管理解決方案\n🏛️ **政府部門** - 智慧城市基礎設施管理\n\n我們的客戶通常能看到 60% 的成本降低和 10 倍的效率提升。",
+                    suggestions: lang === 'en-US' ? ["View HKIA Case", "Other Case Studies", "Pricing"] : ["查看機場案例", "其他案例", "了解價格"]
+                };
             }
             
             // If we have relevant content in knowledge base
             if (relevantContent.length > 0) {
-                return lang === 'en-US'
-                    ? `Based on our knowledge base, I found relevant information in ${relevantContent.length} document(s). Here's what I can tell you:\n\n"${relevantContent[0].text.substring(0, 500)}..."\n\nWould you like me to provide more details?`
-                    : `根據我們的知識庫，我在 ${relevantContent.length} 份文件中找到了相關信息。以下是我能告訴您的：\n\n"${relevantContent[0].text.substring(0, 500)}..."\n\n您需要我提供更多詳細信息嗎？`;
+                return {
+                    text: lang === 'en-US'
+                        ? `Based on our knowledge base, I found relevant information in ${relevantContent.length} document(s). Here's what I can tell you:\n\n"${relevantContent[0].text.substring(0, 500)}..."\n\nWould you like me to provide more details?`
+                        : `根據我們的知識庫，我在 ${relevantContent.length} 份文件中找到了相關信息。以下是我能告訴您的：\n\n"${relevantContent[0].text.substring(0, 500)}..."\n\n您需要我提供更多詳細信息嗎？`,
+                    suggestions: lang === 'en-US' ? ["Tell me more", "Related Docs", "Contact Support"] : ["告訴我更多", "相關文檔", "聯繫支持"]
+                };
             }
             
             // Default response
-            return lang === 'en-US'
-                ? "Thank you for your question! I'm here to help you learn about Vizzle's 3D management solutions. Could you please provide more details about what you'd like to know? For example:\n\n• Our products and services\n• Pricing and packages\n• Case studies\n• Technical features\n• Contact information"
-                : "感謝您的提問！我在這裡幫助您了解 Vizzle 的 3D 管理解決方案。請問您想了解哪些方面的信息？例如：\n\n• 產品和服務\n• 定價和方案\n• 客戶案例\n• 技術特點\n• 聯繫方式";
+            return {
+                text: lang === 'en-US'
+                    ? "Thank you for your question! I'm here to help you learn about Vizzle's 3D management solutions. Could you please provide more details about what you'd like to know? For example:\n\n• Our products and services\n• Pricing and packages\n• Case studies\n• Technical features\n• Contact information"
+                    : "感謝您的提問！我在這裡幫助您了解 Vizzle 的 3D 管理解決方案。請問您想了解哪些方面的信息？例如：\n\n• 產品和服務\n• 定價和方案\n• 客戶案例\n• 技術特點\n• 聯繫方式",
+                suggestions: lang === 'en-US' ? ["Pricing", "Case Studies", "Contact Us", "Product Features"] : ["定價方案", "客戶案例", "聯繫我們", "產品功能"]
+            };
         }
 
         // Handle form submission
@@ -1116,13 +1140,62 @@
             chatInput.value = '';
             
             // Process and add AI response
-            const response = await processUserMessage(message);
-            addMessage(response, false);
+            await processUserMessage(message);
         });
 
-        // ============================================
-        // Language System
-        // ============================================
+        // Add message to chat (Updated with suggestions support)
+        function addMessage(content, isUser = false, suggestions = []) {
+            // Remove welcome screen if it exists
+            const welcomeScreen = chatMessages.querySelector('.text-center.py-8');
+            if (welcomeScreen) welcomeScreen.remove();
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = isUser ? 'chat-message-user' : 'chat-message-ai';
+            
+            let htmlContent = `
+                <div class="${isUser ? 'chat-bubble-user' : 'chat-bubble-ai'}">
+                    <p class="whitespace-pre-wrap">${content}</p>
+                </div>
+            `;
+
+            // Add suggestions buttons if present
+            if (!isUser && suggestions && suggestions.length > 0) {
+                const buttonsHtml = suggestions.map(s => 
+                    `<button onclick="askQuestion('${s}')" class="chat-suggestion-btn">${s}</button>`
+                ).join('');
+                htmlContent += `<div class="mt-2 ml-1 flex flex-wrap gap-2">${buttonsHtml}</div>`;
+            }
+
+            messageDiv.innerHTML = htmlContent;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Process user message (Updated to handle object response)
+        async function processUserMessage(message) {
+            // Add to conversation history
+            conversationHistory.push({ role: 'user', content: message });
+            
+            // Show typing indicator
+            addTypingIndicator();
+            
+            // Simulate AI response (Replace with actual LLM call)
+            await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
+            
+            const responseObj = await simulateLLMResponse(message);
+            
+            // Remove typing indicator and show response
+            removeTypingIndicator();
+            
+            // Handle both string (legacy/simple) and object responses
+            const responseText = typeof responseObj === 'string' ? responseObj : responseObj.text;
+            const suggestions = typeof responseObj === 'string' ? [] : responseObj.suggestions;
+
+            conversationHistory.push({ role: 'assistant', content: responseText });
+            
+            addMessage(responseText, false, suggestions);
+            return responseText;
+        }
         
         function setLanguage(lang) {
             // Check for custom translations from Admin Panel
