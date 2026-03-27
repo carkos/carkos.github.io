@@ -30,6 +30,13 @@
         .trans-table td { padding: 0.75rem; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
         .trans-input { width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.25rem; font-size: 0.875rem; }
         .trans-input:focus { outline: none; border-color: #6b3d92; ring: 2px solid #6b3d92; }
+        
+        /* KB Table Styles */
+        .kb-checkbox { width: 1rem; height: 1rem; color: #6b3d92; border-radius: 0.25rem; cursor: pointer; }
+        .kb-row:hover { background-color: #f9fafb; }
+        .kb-row.selected { background-color: #f3e8ff; }
+        .sort-icon { display: inline-block; transition: transform 0.2s; }
+        .sort-asc .sort-icon { transform: rotate(180deg); }
     </style>
 </head>
 <body>
@@ -102,15 +109,62 @@
                 </div>
 
                 <div class="glass-panel p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-bold text-gray-700">已上傳文件列表</h3>
-                        <div class="flex items-center gap-4">
-                            <span id="knowledge-count" class="text-sm text-gray-500">0 個文件</span>
-                            <button onclick="clearKnowledgeBase()" class="text-sm text-red-500 hover:text-red-700 font-medium">清空所有</button>
+                    <!-- Toolbar -->
+                    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+                        <div class="flex items-center gap-3 w-full md:w-auto">
+                            <div class="relative w-full md:w-64">
+                                <span class="iconify absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" data-icon="fa-solid:search"></span>
+                                <input type="text" id="kb-search" placeholder="搜索文件..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] outline-none text-sm" onkeyup="handleKBSearch(this.value)">
+                            </div>
+                            <select id="kb-filter-type" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#6b3d92] outline-none" onchange="handleKBFilter(this.value)">
+                                <option value="all">所有类型</option>
+                                <option value="document">文档 (PDF/Doc/Txt)</option>
+                                <option value="data">数据 (Excel/CSV/JSON)</option>
+                                <option value="other">其他</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span id="kb-stats" class="text-sm text-gray-500">0 个文件</span>
+                            <button id="btn-batch-delete" onclick="batchDeleteFiles()" class="hidden flex items-center gap-2 bg-red-50 text-red-600 hover:bg-red-100 px-3 py-2 rounded-lg text-sm transition-colors">
+                                <span class="iconify" data-icon="fa-solid:trash-alt"></span>
+                                <span>批量删除</span>
+                            </button>
+                            <button onclick="clearKnowledgeBase()" class="text-sm text-gray-400 hover:text-red-500 underline">清空全部</button>
                         </div>
                     </div>
-                    <div id="knowledge-list" class="space-y-2">
-                        <!-- File items will be injected here -->
+
+                    <!-- File Table -->
+                    <div class="overflow-x-auto rounded-lg border border-gray-200">
+                        <table class="w-full text-sm text-left text-gray-500">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                                <tr>
+                                    <th scope="col" class="p-4 w-4">
+                                        <div class="flex items-center">
+                                            <input id="kb-select-all" type="checkbox" class="w-4 h-4 text-[#6b3d92] bg-gray-100 border-gray-300 rounded focus:ring-[#6b3d92]" onclick="toggleSelectAll()">
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 cursor-pointer hover:bg-gray-100" onclick="sortKB('name')">
+                                        文件名 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 w-32 cursor-pointer hover:bg-gray-100" onclick="sortKB('size')">
+                                        大小 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 w-32">类型</th>
+                                    <th scope="col" class="px-6 py-3 w-48 cursor-pointer hover:bg-gray-100" onclick="sortKB('uploadedAt')">
+                                        上传时间 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 w-24 text-center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="kb-table-body">
+                                <!-- Rows -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex items-center justify-between mt-4" id="kb-pagination">
+                        <!-- Pagination logic here -->
                     </div>
                 </div>
             </div>
@@ -233,70 +287,304 @@
         // ===================================
         // Knowledge Base UI Integration
         // ===================================
+        
+        let kbState = {
+            searchQuery: '',
+            filterType: 'all', // all, document, data, other
+            sortField: 'uploadedAt',
+            sortOrder: 'desc', // asc, desc
+            currentPage: 1,
+            itemsPerPage: 10,
+            selectedFiles: new Set() // Set of strings: "local-0", "local-1", etc.
+        };
+
         function renderKnowledgeList() {
-            const list = document.getElementById('knowledge-list');
-            const count = document.getElementById('knowledge-count');
+            // Reset selection on reload (to avoid sync issues)
+            kbState.selectedFiles.clear(); 
+            updateBatchDeleteBtn();
+            renderTable();
+            updateSortUI();
+        }
+
+        function getProcessedFiles() {
             const kb = window.knowledgeBase;
+            let allFiles = [];
+
+            // 1. Server Files
+            if (kb.serverFiles) {
+                kb.serverFiles.forEach((f, idx) => {
+                    allFiles.push({ ...f, source: 'server', originalIndex: idx, id: `server-${idx}` });
+                });
+            }
+
+            // 2. Local Files
+            if (kb.files) {
+                kb.files.forEach((f, idx) => {
+                    allFiles.push({ ...f, source: 'local', originalIndex: idx, id: `local-${idx}` });
+                });
+            }
+
+            // Filter by Search
+            if (kbState.searchQuery) {
+                const q = kbState.searchQuery.toLowerCase();
+                allFiles = allFiles.filter(f => f.name.toLowerCase().includes(q));
+            }
+
+            // Filter by Type
+            if (kbState.filterType !== 'all') {
+                allFiles = allFiles.filter(f => {
+                    const type = (f.type || '').toLowerCase();
+                    const name = f.name.toLowerCase();
+                    if (kbState.filterType === 'document') {
+                        return type.includes('pdf') || type.includes('word') || type.includes('text') || name.endsWith('.md') || name.endsWith('.txt') || name.endsWith('.doc') || name.endsWith('.docx');
+                    } else if (kbState.filterType === 'data') {
+                        return type.includes('excel') || type.includes('spreadsheet') || type.includes('csv') || type.includes('json') || name.endsWith('.xls') || name.endsWith('.xlsx');
+                    } else if (kbState.filterType === 'other') {
+                        // Invert logic of above
+                        const isDoc = type.includes('pdf') || type.includes('word') || type.includes('text') || name.endsWith('.md') || name.endsWith('.txt') || name.endsWith('.doc') || name.endsWith('.docx');
+                        const isData = type.includes('excel') || type.includes('spreadsheet') || type.includes('csv') || type.includes('json') || name.endsWith('.xls') || name.endsWith('.xlsx');
+                        return !isDoc && !isData;
+                    }
+                    return true;
+                });
+            }
+
+            // Sort
+            allFiles.sort((a, b) => {
+                let valA = a[kbState.sortField];
+                let valB = b[kbState.sortField];
+                
+                if (typeof valA === 'string') valA = valA.toLowerCase();
+                if (typeof valB === 'string') valB = valB.toLowerCase();
+
+                if (valA < valB) return kbState.sortOrder === 'asc' ? -1 : 1;
+                if (valA > valB) return kbState.sortOrder === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            return allFiles;
+        }
+
+        function renderTable() {
+            const files = getProcessedFiles();
+            const totalItems = files.length;
+            const totalPages = Math.ceil(totalItems / kbState.itemsPerPage);
             
-            const totalFiles = (kb.files.length || 0) + (kb.serverFiles.length || 0);
-            count.textContent = `${totalFiles} 個文件`;
+            // Adjust page if out of bounds
+            if (kbState.currentPage > totalPages && totalPages > 0) kbState.currentPage = totalPages;
+            if (kbState.currentPage < 1) kbState.currentPage = 1;
+
+            const start = (kbState.currentPage - 1) * kbState.itemsPerPage;
+            const end = start + kbState.itemsPerPage;
+            const pageFiles = files.slice(start, end);
+
+            const tbody = document.getElementById('kb-table-body');
+            const stats = document.getElementById('kb-stats');
             
-            if (totalFiles === 0) {
-                list.innerHTML = `<div class="text-center py-4 text-gray-400 border border-dashed rounded-lg">暫無數據</div>`;
+            stats.textContent = `${totalItems} 個文件`;
+
+            if (totalItems === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-gray-400">沒有找到文件</td></tr>`;
+                renderPagination(0);
                 return;
             }
 
-            let html = '';
+            tbody.innerHTML = pageFiles.map(file => {
+                const isSelected = kbState.selectedFiles.has(file.id);
+                const isServer = file.source === 'server';
+                const icon = KB.utils.getIcon(file.type);
+                const size = file.size ? KB.utils.formatSize(file.size) : 'Unknown';
+                const date = file.uploadedAt ? new Date(file.uploadedAt).toLocaleDateString() : '-';
+                
+                return `
+                    <tr class="kb-row bg-white border-b hover:bg-gray-50 transition-colors ${isSelected ? 'selected' : ''}">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input type="checkbox" class="kb-checkbox w-4 h-4 text-[#6b3d92] bg-gray-100 border-gray-300 rounded focus:ring-[#6b3d92]" 
+                                    ${isServer ? 'disabled title="系統文件不可刪除"' : ''}
+                                    ${isSelected ? 'checked' : ''}
+                                    onchange="toggleFileSelection('${file.id}')">
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <div class="flex items-center gap-2">
+                                <span class="iconify text-lg text-gray-500" data-icon="${icon}"></span>
+                                <span class="truncate max-w-xs" title="${file.name}">${file.name}</span>
+                                ${isServer ? '<span class="px-2 py-0.5 rounded text-xs bg-blue-100 text-blue-800 ml-2">系統</span>' : ''}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">${size}</td>
+                        <td class="px-6 py-4 truncate max-w-[150px]" title="${file.type}">${file.type || 'Unknown'}</td>
+                        <td class="px-6 py-4">${date}</td>
+                        <td class="px-6 py-4 text-center">
+                            ${!isServer ? `
+                            <button onclick="deleteSingleFile('${file.id}')" class="font-medium text-red-600 hover:underline hover:text-red-800">刪除</button>
+                            ` : '<span class="text-gray-300 cursor-not-allowed">鎖定</span>'}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
 
-            // 1. Render Server Files (Read-only)
-            if (kb.serverFiles && kb.serverFiles.length > 0) {
-                html += `<div class="text-xs font-bold text-gray-400 uppercase mb-2 mt-2 px-1">系統預載文件</div>`;
-                html += kb.serverFiles.map(file => `
-                    <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg opacity-80">
-                        <div class="flex items-center gap-3 overflow-hidden">
-                            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 text-blue-600">
-                                <span class="iconify text-xl" data-icon="fa-solid:server"></span>
-                            </div>
-                            <div class="truncate">
-                                <p class="font-medium text-gray-700 text-sm truncate">${file.name}</p>
-                                <p class="text-xs text-gray-500">系統文件 • ${file.desc || 'System'}</p>
-                            </div>
-                        </div>
-                        <div class="p-2 text-gray-400 cursor-not-allowed" title="系統文件無法刪除">
-                            <span class="iconify" data-icon="fa-solid:lock"></span>
-                        </div>
-                    </div>
-                `).join('');
+            // Update Select All Checkbox state for current page
+            const selectableFilesOnPage = pageFiles.filter(f => f.source !== 'server');
+            const allSelected = selectableFilesOnPage.length > 0 && selectableFilesOnPage.every(f => kbState.selectedFiles.has(f.id));
+            const selectAllBox = document.getElementById('kb-select-all');
+            if (selectAllBox) {
+                selectAllBox.checked = allSelected;
+                selectAllBox.disabled = selectableFilesOnPage.length === 0;
             }
 
-            // 2. Render User Files
-            if (kb.files && kb.files.length > 0) {
-                html += `<div class="text-xs font-bold text-gray-400 uppercase mb-2 mt-4 px-1">已上傳文件</div>`;
-                html += kb.files.map((file, index) => `
-                    <div class="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:shadow-sm transition-shadow">
-                        <div class="flex items-center gap-3 overflow-hidden">
-                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 text-[#6b3d92]">
-                                <span class="iconify text-xl" data-icon="${KB.utils.getIcon(file.type)}"></span>
-                            </div>
-                            <div class="truncate">
-                                <p class="font-medium text-gray-800 text-sm truncate">${file.name}</p>
-                                <p class="text-xs text-gray-500">${KB.utils.formatSize(file.size)} • ${new Date(file.uploadedAt).toLocaleDateString()}</p>
-                            </div>
-                        </div>
-                        <button onclick="removeFile(${index})" class="p-2 text-gray-400 hover:text-red-500 transition-colors">
-                            <span class="iconify" data-icon="fa-solid:trash"></span>
-                        </button>
-                    </div>
-                `).join('');
-            }
-
-            list.innerHTML = html;
+            renderPagination(totalPages);
         }
 
-        function removeFile(index) {
-            if(confirm('確定要移除此文件嗎？')) {
-                KB.remove(index, renderKnowledgeList);
+        function renderPagination(totalPages) {
+            const container = document.getElementById('kb-pagination');
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
             }
+
+            let html = `
+                <span class="text-sm text-gray-700">
+                    第 <span class="font-semibold text-gray-900">${kbState.currentPage}</span> / <span class="font-semibold text-gray-900">${totalPages}</span> 頁
+                </span>
+                <div class="inline-flex mt-2 xs:mt-0 gap-2">
+                    <button onclick="changePage(-1)" class="flex items-center justify-center px-3 py-1 text-sm font-medium text-white bg-[#6b3d92] rounded hover:bg-[#5a327a] disabled:opacity-50 disabled:cursor-not-allowed" ${kbState.currentPage === 1 ? 'disabled' : ''}>
+                        上一頁
+                    </button>
+                    <button onclick="changePage(1)" class="flex items-center justify-center px-3 py-1 text-sm font-medium text-white bg-[#6b3d92] rounded hover:bg-[#5a327a] disabled:opacity-50 disabled:cursor-not-allowed" ${kbState.currentPage === totalPages ? 'disabled' : ''}>
+                        下一頁
+                    </button>
+                </div>
+            `;
+            container.innerHTML = html;
+        }
+
+        // --- Event Handlers ---
+
+        function handleKBSearch(val) {
+            kbState.searchQuery = val;
+            kbState.currentPage = 1;
+            renderTable();
+        }
+
+        function handleKBFilter(val) {
+            kbState.filterType = val;
+            kbState.currentPage = 1;
+            renderTable();
+        }
+
+        function sortKB(field) {
+            if (kbState.sortField === field) {
+                kbState.sortOrder = kbState.sortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                kbState.sortField = field;
+                kbState.sortOrder = 'asc';
+            }
+            renderTable();
+            updateSortUI();
+        }
+
+        function updateSortUI() {
+            const headers = document.querySelectorAll('th[onclick^="sortKB"]');
+            headers.forEach(th => {
+                // Parse field from onclick
+                const match = th.getAttribute('onclick').match(/'(.*?)'/);
+                if (!match) return;
+                const field = match[1];
+                
+                const icon = th.querySelector('.sort-icon');
+                
+                // Reset style
+                th.classList.remove('text-[#6b3d92]', 'bg-gray-100');
+                if (icon) {
+                    icon.style.opacity = '0.3';
+                    icon.style.transform = 'rotate(0deg)';
+                    icon.setAttribute('data-icon', 'fa-solid:sort');
+                }
+
+                // Apply active style
+                if (field === kbState.sortField) {
+                    th.classList.add('text-[#6b3d92]', 'bg-gray-100');
+                    if (icon) {
+                        icon.style.opacity = '1';
+                        // Use arrow for active state
+                        icon.setAttribute('data-icon', 'fa-solid:arrow-down');
+                        if (kbState.sortOrder === 'asc') {
+                            icon.style.transform = 'rotate(180deg)';
+                        }
+                    }
+                }
+            });
+        }
+
+        function changePage(delta) {
+            kbState.currentPage += delta;
+            renderTable();
+        }
+
+        function toggleFileSelection(id) {
+            if (kbState.selectedFiles.has(id)) {
+                kbState.selectedFiles.delete(id);
+            } else {
+                kbState.selectedFiles.add(id);
+            }
+            renderTable(); 
+            updateBatchDeleteBtn();
+        }
+
+        function toggleSelectAll() {
+            const files = getProcessedFiles();
+            const start = (kbState.currentPage - 1) * kbState.itemsPerPage;
+            const end = start + kbState.itemsPerPage;
+            const pageFiles = files.slice(start, end).filter(f => f.source !== 'server');
+
+            const allSelected = pageFiles.every(f => kbState.selectedFiles.has(f.id));
+            
+            if (allSelected) {
+                pageFiles.forEach(f => kbState.selectedFiles.delete(f.id));
+            } else {
+                pageFiles.forEach(f => kbState.selectedFiles.add(f.id));
+            }
+            renderTable();
+            updateBatchDeleteBtn();
+        }
+
+        function updateBatchDeleteBtn() {
+            const btn = document.getElementById('btn-batch-delete');
+            if (kbState.selectedFiles.size > 0) {
+                btn.classList.remove('hidden');
+                btn.querySelector('span:last-child').textContent = `批量刪除 (${kbState.selectedFiles.size})`;
+            } else {
+                btn.classList.add('hidden');
+            }
+        }
+
+        function deleteSingleFile(id) {
+            if (!confirm('確定要移除此文件嗎？')) return;
+            const index = parseInt(id.split('-')[1]);
+            KB.remove(index, renderKnowledgeList);
+        }
+
+        function batchDeleteFiles() {
+            if (!confirm(`確定要刪除選中的 ${kbState.selectedFiles.size} 個文件嗎？`)) return;
+            
+            // Get indices to remove (descending order)
+            const indices = Array.from(kbState.selectedFiles)
+                .map(id => parseInt(id.split('-')[1]))
+                .sort((a, b) => b - a);
+
+            const kb = window.knowledgeBase;
+            indices.forEach(idx => {
+                if (idx >= 0 && idx < kb.files.length) {
+                    kb.files.splice(idx, 1);
+                }
+            });
+            
+            KB.save(() => {
+                alert('批量刪除成功');
+                renderKnowledgeList();
+            });
         }
 
         function clearKnowledgeBase() {
