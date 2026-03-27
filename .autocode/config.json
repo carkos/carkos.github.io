@@ -1,0 +1,13 @@
+{
+  "UseRepoMap": true,
+  "RepoMapDetailed": true,
+  "RepoMapIncludes": null,
+  "AllowedTools": null,
+  "AgentId": "Coder",
+  "ModelId": null,
+  "OverrideAgentModel": false,
+  "ImageBatchCount": 1,
+  "TokenThreshold": null,
+  "SummarizationModelId": null,
+  "RequireDoneOverride": null
+}

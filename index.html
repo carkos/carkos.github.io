@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title data-lang-key="Page_Meta_Title">Vizzle</title>
+    <title data-lang-key="Page_Meta_Title">Vizzle - AI智能助手</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -12,568 +12,203 @@
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://code.iconify.design">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://p11-flow-imagex-download-sign.byteimg.com">
     
     <script>
         let translations = {
-	"zh-HK": {
+    "zh-HK": {
         "Language_Display_Name": "繁",
-        "Page_Meta_Title": "炫幻視界",
-        "Navigation_Menu_Solutions": "解決方案",
-        "Navigation_Menu_Features": "產品功能",
-        "Navigation_Menu_Cases": "客戶案例",
-        "Navigation_Menu_Advantages": "核心優勢",
-        "Navigation_Menu_Pricing": "定價模式",
-        "Navigation_Menu_ContactUs": "聯繫我們",
-        "Button_BookDemo": "預約演示",
-        "Button_FreeTrial": "免費試用",
-        "Home_Hero_Tagline": "輕量化AI 3D解決方案",
-        "Home_Hero_MainTitle": "讓複雜的3D管理像瀏覽網頁一樣簡單",
-        "Home_Hero_Subtitle": "Vizzle輕量化AI 3D數碼城市管理平台，跨裝置秒級加載，AI智能分析，無需專業技能，大幅降低3D管理成本。",
-        "Home_Hero_Button_Consult": "立即諮詢解決方案",
-        "Home_Hero_Button_Demo": "預約產品演示",
-        "Home_Hero_ClientCount": "50+ 企業客戶的選擇",
+        "Page_Meta_Title": "炫幻視界 - AI智能助手",
+        "AI_Welcome_Title": "您好，我是 Vizzle AI 助手",
+        "AI_Welcome_Subtitle": "有任何關於我們產品、服務或公司的問題，請隨時向我提問",
+        "AI_Input_Placeholder": "輸入您的問題...",
+        "AI_Send_Button": "發送",
+        "AI_Suggested_Questions_Title": "常見問題",
+        "AI_Suggested_Q1": "Vizzle 提供什麼服務？",
+        "AI_Suggested_Q2": "如何開始使用 Vizzle？",
+        "AI_Suggested_Q3": "你們的定價方案是什麼？",
+        "AI_Suggested_Q4": "如何聯繫你們？",
+        "AI_Typing": "正在思考中...",
         "Home_Trust_Title": "受到行業領先企業的信任",
-        "Home_Solutions_Title": "核心解決方案",
-        "Home_Solutions_Subtitle": "解決傳統3D管理的核心痛點",
-        "Home_Solutions_Description": "當前數碼城市軟體普遍專業且昂貴，需高性能電腦和專業軟體，中小客戶難以負擔。Vizzle實現\"降本、提效、簡化\"三重突破。",
-        "Home_Solutions_Item1_Title": "低端設備，網頁即開即用",
-        "Home_Solutions_Item1_Desc": "極速加載巨型3D掃描模型，無需高階顯卡，8年前的舊設備也能秒速加載，支持多種模型格式，大幅降低硬體投入。",
-        "Home_Solutions_Item2_Title": "AI分析，無需人工繁瑣處理",
-        "Home_Solutions_Item2_Desc": "AI自動分析3D場景、整合各類數據，替代人工篩選，無需大海撈針，大幅節省人力成本與時間成本。",
-        "Home_Solutions_Item3_Title": "操作簡便，無需專業知識",
-        "Home_Solutions_Item3_Desc": "支持簡易測量、標記功能，無需安裝專業軟體，普通員工一人即可操作，溝通效率10倍化。",
-        "Home_Solutions_Link_LearnMore": "瞭解更多",
-        "Home_Features_Title": "產品功能",
-        "Home_Features_Subtitle": "全面的3D管理功能",
-        "Home_Features_Description": "我們提供全面的3D管理功能，滿足不同行業、不同規模客戶的多樣化需求。",
-        "Home_Features_Item1_Title": "GPU智能負載分配",
-        "Home_Features_Item1_Desc": "智能分配渲染、AI推理與互動任務到單一次級GPU單元，無需多張顯卡暴力處理，降低硬體成本。",
-        "Home_Features_Item2_Title": "實時AI+3D融合處理",
-        "Home_Features_Item2_Desc": "動作捕捉、摳像、鏡頭控制與3D場景渲染同幀對齊，無延遲即時交互，提升操作體驗。",
-        "Home_Features_Item3_Title": "超大3D模型輕量化",
-        "Home_Features_Item3_Desc": "透過分層加載、壓縮與快取，實現超大模型的即時瀏覽，適配各類低端設備。",
-        "Home_Features_Item4_Title": "多數據導入整合",
-        "Home_Features_Item4_Desc": "可導入風火水電、人流、物聯網、圖形設計等數據，進行全方位AI整合及分析，滿足多場景需求。",
-        "Home_Features_Stats_Title": "99.9% 系統穩定性",
-        "Home_Features_Stats_Desc": "7x24小時穩定運行，滿足企業級應用需求",
-        "Home_Cases_Title": "客戶案例",
-        "Home_Cases_Subtitle": "頂級客戶的成功實踐",
-        "Home_Cases_Description": "用實力證明價值，我們的產品已獲得行業頭部客戶認可，助力客戶實現3D管理效率翻倍。",
-        "Home_Cases_Featured_Badge": "標桿案例",
-        "Home_Cases_Featured_Name": "香港國際機場",
-        "Home_Cases_Featured_Desc": "為香港國際機場提供3D掃描AI智能管理服務，實現機場場景1:1還原、多數據整合分析，溝通效率提升10倍。",
-        "Home_Cases_Featured_Label_1": "場景格式",
-        "Home_Cases_Featured_Label_2": "物件格式",
-        "Home_Cases_Featured_Tag1": "效率提升10倍",
-        "Home_Cases_Featured_Tag2": "無需專業技能",
-        "Home_Cases_Featured_Tag3": "成本降低60%",
-        "Home_Cases_Button_ViewFull": "查看完整案例",
-        "Home_Cases_More1_Title": "數碼城市管理",
-        "Home_Cases_More1_Desc": "為城市管理部門提供輕量化3D管理方案，實現城市設施的智能監控與管理。",
-        "Home_Cases_More2_Title": "物業管理",
-        "Home_Cases_More2_Desc": "為大型物業提供3D可視化管理，提升物業管理效率，降低運營成本。",
-        "Home_Advantage_Title": "核心優勢",
-        "Home_Advantage_Subtitle": "產品差異化與技術實力",
-        "Home_Advantage_Description": "我們專注於輕量化、簡單化、低成本的3D管理解決方案，填補市場空白。",
-        "Home_Advantage_Diff_Title": "核心差異化",
-        "Home_Advantage_Diff_Item1_Title": "針對層級不同",
-        "Home_Advantage_Diff_Item1_Desc": "聚焦\"希望完成簡單任務、快速看到效果\"的用戶，現有工具過於複雜，小問題無需專家操作。",
-        "Home_Advantage_Diff_Item2_Title": "定位獨特",
-        "Home_Advantage_Diff_Item2_Desc": "極致輕量和簡單化，以最低的成本、最簡單的操作，快速見效，不取代專業軟體，填補市場空白。",
-        "Home_Advantage_Diff_Item3_Title": "營運成本低",
-        "Home_Advantage_Diff_Item3_Desc": "採用輕量級硬體/雲端模式，大幅降低用戶營運成本，區別於競品的重量級硬體投入。",
-        "Home_Advantage_Tech_Title": "技術實力",
-        "Home_Advantage_Tech_Item1_Title": "算力基建層優勢",
-        "Home_Advantage_Tech_Item1_Desc": "透過優化讓次級設備成為基建，降低成本及對第三方供應商的依賴，實現算力自給自足。",
-        "Home_Advantage_Tech_Item1_Stats": "運算成本降低 90%",
-        "Home_Advantage_Tech_Item2_Title": "全鏈路自主搭建",
-        "Home_Advantage_Tech_Item2_Desc": "從基建層開始自行搭建，形成自給自足的基建與應用層，讓應用成本更低、更可控。",
-        "Home_Advantage_Tech_Item2_Stats": "技術自主可控率 85%",
-        "Home_Compare_Title": "競品對比",
-        "Home_Compare_Header_Dimension": "對比維度",
-        "Home_Compare_Header_Vizzle": "Vizzle",
-        "Home_Compare_Header_Competitor": "同類競品",
-        "Home_Compare_Row1_Label": "營運成本",
-        "Home_Compare_Row1_Vizzle": "低（輕量級硬體/雲端）",
-        "Home_Compare_Row1_Competitor": "高（重量級硬體/雲端）",
-        "Home_Compare_Row2_Label": "擴展度",
-        "Home_Compare_Row2_Vizzle": "高（線上SaaS，無指定軟硬體）",
-        "Home_Compare_Row2_Competitor": "低（指定軟硬體，限制較多）",
-        "Home_Compare_Row3_Label": "核心定位",
-        "Home_Compare_Row3_Vizzle": "輕量化、簡單化、快速見效",
-        "Home_Compare_Row3_Competitor": "專業化、複雜化、功能全面",
-        "Home_Compare_Row4_Label": "操作門檻",
-        "Home_Compare_Row4_Vizzle": "低（無需專業知識）",
-        "Home_Compare_Row4_Competitor": "高（需專業人員操作）",
-        "Home_Pricing_Title": "營收模式",
-        "Home_Pricing_Subtitle": "靈活的收費模式",
-        "Home_Pricing_Description": "我們採用靈活的收費模式，滿足不同規模客戶的需求，降低前期投入，實現雙贏。",
-        "Home_Pricing_Plan1_Title": "基礎版",
-        "Home_Pricing_Plan1_Subtitle": "適合小型企業使用",
-        "Home_Pricing_Plan1_Price": "¥19,800",
-        "Home_Pricing_Plan1_Period": "/年",
-        "Home_Pricing_Plan1_Feature1": "5個用戶賬號",
-        "Home_Pricing_Plan1_Feature2": "基礎3D模型管理",
-        "Home_Pricing_Plan1_Feature3": "基礎AI分析功能",
-        "Home_Pricing_Plan1_Feature4": "定制化功能",
-        "Home_Pricing_Plan1_Feature5": "專屬客服",
-        "Home_Pricing_Plan2_Title": "企業版",
-        "Home_Pricing_Plan2_Subtitle": "適合中大型企業使用",
-        "Home_Pricing_Plan2_Price": "¥79,800",
-        "Home_Pricing_Plan2_Period": "/年",
-        "Home_Pricing_Plan2_Feature1": "20個用戶賬號",
-        "Home_Pricing_Plan2_Feature2": "高級3D模型管理",
-        "Home_Pricing_Plan2_Feature3": "高級AI分析功能",
-        "Home_Pricing_Plan2_Feature4": "基礎定制化功能",
-        "Home_Pricing_Plan2_Feature5": "專屬客服",
-        "Home_Pricing_Plan3_Title": "定制版",
-        "Home_Pricing_Plan3_Subtitle": "適合大型企業/政府機構",
-        "Home_Pricing_Plan3_Price": "定制報價",
-        "Home_Pricing_Plan3_Feature1": "無限用戶賬號",
-        "Home_Pricing_Plan3_Feature2": "全部功能",
-        "Home_Pricing_Plan3_Feature3": "深度定制化",
-        "Home_Pricing_Plan3_Feature4": "7×24小時技術支持",
-        "Home_Pricing_Plan3_Feature5": "私有化部署",
-        "Home_Pricing_Button_Select": "選擇套餐",
-        "Home_Pricing_Button_Contact": "聯繫我們",
-        "Home_Pricing_Model_Note": "核心收費模式：服務訂製 + 年度維護 + 用戶數收費，三者結合，靈活適配不同客戶需求。",
-        "Home_Pricing_Button_GetQuote": "獲取專屬報價",
-        "Home_Contact_Title": "聯繫我們",
-        "Home_Contact_Subtitle": "獲取專屬解決方案",
-        "Home_Contact_Description": "立即諮詢，我們將為您提供專業的3D管理服務，助力企業降本增效。",
-        "Home_Contact_Info_Company_Label": "公司名稱",
-        "Home_Contact_Info_Company_Value": "Vizzle 炫幻視界",
-        "Home_Contact_Info_Company_HK": "香港：炫幻視界有限公司",
-        "Home_Contact_Info_Company_HZ": "杭州：炫幻視界（杭州）科技有限公司",
-        "Home_Contact_Info_Phone_Label": "聯繫電話",
-        "Home_Contact_Info_Phone_Value": "+852 9660 5893",
-        "Home_Contact_Info_Email_Label": "電子郵箱",
-        "Home_Contact_Info_Email_Value": "info@im-vizzle.com",
-        "Home_Contact_Form_Title": "立即諮詢",
-        "Home_Contact_Form_Field_Name": "姓名",
-        "Home_Contact_Form_Placeholder_Name": "請輸入您的姓名",
-        "Home_Contact_Form_Field_Company": "公司名稱",
-        "Home_Contact_Form_Placeholder_Company": "請輸入您的公司名稱",
-        "Home_Contact_Form_Field_Phone": "聯繫電話",
-        "Home_Contact_Form_Placeholder_Phone": "請輸入您的聯繫電話",
-        "Home_Contact_Form_Field_Email": "電子郵箱",
-        "Home_Contact_Form_Placeholder_Email": "請輸入您的電子郵箱",
-        "Home_Contact_Form_Field_Message": "諮詢需求",
-        "Home_Contact_Form_Placeholder_Message": "請簡要描述您的需求",
-        "Home_Contact_Form_Button_Submit": "提交諮詢",
-        "Home_BottomCTA_Title": "開始您的輕量化3D管理之旅",
-        "Home_BottomCTA_Desc": "立即預約產品演示，瞭解Vizzle如何幫助您的企業降低3D管理成本，提升管理效率。",
-        "Home_BottomCTA_Button_Demo": "預約產品演示",
-        "Home_BottomCTA_Button_Trial": "免費試用14天",
-        "Footer_Column_Product": "產品",
-        "Footer_Column_Resources": "資源",
-        "Footer_Column_Company": "公司",
-        "Footer_Link_Help": "幫助中心",
-        "Footer_Link_Docs": "文檔中心",
-        "Footer_Link_Blog": "技術博客",
-        "Footer_Link_FAQ": "常見問題",
-        "Footer_Link_Partners": "合作夥伴",
-        "Footer_Link_About": "關於我們",
-        "Footer_Link_Jobs": "招賢納士",
-        "Footer_Link_Privacy": "隱私政策",
-        "Footer_Link_Terms": "服務條款",
-        "Footer_Copyright": "© 2026 Vizzle Limited 炫幻視界有限公司 保留所有權利",
-        "Global_Form_Error_Required": "請填寫必填字段",
-        "Global_Form_Success_Message": "提交成功，我們將盡快與您聯繫",
-        "Navigation_Menu_Awards": "獎項",
+        "Home_About_Title": "關於 Vizzle",
+        "Home_About_Subtitle": "輕量化AI 3D數碼城市管理平台",
+        "Home_About_Description": "Vizzle 專注於輕量化、簡單化、低成本的 3D 管理解決方案。我們讓複雜的 3D 管理像瀏覽網頁一樣簡單，實現跨裝置秒級加載、AI 智能分析，無需專業技能，大幅降低 3D 管理成本。",
+        "Home_About_Stat1": "50+",
+        "Home_About_Stat1_Label": "企業客戶",
+        "Home_About_Stat2": "10x",
+        "Home_About_Stat2_Label": "效率提升",
+        "Home_About_Stat3": "60%",
+        "Home_About_Stat3_Label": "成本降低",
         "Home_Awards_Title": "獎項與政府支持",
         "Home_Awards_Subtitle": "受到權威機構認可",
-        "Home_Awards_Description": "Vizzle憑藉創新的輕量化AI 3D數碼城市管理平台，獲得多項行業大獎和政府支持，彰顯技術實力與品牌公信力。",
-        "Home_Awards_List1_Title": "政府與大學支持",
-        "Home_Awards_List1_Item1": "香港理工大學天使創投支持",
-        "Home_Awards_List1_Item2": "香港創新科技署大學科技初創企業資助計劃",
-        "Home_Awards_List1_Item3": "香港數碼港培育計劃支持",
-        "Home_Awards_List1_Item4": "香港城市大學Tech 300基金支持",
-        "Home_Awards_List1_Item5": "杭州大運英才計劃支持",
-        "Home_Awards_List2_Title": "行業獎項",
-        "Home_Awards_List2_Item1": "2025年NEXX人工智能與創新獎",
-        "Home_Awards_List2_Item2": "第八屆中關村國際前沿科技大賽境外賽區領域賽10強隊伍",
-        "Home_Awards_List2_Item3": "香港資訊及通訊科技獎2024：數碼娛樂獎\"互動設計\"金獎、\"最佳人工智能\"應用獎",
-        "Home_Awards_List2_Item4": "創客中國國際中小企業創新創業大賽10強隊伍",
-        "Home_Awards_List2_Item5": "杭州動力創未國際科技項目新創賽三等獎"
+        "Home_Awards_Gov_Title": "政府與大學支持",
+        "Home_Awards_Gov_1": "香港理工大學天使創投支持",
+        "Home_Awards_Gov_2": "香港創新科技署大學科技初創企業資助計劃",
+        "Home_Awards_Gov_3": "香港數碼港培育計劃支持",
+        "Home_Awards_Gov_4": "香港城市大學Tech 300基金支持",
+        "Home_Awards_Gov_5": "杭州大運英才計劃支持",
+        "Home_Awards_Industry_Title": "行業獎項",
+        "Home_Awards_Industry_1": "2025年NEXX人工智能與創新獎",
+        "Home_Awards_Industry_2": "第八屆中關村國際前沿科技大賽境外賽區領域賽10強隊伍",
+        "Home_Awards_Industry_3": "香港資訊及通訊科技獎2024：數碼娛樂獎\"互動設計\"金獎、\"最佳人工智能\"應用獎",
+        "Home_Awards_Industry_4": "創客中國國際中小企業創新創業大賽10強隊伍",
+        "Home_Awards_Industry_5": "杭州動力創未國際科技項目新創賽三等獎",
+        "Admin_Title": "知識庫管理",
+        "Admin_Description": "上傳公司資料讓 AI 學習，支援 PDF、Excel、HTML 等格式",
+        "Admin_Upload_Title": "上傳資料",
+        "Admin_Upload_Drag": "拖放文件到這裡，或點擊選擇文件",
+        "Admin_Upload_Formats": "支援格式：PDF, XLS, XLSX, HTML, DOC, DOCX, TXT, JSON",
+        "Admin_Knowledge_Title": "已上傳的資料",
+        "Admin_Knowledge_Empty": "尚未上傳任何資料",
+        "Admin_Upload_Button": "選擇文件",
+        "Admin_Clear_Button": "清空知識庫",
+        "Admin_Status_Ready": "AI 已就緒，可回答問題",
+        "Admin_Status_Empty": "請先上傳資料",
+        "Admin_File_Remove": "移除",
+        "Admin_Sync_Status": "同步狀態",
+        "Admin_Last_Update": "最後更新",
+        "Navigation_Menu_Home": "首頁",
+        "Navigation_Menu_About": "關於我們",
+        "Navigation_Menu_Awards": "獎項",
+        "Navigation_Menu_Admin": "知識庫",
+        "Navigation_Menu_Contact": "聯繫我們",
+        "Footer_Copyright": "© 2026 Vizzle Limited 炫幻視界有限公司 保留所有權利",
+        "Contact_Info_Company": "Vizzle 炫幻視界",
+        "Contact_Info_Phone": "+852 9660 5893",
+        "Contact_Info_Email": "info@im-vizzle.com"
     },
     "zh-CN": {
         "Language_Display_Name": "简",
-        "Page_Meta_Title": "炫幻视界",
-        "Navigation_Menu_Solutions": "解决方案",
-        "Navigation_Menu_Features": "产品功能",
-        "Navigation_Menu_Cases": "客户案例",
-        "Navigation_Menu_Advantages": "核心优势",
-        "Navigation_Menu_Pricing": "定价模式",
-        "Navigation_Menu_ContactUs": "联系我们",
-        "Button_BookDemo": "预约演示",
-        "Button_FreeTrial": "免费试用",
-        "Home_Hero_Tagline": "轻量化AI 3D解决方案",
-        "Home_Hero_MainTitle": "让复杂的3D管理像浏览网页一样简单",
-        "Home_Hero_Subtitle": "Vizzle轻量化AI 3D数码城市管理平台，跨装置秒级加载，AI智能分析，无需专业技能，大幅降低3D管理成本。",
-        "Home_Hero_Button_Consult": "立即咨询解决方案",
-        "Home_Hero_Button_Demo": "预约产品演示",
-        "Home_Hero_ClientCount": "50+ 企业客户的选择",
+        "Page_Meta_Title": "炫幻视界 - AI智能助手",
+        "AI_Welcome_Title": "您好，我是 Vizzle AI 助手",
+        "AI_Welcome_Subtitle": "有任何关于我们产品、服务或公司的问题，请随时向我提问",
+        "AI_Input_Placeholder": "输入您的问题...",
+        "AI_Send_Button": "发送",
+        "AI_Suggested_Questions_Title": "常见问题",
+        "AI_Suggested_Q1": "Vizzle 提供什么服务？",
+        "AI_Suggested_Q2": "如何开始使用 Vizzle？",
+        "AI_Suggested_Q3": "你们的定价方案是什么？",
+        "AI_Suggested_Q4": "如何联系你们？",
+        "AI_Typing": "正在思考中...",
         "Home_Trust_Title": "受到行业领先企业的信任",
-        "Home_Solutions_Title": "核心解决方案",
-        "Home_Solutions_Subtitle": "解决传统3D管理的核心痛点",
-        "Home_Solutions_Description": "当前数码城市软件普遍专业且昂贵，需高性能电脑和专业软件，中小客户难以负担。Vizzle实现\"降本、提效、简化\"三重突破。",
-        "Home_Solutions_Item1_Title": "低端设备，网页即开即用",
-        "Home_Solutions_Item1_Desc": "极速加载巨型3D扫描模型，无需高阶显卡，8年前的旧设备也能秒速加载，支持多种模型格式，大幅降低硬件投入。",
-        "Home_Solutions_Item2_Title": "AI分析，无需人工繁琐处理",
-        "Home_Solutions_Item2_Desc": "AI自动分析3D场景、整合各类数据，替代人工筛选，无需大海捞针，大幅节省人力成本与时间成本。",
-        "Home_Solutions_Item3_Title": "操作简便，无需专业知识",
-        "Home_Solutions_Item3_Desc": "支持简易测量、标记功能，无需安装专业软件，普通员工一人即可操作，沟通效率10倍化。",
-        "Home_Solutions_Link_LearnMore": "了解更多",
-        "Home_Features_Title": "产品功能",
-        "Home_Features_Subtitle": "全面的3D管理功能",
-        "Home_Features_Description": "我们提供全面的3D管理功能，满足不同行业、不同规模客户的多样化需求。",
-        "Home_Features_Item1_Title": "GPU智能负载分配",
-        "Home_Features_Item1_Desc": "智能分配渲染、AI推理与互动任务到单一次级GPU单元，无需多张显卡暴力处理，降低硬件成本。",
-        "Home_Features_Item2_Title": "实时AI+3D融合处理",
-        "Home_Features_Item2_Desc": "动作捕捉、抠像、镜头控制与3D场景渲染同帧对齐，无延迟即时交互，提升操作体验。",
-        "Home_Features_Item3_Title": "超大3D模型轻量化",
-        "Home_Features_Item3_Desc": "透过分层加载、压缩与快取，实现超大模型的即时浏览，适配各类低端设备。",
-        "Home_Features_Item4_Title": "多数据导入整合",
-        "Home_Features_Item4_Desc": "可导入风火水电、人流、物联网、图形设计等数据，进行全方位AI整合及分析，满足多场景需求。",
-        "Home_Features_Stats_Title": "99.9% 系统稳定性",
-        "Home_Features_Stats_Desc": "7x24小时稳定运行，满足企业级应用需求",
-        "Home_Cases_Title": "客户案例",
-        "Home_Cases_Subtitle": "顶级客户的成功实践",
-        "Home_Cases_Description": "用实力证明价值，我们的产品已获得行业头部客户认可，助力客户实现3D管理效率翻倍。",
-        "Home_Cases_Featured_Badge": "标杆案例",
-        "Home_Cases_Featured_Name": "香港国际机场",
-        "Home_Cases_Featured_Desc": "为香港国际机场提供3D扫描AI智能管理服务，实现机场场景1:1还原、多数据整合分析，沟通效率提升10倍。",
-        "Home_Cases_Featured_Label_1": "场景格式",
-        "Home_Cases_Featured_Label_2": "物件格式",
-        "Home_Cases_Featured_Tag1": "效率提升10倍",
-        "Home_Cases_Featured_Tag2": "无需专业技能",
-        "Home_Cases_Featured_Tag3": "成本降低60%",
-        "Home_Cases_Button_ViewFull": "查看完整案例",
-        "Home_Cases_More1_Title": "数码城市管理",
-        "Home_Cases_More1_Desc": "为城市管理部门提供轻量化3D管理方案，实现城市设施的智能监控与管理。",
-        "Home_Cases_More2_Title": "物业管理",
-        "Home_Cases_More2_Desc": "为大型物业提供3D可视化管理，提升物业管理效率，降低运营成本。",
-        "Home_Advantage_Title": "核心优势",
-        "Home_Advantage_Subtitle": "产品差异化与技术实力",
-        "Home_Advantage_Description": "我们专注于轻量化、简单化、低成本的3D管理解决方案，填补市场空白。",
-        "Home_Advantage_Diff_Title": "核心差异化",
-        "Home_Advantage_Diff_Item1_Title": "针对层级不同",
-        "Home_Advantage_Diff_Item1_Desc": "聚焦\"希望完成简单任务、快速看到效果\"的用户，现有工具过于复杂，小问题无需专家操作。",
-        "Home_Advantage_Diff_Item2_Title": "定位独特",
-        "Home_Advantage_Diff_Item2_Desc": "极致轻量和简单化，以最低的成本、最简单的操作，快速见效，不取代专业软件，填补市场空白。",
-        "Home_Advantage_Diff_Item3_Title": "营运成本低",
-        "Home_Advantage_Diff_Item3_Desc": "采用轻量级硬件/云端模式，大幅降低用户营运成本，区别于竞品的重量级硬件投入。",
-        "Home_Advantage_Tech_Title": "技术实力",
-        "Home_Advantage_Tech_Item1_Title": "算力基建层优势",
-        "Home_Advantage_Tech_Item1_Desc": "透过优化让次级设备成为基建，降低成本及对第三方供应商的依赖，实现算力自给自足。",
-        "Home_Advantage_Tech_Item1_Stats": "运算成本降低 90%",
-        "Home_Advantage_Tech_Item2_Title": "全链路自主搭建",
-        "Home_Advantage_Tech_Item2_Desc": "从基建层开始自行搭建，形成自给自足的基建与应用层，让应用成本更低、更可控。",
-        "Home_Advantage_Tech_Item2_Stats": "技术自主可控率 85%",
-        "Home_Compare_Title": "竞品对比",
-        "Home_Compare_Header_Dimension": "对比维度",
-        "Home_Compare_Header_Vizzle": "Vizzle",
-        "Home_Compare_Header_Competitor": "同类竞品",
-        "Home_Compare_Row1_Label": "营运成本",
-        "Home_Compare_Row1_Vizzle": "低（轻量级硬件/云端）",
-        "Home_Compare_Row1_Competitor": "高（重量級硬件/云端）",
-        "Home_Compare_Row2_Label": "扩展度",
-        "Home_Compare_Row2_Vizzle": "高（线上SaaS，无指定软硬件）",
-        "Home_Compare_Row2_Competitor": "低（指定軟硬體，限制較多）",
-        "Home_Compare_Row3_Label": "核心定位",
-        "Home_Compare_Row3_Vizzle": "轻量化、简单化、快速见效",
-        "Home_Compare_Row3_Competitor": "专业化、复杂化、功能全面",
-        "Home_Compare_Row4_Label": "操作门槛",
-        "Home_Compare_Row4_Vizzle": "低（无需专业知识）",
-        "Home_Compare_Row4_Competitor": "高（需专业人员操作）",
-        "Home_Pricing_Title": "营收模式",
-        "Home_Pricing_Subtitle": "灵活的收费模式",
-        "Home_Pricing_Description": "我们采用灵活的收费模式，满足不同规模客户的需求，降低前期投入，实现双赢。",
-        "Home_Pricing_Plan1_Title": "基础版",
-        "Home_Pricing_Plan1_Subtitle": "适合小型企业使用",
-        "Home_Pricing_Plan1_Price": "¥19,800",
-        "Home_Pricing_Plan1_Period": "/年",
-        "Home_Pricing_Plan1_Feature1": "5个用户账号",
-        "Home_Pricing_Plan1_Feature2": "基础3D模型管理",
-        "Home_Pricing_Plan1_Feature3": "基础AI分析功能",
-        "Home_Pricing_Plan1_Feature4": "定制化功能",
-        "Home_Pricing_Plan1_Feature5": "专属客服",
-        "Home_Pricing_Plan2_Title": "企业版",
-        "Home_Pricing_Plan2_Subtitle": "适合中大型企业使用",
-        "Home_Pricing_Plan2_Price": "¥79,800",
-        "Home_Pricing_Plan2_Period": "/年",
-        "Home_Pricing_Plan2_Feature1": "20个用户账号",
-        "Home_Pricing_Plan2_Feature2": "高级3D模型管理",
-        "Home_Pricing_Plan2_Feature3": "高级AI分析功能",
-        "Home_Pricing_Plan2_Feature4": "基础定制化功能",
-        "Home_Pricing_Plan2_Feature5": "专属客服",
-        "Home_Pricing_Plan3_Title": "定制版",
-        "Home_Pricing_Plan3_Subtitle": "适合大型企业/政府机构",
-        "Home_Pricing_Plan3_Price": "定制报价",
-        "Home_Pricing_Plan3_Feature1": "无限用户账号",
-        "Home_Pricing_Plan3_Feature2": "全部功能",
-        "Home_Pricing_Plan3_Feature3": "深度定制化",
-        "Home_Pricing_Plan3_Feature4": "7×24小时技术支持",
-        "Home_Pricing_Plan3_Feature5": "私有化部署",
-        "Home_Pricing_Button_Select": "选择套餐",
-        "Home_Pricing_Button_Contact": "联系我们",
-        "Home_Pricing_Model_Note": "核心收费模式：服务订制 + 年度维护 + 用户数收费，三者结合，灵活适配不同客户需求。",
-        "Home_Pricing_Button_GetQuote": "获取专属报价",
-        "Home_Contact_Title": "联系我们",
-        "Home_Contact_Subtitle": "获取专属解决方案",
-        "Home_Contact_Description": "立即咨询，我们将为您提供专业的3D管理服务，助力企业降本增效。",
-        "Home_Contact_Info_Company_Label": "公司名称",
-        "Home_Contact_Info_Company_Value": "Vizzle 炫幻视界",
-        "Home_Contact_Info_Company_HK": "香港：炫幻视界有限公司",
-        "Home_Contact_Info_Company_HZ": "杭州：炫幻视界（杭州）科技有限公司",
-        "Home_Contact_Info_Phone_Label": "联系电话",
-        "Home_Contact_Info_Phone_Value": "+852 9660 5893",
-        "Home_Contact_Info_Email_Label": "电子邮箱",
-        "Home_Contact_Info_Email_Value": "info@im-vizzle.com",
-        "Home_Contact_Form_Title": "立即咨询",
-        "Home_Contact_Form_Field_Name": "姓名",
-        "Home_Contact_Form_Placeholder_Name": "请输入您的姓名",
-        "Home_Contact_Form_Field_Company": "公司名称",
-        "Home_Contact_Form_Placeholder_Company": "请输入您的公司名称",
-        "Home_Contact_Form_Field_Phone": "联系电话",
-        "Home_Contact_Form_Placeholder_Phone": "请输入您的联系电话",
-        "Home_Contact_Form_Field_Email": "电子邮箱",
-        "Home_Contact_Form_Placeholder_Email": "请输入您的电子邮箱",
-        "Home_Contact_Form_Field_Message": "咨询需求",
-        "Home_Contact_Form_Placeholder_Message": "请简要描述您的需求",
-        "Home_Contact_Form_Button_Submit": "提交咨询",
-        "Home_BottomCTA_Title": "开始您的轻量化3D管理之旅",
-        "Home_BottomCTA_Desc": "立即预约产品演示，了解Vizzle如何帮助您的企业降低3D管理成本，提升管理效率。",
-        "Home_BottomCTA_Button_Demo": "预约产品演示",
-        "Home_BottomCTA_Button_Trial": "免费试用14天",
-        "Footer_Column_Product": "产品",
-        "Footer_Column_Resources": "资源",
-        "Footer_Column_Company": "公司",
-        "Footer_Link_Help": "帮助中心",
-        "Footer_Link_Docs": "文档中心",
-        "Footer_Link_Blog": "技术博客",
-        "Footer_Link_FAQ": "常见问题",
-        "Footer_Link_Partners": "合作伙伴",
-        "Footer_Link_About": "关于我们",
-        "Footer_Link_Jobs": "招贤纳士",
-        "Footer_Link_Privacy": "隐私政策",
-        "Footer_Link_Terms": "服务条款",
-        "Footer_Copyright": "© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利",
-        "Global_Form_Error_Required": "请填写必填字段",
-        "Global_Form_Success_Message": "提交成功，我们将尽快与您联系",
-        "Navigation_Menu_Awards": "奖项",
+        "Home_About_Title": "关于 Vizzle",
+        "Home_About_Subtitle": "轻量化AI 3D数码城市管理平台",
+        "Home_About_Description": "Vizzle 专注于轻量化、简单化、低成本的 3D 管理解决方案。我们让复杂的 3D 管理像浏览网页一样简单，实现跨装置秒级加载、AI 智能分析，无需专业技能，大幅降低 3D 管理成本。",
+        "Home_About_Stat1": "50+",
+        "Home_About_Stat1_Label": "企业客户",
+        "Home_About_Stat2": "10x",
+        "Home_About_Stat2_Label": "效率提升",
+        "Home_About_Stat3": "60%",
+        "Home_About_Stat3_Label": "成本降低",
         "Home_Awards_Title": "奖项与政府支持",
         "Home_Awards_Subtitle": "受到权威机构认可",
-        "Home_Awards_Description": "Vizzle凭借创新的轻量化AI 3D数码城市管理平台，获得多项行业大奖和政府支持，彰显技术实力与品牌公信力。",
-        "Home_Awards_List1_Title": "政府与大学支持",
-        "Home_Awards_List1_Item1": "香港理工大学天使创投支持",
-        "Home_Awards_List1_Item2": "香港创新科技署大学科技初创企业资助计划",
-        "Home_Awards_List1_Item3": "香港数码港培育计划支持",
-        "Home_Awards_List1_Item4": "香港城市大学Tech 300基金支持",
-        "Home_Awards_List1_Item5": "杭州大运英才计划支持",
-        "Home_Awards_List2_Title": "行业奖项",
-        "Home_Awards_List2_Item1": "2025年NEXX人工智能与创新奖",
-        "Home_Awards_List2_Item2": "第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍",
-        "Home_Awards_List2_Item3": "香港资讯及通讯科技奖2024：数码娱乐奖\"互动设计\"金奖、\"最佳人工智能\"应用奖",
-        "Home_Awards_List2_Item4": "创客中国国际中小企业创新创业大赛10强队伍",
-        "Home_Awards_List2_Item5": "杭州动力创未国际科技项目新创赛三等奖"
+        "Home_Awards_Gov_Title": "政府与大学支持",
+        "Home_Awards_Gov_1": "香港理工大学天使创投支持",
+        "Home_Awards_Gov_2": "香港创新科技署大学科技初创企业资助计划",
+        "Home_Awards_Gov_3": "香港数码港培育计划支持",
+        "Home_Awards_Gov_4": "香港城市大学Tech 300基金支持",
+        "Home_Awards_Gov_5": "杭州大运英才计划支持",
+        "Home_Awards_Industry_Title": "行业奖项",
+        "Home_Awards_Industry_1": "2025年NEXX人工智能与创新奖",
+        "Home_Awards_Industry_2": "第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍",
+        "Home_Awards_Industry_3": "香港资讯及通讯科技奖2024：数码娱乐奖\"互动设计\"金奖、\"最佳人工智能\"应用奖",
+        "Home_Awards_Industry_4": "创客中国国际中小企业创新创业大赛10强队伍",
+        "Home_Awards_Industry_5": "杭州动力创未国际科技项目新创赛三等奖",
+        "Admin_Title": "知识库管理",
+        "Admin_Description": "上传公司资料让 AI 学习，支持 PDF、Excel、HTML 等格式",
+        "Admin_Upload_Title": "上传资料",
+        "Admin_Upload_Drag": "拖放文件到这里，或点击选择文件",
+        "Admin_Upload_Formats": "支持格式：PDF, XLS, XLSX, HTML, DOC, DOCX, TXT, JSON",
+        "Admin_Knowledge_Title": "已上传的资料",
+        "Admin_Knowledge_Empty": "尚未上传任何资料",
+        "Admin_Upload_Button": "选择文件",
+        "Admin_Clear_Button": "清空知识库",
+        "Admin_Status_Ready": "AI 已就绪，可回答问题",
+        "Admin_Status_Empty": "请先上传资料",
+        "Admin_File_Remove": "移除",
+        "Admin_Sync_Status": "同步状态",
+        "Admin_Last_Update": "最后更新",
+        "Navigation_Menu_Home": "首页",
+        "Navigation_Menu_About": "关于我们",
+        "Navigation_Menu_Awards": "奖项",
+        "Navigation_Menu_Admin": "知识库",
+        "Navigation_Menu_Contact": "联系我们",
+        "Footer_Copyright": "© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利",
+        "Contact_Info_Company": "Vizzle 炫幻视界",
+        "Contact_Info_Phone": "+852 9660 5893",
+        "Contact_Info_Email": "info@im-vizzle.com"
     },
     "en-US": {
         "Language_Display_Name": "EN",
-        "Page_Meta_Title": "Vizzle",
-        "Navigation_Menu_Solutions": "Solutions",
-        "Navigation_Menu_Features": "Features",
-        "Navigation_Menu_Cases": "Case Studies",
-        "Navigation_Menu_Advantages": "Advantages",
-        "Navigation_Menu_Pricing": "Pricing",
-        "Navigation_Menu_ContactUs": "Contact",
-        "Button_BookDemo": "Request Demo",
-        "Button_FreeTrial": "Free Trial",
-        "Home_Hero_Tagline": "Lightweight AI 3D Solution",
-        "Home_Hero_MainTitle": "Make complex 3D management as simple as browsing the web",
-        "Home_Hero_Subtitle": "Vizzle lightweight AI 3D digital city management platform, cross-device second-level loading, AI intelligent analysis, no professional skills required, significantly reducing 3D management costs.",
-        "Home_Hero_Button_Consult": "Consult Solutions Now",
-        "Home_Hero_Button_Demo": "Request Product Demo",
-        "Home_Hero_ClientCount": "Trusted by 50+ enterprise clients",
+        "Page_Meta_Title": "Vizzle - AI Assistant",
+        "AI_Welcome_Title": "Hello, I'm Vizzle AI Assistant",
+        "AI_Welcome_Subtitle": "Feel free to ask me any questions about our products, services, or company",
+        "AI_Input_Placeholder": "Type your question...",
+        "AI_Send_Button": "Send",
+        "AI_Suggested_Questions_Title": "Common Questions",
+        "AI_Suggested_Q1": "What services does Vizzle provide?",
+        "AI_Suggested_Q2": "How to get started with Vizzle?",
+        "AI_Suggested_Q3": "What are your pricing plans?",
+        "AI_Suggested_Q4": "How can I contact you?",
+        "AI_Typing": "Thinking...",
         "Home_Trust_Title": "Trusted by industry-leading enterprises",
-        "Home_Solutions_Title": "Core Solutions",
-        "Home_Solutions_Subtitle": "Solve core pain points of traditional 3D management",
-        "Home_Solutions_Description": "Current digital city software is generally professional and expensive, requiring high-performance computers and professional software, which is difficult for small and medium-sized clients to afford. Vizzle achieves three breakthroughs: \"cost reduction, efficiency improvement, and simplification\".",
-        "Home_Solutions_Item1_Title": "Low-end devices, web-based instant access",
-        "Home_Solutions_Item1_Desc": "Ultra-fast loading of giant 3D scan models, no need for high-end graphics cards, 8-year-old devices can also load in seconds, supporting multiple model formats, significantly reducing hardware investment.",
-        "Home_Solutions_Item2_Title": "AI analysis, no manual tedious processing",
-        "Home_Solutions_Item2_Desc": "AI automatically analyzes 3D scenes, integrates various data, replaces manual screening, eliminates the need for needle-in-a-haystack searches, greatly saving labor and time costs.",
-        "Home_Solutions_Item3_Title": "Simple operation, no professional knowledge required",
-        "Home_Solutions_Item3_Desc": "Supports simple measurement and marking functions, no need to install professional software, ordinary employees can operate alone, communication efficiency increased by 10 times.",
-        "Home_Solutions_Link_LearnMore": "Learn more",
-        "Home_Features_Title": "Product Features",
-        "Home_Features_Subtitle": "Comprehensive 3D management functions",
-        "Home_Features_Description": "We provide comprehensive 3D management functions to meet the diverse needs of customers in different industries and scales.",
-        "Home_Features_Item1_Title": "GPU intelligent load distribution",
-        "Home_Features_Item1_Desc": "Intelligently distributes rendering, AI reasoning, and interactive tasks to a single secondary GPU unit, eliminating the need for multiple graphics cards for brute-force processing, reducing hardware costs.",
-        "Home_Features_Item2_Title": "Real-time AI+3D fusion processing",
-        "Home_Features_Item2_Desc": "Motion capture, keying, camera control, and 3D scene rendering aligned in the same frame, no latency real-time interaction, enhancing operating experience.",
-        "Home_Features_Item3_Title": "Ultra-large 3D model lightweighting",
-        "Home_Features_Item3_Desc": "Through layered loading, compression, and caching,实现 instant browsing of ultra-large models, adapting to various low-end devices.",
-        "Home_Features_Item4_Title": "Multi-data import integration",
-        "Home_Features_Item4_Desc": "Can import data such as utilities, crowd flow, IoT, graphic design, etc., for comprehensive AI integration and analysis, meeting multi-scenario needs.",
-        "Home_Features_Stats_Title": "99.9% system stability",
-        "Home_Features_Stats_Desc": "7x24 hours stable operation, meeting enterprise-level application needs",
-        "Home_Cases_Title": "Case Studies",
-        "Home_Cases_Subtitle": "Successful practices of top clients",
-        "Home_Cases_Description": "Proving value with strength, our products have been recognized by industry-leading clients, helping clients double 3D management efficiency.",
-        "Home_Cases_Featured_Badge": "Benchmark Case",
-        "Home_Cases_Featured_Name": "Hong Kong International Airport",
-        "Home_Cases_Featured_Desc": "Provided 3D scanning AI intelligent management services for Hong Kong International Airport, achieving 1:1 of airport scenes, multi-data integration analysis, communication efficiency increased by 10 times.",
-        "Home_Cases_Featured_Label_1": "Environment Format",
-        "Home_Cases_Featured_Label_2": "Object Format",
-        "Home_Cases_Featured_Tag1": "Efficiency increased by 10x",
-        "Home_Cases_Featured_Tag2": "No professional skills required",
-        "Home_Cases_Featured_Tag3": "Cost reduced by 60%",
-        "Home_Cases_Button_ViewFull": "View Complete Case",
-        "Home_Cases_More1_Title": "Digital City Management",
-        "Home_Cases_More1_Desc": "Provide lightweight 3D management solutions for urban management departments, realizing intelligent monitoring and management of urban facilities.",
-        "Home_Cases_More2_Title": "Property Management",
-        "Home_Cases_More2_Desc": "Provide 3D visualization management for large properties, improving property management efficiency and reducing operating costs.",
-        "Home_Advantage_Title": "Core Advantages",
-        "Home_Advantage_Subtitle": "Product differentiation and technical strength",
-        "Home_Advantage_Description": "We focus on lightweight, simplified, and low-cost 3D management solutions to fill market gaps.",
-        "Home_Advantage_Diff_Title": "Core Differentiation",
-        "Home_Advantage_Diff_Item1_Title": "Different target levels",
-        "Home_Advantage_Diff_Item1_Desc": "Focus on users who \"want to complete simple tasks and see results quickly\". Existing tools are too complex, small problems do not require expert operation.",
-        "Home_Advantage_Diff_Item2_Title": "Unique positioning",
-        "Home_Advantage_Diff_Item2_Desc": "Extreme lightweight and simplification, with the lowest cost, simplest operation, quick results, not replacing professional software, filling market gaps.",
-        "Home_Advantage_Diff_Item3_Title": "Low operating costs",
-        "Home_Advantage_Diff_Item3_Desc": "Adopt lightweight hardware/cloud mode, significantly reducing user operating costs, different from competitors' heavy hardware investment.",
-        "Home_Advantage_Tech_Title": "Technical Strength",
-        "Home_Advantage_Tech_Item1_Title": "Computing infrastructure layer advantages",
-        "Home_Advantage_Tech_Item1_Desc": "Through optimization, make secondary equipment become infrastructure, reduce costs and dependence on third-party suppliers, achieve self-sufficiency in computing power.",
-        "Home_Advantage_Tech_Item1_Stats": "Computing cost reduced by 90%",
-        "Home_Advantage_Tech_Item2_Title": "Full-link independent construction",
-        "Home_Advantage_Tech_Item2_Desc": "Build from the infrastructure layer, forming self-sufficient infrastructure and application layers, making application costs lower and more controllable.",
-        "Home_Advantage_Tech_Item2_Stats": "Technology self-control rate 85%",
-        "Home_Compare_Title": "Competitor Comparison",
-        "Home_Compare_Header_Dimension": "Comparison Dimension",
-        "Home_Compare_Header_Vizzle": "Vizzle",
-        "Home_Compare_Header_Competitor": "Competitors",
-        "Home_Compare_Row1_Label": "Operating Cost",
-        "Home_Compare_Row1_Vizzle": "Low (lightweight hardware/cloud)",
-        "Home_Compare_Row1_Competitor": "High (heavyweight hardware/cloud)",
-        "Home_Compare_Row2_Label": "Expandability",
-        "Home_Compare_Row2_Vizzle": "High (online SaaS, no specified hardware/software)",
-        "Home_Compare_Row2_Competitor": "Low (specified hardware/software, many limitations)",
-        "Home_Compare_Row3_Label": "Core Positioning",
-        "Home_Compare_Row3_Vizzle": "Lightweight, simplified, quick results",
-        "Home_Compare_Row3_Competitor": "Professional, complex, comprehensive functions",
-        "Home_Compare_Row4_Label": "Operation Threshold",
-        "Home_Compare_Row4_Vizzle": "Low (no professional knowledge required)",
-        "Home_Compare_Row4_Competitor": "High (requires professional personnel)",
-        "Home_Pricing_Title": "Revenue Model",
-        "Home_Pricing_Subtitle": "Flexible pricing model",
-        "Home_Pricing_Description": "We adopt a flexible pricing model to meet the needs of customers of different scales, reduce initial investment, and achieve win-win results.",
-        "Home_Pricing_Plan1_Title": "Basic Version",
-        "Home_Pricing_Plan1_Subtitle": "Suitable for small businesses",
-        "Home_Pricing_Plan1_Price": "¥19,800",
-        "Home_Pricing_Plan1_Period": "/year",
-        "Home_Pricing_Plan1_Feature1": "5 user accounts",
-        "Home_Pricing_Plan1_Feature2": "Basic 3D model management",
-        "Home_Pricing_Plan1_Feature3": "Basic AI analysis functions",
-        "Home_Pricing_Plan1_Feature4": "Customization features",
-        "Home_Pricing_Plan1_Feature5": "Dedicated customer service",
-        "Home_Pricing_Plan2_Title": "Enterprise Version",
-        "Home_Pricing_Plan2_Subtitle": "Suitable for medium to large enterprises",
-        "Home_Pricing_Plan2_Price": "¥79,800",
-        "Home_Pricing_Plan2_Period": "/year",
-        "Home_Pricing_Plan2_Feature1": "20 user accounts",
-        "Home_Pricing_Plan2_Feature2": "Advanced 3D model management",
-        "Home_Pricing_Plan2_Feature3": "Advanced AI analysis functions",
-        "Home_Pricing_Plan2_Feature4": "Basic customization features",
-        "Home_Pricing_Plan2_Feature5": "Dedicated customer service",
-        "Home_Pricing_Plan3_Title": "Custom Version",
-        "Home_Pricing_Plan3_Subtitle": "Suitable for large enterprises/government agencies",
-        "Home_Pricing_Plan3_Price": "Custom Quote",
-        "Home_Pricing_Plan3_Feature1": "Unlimited user accounts",
-        "Home_Pricing_Plan3_Feature2": "All functions",
-        "Home_Pricing_Plan3_Feature3": "Deep customization",
-        "Home_Pricing_Plan3_Feature4": "7×24 hour technical support",
-        "Home_Pricing_Plan3_Feature5": "Private deployment",
-        "Home_Pricing_Button_Select": "Select Plan",
-        "Home_Pricing_Button_Contact": "Contact Us",
-        "Home_Pricing_Model_Note": "Core pricing model: service customization + annual maintenance + user count pricing, combined to flexibly adapt to different customer needs.",
-        "Home_Pricing_Button_GetQuote": "Get Exclusive Quote",
-        "Home_Contact_Title": "Contact Us",
-        "Home_Contact_Subtitle": "Get Exclusive Solutions",
-        "Home_Contact_Description": "Consult now, we will provide you with professional 3D management services to help your enterprise reduce costs and increase efficiency.",
-        "Home_Contact_Info_Company_Label": "Company Name",
-        "Home_Contact_Info_Company_Value": "Vizzle Limited",
-        "Home_Contact_Info_Company_HK": "Hong Kong: Vizzle Limited",
-        "Home_Contact_Info_Company_HZ": "Hangzhou: Vizzle (Hangzhou) Technology Co., Ltd.",
-        "Home_Contact_Info_Phone_Label": "Contact Phone",
-        "Home_Contact_Info_Phone_Value": "+852 9660 5893",
-        "Home_Contact_Info_Email_Label": "Email Address",
-        "Home_Contact_Info_Email_Value": "info@im-vizzle.com",
-        "Home_Contact_Form_Title": "Consult Now",
-        "Home_Contact_Form_Field_Name": "Name",
-        "Home_Contact_Form_Placeholder_Name": "Please enter your name",
-        "Home_Contact_Form_Field_Company": "Company Name",
-        "Home_Contact_Form_Placeholder_Company": "Please enter your company name",
-        "Home_Contact_Form_Field_Phone": "Contact Phone",
-        "Home_Contact_Form_Placeholder_Phone": "Please enter your contact phone",
-        "Home_Contact_Form_Field_Email": "Email Address",
-        "Home_Contact_Form_Placeholder_Email": "Please enter your email address",
-        "Home_Contact_Form_Field_Message": "Consultation Needs",
-        "Home_Contact_Form_Placeholder_Message": "Please briefly describe your needs",
-        "Home_Contact_Form_Button_Submit": "Submit Consultation",
-        "Home_BottomCTA_Title": "Start your lightweight 3D management journey",
-        "Home_BottomCTA_Desc": "Request a product demo now to learn how Vizzle can help your enterprise reduce 3D management costs and improve management efficiency.",
-        "Home_BottomCTA_Button_Demo": "Request Product Demo",
-        "Home_BottomCTA_Button_Trial": "Free 14-day Trial",
-        "Footer_Column_Product": "Product",
-        "Footer_Column_Resources": "Resources",
-        "Footer_Column_Company": "Company",
-        "Footer_Link_Help": "Help Center",
-        "Footer_Link_Docs": "Documentation Center",
-        "Footer_Link_Blog": "Technical Blog",
-        "Footer_Link_FAQ": "FAQ",
-        "Footer_Link_Partners": "Partners",
-        "Footer_Link_About": "About Us",
-        "Footer_Link_Jobs": "Careers",
-        "Footer_Link_Privacy": "Privacy Policy",
-        "Footer_Link_Terms": "Service Terms",
-        "Footer_Copyright": "© 2026 Vizzle Limited. All rights reserved.",
-        "Global_Form_Error_Required": "Please fill in the required fields",
-        "Global_Form_Success_Message": "Submission successful, we will contact you as soon as possible",
-        "Navigation_Menu_Awards": "Awards",
+        "Home_About_Title": "About Vizzle",
+        "Home_About_Subtitle": "Lightweight AI 3D Digital City Management Platform",
+        "Home_About_Description": "Vizzle focuses on lightweight, simplified, and low-cost 3D management solutions. We make complex 3D management as simple as browsing the web, with cross-device instant loading, AI intelligent analysis, no professional skills required, significantly reducing 3D management costs.",
+        "Home_About_Stat1": "50+",
+        "Home_About_Stat1_Label": "Enterprise Clients",
+        "Home_About_Stat2": "10x",
+        "Home_About_Stat2_Label": "Efficiency Boost",
+        "Home_About_Stat3": "60%",
+        "Home_About_Stat3_Label": "Cost Reduction",
         "Home_Awards_Title": "Awards & Government Support",
         "Home_Awards_Subtitle": "Recognized by Authoritative Organizations",
-        "Home_Awards_Description": "With its innovative lightweight AI 3D digital city management platform, Vizzle has received multiple industry awards and government support, demonstrating its technical strength and brand credibility.",
-        "Home_Awards_List1_Title": "Government & University Support",
-        "Home_Awards_List1_Item1": "Hong Kong Polytechnic University, PolyVentures Angel Investment",
-        "Home_Awards_List1_Item2": "The Innovation and Technology Commission, The Technology Start-up Support Scheme for Universities (“TSSSU”)",
-        "Home_Awards_List1_Item3": "Cyberport Incubation Program",
-        "Home_Awards_List1_Item4": "Hong Kong City University, Tech 300 Fund",
-        "Home_Awards_List1_Item5": "Hangzhou Entrepreneurship Talent Project for “Grand Canal” Plan",
-        "Home_Awards_List2_Title": "Industry Awards",
-        "Home_Awards_List2_Item1": "NEXX AI and Innovation Awards 2025",
-        "Home_Awards_List2_Item2": "Beijing The 8th Zhongguancun International Advanced Technology Competition Web 3.0 Oversea Track - Top 10",
-        "Home_Awards_List2_Item3": "Hong Kong ICT Awards 2024: Digital Entertainment Award \"Interactive Design\" Gold Award, \"Best Artificial Intelligence\" Application Award",
-        "Home_Awards_List2_Item4": "Maker in China SME Innovation and Entrepreneurship Global Contest - Top 10",
-        "Home_Awards_List2_Item5": "Hangzhou Internatival Sci-Tech New Venture Competition 2024 - 3rd Prize"
+        "Home_Awards_Gov_Title": "Government & University Support",
+        "Home_Awards_Gov_1": "Hong Kong Polytechnic University Angel Investment",
+        "Home_Awards_Gov_2": "Innovation and Technology Commission TSSSU",
+        "Home_Awards_Gov_3": "Cyberport Incubation Program",
+        "Home_Awards_Gov_4": "Hong Kong City University Tech 300 Fund",
+        "Home_Awards_Gov_5": "Hangzhou Grand Canal Talent Program",
+        "Home_Awards_Industry_Title": "Industry Awards",
+        "Home_Awards_Industry_1": "NEXX AI and Innovation Awards 2025",
+        "Home_Awards_Industry_2": "Zhongguancun International Advanced Technology Competition Top 10",
+        "Home_Awards_Industry_3": "Hong Kong ICT Awards 2024: Gold Award",
+        "Home_Awards_Industry_4": "Maker in China SME Innovation Competition Top 10",
+        "Home_Awards_Industry_5": "Hangzhou International Sci-Tech Competition 3rd Prize",
+        "Admin_Title": "Knowledge Base Management",
+        "Admin_Description": "Upload company documents for AI to learn. Supports PDF, Excel, HTML formats",
+        "Admin_Upload_Title": "Upload Documents",
+        "Admin_Upload_Drag": "Drag and drop files here, or click to select",
+        "Admin_Upload_Formats": "Supported: PDF, XLS, XLSX, HTML, DOC, DOCX, TXT, JSON",
+        "Admin_Knowledge_Title": "Uploaded Documents",
+        "Admin_Knowledge_Empty": "No documents uploaded yet",
+        "Admin_Upload_Button": "Select Files",
+        "Admin_Clear_Button": "Clear Knowledge Base",
+        "Admin_Status_Ready": "AI is ready to answer questions",
+        "Admin_Status_Empty": "Please upload documents first",
+        "Admin_File_Remove": "Remove",
+        "Admin_Sync_Status": "Sync Status",
+        "Admin_Last_Update": "Last Update",
+        "Navigation_Menu_Home": "Home",
+        "Navigation_Menu_About": "About",
+        "Navigation_Menu_Awards": "Awards",
+        "Navigation_Menu_Admin": "Knowledge Base",
+        "Navigation_Menu_Contact": "Contact",
+        "Footer_Copyright": "© 2026 Vizzle Limited. All rights reserved.",
+        "Contact_Info_Company": "Vizzle Limited",
+        "Contact_Info_Phone": "+852 9660 5893",
+        "Contact_Info_Email": "info@im-vizzle.com"
     }
 };
     </script>
     
     <style type="text/tailwindcss">
         @layer utilities {
-            /* Scroll padding for fixed header */
             html {
-                scroll-padding-top: 4rem; /* 64px for h-16 */
+                scroll-padding-top: 4rem;
             }
             @media (min-width: 768px) {
                 html {
-                    scroll-padding-top: 5rem; /* 80px for h-20 */
+                    scroll-padding-top: 5rem;
                 }
             }
 
@@ -588,41 +223,26 @@
             .glass-card { @apply bg-white/50 backdrop-blur-md border border-white/60 shadow-lg rounded-xl p-6 transition-all duration-300 hover:-translate-y-1; }
             .nav-link { @apply text-neutral-600 hover:text-[#6b3d92] transition-colors cursor-pointer; }
             
-            /* Performance: Disable backdrop-blur on mobile to save GPU */
+            /* Performance: Disable backdrop-blur on mobile */
             @media (max-width: 768px) {
                 .glass-card {
                     backdrop-filter: none !important;
                     -webkit-backdrop-filter: none !important;
                     background-color: rgba(255, 255, 255, 0.7) !important;
                 }
-                section {
-                    backdrop-filter: none !important;
-                    -webkit-backdrop-filter: none !important;
-                }
-                /* Adjust section backgrounds for mobile (no blur) */
-                section:nth-of-type(even) {
-                    background-color: rgba(255, 255, 255, 0.85) !important;
-                }
-                section:nth-of-type(odd):not(#hero) {
-                    background-color: rgba(243, 244, 246, 0.85) !important;
-                }
             }
 
-            /* Section Backgrounds (Restored & Alternating) */
-            /* Even sections: Darker base for contrast */
+            /* Section Backgrounds */
             section:nth-of-type(even) {
                 @apply bg-white/20 backdrop-blur-sm transition-colors duration-500;
             }
-            /* Odd sections (except Hero): Lighter base */
             section:nth-of-type(odd):not(#hero) {
                 @apply bg-gray-300/20 backdrop-blur-sm transition-colors duration-500;
             }
-            /* Hero section: Transparent to show 3D background */
             #hero {
                 @apply bg-transparent backdrop-blur-none;
             }
             
-            /* Remove specific alternating card styles as we moved hierarchy to section base */
             .mobile-nav-link { @apply block py-2 text-neutral-600 hover:text-[#6b3d92] transition-colors cursor-pointer; }
             
             /* Language Switcher */
@@ -633,29 +253,58 @@
             
             /* Typography */
             .text-balance { text-wrap: balance; }
-            .section-tag { @apply inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4; }
-            .section-title { @apply text-3xl md:text-4xl font-bold mb-6; }
-            .hero-title { @apply text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-balance; }
             
             /* Scrollbar */
             .no-scrollbar::-webkit-scrollbar { display: none; }
             .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-            /* Mobile Height Fix */
-            .h-screen-dvh {
-                height: 100vh; /* Fallback */
-                height: 100dvh;
+            /* Chat Styles */
+            .chat-container {
+                @apply flex flex-col h-[calc(100vh-8rem)] md:h-[600px];
             }
-            @keyframes marquee {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
+            .chat-messages {
+                @apply flex-1 overflow-y-auto space-y-4 p-4;
             }
-            .animate-marquee {
-                width: max-content;
-                animation: marquee 60s linear infinite;
+            .chat-message-user {
+                @apply flex justify-end;
             }
-            .animate-marquee:hover {
-                animation-play-state: paused;
+            .chat-message-ai {
+                @apply flex justify-start;
+            }
+            .chat-bubble-user {
+                @apply bg-[#6b3d92] text-white px-4 py-3 rounded-2xl rounded-br-md max-w-[80%] md:max-w-[70%];
+            }
+            .chat-bubble-ai {
+                @apply bg-white/80 backdrop-blur-sm border border-white/60 px-4 py-3 rounded-2xl rounded-bl-md max-w-[80%] md:max-w-[70%] shadow-md;
+            }
+            .chat-input-container {
+                @apply border-t border-white/20 bg-white/30 backdrop-blur-sm p-4;
+            }
+            .suggested-question {
+                @apply px-4 py-2 bg-white/60 backdrop-blur-sm border border-[#6b3d92]/30 rounded-full text-sm text-neutral-700 hover:bg-[#6b3d92]/10 hover:border-[#6b3d92] transition-all cursor-pointer;
+            }
+
+            /* Knowledge Base Admin */
+            .upload-zone {
+                @apply border-2 border-dashed border-[#6b3d92]/30 rounded-xl p-8 text-center transition-all hover:border-[#6b3d92] hover:bg-[#6b3d92]/5 cursor-pointer;
+            }
+            .upload-zone.dragover {
+                @apply border-[#6b3d92] bg-[#6b3d92]/10;
+            }
+            .knowledge-item {
+                @apply flex items-center justify-between p-3 bg-white/50 rounded-lg border border-white/60 mb-2;
+            }
+
+            /* Typing animation */
+            .typing-dots span {
+                @apply inline-block w-2 h-2 bg-[#6b3d92] rounded-full mx-0.5;
+                animation: typing 1.4s infinite ease-in-out both;
+            }
+            .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+            .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+            @keyframes typing {
+                0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+                40% { transform: scale(1); opacity: 1; }
             }
         }
     </style>
@@ -675,13 +324,11 @@
                 
                 <!-- Desktop Nav -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#solutions" class="nav-link" data-lang-key="Navigation_Menu_Solutions">解决方案</a>
-                    <a href="#features" class="nav-link" data-lang-key="Navigation_Menu_Features">产品功能</a>
-                    <a href="#cases" class="nav-link" data-lang-key="Navigation_Menu_Cases">客户案例</a>
-                    <a href="#advantage" class="nav-link" data-lang-key="Navigation_Menu_Advantages">核心优势</a>
-                    <a href="#pricing" class="nav-link" data-lang-key="Navigation_Menu_Pricing">定价模式</a>
-                    <a href="#awards" class="nav-link" data-lang-key="Navigation_Menu_Awards">奖项</a>
-                    <a href="#contact" class="nav-link" data-lang-key="Navigation_Menu_ContactUs">联系我们</a>
+                    <a href="#hero" class="nav-link" data-lang-key="Navigation_Menu_Home">首頁</a>
+                    <a href="#about" class="nav-link" data-lang-key="Navigation_Menu_About">關於我們</a>
+                    <a href="#awards" class="nav-link" data-lang-key="Navigation_Menu_Awards">獎項</a>
+                    <a href="#admin" class="nav-link" data-lang-key="Navigation_Menu_Admin">知識庫</a>
+                    <a href="#contact" class="nav-link" data-lang-key="Navigation_Menu_Contact">聯繫我們</a>
                 </div>
                 
                 <!-- Language Switcher -->
@@ -694,18 +341,12 @@
                         </button>
                         <div class="lang-menu">
                             <div class="lang-menu-content py-1">
-                                <button class="lang-btn lang-option" data-lang="zh-HK" data-lang-text="繁">繁</button>
-                                <button class="lang-btn lang-option" data-lang="zh-CN" data-lang-text="简">简</button>
-                                <button class="lang-btn lang-option" data-lang="en-US" data-lang-text="English">English</button>
+                                <button class="lang-btn lang-option" data-lang="zh-HK">繁</button>
+                                <button class="lang-btn lang-option" data-lang="zh-CN">简</button>
+                                <button class="lang-btn lang-option" data-lang="en-US">English</button>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- CTA Buttons -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <button class="btn-secondary" data-lang-key="Button_BookDemo">预约演示</button>
-                    <button class="btn-primary" data-lang-key="Button_FreeTrial">免费试用</button>
                 </div>
                 
                 <!-- Mobile Menu Button -->
@@ -718,9 +359,9 @@
                         </button>
                         <div id="mobile-lang-dropdown" class="absolute right-0 mt-1 w-24 bg-white rounded-md shadow-lg overflow-hidden z-50 hidden">
                             <div class="py-1">
-                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors" data-lang="zh-HK" data-lang-text="繁">繁</button>
-                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors" data-lang="zh-CN" data-lang-text="中">简</button>
-                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors" data-lang="en-US" data-lang-text="EN">EN</button>
+                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors" data-lang="zh-HK">繁</button>
+                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors" data-lang="zh-CN">简</button>
+                                <button class="lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors" data-lang="en-US">EN</button>
                             </div>
                         </div>
                     </div>
@@ -733,17 +374,11 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden hidden pb-4">
                 <div class="flex flex-col space-y-3">
-                    <a href="#solutions" class="mobile-nav-link" data-lang-key="Navigation_Menu_Solutions">解决方案</a>
-                    <a href="#features" class="mobile-nav-link" data-lang-key="Navigation_Menu_Features">产品功能</a>
-                    <a href="#cases" class="mobile-nav-link" data-lang-key="Navigation_Menu_Cases">客户案例</a>
-                    <a href="#advantage" class="mobile-nav-link" data-lang-key="Navigation_Menu_Advantages">核心优势</a>
-                    <a href="#pricing" class="mobile-nav-link" data-lang-key="Navigation_Menu_Pricing">定价模式</a>
-                    <a href="#awards" class="mobile-nav-link" data-lang-key="Navigation_Menu_Awards">奖项</a>
-                    <a href="#contact" class="mobile-nav-link" data-lang-key="Navigation_Menu_ContactUs">联系我们</a>
-                    <div class="flex space-x-3 pt-2">
-                        <button class="btn-secondary text-sm px-4 py-2 w-full">预约演示</button>
-                        <button class="btn-primary text-sm px-4 py-2 w-full">免费试用</button>
-                    </div>
+                    <a href="#hero" class="mobile-nav-link" data-lang-key="Navigation_Menu_Home">首頁</a>
+                    <a href="#about" class="mobile-nav-link" data-lang-key="Navigation_Menu_About">關於我們</a>
+                    <a href="#awards" class="mobile-nav-link" data-lang-key="Navigation_Menu_Awards">獎項</a>
+                    <a href="#admin" class="mobile-nav-link" data-lang-key="Navigation_Menu_Admin">知識庫</a>
+                    <a href="#contact" class="mobile-nav-link" data-lang-key="Navigation_Menu_Contact">聯繫我們</a>
                 </div>
             </div>
         </div>
@@ -751,27 +386,60 @@
 
     <main class="w-full relative z-10 scroll-smooth" id="main-scroll">
         
-        <!-- Section 1: Hero -->
+        <!-- Section 1: Hero - AI Chat Interface -->
         <section id="hero" class="min-h-screen w-full flex items-center justify-center relative section-padding">
             <div class="container-custom relative z-10 w-full">
-                <div class="flex flex-col md:flex-row items-center gap-10">
-                    <div class="w-full md:w-1/2 space-y-6 glass-card border-none shadow-none">
-                        <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium" data-lang-key="Home_Hero_Tagline">
-                            轻量化AI 3D解决方案
-                        </span>
-                        <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-balance" data-lang-key="Home_Hero_MainTitle">
-                            让复杂的3D管理<br>
-                            <span class="text-[#6b3d92]">像浏览网页一样简单</span>
-                        </h1>
-                        <p class="text-lg text-neutral-700 max-w-lg text-balance" data-lang-key="Home_Hero_Subtitle">
-                            Vizzle轻量化AI 3D数码城市管理平台，跨装置秒级加载，AI智能分析，无需专业技能，大幅降低3D管理成本。
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                            <button class="btn-primary" data-lang-key="Home_Hero_Button_Consult">立即咨询解决方案</button>
-                            <button class="btn-secondary" data-lang-key="Home_Hero_Button_Demo">预约产品演示</button>
+                <div class="max-w-4xl mx-auto">
+                    <!-- AI Chat Card -->
+                    <div class="glass-card p-0 overflow-hidden">
+                        <!-- Chat Header -->
+                        <div class="bg-gradient-to-r from-[#6b3d92] to-[#8b5db3] text-white p-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                    <span class="iconify text-2xl" data-icon="fluent:bot-sparkle-24-filled"></span>
+                                </div>
+                                <div>
+                                    <h1 class="text-xl md:text-2xl font-bold" data-lang-key="AI_Welcome_Title">您好，我是 Vizzle AI 助手</h1>
+                                    <p class="text-white/80 text-sm" data-lang-key="AI_Welcome_Subtitle">有任何關於我們產品、服務或公司的問題，請隨時向我提問</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Chat Messages Area -->
+                        <div class="chat-messages" id="chat-messages">
+                            <!-- Welcome message and suggested questions -->
+                            <div class="text-center py-8">
+                                <div class="w-20 h-20 bg-[#6b3d92]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="iconify text-4xl text-[#6b3d92]" data-icon="fluent:bot-sparkle-24-filled"></span>
+                                </div>
+                                <p class="text-neutral-500 mb-6" data-lang-key="AI_Suggested_Questions_Title">常見問題</p>
+                                <div class="flex flex-wrap justify-center gap-3">
+                                    <button class="suggested-question" onclick="askQuestion(this.textContent)" data-lang-key="AI_Suggested_Q1">Vizzle 提供什麼服務？</button>
+                                    <button class="suggested-question" onclick="askQuestion(this.textContent)" data-lang-key="AI_Suggested_Q2">如何開始使用 Vizzle？</button>
+                                    <button class="suggested-question" onclick="askQuestion(this.textContent)" data-lang-key="AI_Suggested_Q3">你們的定價方案是什麼？</button>
+                                    <button class="suggested-question" onclick="askQuestion(this.textContent)" data-lang-key="AI_Suggested_Q4">如何聯繫你們？</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Chat Input Area -->
+                        <div class="chat-input-container">
+                            <form id="chat-form" class="flex gap-3">
+                                <input 
+                                    type="text" 
+                                    id="chat-input" 
+                                    class="flex-1 px-4 py-3 rounded-full border border-[#6b3d92]/30 focus:border-[#6b3d92] focus:outline-none focus:ring-2 focus:ring-[#6b3d92]/20 bg-white/80"
+                                    data-lang-key="AI_Input_Placeholder"
+                                    placeholder="輸入您的問題..."
+                                    autocomplete="off"
+                                >
+                                <button type="submit" class="btn-primary rounded-full px-6 flex items-center gap-2">
+                                    <span class="iconify" data-icon="fa-solid:paper-plane"></span>
+                                    <span class="hidden md:inline" data-lang-key="AI_Send_Button">發送</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
-                    <div class="md:w-1/2 hidden md:block"></div>
                 </div>
             </div>
         </section>
@@ -779,12 +447,10 @@
         <!-- Section 1.5: Trust Marquee -->
         <section class="py-8 bg-white/40 backdrop-blur-sm border-y border-white/20 overflow-hidden w-full relative z-20">
             <div class="container-custom relative">
-                <p class="text-center text-neutral-500 mb-6 text-sm font-medium" data-lang-key="Home_Trust_Title">受到行业领先企业的信任</p>
+                <p class="text-center text-neutral-500 mb-6 text-sm font-medium" data-lang-key="Home_Trust_Title">受到行業領先企業的信任</p>
                 
                 <div class="relative overflow-hidden group">
-                    <!-- Javascript controlled scrolling container -->
                     <div id="marquee-track" class="flex items-center gap-12 md:gap-20 py-2 overflow-x-auto no-scrollbar w-full">
-                        <!-- Original List -->
                         <img src="assets/img/logo/HKIA.svg" alt="HKIA" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
                         <img src="assets/img/logo/BOC.svg" alt="BOC" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
                         <img src="assets/img/logo/MTR.svg" alt="MTR" loading="lazy" class="h-8 md:h-10 w-auto flex-shrink-0 transition-all duration-300">
@@ -801,377 +467,130 @@
                     </div>
                 </div>
                 
-                <!-- Side fades for smooth edge effect -->
                 <div class="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-24 bg-gradient-to-r from-[#f3f4f6] to-transparent z-10"></div>
                 <div class="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-24 bg-gradient-to-l from-[#f3f4f6] to-transparent z-10"></div>
             </div>
         </section>
         
-        <!-- Section 2: Solutions -->
-        <section id="solutions" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
-            <div class="container-custom">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4">
-                        核心解决方案
-                    </span>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4" data-lang-key="Home_Solutions_Title">
-                        解决传统3D管理的核心痛点
-                    </h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="glass-card">
-                        <div class="w-12 h-12 bg-[#6b3d92]/10 rounded-lg flex items-center justify-center mb-6">
-                            <span class="iconify text-xl text-[#6b3d92]" data-icon="fa6-solid:mobile-screen-button"></span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3" data-lang-key="Home_Solutions_Item1_Title">低端设备，网页即开即用</h3>
-                        <p class="text-neutral-600 mb-4" data-lang-key="Home_Solutions_Item1_Desc">
-                            极速加载巨型3D扫描模型，无需高阶显卡，8年前的旧设备也能秒速加载，支持多种模型格式，大幅降低硬件投入。
-                        </p>
-                    </div>
-                    <div class="glass-card">
-                        <div class="w-12 h-12 bg-[#6b3d92]/10 rounded-lg flex items-center justify-center mb-6">
-                            <span class="iconify text-xl text-[#6b3d92]" data-icon="fa-solid:chart-line"></span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3" data-lang-key="Home_Solutions_Item2_Title">AI分析，无需人工繁琐处理</h3>
-                        <p class="text-neutral-600 mb-4" data-lang-key="Home_Solutions_Item2_Desc">
-                            AI自动分析3D场景、整合各类数据，替代人工筛选，无需大海捞针，大幅节省人力成本与时间成本。
-                        </p>
-                    </div>
-                    <div class="glass-card">
-                        <div class="w-12 h-12 bg-[#6b3d92]/10 rounded-lg flex items-center justify-center mb-6">
-                            <span class="iconify text-xl text-[#6b3d92]" data-icon="fa-solid:mouse-pointer"></span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3" data-lang-key="Home_Solutions_Item3_Title">操作简便，无需专业知识</h3>
-                        <p class="text-neutral-600 mb-4" data-lang-key="Home_Solutions_Item3_Desc">
-                            支持简易测量、标记功能，无需安装专业软件，普通员工一人即可操作，沟通效率10倍化。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Features -->
-        <section id="features" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
+        <!-- Section 2: About / Company Profile -->
+        <section id="about" class="w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-8 glass-card">
-                        <h2 class="text-3xl font-bold mb-6" data-lang-key="Home_Features_Title">产品功能</h2>
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="iconify text-[#6b3d92]" data-icon="fa-solid:bolt"></span>
+                    <div class="glass-card">
+                        <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4" data-lang-key="Home_About_Title">
+                            關於 Vizzle
+                        </span>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" data-lang-key="Home_About_Subtitle">
+                            輕量化AI 3D數碼城市管理平台
+                        </h2>
+                        <p class="text-lg text-neutral-600 mb-8" data-lang-key="Home_About_Description">
+                            Vizzle 專注於輕量化、簡單化、低成本的 3D 管理解決方案。我們讓複雜的 3D 管理像瀏覽網頁一樣簡單，實現跨裝置秒級加載、AI 智能分析，無需專業技能，大幅降低 3D 管理成本。
+                        </p>
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <p class="text-3xl md:text-4xl font-bold text-[#6b3d92]" data-lang-key="Home_About_Stat1">50+</p>
+                                <p class="text-sm text-neutral-500 mt-1" data-lang-key="Home_About_Stat1_Label">企業客戶</p>
                             </div>
-                            <div>
-                                <h3 class="text-lg font-semibold mb-1" data-lang-key="Home_Features_Item1_Title">GPU智能负载分配</h3>
-                                <p class="text-neutral-600 text-sm" data-lang-key="Home_Features_Item1_Desc">智能分配渲染、AI推理与互动任务到单一次级GPU单元，无需多张显卡暴力处理，降低硬件成本。</p>
+                            <div class="text-center">
+                                <p class="text-3xl md:text-4xl font-bold text-[#6b3d92]" data-lang-key="Home_About_Stat2">10x</p>
+                                <p class="text-sm text-neutral-500 mt-1" data-lang-key="Home_About_Stat2_Label">效率提升</p>
                             </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="iconify text-[#6b3d92]" data-icon="uim:process"></span>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold mb-1" data-lang-key="Home_Features_Item2_Title">实时AI+3D融合处理</h3>
-                                <p class="text-neutral-600 text-sm" data-lang-key="Home_Features_Item2_Desc">动作捕捉、抠像、镜头控制与3D场景渲染同帧对齐，无延迟即时交互，提升操作体验。</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="iconify text-[#6b3d92]" data-icon="fa-solid:compress"></span>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold mb-1" data-lang-key="Home_Features_Item3_Title">超大3D模型轻量化</h3>
-                                <p class="text-neutral-600 text-sm" data-lang-key="Home_Features_Item3_Desc">透过分层加载、压缩与快取，实现超大模型的即时浏览，适配各类低端设备。</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                <span class="iconify text-[#6b3d92]" data-icon="fa-solid:database"></span>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold mb-1" data-lang-key="Home_Features_Item4_Title">多数据导入整合</h3>
-                                <p class="text-neutral-600 text-sm" data-lang-key="Home_Features_Item4_Desc">可导入风火水电、人流、物联网、图形设计等数据，进行全方位AI整合及分析，满足多场景需求。</p>
+                            <div class="text-center">
+                                <p class="text-3xl md:text-4xl font-bold text-[#6b3d92]" data-lang-key="Home_About_Stat3">60%</p>
+                                <p class="text-sm text-neutral-500 mt-1" data-lang-key="Home_About_Stat3_Label">成本降低</p>
                             </div>
                         </div>
                     </div>
                     <div class="glass-card p-2 flex items-center justify-center h-full">
-                        <img src="https://picsum.photos/id/20/600/400" alt="Features" class="rounded-lg shadow-lg w-full h-auto object-cover max-h-[400px]">
+                        <img src="assets/img/HKIA_SmartCity.png" alt="Vizzle Platform" class="rounded-lg shadow-lg w-full h-auto object-cover max-h-[400px]">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Cases -->
-        <section id="cases" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
-            <div class="container-custom">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold" data-lang-key="Home_Cases_Title">客户案例</h2>
-                </div>
-                <div class="glass-card overflow-hidden p-0 flex flex-col lg:flex-row h-[60vh]">
-                    <div class="lg:w-1/2 h-48 lg:h-full relative">
-                        <img src="assets/img/HKIA_SmartCity.png" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-                    </div>
-                    <div class="lg:w-1/2 p-8 flex flex-col justify-center overflow-y-auto">
-                        <span class="inline-block px-3 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-xs font-medium mb-4 w-fit" data-lang-key="Home_Cases_Featured_Badge">标杆案例</span>
-                        <h3 class="text-2xl font-bold mb-4" data-lang-key="Home_Cases_Featured_Name">香港国际机场</h3>
-                        <p class="text-neutral-600 mb-6" data-lang-key="Home_Cases_Featured_Desc">
-                            为香港国际机场提供3D扫描AI智能管理服务，实现机场场景1:1还原、多数据整合分析，沟通效率提升10倍。
-                        </p>
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="bg-white/50 p-3 rounded-lg">
-                                <p class="text-sm text-neutral-500" data-lang-key="Home_Cases_Featured_Label_1">場景格式</p>
-                                <p class="text-lg font-bold text-[#6b3d92]">LAS, E57, PLY, SOG</p>
-                            </div>
-                            <div class="bg-white/50 p-3 rounded-lg">
-                                <p class="text-sm text-neutral-500" data-lang-key="Home_Cases_Featured_Label_2">物件格式</p>
-                                <p class="text-lg font-bold text-[#6b3d92]">FBX, OBJ, GLB, IFC</p>
-                            </div>
-                        </div>
-                        <button class="btn-primary w-fit" data-lang-key="Home_Cases_Button_ViewFull">查看完整案例</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Advantage -->
-        <section id="advantage" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
-            <div class="container-custom">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold" data-lang-key="Home_Advantage_Title">核心优势</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="glass-card">
-                        <h3 class="text-xl font-semibold mb-6" data-lang-key="Home_Advantage_Diff_Title">核心差异化</h3>
-                        <div class="space-y-6">
-                            <div class="flex gap-4">
-                                <span class="iconify text-2xl text-[#6b3d92]" data-icon="fa-solid:users"></span>
-                                <div>
-                                    <h4 class="font-semibold" data-lang-key="Home_Advantage_Diff_Item1_Title">针对层级不同</h4>
-                                    <p class="text-sm text-neutral-600" data-lang-key="Home_Advantage_Diff_Item1_Desc">聚焦"希望完成简单任务、快速看到效果"的用户，现有工具过于复杂，小问题无需专家操作。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <span class="iconify text-2xl text-[#6b3d92]" data-icon="fa-solid:bullseye"></span>
-                                <div>
-                                    <h4 class="font-semibold" data-lang-key="Home_Advantage_Diff_Item2_Title">定位独特</h4>
-                                    <p class="text-sm text-neutral-600" data-lang-key="Home_Advantage_Diff_Item2_Desc">极致轻量和简单化，以最低的成本、最简单的操作，快速见效，不取代专业软件，填补市场空白。</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <span class="iconify text-2xl text-[#6b3d92]" data-icon="fa6-solid:money-bill-1-wave"></span>
-                                <div>
-                                    <h4 class="font-semibold" data-lang-key="Home_Advantage_Diff_Item3_Title">营运成本低</h4>
-                                    <p class="text-sm text-neutral-600" data-lang-key="Home_Advantage_Diff_Item3_Desc">采用轻量级硬件/云端模式，大幅降低用户营运成本，区别于竞品的重量级硬件投入。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="glass-card">
-                        <h3 class="text-xl font-semibold mb-6" data-lang-key="Home_Advantage_Tech_Title">技术实力</h3>
-                        <div class="space-y-6">
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <span class="font-semibold" data-lang-key="Home_Advantage_Tech_Item1_Title">算力基建层优势</span>
-                                    <span class="text-[#6b3d92] font-bold">90%</span>
-                                </div>
-                                <div class="w-full bg-neutral-200 rounded-full h-2">
-                                    <div class="bg-[#6b3d92] h-2 rounded-full" style="width: 90%"></div>
-                                </div>
-                                <p class="text-xs text-neutral-500 mt-1" data-lang-key="Home_Advantage_Tech_Item1_Stats">运算成本降低 90%</p>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <span class="font-semibold" data-lang-key="Home_Advantage_Tech_Item2_Title">全链路自主搭建</span>
-                                    <span class="text-[#6b3d92] font-bold">85%</span>
-                                </div>
-                                <div class="w-full bg-neutral-200 rounded-full h-2">
-                                    <div class="bg-[#6b3d92] h-2 rounded-full" style="width: 85%"></div>
-                                </div>
-                                <p class="text-xs text-neutral-500 mt-1" data-lang-key="Home_Advantage_Tech_Item2_Stats">技术自主可控率 85%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 6: Pricing -->
-        <section id="pricing" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
-            <div class="container-custom">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4">
-                        营收模式
-                    </span>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4" data-lang-key="Home_Pricing_Title">
-                        灵活的收费模式
-                    </h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Basic -->
-                    <div class="glass-card">
-                        <div class="border-b border-neutral-200 pb-4 mb-4">
-                            <h3 class="text-xl font-semibold mb-2" data-lang-key="Home_Pricing_Plan1_Title">基础版</h3>
-                            <p class="text-neutral-600 text-sm mb-4" data-lang-key="Home_Pricing_Plan1_Subtitle">适合小型企业使用</p>
-                            <div class="flex items-baseline">
-                                <span class="text-3xl font-bold" data-lang-key="Home_Pricing_Plan1_Price">¥19,800</span>
-                                <span class="text-neutral-500 ml-2" data-lang-key="Home_Pricing_Plan1_Period">/年</span>
-                            </div>
-                        </div>
-                        <ul class="space-y-3 mb-6">
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan1_Feature1">5个用户账号</span></li>
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan1_Feature2">基础3D模型管理</span></li>
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan1_Feature3">基础AI分析功能</span></li>
-                        </ul>
-                        <button class="btn-secondary w-full" data-lang-key="Home_Pricing_Button_Select">选择套餐</button>
-                    </div>
-                    
-                    <!-- Enterprise -->
-                    <div class="glass-card border-[#6b3d92] relative transform scale-105 z-10">
-                        <div class="absolute top-0 right-0 bg-[#6b3d92] text-white px-3 py-1 text-xs font-medium rounded-bl-lg rounded-tr-lg">推荐</div>
-                        <div class="border-b border-neutral-200 pb-4 mb-4">
-                            <h3 class="text-xl font-semibold mb-2" data-lang-key="Home_Pricing_Plan2_Title">企业版</h3>
-                            <p class="text-neutral-600 text-sm mb-4" data-lang-key="Home_Pricing_Plan2_Subtitle">适合中大型企业使用</p>
-                            <div class="flex items-baseline">
-                                <span class="text-3xl font-bold text-[#6b3d92]" data-lang-key="Home_Pricing_Plan2_Price">¥79,800</span>
-                                <span class="text-neutral-500 ml-2" data-lang-key="Home_Pricing_Plan2_Period">/年</span>
-                            </div>
-                        </div>
-                        <ul class="space-y-3 mb-6">
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan2_Feature1">20个用户账号</span></li>
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan2_Feature2">高级3D模型管理</span></li>
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan2_Feature3">高级AI分析功能</span></li>
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan2_Feature4">基础定制化功能</span></li>
-                        </ul>
-                        <button class="btn-primary w-full" data-lang-key="Home_Pricing_Button_Select">选择套餐</button>
-                    </div>
-                    
-                    <!-- Custom -->
-                    <div class="glass-card">
-                        <div class="border-b border-neutral-200 pb-4 mb-4">
-                            <h3 class="text-xl font-semibold mb-2" data-lang-key="Home_Pricing_Plan3_Title">定制版</h3>
-                            <p class="text-neutral-600 text-sm mb-4" data-lang-key="Home_Pricing_Plan3_Subtitle">适合大型企业/政府机构</p>
-                            <div class="flex items-baseline">
-                                <span class="text-3xl font-bold" data-lang-key="Home_Pricing_Plan3_Price">定制报价</span>
-                            </div>
-                        </div>
-                        <ul class="space-y-3 mb-6">
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan3_Feature1">无限用户账号</span></li>
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan3_Feature2">全部功能</span></li>
-                            <li class="flex items-center gap-2 text-sm"><span class="iconify text-green-500" data-icon="fa-solid:check"></span> <span data-lang-key="Home_Pricing_Plan3_Feature3">深度定制化</span></li>
-                        </ul>
-                        <button class="btn-secondary w-full" data-lang-key="Home_Pricing_Button_Contact">联系我们</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 7: Awards -->
-        <section id="awards" class="min-h-screen w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
+        <!-- Section 3: Awards & Government Support -->
+        <section id="awards" class="w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
             <div class="container-custom">
                 <div class="text-center mb-12">
                     <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4" data-lang-key="Home_Awards_Title">
-                        奖项与政府支持
+                        獎項與政府支持
                     </span>
                     <h2 class="text-3xl md:text-4xl font-bold mb-6" data-lang-key="Home_Awards_Subtitle">
-                        受到权威机构认可
+                        受到權威機構認可
                     </h2>
-                    <p class="text-lg text-neutral-600 max-w-3xl mx-auto" data-lang-key="Home_Awards_Description">
-                        Vizzle凭借创新的轻量化AI 3D数码城市管理平台，获得多项行业大奖和政府支持，彰显技术实力与品牌公信力。
-                    </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- 模块1：政府与大学支持 -->
+                    <!-- Government Support -->
                     <div class="glass-card">
-                        <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="Home_Awards_List1_Title">政府与大学支持</h3>
+                        <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="Home_Awards_Gov_Title">政府與大學支持</h3>
                         <ul class="space-y-4">
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="f7:building-columns-fill"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List1_Item1">香港理工大学天使创投支持</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Gov_1">香港理工大學天使創投支持</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="fa-solid:building"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List1_Item2">香港创新科技署大学科技初创企业资助计划</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Gov_2">香港創新科技署大學科技初創企業資助計劃</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="fa-solid:laptop"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List1_Item3">香港数码港培育计划</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Gov_3">香港數碼港培育計劃支持</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="fa-solid:flask"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List1_Item4">香港城市大学Tech 300基金支持</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Gov_4">香港城市大學Tech 300基金支持</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="fa-solid:rocket"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List1_Item5">杭州大运英才计划支持</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Gov_5">杭州大運英才計劃支持</p>
                             </li>
                         </ul>
                     </div>
 
-                    <!-- 模块2：行业奖项 -->
+                    <!-- Industry Awards -->
                     <div class="glass-card">
-                        <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="Home_Awards_List2_Title">行业奖项</h3>
+                        <h3 class="text-2xl font-bold mb-6 text-neutral-800" data-lang-key="Home_Awards_Industry_Title">行業獎項</h3>
                         <ul class="space-y-4">
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="fa-solid:trophy"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List2_Item1">2025年NEXX人工智能与创新奖</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Industry_1">2025年NEXX人工智能與創新獎</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="fa-solid:star"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List2_Item2">第八届中关村国际前沿科技大赛境外赛区领域赛10强队伍</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Industry_2">第八屆中關村國際前沿科技大賽境外賽區領域賽10強隊伍</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="fa-solid:certificate"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List2_Item3">创客中国国际中小企业创新创业大赛10强队伍</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Industry_3">香港資訊及通訊科技獎2024：數碼娛樂獎金獎</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="fa-solid:award"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List2_Item4">亚洲智能应用程式大奖优异奖</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Industry_4">創客中國國際中小企業創新創業大賽10強隊伍</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                     <span class="iconify text-[#6b3d92]" data-icon="fa-solid:medal"></span>
                                 </div>
-                                <div>
-                                    <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_List2_Item5">杭州动力创未国际科技项目新创赛三等奖</p>
-                                </div>
+                                <p class="font-medium text-neutral-800" data-lang-key="Home_Awards_Industry_5">杭州動力創未國際科技項目新創賽三等獎</p>
                             </li>
                         </ul>
                     </div>
@@ -1179,117 +598,113 @@
             </div>
         </section>
 
-        <!-- Section 8: Contact -->
-        <section id="contact" class="min-h-screen w-full flex flex-col justify-between relative pt-24 md:pt-0">
-            <div class="flex-grow flex items-center justify-center section-padding">
-                <div class="container-custom">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="glass-card">
-                            <span class="inline-block px-4 py-1 bg-[#6b3d92]/10 text-[#6b3d92] rounded-full text-sm font-medium mb-4" data-lang-key="Home_Contact_Title">
-                                联系我们
-                            </span>
-                            <h2 class="text-3xl font-bold mb-6" data-lang-key="Home_Contact_Subtitle">获取专属解决方案</h2>
-                            <p class="mb-8 text-neutral-600" data-lang-key="Home_Contact_Description">立即咨询，我们将为您提供专业的3D管理服务，助力企业降本增效。</p>
-                            <div class="space-y-6">
-                                <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                        <span class="iconify text-[#6b3d92]" data-icon="fa-solid:building"></span>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-semibold mb-1" data-lang-key="Home_Contact_Info_Company_Label">公司名称</h3>
-                                        <p class="text-neutral-600" data-lang-key="Home_Contact_Info_Company_Value">Vizzle 炫幻视界</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                        <span class="iconify text-[#6b3d92]" data-icon="fa-solid:phone"></span>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-semibold mb-1" data-lang-key="Home_Contact_Info_Phone_Label">联系电话</h3>
-                                        <p class="text-neutral-600" data-lang-key="Home_Contact_Info_Phone_Value">+852 9660 5893</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                        <span class="iconify text-[#6b3d92]" data-icon="fa-solid:envelope"></span>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-semibold mb-1" data-lang-key="Home_Contact_Info_Email_Label">电子邮箱</h3>
-                                        <p class="text-neutral-600" data-lang-key="Home_Contact_Info_Email_Value">info@im-vizzle.com</p>
-                                    </div>
+        <!-- Section 4: Knowledge Base Admin (For Employees) -->
+        <section id="admin" class="w-full flex flex-col justify-start md:justify-center relative pt-24 md:pt-0 section-padding">
+            <div class="container-custom">
+                <div class="max-w-4xl mx-auto">
+                    <div class="glass-card">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h2 class="text-2xl font-bold text-neutral-800" data-lang-key="Admin_Title">知識庫管理</h2>
+                                <p class="text-neutral-600 text-sm mt-1" data-lang-key="Admin_Description">上傳公司資料讓 AI 學習，支援 PDF、Excel、HTML 等格式</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+                                <span class="text-sm text-neutral-600" data-lang-key="Admin_Status_Ready">AI 已就緒</span>
+                            </div>
+                        </div>
+
+                        <!-- Upload Zone -->
+                        <div id="upload-zone" class="upload-zone mb-6">
+                            <input type="file" id="file-input" multiple accept=".pdf,.xls,.xlsx,.html,.htm,.doc,.docx,.txt,.json,.csv" class="hidden">
+                            <span class="iconify text-4xl text-[#6b3d92]/50 mb-4" data-icon="fa-solid:cloud-arrow-up"></span>
+                            <p class="text-neutral-600 mb-2" data-lang-key="Admin_Upload_Drag">拖放文件到這裡，或點擊選擇文件</p>
+                            <p class="text-sm text-neutral-400" data-lang-key="Admin_Upload_Formats">支援格式：PDF, XLS, XLSX, HTML, DOC, DOCX, TXT, JSON</p>
+                            <button type="button" onclick="document.getElementById('file-input').click()" class="btn-secondary mt-4" data-lang-key="Admin_Upload_Button">
+                                選擇文件
+                            </button>
+                        </div>
+
+                        <!-- Knowledge Base List -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-semibold text-neutral-800" data-lang-key="Admin_Knowledge_Title">已上傳的資料</h3>
+                                <span id="knowledge-count" class="text-sm text-neutral-500">0 個文件</span>
+                            </div>
+                            <div id="knowledge-list" class="max-h-60 overflow-y-auto">
+                                <div class="text-center py-8 text-neutral-400" data-lang-key="Admin_Knowledge_Empty">
+                                    尚未上傳任何資料
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="glass-card">
-                            <h3 class="text-xl font-semibold mb-6" data-lang-key="Home_Contact_Form_Title">立即咨询</h3>
-                            <form id="contact-form" class="space-y-4">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-neutral-700 font-medium mb-2" data-lang-key="Home_Contact_Form_Field_Name">姓名</label>
-                                        <input type="text" data-lang-key="Home_Contact_Form_Field_Name" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none" required>
+
+                        <!-- Sync Status -->
+                        <div class="flex items-center justify-between border-t border-neutral-200 pt-4">
+                            <div class="flex items-center gap-2 text-sm text-neutral-500">
+                                <span class="iconify" data-icon="fa-solid:sync"></span>
+                                <span data-lang-key="Admin_Last_Update">最後更新</span>
+                                <span id="last-update-time">-</span>
+                            </div>
+                            <button type="button" onclick="clearKnowledgeBase()" class="text-sm text-red-500 hover:text-red-700 transition-colors" data-lang-key="Admin_Clear_Button">
+                                清空知識庫
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Contact -->
+        <section id="contact" class="w-full flex flex-col justify-between relative pt-24 md:pt-0">
+            <div class="flex-grow flex items-center justify-center section-padding">
+                <div class="container-custom">
+                    <div class="max-w-2xl mx-auto">
+                        <div class="glass-card text-center">
+                            <h2 class="text-2xl font-bold mb-6" data-lang-key="Navigation_Menu_Contact">聯繫我們</h2>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-center gap-4">
+                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center">
+                                        <span class="iconify text-[#6b3d92]" data-icon="fa-solid:building"></span>
                                     </div>
-                                    <div>
-                                        <label class="block text-neutral-700 font-medium mb-2" data-lang-key="Home_Contact_Form_Field_Company">公司名称</label>
-                                        <input type="text" data-lang-key="Home_Contact_Form_Field_Company" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none" required>
+                                    <div class="text-left">
+                                        <p class="text-sm text-neutral-500">公司名稱</p>
+                                        <p class="font-medium" data-lang-key="Contact_Info_Company">Vizzle 炫幻視界</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <label class="block text-neutral-700 font-medium mb-2" data-lang-key="Home_Contact_Form_Field_Phone">联系电话</label>
-                                    <input type="tel" data-lang-key="Home_Contact_Form_Field_Phone" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none" required>
+                                <div class="flex items-center justify-center gap-4">
+                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center">
+                                        <span class="iconify text-[#6b3d92]" data-icon="fa-solid:phone"></span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="text-sm text-neutral-500">聯繫電話</p>
+                                        <p class="font-medium" data-lang-key="Contact_Info_Phone">+852 9660 5893</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label class="block text-neutral-700 font-medium mb-2" data-lang-key="Home_Contact_Form_Field_Email">电子邮箱</label>
-                                    <input type="email" data-lang-key="Home_Contact_Form_Field_Email" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none" required>
+                                <div class="flex items-center justify-center gap-4">
+                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center">
+                                        <span class="iconify text-[#6b3d92]" data-icon="fa-solid:envelope"></span>
+                                    </div>
+                                    <div class="text-left">
+                                        <p class="text-sm text-neutral-500">電子郵箱</p>
+                                        <p class="font-medium" data-lang-key="Contact_Info_Email">info@im-vizzle.com</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label class="block text-neutral-700 font-medium mb-2" data-lang-key="Home_Contact_Form_Field_Message">咨询需求</label>
-                                    <textarea rows="3" data-lang-key="Home_Contact_Form_Field_Message" class="w-full px-4 py-3 rounded-md border border-neutral-300 focus:border-[#6b3d92] focus:outline-none"></textarea>
-                                </div>
-                                <button type="submit" class="btn-primary w-full" data-lang-key="Home_Contact_Form_Button_Submit">提交咨询</button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <footer class="bg-neutral-900 text-white py-8 snap-end">
+            <footer class="bg-neutral-900 text-white py-8">
                 <div class="container-custom">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
-                        <div>
-                            <div class="flex items-center mb-4 font-bold text-lg">Vizzle</div>
-                            <p class="text-neutral-400 mb-4">轻量化AI 3D数码城市管理平台</p>
-                            <div class="flex gap-4">
-                                <a href="#" class="text-neutral-400 hover:text-white"><span class="iconify text-lg" data-icon="fa-brands:weixin"></span></a>
-                                <a href="#" class="text-neutral-400 hover:text-white"><span class="iconify text-lg" data-icon="fa-brands:linkedin"></span></a>
-                                <a href="#" class="text-neutral-400 hover:text-white"><span class="iconify text-lg" data-icon="fa-brands:github"></span></a>
-                            </div>
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center">
+                            <img src="assets/img/logo/Vizzle.png" alt="Vizzle Logo" class="h-8 w-auto mr-3 brightness-0 invert">
+                            <span class="text-neutral-400 text-sm">輕量化AI 3D數碼城市管理平台</span>
                         </div>
-                        <div>
-                            <h3 class="font-semibold mb-4" data-lang-key="Footer_Column_Product">产品</h3>
-                            <ul class="space-y-2 text-neutral-400">
-                                <li><a href="#solutions" class="hover:text-white">解决方案</a></li>
-                                <li><a href="#features" class="hover:text-white">产品功能</a></li>
-                                <li><a href="#cases" class="hover:text-white">客户案例</a></li>
-                            </ul>
+                        <div class="text-center text-xs text-neutral-500">
+                            <p data-lang-key="Footer_Copyright">© 2026 Vizzle Limited 炫幻視界有限公司 保留所有權利</p>
                         </div>
-                        <div>
-                            <h3 class="font-semibold mb-4" data-lang-key="Footer_Column_Resources">资源</h3>
-                            <ul class="space-y-2 text-neutral-400">
-                                <li><a href="#" class="hover:text-white">帮助中心</a></li>
-                                <li><a href="#" class="hover:text-white">文档中心</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold mb-4" data-lang-key="Footer_Column_Company">公司</h3>
-                            <ul class="space-y-2 text-neutral-400">
-                                <li><a href="#" class="hover:text-white">关于我们</a></li>
-                                <li><a href="#contact" class="hover:text-white">联系我们</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="border-t border-neutral-800 pt-6 text-center text-xs text-neutral-500">
-                        <p data-lang-key="Footer_Copyright">© 2026 Vizzle Limited 炫幻视界有限公司 保留所有权利</p>
                     </div>
                 </div>
             </footer>
@@ -1297,73 +712,52 @@
     </main>
 
     <script>
-        // Three.js Logic - Microscopic CPU Smart City (Light Mode)
+        // ============================================
+        // Three.js Background (Preserved from original)
+        // ============================================
         const canvasContainer = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         
-        // --- Configuration ---
         const CONFIG = {
-            IS_DEV: false, // [DEV_MODE] Set to false for production
-            seed: 349280, //25848, 896564, 349280
+            IS_DEV: false,
+            seed: 349280,
             gridSize: 120,
-            
-            // Detect Mobile
             isMobile: window.innerWidth < 768,
-
-            // 1. Building Density & Appearance
             buildings: {
-                // Reduce counts heavily on mobile
-                count: window.innerWidth < 768 ? 300 : 1200, // Reduced from 600/2000
+                count: window.innerWidth < 768 ? 300 : 1200,
                 color: 0xffffff,
-                maxHeight: 4, // Reduced from 5
-                // Window colors for different building types
-                windowColors: [
-                    0x4a90e2, // Blue
-                    0x50c878, // Green
-                    0xffd700, // Gold
-                    0xffffff  // Cyan
-                ],
-                // Window appearance & distribution settings
+                maxHeight: 4,
+                windowColors: [0x4a90e2, 0x50c878, 0xffd700, 0xffffff],
                 windowSettings: {
                     width: window.innerWidth < 768 ? 0.06 : 0.08,
                     height: window.innerWidth < 768 ? 0.06 : 0.2,
                     spacing: window.innerWidth < 768 ? 0.25 : 0.3,
                 },
-                // Performance settings
                 performance: {
-                    maxWindowsPerBuilding: window.innerWidth < 768 ? 30 : 70, // Doubled from 20/50
-                    windowDensity: 0.6, // New: probability of a window appearing (0.0 to 1.0)
-                    enableComplexWindows: window.innerWidth >= 768, // Disable on mobile
-                    useSimpleMaterials: window.innerWidth < 768 // Simpler materials on mobile
+                    maxWindowsPerBuilding: window.innerWidth < 768 ? 30 : 70,
+                    windowDensity: 0.6,
+                    enableComplexWindows: window.innerWidth >= 768,
+                    useSimpleMaterials: window.innerWidth < 768
                 },
-                // Predefined building types for performance (8 types)
                 buildingTypes: [
-                    // Type 0: Simple low-rise
                     { name: 'lowRise', weight: 40, sections: [{ w: 1.0, d: 1.0, h: 0.3, y: 0, color: 0xf8f8f8 }], windows: false },
-                    // Type 1: Medium box
                     { name: 'mediumBox', weight: 30, sections: [{ w: 0.8, d: 0.8, h: 1.0, y: 0, color: 0xf5f5f5 }], windows: true },
-                    // Type 2: Tall simple
                     { name: 'tallSimple', weight: 15, sections: [{ w: 0.6, d: 0.6, h: 2.5, y: 0, color: 0xf0f0f0 }], windows: true },
-                    // Type 3: Two-section building
                     { name: 'twoSection', weight: 10, sections: [
                         { w: 0.7, d: 0.7, h: 1.5, y: 0, color: 0xf0f0f0 },
                         { w: 0.5, d: 0.5, h: 0.8, y: 1.5, color: 0xe8e8e8 }
                     ], windows: true },
-                    // Type 4: Three-section skyscraper (more realistic proportions)
                     { name: 'skyscraper', weight: 5, sections: [
                         { w: 0.9, d: 0.9, h: 1.8, y: 0, color: 0xf5f5f5 },
                         { w: 0.7, d: 0.7, h: 1.0, y: 1.8, color: 0xe8e8e8 },
                         { w: 0.4, d: 0.4, h: 0.4, y: 2.8, color: 0xdcdcdc }
                     ], windows: true },
-                    // Type 5: Wide building
                     { name: 'wideBuilding', weight: 15, sections: [{ w: 1.2, d: 0.8, h: 0.8, y: 0, color: 0xf2f2f2 }], windows: true },
-                    // Type 6: Pyramid style
                     { name: 'pyramid', weight: 10, sections: [
                         { w: 1.0, d: 1.0, h: 0.4, y: 0, color: 0xf0f0f0 },
                         { w: 0.8, d: 0.8, h: 0.4, y: 0.4, color: 0xe8e8e8 },
                         { w: 0.6, d: 0.6, h: 0.4, y: 0.8, color: 0xe0e0e0 }
                     ], windows: true },
-                    // Type 7: Complex building (more realistic, desktop only)
                     { name: 'complex', weight: 3, sections: [
                         { w: 0.8, d: 0.8, h: 1.5, y: 0, color: 0xf5f5f5 },
                         { w: 0.6, d: 0.6, h: 1.0, y: 1.5, color: 0xe8e8e8 },
@@ -1371,10 +765,7 @@
                     ], windows: true, desktopOnly: true }
                 ]
             },
-            
-            // 2. Floating Particles Parameters
             particles: {
-                // Reduce counts heavily on mobile
                 count: window.innerWidth < 768 ? 300 : 1000,
                 size: 0.15,
                 color: 0xd27cff,
@@ -1383,596 +774,211 @@
                 speedMax: 0.06,
                 rangeY: 10
             },
-
-            // 3. Line Settings
             lines: {
-                // Reduce lines on mobile
                 count: window.innerWidth < 768 ? 80 : 200,
                 colorBlue: 0x0ea5e9,
                 colorOrange: 0xffaa00,
             },
-
-            // 4. Animation Settings
             animation: {
                 rotationSpeed: 0.0002,
                 rotationRange: 0.3
             },
-
-            // 5. LOD Settings
             lod: {
-                // Distance thresholds for LOD levels (in units)
-                distances: {
-                    highDetail: 15,    // Full density windows on 3 sides
-                    mediumDetail: 25,  // Medium density windows on 3 sides
-                    lowDetail: 35,     // Low density windows on 1 side only
-                    noWindows: 50     // No windows, just building
-                },
-                // Window density multipliers for each LOD level
-                windowDensity: {
-                    highDetail: 1.0,   // Full density
-                    mediumDetail: 0.6,   // 60% density
-                    lowDetail: 0.3,    // 30% density
-                    noWindows: 0.0     // No windows
-                }
+                distances: { highDetail: 15, mediumDetail: 25, lowDetail: 35, noWindows: 50 },
+                windowDensity: { highDetail: 1.0, mediumDetail: 0.6, lowDetail: 0.3, noWindows: 0.0 }
             }
         };
 
-        // Light Mode Background (Soft Grey/White)
         const bgColor = 0xf3f4f6; 
         scene.background = new THREE.Color(bgColor);
         scene.fog = new THREE.FogExp2(bgColor, 0.025);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 8, 25); // Lower and further back for better city perspective
+        camera.position.set(0, 8, 25);
         
-        // Performance: Adjust renderer based on device
-        const renderer = new THREE.WebGLRenderer({
-            //antialias: !CONFIG.isMobile, // Disable antialias on mobile
-            antialias: true,
-			alpha: true,
-            powerPreference: "high-performance",
-            precision: CONFIG.isMobile ? "mediump" : "highp"
-        });
-        
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance", precision: CONFIG.isMobile ? "mediump" : "highp" });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        // Reduce pixel ratio on mobile (1x) vs desktop (max 2x)
         renderer.setPixelRatio(CONFIG.isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
         canvasContainer.appendChild(renderer.domElement);
 
-        // --- Random Seed Logic ---
         function mulberry32(a) {
             return function() {
-              var t = a += 0x6D2B79F5;
-              t = Math.imul(t ^ t >>> 15, t | 1);
-              t ^= t + Math.imul(t ^ t >>> 7, t | 61);
-              return ((t ^ t >>> 14) >>> 0) / 4294967296;
+                var t = a += 0x6D2B79F5;
+                t = Math.imul(t ^ t >>> 15, t | 1);
+                t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+                return ((t ^ t >>> 14) >>> 0) / 4294967296;
             }
         }
         let rand = mulberry32(CONFIG.seed); 
-        let particles, pSpeed; // [DEV_MODE] Required for city regeneration
+        let particles, pSpeed;
         const particleCount = CONFIG.particles.count;
 
-        // [DEV_MODE] Development UI and Logic
-        if (CONFIG.IS_DEV) {
-            const devUI = document.createElement('div');
-            devUI.id = 'dev-mode-ui';
-            devUI.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:9999;background:rgba(0,0,0,0.7);color:white;padding:15px;border-radius:8px;font-family:monospace;display:flex;flex-direction:column;gap:10px;box-shadow:0 4px 12px rgba(0,0,0,0.3);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.1);';
-            devUI.innerHTML = `
-                <div style="font-weight:bold;color:#ffd700;margin-bottom:5px;display:flex;justify-content:space-between;">
-                    <span>DEV MODE</span>
-                    <span style="font-size:10px;opacity:0.6;">v1.0</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:8px;">
-                    <span style="opacity:0.8;">Seed:</span>
-                    <span id="dev-seed-display" style="color:#4a90e2;font-weight:bold;">${CONFIG.seed}</span>
-                </div>
-                <button id="dev-random-seed-btn" style="background:#4a90e2;color:white;border:none;padding:8px 12px;border-radius:4px;cursor:pointer;font-weight:bold;transition:all 0.2s;">
-                    Randomize City
-                </button>
-                <div style="font-size:10px;opacity:0.5;max-width:150px;">
-                    City layout is deterministic based on the seed.
-                </div>
-        <div style="border-top:1px solid rgba(255,255,255,0.1);margin-top:10px;padding-top:10px;display:flex;flex-direction:column;gap:5px;">
-            <button onclick="exportToCSV()" style="background:#6b3d92;color:white;border:none;padding:5px;border-radius:4px;cursor:pointer;font-size:11px;">
-                Export Locale CSV
-            </button>
-            <label style="background:#2d3748;color:white;border:none;padding:5px;border-radius:4px;cursor:pointer;font-size:11px;text-align:center;">
-                Import Locale CSV
-                <input type="file" onchange="importFromCSV(this.files[0])" accept=".csv" style="display:none;">
-            </label>
-            <button onclick="downloadUpdatedHTML()" style="background:#38a169;color:white;border:none;padding:5px;border-radius:4px;cursor:pointer;font-size:11px;">
-                Download Updated HTML
-            </button>
-        </div>
-    
-            `;
-            document.body.appendChild(devUI);
-
-            const btn = document.getElementById('dev-random-seed-btn');
-            btn.onmouseover = () => btn.style.background = '#357abd';
-            btn.onmouseout = () => btn.style.background = '#4a90e2';
-
-            btn.addEventListener('click', () => {
-                const newSeed = Math.floor(Math.random() * 1000000);
-                CONFIG.seed = newSeed;
-                document.getElementById('dev-seed-display').textContent = newSeed;
-                console.log(`[DEV] New Seed: ${newSeed}`);
-                
-                // Clear existing city
-                while(cityGroup.children.length > 0){ 
-                    cityGroup.remove(cityGroup.children[0]); 
-                }
-                
-                // Re-initialize random generator with new seed
-                rand = mulberry32(CONFIG.seed);
-                
-                // Re-generate city
-                generateCity();
-            });
-        }
-
-        // Weighted random building type selector
         const getWeightedBuildingTypeIndex = () => {
             const totalWeight = CONFIG.buildings.buildingTypes.reduce((sum, type) => sum + type.weight, 0);
             let randomValue = rand() * totalWeight;
             for (let i = 0; i < CONFIG.buildings.buildingTypes.length; i++) {
-                if (randomValue < CONFIG.buildings.buildingTypes[i].weight) {
-                    return i;
-                }
+                if (randomValue < CONFIG.buildings.buildingTypes[i].weight) return i;
                 randomValue -= CONFIG.buildings.buildingTypes[i].weight;
             }
             return 0;
         };
 
-        // Utility function
         const snap = (val) => Math.floor(val) + 0.5;
-
-        // Group to hold the city
         const cityGroup = new THREE.Group();
         scene.add(cityGroup);
 
-        // --- 1. The Circuit Board / City Grid ---
         const gridSize = CONFIG.gridSize;
-        // Light mode grid: Brand purple main axis, soft grey secondary
         const gridHelper = new THREE.GridHelper(gridSize, 120, 0x6b3d92, 0xd1d5db);
         cityGroup.add(gridHelper);
 
-        // --- 2. CPU Components (Buildings) ---
-        
-        // Create building geometries with optimized performance
         function createBuildingMesh(buildingTypeIndex, width, depth, height, x, z) {
             const buildingGroup = new THREE.Group();
             const buildingType = CONFIG.buildings.buildingTypes[buildingTypeIndex];
+            if (buildingType.desktopOnly && CONFIG.isMobile) return buildingGroup;
             
-            // Skip desktop-only buildings on mobile
-            if (buildingType.desktopOnly && CONFIG.isMobile) {
-                return buildingGroup; // Return empty group
-            }
-            
-            // Use predefined sections for performance
-            buildingType.sections.forEach((section, sectionIndex) => {
+            buildingType.sections.forEach((section) => {
                 const geometry = new THREE.BoxGeometry(section.w * width, section.h * height, section.d * depth);
-                
-                // Use simpler materials on mobile
                 const material = CONFIG.buildings.performance.useSimpleMaterials ? 
                     new THREE.MeshLambertMaterial({ color: section.color }) :
-                    new THREE.MeshPhysicalMaterial({
-                        color: section.color,
-                        metalness: 0.1,
-                        roughness: 0.2,
-                        clearcoat: 1.0,
-                        clearcoatRoughness: 0.1
-                    });
-                
+                    new THREE.MeshPhysicalMaterial({ color: section.color, metalness: 0.1, roughness: 0.2, clearcoat: 1.0, clearcoatRoughness: 0.1 });
                 const mesh = new THREE.Mesh(geometry, material);
-                mesh.position.set(
-                    (section.x || 0) * width, 
-                    section.y * height + section.h * height / 2, 
-                    (section.z || 0) * depth
-                );
+                mesh.position.set((section.x || 0) * width, section.y * height + section.h * height / 2, (section.z || 0) * depth);
                 buildingGroup.add(mesh);
-                
-                // Add windows only if enabled and building has windows
-                if (buildingType.windows && CONFIG.buildings.performance.enableComplexWindows && section.h > 1.0) {
-                    addOptimizedWindows(buildingGroup, section, width, depth, height, x, z);
-                }
             });
-            
             buildingGroup.position.set(x, 0, z);
-            buildingGroup.userData.isBuilding = true; // Mark as building for culling
+            buildingGroup.userData.isBuilding = true;
             return buildingGroup;
         }
-        
-        // Function to add windows to buildings with LOD and camera-facing optimization
-        function addOptimizedWindows(buildingGroup, section, width, depth, height, buildingX, buildingZ) {
-            // Calculate building world position (since buildingGroup position will be set later)
-            const buildingWorldPos = new THREE.Vector3(buildingX, 0, buildingZ);
-            
-            // Calculate distance from camera to building
-            const distance = camera.position.distanceTo(buildingWorldPos);
-            
-            // Determine LOD level based on distance
-            let lodLevel = 'highDetail';
-            let windowDensityMultiplier = CONFIG.lod.windowDensity.highDetail;
-            
-            if (distance > CONFIG.lod.distances.noWindows) {
-                return; // No windows at all
-            } else if (distance > CONFIG.lod.distances.lowDetail) {
-                lodLevel = 'lowDetail';
-                windowDensityMultiplier = CONFIG.lod.windowDensity.lowDetail;
-            } else if (distance > CONFIG.lod.distances.mediumDetail) {
-                lodLevel = 'mediumDetail';
-                windowDensityMultiplier = CONFIG.lod.windowDensity.mediumDetail;
-            } else if (distance > CONFIG.lod.distances.highDetail) {
-                // Between high and medium
-                lodLevel = 'mediumDetail'; 
-                windowDensityMultiplier = (CONFIG.lod.windowDensity.highDetail + CONFIG.lod.windowDensity.mediumDetail) / 2;
-            } else {
-                lodLevel = 'highDetail';
-                windowDensityMultiplier = CONFIG.lod.windowDensity.highDetail;
-            }
-            
-            // Randomly select window color from CONFIG
-            const randomColorIndex = Math.floor(rand() * CONFIG.buildings.windowColors.length);
-            const windowColor = CONFIG.buildings.windowColors[randomColorIndex];
-            
-            // Use simpler material for windows on mobile or low LOD
-            const useSimpleMaterials = CONFIG.buildings.performance.useSimpleMaterials || lodLevel !== 'highDetail';
-            const windowMaterial = useSimpleMaterials ?
-                new THREE.MeshBasicMaterial({ color: windowColor }) :
-                new THREE.MeshPhysicalMaterial({
-                    color: windowColor,
-                    emissive: windowColor,
-                    emissiveIntensity: 0.8,
-                    metalness: 0.2,
-                    roughness: 0.1,
-                    transparent: true,
-                    opacity: 0.9
-                });
-            
-            const windowWidth = CONFIG.buildings.windowSettings.width;
-            const windowHeight = CONFIG.buildings.windowSettings.height;
-            const windowSpacing = CONFIG.buildings.windowSettings.spacing;
-            const maxWindows = CONFIG.buildings.performance.maxWindowsPerBuilding;
-            let windowCount = 0;
-            
-            // Calculate actual section dimensions
-            const actualW = section.w * width;
-            const actualD = section.d * depth;
-            const actualH = section.h * height;
-            const offsetX = (section.x || 0) * width;
-            const offsetZ = (section.z || 0) * depth;
-            
-            // Determine which faces should have windows based on camera position
-            const toCamera = new THREE.Vector3().subVectors(camera.position, buildingWorldPos);
-            toCamera.y = 0;
-            toCamera.normalize();
-            
-            // vertical faces normals
-            const faces = [
-                { name: 'front', normal: new THREE.Vector3(0, 0, 1) },
-                { name: 'back', normal: new THREE.Vector3(0, 0, -1) },
-                { name: 'right', normal: new THREE.Vector3(1, 0, 0) },
-                { name: 'left', normal: new THREE.Vector3(-1, 0, 0) }
-            ];
-            
-            // Calculate visibility for each face
-            faces.forEach(f => {
-                f.dot = f.normal.dot(toCamera);
-            });
-            
-            // Sort by visibility
-            faces.sort((a, b) => b.dot - a.dot);
-            
-            // We want to render the top 3 most visible faces for high/medium LOD
-            // For low LOD, just the most visible one
-            const visibleFaceNames = (lodLevel === 'lowDetail') ? [faces[0].name] : [faces[0].name, faces[1].name, faces[2].name];
-            
-            const renderFace = (name) => visibleFaceNames.includes(name);
-            
-            const floors = Math.min(8, Math.max(2, Math.floor(actualH * 4)));
-            let windowsPerRow = Math.min(6, Math.max(1, Math.floor(actualW / (windowSpacing * 0.5))));
-            let sideWindowsPerRow = Math.min(4, Math.max(1, Math.floor(actualD / (windowSpacing * 0.6))));
-            
-            // Reduce window density based on LOD
-            const effectiveWindowDensity = CONFIG.buildings.performance.windowDensity * windowDensityMultiplier;
-            
-            // Render Windows on selected faces
-            for (let floor = 1; floor < floors && windowCount < maxWindows; floor++) {
-                const y = section.y * height + (floor / floors) * actualH;
-                
-                // Front/Back faces (Z-aligned)
-                if (renderFace('front') || renderFace('back')) {
-                    for (let w = 0; w < windowsPerRow && windowCount < maxWindows; w++) {
-                        const x = offsetX + (w - windowsPerRow / 2 + 0.5) * (windowSpacing * 0.5);
-                        
-                        if (renderFace('front') && rand() < effectiveWindowDensity) {
-                            const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
-                            const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                            windowMesh.position.set(x, y, offsetZ + actualD * 0.505);
-                            buildingGroup.add(windowMesh);
-                            windowCount++;
-                        }
-                        
-                        if (renderFace('back') && windowCount < maxWindows && rand() < effectiveWindowDensity) {
-                            const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
-                            const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                            windowMesh.position.set(x, y, offsetZ - actualD * 0.505);
-                            windowMesh.rotation.y = Math.PI;
-                            buildingGroup.add(windowMesh);
-                            windowCount++;
-                        }
-                    }
-                }
-                
-                // Left/Right faces (X-aligned)
-                if (renderFace('left') || renderFace('right')) {
-                    for (let w = 0; w < sideWindowsPerRow && windowCount < maxWindows; w++) {
-                        const z = offsetZ + (w - sideWindowsPerRow / 2 + 0.5) * (windowSpacing * 0.6);
-                        
-                        if (renderFace('left') && windowCount < maxWindows && rand() < effectiveWindowDensity) {
-                            const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
-                            const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                            windowMesh.position.set(offsetX - actualW * 0.505, y, z);
-                            windowMesh.rotation.y = -Math.PI / 2;
-                            buildingGroup.add(windowMesh);
-                            windowCount++;
-                        }
-                        
-                        if (renderFace('right') && windowCount < maxWindows && rand() < effectiveWindowDensity) {
-                            const windowGeometry = new THREE.PlaneGeometry(windowWidth, windowHeight);
-                            const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-                            windowMesh.position.set(offsetX + actualW * 0.505, y, z);
-                            windowMesh.rotation.y = Math.PI / 2;
-                            buildingGroup.add(windowMesh);
-                            windowCount++;
-                        }
-                    }
-                }
-            }
-        }
-        
+
         function generateCity() {
-            // Material: White ceramic/clean plastic look for light mode
-            const chipMaterial = new THREE.MeshPhysicalMaterial({
-                color: CONFIG.buildings.color,
-                metalness: 0.1,
-                roughness: 0.2,
-                clearcoat: 1.0,
-                clearcoatRoughness: 0.1
-            });
-            
+            const chipMaterial = new THREE.MeshPhysicalMaterial({ color: CONFIG.buildings.color, metalness: 0.1, roughness: 0.2, clearcoat: 1.0, clearcoatRoughness: 0.1 });
             const buildingCount = CONFIG.buildings.count;
             
-            // Generate all buildings using predefined types for performance
             for (let i = 0; i < buildingCount; i++) {
                 const x = snap((rand() - 0.5) * gridSize);
                 const z = snap((rand() - 0.5) * gridSize);
-                
-                // Use predefined building types with weights
                 const buildingTypeIndex = getWeightedBuildingTypeIndex();
                 let w = 0.8, h = 0.2, d = 0.8;
-                
-                // Set dimensions based on building type
                 const buildingType = CONFIG.buildings.buildingTypes[buildingTypeIndex];
-                if (buildingType.name === 'lowRise') {
-                    h = 0.2 + rand() * 0.2;
-                    w = rand() * 1.5 + 0.5;
-                    d = rand() * 1.5 + 0.5;
-                } else if (buildingType.name === 'mediumBox') {
-                    h = rand() * 2 + 0.5;
-                    w = rand() * 0.8 + 0.4;
-                    d = w;
-                } else if (buildingType.name === 'tallSimple') {
-                    h = rand() * 2.5 + 1.2;
-                    w = rand() * 1.2 + 0.8; // Made wider
-                    d = rand() * 1.2 + 0.8; // Made wider
-                } else if (buildingType.name === 'twoSection') {
-                    h = rand() * 2.8 + 1.5;
-                    w = rand() * 1.0 + 0.9; // Adjusted for better proportions
-                    d = w;
-                } else if (buildingType.name === 'skyscraper') {
-                    h = rand() * 1.0 + 2.5; // Reduced to 2.5-3.5 range (20% above average)
-                    w = 0.8; d = 0.8; // Made wider for better proportions
-                } else if (buildingType.name === 'wideBuilding') {
-                    h = rand() * 1.8 + 1.0;
-                    w = rand() * 1.5 + 1.0;
-                    d = rand() * 1.0 + 0.8;
-                } else if (buildingType.name === 'pyramid') {
-                    h = rand() * 3 + 1.0;
-                    w = rand() * 1.2 + 0.8;
-                    d = w;
-                } else if (buildingType.name === 'complex') {
-                    h = rand() * 1.5 + 3.0; // Reduced to 3.0-4.5 range
-                    w = 0.6; d = 0.6; // Made slightly wider
-                }
-                
+                if (buildingType.name === 'lowRise') { h = 0.2 + rand() * 0.2; w = rand() * 1.5 + 0.5; d = rand() * 1.5 + 0.5; }
+                else if (buildingType.name === 'mediumBox') { h = rand() * 2 + 0.5; w = rand() * 0.8 + 0.4; d = w; }
+                else if (buildingType.name === 'tallSimple') { h = rand() * 2.5 + 1.2; w = rand() * 1.2 + 0.8; d = rand() * 1.2 + 0.8; }
+                else if (buildingType.name === 'twoSection') { h = rand() * 2.8 + 1.5; w = rand() * 1.0 + 0.9; d = w; }
+                else if (buildingType.name === 'skyscraper') { h = rand() * 1.0 + 2.5; w = 0.8; d = 0.8; }
+                else if (buildingType.name === 'wideBuilding') { h = rand() * 1.8 + 1.0; w = rand() * 1.5 + 1.0; d = rand() * 1.0 + 0.8; }
+                else if (buildingType.name === 'pyramid') { h = rand() * 3 + 1.0; w = rand() * 1.2 + 0.8; d = w; }
+                else if (buildingType.name === 'complex') { h = rand() * 1.5 + 3.0; w = 0.6; d = 0.6; }
                 const buildingMesh = createBuildingMesh(buildingTypeIndex, w, d, h, x, z);
                 cityGroup.add(buildingMesh);
             }
 
-            // --- 3. Intricate Pipelines (Data Lines) ---
             const lineGroup = new THREE.Group();
             cityGroup.add(lineGroup);
-            
-            // Darker colors for visibility on light background
-            const lineMaterial = new THREE.LineBasicMaterial({
-                color: CONFIG.lines.colorBlue, // Sky Blue
-                transparent: true,
-                opacity: 0.5
-            });
-
-            const orangeLineMaterial = new THREE.LineBasicMaterial({
-                color: CONFIG.lines.colorOrange, // Orange-Yellow
-                transparent: true,
-                opacity: 0.6
-            });
+            const lineMaterial = new THREE.LineBasicMaterial({ color: CONFIG.lines.colorBlue, transparent: true, opacity: 0.5 });
+            const orangeLineMaterial = new THREE.LineBasicMaterial({ color: CONFIG.lines.colorOrange, transparent: true, opacity: 0.6 });
 
             function createCircuitPath(material, yHeight) {
                 const points = [];
                 let cx = snap((rand() - 0.5) * gridSize);
                 let cz = snap((rand() - 0.5) * gridSize);
                 points.push(new THREE.Vector3(cx, yHeight, cz));
-                
                 const steps = Math.floor(rand() * 20) + 5;
                 for(let i=0; i<steps; i++) {
                     const dir = Math.floor(rand() * 4);
                     const len = Math.floor(rand() * 3) + 1;
-                    
-                    if(dir === 0) cx += len;
-                    if(dir === 1) cx -= len;
-                    if(dir === 2) cz += len;
-                    if(dir === 3) cz -= len;
-                    
+                    if(dir === 0) cx += len; if(dir === 1) cx -= len; if(dir === 2) cz += len; if(dir === 3) cz -= len;
                     cx = Math.max(-gridSize/2, Math.min(gridSize/2, cx));
                     cz = Math.max(-gridSize/2, Math.min(gridSize/2, cz));
-                    
                     points.push(new THREE.Vector3(cx, yHeight, cz));
                 }
-                const geometry = new THREE.BufferGeometry().setFromPoints(points);
-                return new THREE.Line(geometry, material);
+                return new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), material);
             }
 
-            // More lines for denser look
             for(let i=0; i<CONFIG.lines.count; i++) {
-                // Use orange lines instead of brand purple
                 lineGroup.add(createCircuitPath(orangeLineMaterial, 0.05));
                 if (i % 2 === 0) lineGroup.add(createCircuitPath(lineMaterial, rand() * 2 + 1));
             }
 
-            // --- 4. Data Packets (Particles) ---
             const particleGeo = new THREE.BufferGeometry();
             const pPos = new Float32Array(particleCount * 3);
             pSpeed = [];
-
             for(let i=0; i<particleCount; i++) {
                 const i3 = i * 3;
                 pPos[i3] = (rand() - 0.5) * gridSize;
                 pPos[i3+1] = rand() * CONFIG.particles.rangeY;
                 pPos[i3+2] = (rand() - 0.5) * gridSize;
-                
-                pSpeed.push({
-                    y: rand() * (CONFIG.particles.speedMax - CONFIG.particles.speedMin) + CONFIG.particles.speedMin,
-                });
+                pSpeed.push({ y: rand() * (CONFIG.particles.speedMax - CONFIG.particles.speedMin) + CONFIG.particles.speedMin });
             }
             particleGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-            
-            // Darker particles for contrast
-            const particleMat = new THREE.PointsMaterial({
-                color: CONFIG.particles.color,
-                size: CONFIG.particles.size,
-                transparent: true,
-                opacity: CONFIG.particles.opacity,
-                map: null
-            });
+            const particleMat = new THREE.PointsMaterial({ color: CONFIG.particles.color, size: CONFIG.particles.size, transparent: true, opacity: CONFIG.particles.opacity });
             particles = new THREE.Points(particleGeo, particleMat);
             cityGroup.add(particles);
         }
 
-        // Initial generation
         generateCity();
 
-        // --- 5. Lighting (Bright & Clean) ---
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
         scene.add(ambientLight);
-
-        // Directional light for shadows and definition
         const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
         dirLight.position.set(10, 20, 10);
         scene.add(dirLight);
-
-        // Subtle accent lights
-        const light1 = new THREE.PointLight(CONFIG.lines.colorOrange, 1, 15); // Orange tint
+        const light1 = new THREE.PointLight(CONFIG.lines.colorOrange, 1, 15);
         light1.position.set(10, 5, 10);
         scene.add(light1);
-        
-        const light2 = new THREE.PointLight(CONFIG.lines.colorBlue, 1, 30); // Blue tint
+        const light2 = new THREE.PointLight(CONFIG.lines.colorBlue, 1, 30);
         light2.position.set(-10, 5, -10);
         scene.add(light2);
 
-        // --- Animation & Scroll ---
         const mainScroll = document.getElementById('main-scroll');
         let scrollPercent = 0;
-
         function handleScroll() {
-            // Support both window scroll (mobile/default) and potential container scroll
             const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || mainScroll.scrollTop || 0;
             const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight || mainScroll.scrollHeight;
             const clientHeight = window.innerHeight;
-            
             scrollPercent = scrollTop / (scrollHeight - clientHeight || 1);
         }
-
         if(mainScroll) mainScroll.addEventListener('scroll', handleScroll);
         window.addEventListener('scroll', handleScroll);
         
-        let mouseX = 0;
-        let mouseY = 0;
-        window.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth) - 0.5;
-            mouseY = (e.clientY / window.innerHeight) - 0.5;
-        });
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', (e) => { mouseX = (e.clientX / window.innerWidth) - 0.5; mouseY = (e.clientY / window.innerHeight) - 0.5; });
 
-        // Resize
         window.addEventListener('resize', () => {
-            // Ignore small vertical-only resizes on mobile (URL bar hide/show)
             if (Math.abs(camera.aspect - (window.innerWidth / window.innerHeight)) < 0.1 && window.innerWidth === renderer.domElement.width) return;
-
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // Create reusable objects for dynamic culling
         const frustum = new THREE.Frustum();
         const cameraMatrix = new THREE.Matrix4();
         const cullingSphere = new THREE.Sphere();
 
         function animate() {
             requestAnimationFrame(animate);
-
             const isMobile = window.innerWidth < 768;
-
-            // Use Config for rotation
             cityGroup.rotation.y = Math.sin(Date.now() * CONFIG.animation.rotationSpeed) * CONFIG.animation.rotationRange;
-
-            // Camera moves IN and slightly DOWN
-            // PC needs a bit more zoom-in to feel as dramatic as mobile's vertical screen
             const targetZ = 25 - (scrollPercent * (isMobile ? 18 : 22));
             const targetY = 12 - (scrollPercent * (isMobile ? 6 : 9));
-            
             camera.position.z += (targetZ - camera.position.z) * 0.05;
             camera.position.y += (targetY - camera.position.y) * 0.05;
-            
             camera.position.x += (mouseX * 3 - camera.position.x) * 0.02;
-
-            // Mobile Adjustment: Look slightly lower to shift city UP in viewport
-            // Use targetY offset to stabilize camera during scroll
-            const lookAtY = isMobile ? -20 : -5; // Also look slightly down on PC for better perspective
+            const lookAtY = isMobile ? -20 : -5;
             camera.lookAt(0, lookAtY, 0);
-
-            // Update frustum for culling (performance optimization)
             cameraMatrix.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
             frustum.setFromProjectionMatrix(cameraMatrix);
-
-            if (!particles || !pSpeed) return; // [DEV_MODE] Safety check for regeneration
-
-            // Dynamic Culling for buildings
+            if (!particles || !pSpeed) return;
             cityGroup.children.forEach(child => {
                 if (child.userData.isBuilding) {
-                    // Check visibility using the frustum
-                    // Use a conservative sphere to ensure tall buildings aren't cut off early
                     cullingSphere.center.copy(child.position);
                     cullingSphere.radius = 8;
                     child.visible = frustum.intersectsSphere(cullingSphere);
                 }
             });
-
             const positions = particles.geometry.attributes.position.array;
             for(let i=0; i<particleCount; i++) {
                 const i3 = i * 3;
                 positions[i3+1] += pSpeed[i].y;
-                
                 if(positions[i3+1] > CONFIG.particles.rangeY) {
                     positions[i3+1] = 0;
                     positions[i3] = (rand() - 0.5) * gridSize;
@@ -1980,70 +986,416 @@
                 }
             }
             particles.geometry.attributes.position.needsUpdate = true;
-
             renderer.render(scene, camera);
         }
         animate();
 
-
-    // Language Toggle Logic (Re-implemented)
-    // langDisplayNames removed - using translations object directly
-
-    function setLanguage(lang) {
-        document.getElementById('html-element').lang = lang;
+        // ============================================
+        // AI Chat System (Client-side)
+        // ============================================
         
-        // Update Translations
-        document.querySelectorAll('[data-lang-key]').forEach(el => {
-            const key = el.getAttribute('data-lang-key');
-            // Check for undefined only, allowing empty strings
-            if (translations[lang] && translations[lang][key] !== undefined) {
-                el.textContent = translations[lang][key];
+        // Knowledge Base Storage (Simulated - will be connected to backend)
+        let knowledgeBase = {
+            files: [],
+            lastUpdate: null,
+            content: [] // Will store extracted text content
+        };
+
+        // Load knowledge base from localStorage
+        function loadKnowledgeBase() {
+            const saved = localStorage.getItem('vizzle_knowledge_base');
+            if (saved) {
+                knowledgeBase = JSON.parse(saved);
+                renderKnowledgeList();
+            }
+        }
+
+        // Save knowledge base to localStorage
+        function saveKnowledgeBase() {
+            knowledgeBase.lastUpdate = new Date().toISOString();
+            localStorage.setItem('vizzle_knowledge_base', JSON.stringify(knowledgeBase));
+            updateLastUpdateTime();
+        }
+
+        // Render knowledge list
+        function renderKnowledgeList() {
+            const list = document.getElementById('knowledge-list');
+            const count = document.getElementById('knowledge-count');
+            
+            if (knowledgeBase.files.length === 0) {
+                list.innerHTML = `<div class="text-center py-8 text-neutral-400" data-lang-key="Admin_Knowledge_Empty">尚未上傳任何資料</div>`;
+                count.textContent = '0 個文件';
+                return;
+            }
+            
+            count.textContent = `${knowledgeBase.files.length} 個文件`;
+            list.innerHTML = knowledgeBase.files.map((file, index) => `
+                <div class="knowledge-item">
+                    <div class="flex items-center gap-3">
+                        <span class="iconify text-xl text-[#6b3d92]" data-icon="${getFileIcon(file.type)}"></span>
+                        <div>
+                            <p class="font-medium text-sm">${file.name}</p>
+                            <p class="text-xs text-neutral-400">${formatFileSize(file.size)}</p>
+                        </div>
+                    </div>
+                    <button onclick="removeFile(${index})" class="text-red-500 hover:text-red-700 text-sm" data-lang-key="Admin_File_Remove">移除</button>
+                </div>
+            `).join('');
+        }
+
+        // Get file icon based on type
+        function getFileIcon(type) {
+            const icons = {
+                'application/pdf': 'fa-solid:file-pdf',
+                'application/vnd.ms-excel': 'fa-solid:file-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'fa-solid:file-excel',
+                'text/html': 'fa-solid:file-code',
+                'application/msword': 'fa-solid:file-word',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'fa-solid:file-word',
+                'text/plain': 'fa-solid:file-lines',
+                'application/json': 'fa-solid:file-code',
+                'text/csv': 'fa-solid:file-csv'
+            };
+            return icons[type] || 'fa-solid:file';
+        }
+
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        // Update last update time display
+        function updateLastUpdateTime() {
+            const el = document.getElementById('last-update-time');
+            if (knowledgeBase.lastUpdate) {
+                const date = new Date(knowledgeBase.lastUpdate);
+                el.textContent = date.toLocaleString();
+            } else {
+                el.textContent = '-';
+            }
+        }
+
+        // Remove file from knowledge base
+        function removeFile(index) {
+            knowledgeBase.files.splice(index, 1);
+            knowledgeBase.content.splice(index, 1);
+            saveKnowledgeBase();
+            renderKnowledgeList();
+        }
+
+        // Clear knowledge base
+        function clearKnowledgeBase() {
+            if (confirm('確定要清空知識庫嗎？此操作無法撤銷。')) {
+                knowledgeBase = { files: [], lastUpdate: null, content: [] };
+                saveKnowledgeBase();
+                renderKnowledgeList();
+            }
+        }
+
+        // File upload handling
+        const uploadZone = document.getElementById('upload-zone');
+        const fileInput = document.getElementById('file-input');
+
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        uploadZone.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON') {
+                fileInput.click();
             }
         });
-        
-        // Update Placeholders
-        document.querySelectorAll('input[data-lang-key], textarea[data-lang-key]').forEach(el => {
-            const key = el.getAttribute('data-lang-key');
-            if (translations[lang] && translations[lang][key + '-placeholder'] !== undefined) {
-                el.placeholder = translations[lang][key + '-placeholder'];
-            }
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
         });
 
-        // Update Language Switcher Display Text (Desktop & Mobile)
-        // Fallback to lang code if display name not set
-        const displayText = (translations[lang] && translations[lang]['Language_Display_Name']) || lang;
-        const desktopLabel = document.getElementById('current-lang-text');
-        const mobileLabel = document.getElementById('current-lang-text-mobile');
-        
-        if (desktopLabel) desktopLabel.textContent = displayText;
-        if (mobileLabel) mobileLabel.textContent = displayText;
-
-        localStorage.setItem('preferredLanguage', lang);
-        
-        // Update Active State in Dropdown
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.remove('bg-[#6b3d92]', 'text-white');
-            if (btn.getAttribute('data-lang') === lang) {
-                btn.classList.add('bg-[#6b3d92]', 'text-white');
+        // Handle uploaded files
+        async function handleFiles(files) {
+            for (const file of files) {
+                // Read file content
+                const content = await readFileContent(file);
+                
+                knowledgeBase.files.push({
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    uploadedAt: new Date().toISOString()
+                });
+                
+                knowledgeBase.content.push({
+                    filename: file.name,
+                    text: content
+                });
             }
+            saveKnowledgeBase();
+            renderKnowledgeList();
+            
+            // Show success message
+            showNotification(`已成功上傳 ${files.length} 個文件，AI 正在學習中...`);
+        }
+
+        // Read file content (client-side extraction)
+        async function readFileContent(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                
+                if (file.type === 'text/plain' || file.type === 'text/html' || file.type === 'application/json' || file.type === 'text/csv') {
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.readAsText(file);
+                } else if (file.type === 'application/pdf') {
+                    // For PDF, we'll need backend processing
+                    // For now, store metadata and let backend know
+                    reader.onload = (e) => {
+                        // Store base64 for backend processing
+                        resolve(`[PDF_FILE:${file.name}:${file.size}]`);
+                    };
+                    reader.readAsDataURL(file);
+                } else if (file.type.includes('sheet') || file.type.includes('excel')) {
+                    // For Excel, we'll need backend processing
+                    reader.onload = (e) => {
+                        resolve(`[EXCEL_FILE:${file.name}:${file.size}]`);
+                    };
+                    reader.readAsDataURL(file);
+                } else if (file.type.includes('word') || file.type.includes('document')) {
+                    // For Word, we'll need backend processing
+                    reader.onload = (e) => {
+                        resolve(`[WORD_FILE:${file.name}:${file.size}]`);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.readAsText(file);
+                }
+            });
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-[#6b3d92] text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-pulse';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        // ============================================
+        // Chat System
+        // ============================================
+        
+        const chatMessages = document.getElementById('chat-messages');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        
+        let conversationHistory = [];
+
+        // Add message to chat
+        function addMessage(content, isUser = false) {
+            // Remove welcome screen if it exists
+            const welcomeScreen = chatMessages.querySelector('.text-center.py-8');
+            if (welcomeScreen) welcomeScreen.remove();
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = isUser ? 'chat-message-user' : 'chat-message-ai';
+            messageDiv.innerHTML = `
+                <div class="${isUser ? 'chat-bubble-user' : 'chat-bubble-ai'}">
+                    <p class="whitespace-pre-wrap">${content}</p>
+                </div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Add typing indicator
+        function addTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message-ai';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="chat-bubble-ai">
+                    <div class="typing-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Remove typing indicator
+        function removeTypingIndicator() {
+            const typing = document.getElementById('typing-indicator');
+            if (typing) typing.remove();
+        }
+
+        // Ask question (from suggested questions)
+        function askQuestion(question) {
+            chatInput.value = question;
+            chatForm.dispatchEvent(new Event('submit'));
+        }
+
+        // Process user message (This is where you'll connect to your LLM backend)
+        async function processUserMessage(message) {
+            // Add to conversation history
+            conversationHistory.push({ role: 'user', content: message });
+            
+            // Show typing indicator
+            addTypingIndicator();
+            
+            // ============================================
+            // BACKEND API CONNECTION POINT
+            // ============================================
+            // Replace this simulation with your actual LLM API call
+            // 
+            // Example API call:
+            // const response = await fetch('/api/chat', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({
+            //         message: message,
+            //         conversationHistory: conversationHistory,
+            //         knowledgeBase: knowledgeBase // Pass the knowledge base content
+            //     })
+            // });
+            // const data = await response.json();
+            // return data.reply;
+            //
+            // ============================================
+            
+            // Simulate AI response (Replace with actual LLM call)
+            await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
+            
+            const response = await simulateLLMResponse(message);
+            
+            // Remove typing indicator and show response
+            removeTypingIndicator();
+            conversationHistory.push({ role: 'assistant', content: response });
+            
+            return response;
+        }
+
+        // Simulated LLM response (Replace with actual API call)
+        async function simulateLLMResponse(message) {
+            const lang = localStorage.getItem('preferredLanguage') || 'zh-HK';
+            const lowerMsg = message.toLowerCase();
+            
+            // Check if we have relevant content in knowledge base
+            const relevantContent = knowledgeBase.content.filter(c => {
+                const text = c.text.toLowerCase();
+                return text.includes(lowerMsg) || 
+                       lowerMsg.split(' ').some(word => word.length > 2 && text.includes(word));
+            });
+            
+            // Simulated responses based on common questions
+            if (lowerMsg.includes('服務') || lowerMsg.includes('service') || lowerMsg.includes('提供')) {
+                return lang === 'en-US' 
+                    ? "Vizzle provides a lightweight AI 3D digital city management platform. Our core services include:\n\n• **Instant 3D Model Loading** - Load giant 3D scan models instantly on any device\n• **AI Analysis** - Automatic scene analysis and data integration\n• **Simple Operation** - No professional skills required\n\nWe help enterprises reduce 3D management costs by 60% and improve efficiency by 10x."
+                    : "Vizzle 提供輕量化 AI 3D 數碼城市管理平台。我們的核心服務包括：\n\n• **即時 3D 模型加載** - 任何裝置都能秒速加載巨型 3D 掃描模型\n• **AI 智能分析** - 自動場景分析和數據整合\n• **簡易操作** - 無需專業技能\n\n我們幫助企業降低 60% 的 3D 管理成本，提升 10 倍效率。";
+            }
+            
+            if (lowerMsg.includes('開始') || lowerMsg.includes('start') || lowerMsg.includes('使用')) {
+                return lang === 'en-US'
+                    ? "Getting started with Vizzle is easy:\n\n1. **Contact Us** - Reach out for a consultation\n2. **Demo** - We'll show you how our platform works\n3. **Customization** - We tailor the solution to your needs\n4. **Training** - Quick onboarding for your team\n\nWould you like to schedule a demo?"
+                    : "開始使用 Vizzle 很簡單：\n\n1. **聯繫我們** - 預約諮詢\n2. **產品演示** - 我們會展示平台如何運作\n3. **定制方案** - 根據您的需求定制解決方案\n4. **培訓** - 快速上手指導\n\n您想預約產品演示嗎？";
+            }
+            
+            if (lowerMsg.includes('價格') || lowerMsg.includes('定價') || lowerMsg.includes('pricing') || lowerMsg.includes('price')) {
+                return lang === 'en-US'
+                    ? "We offer flexible pricing plans:\n\n• **Basic Version** - ¥19,800/year (5 users)\n• **Enterprise Version** - ¥79,800/year (20 users)\n• **Custom Version** - Tailored pricing for large enterprises\n\nAll plans include 3D model management and AI analysis features. Would you like a custom quote?"
+                    : "我們提供靈活的定價方案：\n\n• **基礎版** - ¥19,800/年（5 個用戶）\n• **企業版** - ¥79,800/年（20 個用戶）\n• **定制版** - 為大型企業量身定制的報價\n\n所有方案都包含 3D 模型管理和 AI 分析功能。您需要獲取專屬報價嗎？";
+            }
+            
+            if (lowerMsg.includes('聯繫') || lowerMsg.includes('contact') || lowerMsg.includes('電話') || lowerMsg.includes('email')) {
+                return lang === 'en-US'
+                    ? "You can reach us through:\n\n📞 **Phone**: +852 9660 5893\n📧 **Email**: info@im-vizzle.com\n\nOur team is ready to assist you with any questions about our 3D management solutions!"
+                    : "您可以通過以下方式聯繫我們：\n\n📞 **電話**: +852 9660 5893\n📧 **電郵**: info@im-vizzle.com\n\n我們的團隊隨時準備為您解答關於 3D 管理解決方案的任何問題！";
+            }
+
+            if (lowerMsg.includes('客戶') || lowerMsg.includes('client') || lowerMsg.includes('案例')) {
+                return lang === 'en-US'
+                    ? "We are trusted by 50+ enterprise clients including:\n\n🏢 **Hong Kong International Airport** - Achieved 10x efficiency improvement in 3D facility management\n🚇 **MTR Corporation** - Digital city management solutions\n🏛️ **Government Departments** - Smart city infrastructure management\n\nOur clients typically see 60% cost reduction and 10x efficiency gains."
+                    : "我們受到 50+ 企業客戶的信任，包括：\n\n🏢 **香港國際機場** - 實現 3D 設施管理效率提升 10 倍\n🚇 **港鐵公司** - 數碼城市管理解決方案\n🏛️ **政府部門** - 智慧城市基礎設施管理\n\n我們的客戶通常能看到 60% 的成本降低和 10 倍的效率提升。";
+            }
+            
+            // If we have relevant content in knowledge base
+            if (relevantContent.length > 0) {
+                return lang === 'en-US'
+                    ? `Based on our knowledge base, I found relevant information in ${relevantContent.length} document(s). Here's what I can tell you:\n\n"${relevantContent[0].text.substring(0, 500)}..."\n\nWould you like me to provide more details?`
+                    : `根據我們的知識庫，我在 ${relevantContent.length} 份文件中找到了相關信息。以下是我能告訴您的：\n\n"${relevantContent[0].text.substring(0, 500)}..."\n\n您需要我提供更多詳細信息嗎？`;
+            }
+            
+            // Default response
+            return lang === 'en-US'
+                ? "Thank you for your question! I'm here to help you learn about Vizzle's 3D management solutions. Could you please provide more details about what you'd like to know? For example:\n\n• Our products and services\n• Pricing and packages\n• Case studies\n• Technical features\n• Contact information"
+                : "感謝您的提問！我在這裡幫助您了解 Vizzle 的 3D 管理解決方案。請問您想了解哪些方面的信息？例如：\n\n• 產品和服務\n• 定價和方案\n• 客戶案例\n• 技術特點\n• 聯繫方式";
+        }
+
+        // Handle form submission
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = chatInput.value.trim();
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, true);
+            chatInput.value = '';
+            
+            // Process and add AI response
+            const response = await processUserMessage(message);
+            addMessage(response, false);
         });
-    }
+
+        // ============================================
+        // Language System
+        // ============================================
+        
+        function setLanguage(lang) {
+            document.getElementById('html-element').lang = lang;
+            
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key] !== undefined) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            
+            const displayText = (translations[lang] && translations[lang]['Language_Display_Name']) || lang;
+            const desktopLabel = document.getElementById('current-lang-text');
+            const mobileLabel = document.getElementById('current-lang-text-mobile');
+            if (desktopLabel) desktopLabel.textContent = displayText;
+            if (mobileLabel) mobileLabel.textContent = displayText;
+            
+            localStorage.setItem('preferredLanguage', lang);
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('bg-[#6b3d92]', 'text-white');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('bg-[#6b3d92]', 'text-white');
+                }
+            });
+        }
 
         function detectUserLanguage() {
             const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang) {
-                setLanguage(savedLang);
-                return;
-            }
+            if (savedLang) { setLanguage(savedLang); return; }
             let userLang = 'en-US';
             if (navigator.language) {
                 const langCode = navigator.language.toLowerCase();
                 if (langCode.includes('zh')) {
-                    if (langCode.includes('tw') || langCode.includes('hk') || langCode.includes('mo')) {
-                        userLang = 'zh-HK';
-                    } else {
-                        userLang = 'zh-CN';
-                    }
+                    userLang = (langCode.includes('tw') || langCode.includes('hk') || langCode.includes('mo')) ? 'zh-HK' : 'zh-CN';
                 }
             }
             setLanguage(userLang);
@@ -2052,109 +1404,72 @@
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const lang = this.getAttribute('data-lang');
-                // Removed manual text update here, relying on setLanguage instead
                 setLanguage(lang);
-                
-                // Hide mobile dropdown if open
                 const mobileDropdown = document.getElementById('mobile-lang-dropdown');
                 if (mobileDropdown) mobileDropdown.classList.add('hidden');
             });
         });
 
-        // Smooth Scrolling Logic
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
-                
-                // Special case for Home/Top
                 if (targetId === '#hero' || targetId === '#') {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        // Calculate offset for fixed header
                         const headerOffset = 80;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                     }
                 }
-                
-                // Close Mobile Menu if open
                 const mobileMenu = document.getElementById('mobile-menu');
                 if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                 }
             });
         });
-        
-        // Marquee Logic (Auto-scroll + Manual Drag Support)
+
+        // Marquee
         const marqueeTrack = document.getElementById('marquee-track');
         if (marqueeTrack) {
-            // Duplicate content for seamless scrolling
             marqueeTrack.innerHTML += marqueeTrack.innerHTML;
-            
-            let scrollAmount = 0;
-            let isHovering = false;
-            let scrollSpeed = 0.5;
-
+            let scrollAmount = 0, isHovering = false, scrollSpeed = 0.5;
             function scrollMarquee() {
                 if (!isHovering) {
                     scrollAmount += scrollSpeed;
-                    
-                    // Reset if we've scrolled past half (since content is duplicated)
-                    if (scrollAmount >= marqueeTrack.scrollWidth / 2) {
-                        scrollAmount = 0;
-                    }
+                    if (scrollAmount >= marqueeTrack.scrollWidth / 2) scrollAmount = 0;
                     marqueeTrack.scrollLeft = scrollAmount;
                 } else {
-                    // Sync scrollAmount to current scrollLeft so it resumes smoothly
                     scrollAmount = marqueeTrack.scrollLeft;
                 }
                 requestAnimationFrame(scrollMarquee);
             }
-
-            // Pause on touch start to allow drag, resume on touch end
             marqueeTrack.addEventListener('touchstart', () => { isHovering = true; }, {passive: true});
             marqueeTrack.addEventListener('touchend', () => { isHovering = false; }, {passive: true});
-            
-            // Optional: Pause on mouse hover for desktop
             marqueeTrack.addEventListener('mouseenter', () => { isHovering = true; });
             marqueeTrack.addEventListener('mouseleave', () => { isHovering = false; });
-
-            // Start loop
             scrollMarquee();
         }
 
-        // Mobile Menu Toggle
+        // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        
         if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+            mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
         }
 
-        // Mobile Language Dropdown Toggle
+        // Mobile Language Dropdown
         const mobileLangBtn = document.querySelector('.md\\:hidden .relative > button');
         const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
-
         if (mobileLangBtn && mobileLangDropdown) {
             mobileLangBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 mobileLangDropdown.classList.toggle('hidden');
             });
-
             document.addEventListener('click', (e) => {
                 if (!mobileLangBtn.contains(e.target) && !mobileLangDropdown.contains(e.target)) {
                     mobileLangDropdown.classList.add('hidden');
@@ -2162,257 +1477,12 @@
             });
         }
 
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Rebuild language dropdown based on current translations (which might be loaded from storage)
-            if (typeof updateLanguageDropdown === 'function') {
-                updateLanguageDropdown();
-            }
             detectUserLanguage();
+            loadKnowledgeBase();
+            updateLastUpdateTime();
         });
-    
-    // --- i18n Import/Export Logic ---
-    function exportToCSV() {
-        const langs = Object.keys(translations);
-        const allKeys = new Set();
-        langs.forEach(lang => {
-            Object.keys(translations[lang]).forEach(k => allKeys.add(k));
-        });
-        const sortedKeys = Array.from(allKeys).sort();
-
-        const header = ['Key', 'Description', ...langs];
-        const rows = [header];
-
-        sortedKeys.forEach(key => {
-            const row = [key, key.replace(/_/g, ' ')];
-            langs.forEach(lang => {
-                let val = translations[lang][key] || '';
-                val = String(val).replace(/"/g, '""');
-                row.push(`"${val}"`);
-            });
-            rows.push(row);
-        });
-
-        let csvContent = "\uFEFF"; 
-        rows.forEach(r => {
-            csvContent += r.join(",") + "\n";
-        });
-
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.setAttribute("href", url);
-        link.setAttribute("download", "locale.csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    function parseCSVLine(line) {
-        const res = [];
-        let current = '';
-        let inQuote = false;
-        for (let i = 0; i < line.length; i++) {
-            const char = line[i];
-            const nextChar = line[i+1];
-            
-            if (char === '"') {
-                if (inQuote && nextChar === '"') {
-                    current += '"';
-                    i++; // skip next quote (unescape)
-                } else {
-                    inQuote = !inQuote;
-                }
-            } else if (char === ',' && !inQuote) {
-                res.push(current);
-                current = '';
-            } else {
-                current += char;
-            }
-        }
-        res.push(current);
-        return res;
-    }
-
-    function importFromCSV(file) {
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const text = e.target.result;
-            // Split lines and filter empty ones
-            const lines = text.split(/\r\n|\n/).filter(line => line.trim() !== '');
-            
-            if (lines.length < 1) return;
-            
-            // Header parsing
-            const headerRow = lines[0];
-            // Clean BOM and quotes
-            const headers = parseCSVLine(headerRow).map(h => h.trim().replace(/^"|"$/g, '').replace(/^\uFEFF/, ''));
-            
-            // Map languages
-            const langMap = {};
-            for (let i = 0; i < headers.length; i++) {
-                const h = headers[i];
-                if (h && h !== 'Key' && h !== 'Description') {
-                    langMap[h] = i;
-                }
-            }
-
-            // Parse and store CSV content for validation
-            const parsedRows = [];
-            const csvKeySet = new Set();
-
-            for (let i = 1; i < lines.length; i++) {
-                const row = parseCSVLine(lines[i]);
-                if (row.length > 0) {
-                    const key = row[0].replace(/^"|"$/g, '');
-                    if (key) {
-                        parsedRows.push({ key, row });
-                        csvKeySet.add(key);
-                    }
-                }
-            }
-
-            // --- VALIDATION START ---
-            // Source of Truth: The current webpage's translations object (using the first available language)
-            const baseLang = Object.keys(translations)[0];
-            const appKeySet = new Set(Object.keys(translations[baseLang]));
-
-            const missingKeys = [...appKeySet].filter(k => !csvKeySet.has(k));
-            const unknownKeys = [...csvKeySet].filter(k => !appKeySet.has(k));
-
-            if (missingKeys.length > 0 || unknownKeys.length > 0) {
-                let errorMsg = 'Import Failed: Translation key mismatch detected.\n\n';
-                
-                if (missingKeys.length > 0) {
-                    errorMsg += `[Missing ${missingKeys.length} keys required by page]\n`;
-                    errorMsg += `Examples: ${missingKeys.slice(0, 3).join(', ')}${missingKeys.length > 3 ? '...' : ''}\n\n`;
-                }
-                
-                if (unknownKeys.length > 0) {
-                    errorMsg += `[Found ${unknownKeys.length} unknown keys in CSV]\n`;
-                    errorMsg += `Examples: ${unknownKeys.slice(0, 3).join(', ')}${unknownKeys.length > 3 ? '...' : ''}\n\n`;
-                }
-                
-                errorMsg += 'Action Cancelled. Please use a CSV exported from this version of the webpage.';
-                alert(errorMsg);
-                return; // ABORT IMPORT
-            }
-            // --- VALIDATION END ---
-
-            // Initialize new languages if any
-            Object.keys(langMap).forEach(lang => {
-                if (!translations[lang]) {
-                    translations[lang] = {};
-                }
-            });
-
-            // Update Translations
-            // 1. Identify languages in CSV
-            const csvLanguages = Object.keys(langMap);
-
-            // 2. Remove languages from global 'translations' that are NOT in CSV
-            // (Sync deletion)
-            Object.keys(translations).forEach(existingLang => {
-                if (!csvLanguages.includes(existingLang)) {
-                    delete translations[existingLang];
-                }
-            });
-
-            // 3. Update/Add keys
-            parsedRows.forEach(item => {
-                const { key, row } = item;
-                Object.keys(langMap).forEach(lang => {
-                    const idx = langMap[lang];
-                    const val = (idx < row.length) ? row[idx] : "";
-                    translations[lang][key] = val;
-                });
-            });
-
-            // 4. Update UI for Preview
-            updateLanguageDropdown();
-            
-            // Validate current language still exists, fallback if needed
-            let currentLang = localStorage.getItem('preferredLanguage') || 'en-US';
-            if (!translations[currentLang]) {
-                currentLang = Object.keys(translations)[0] || 'en-US';
-            }
-            setLanguage(currentLang);
-            
-            const languagesFound = Object.keys(translations).join(', ');
-            alert(`Preview Loaded! Synced ${parsedRows.length} keys.\nCurrent Languages: ${languagesFound}\n\nIMPORTANT: These changes are in PREVIEW ONLY.\nClick "Download Updated HTML" to save these changes to your project file.`);
-        };
-        reader.readAsText(file);
-    }
-
-    function updateLanguageDropdown() {
-        const languages = Object.keys(translations);
-        
-        const createBtn = (lang, isMobile) => {
-            const btn = document.createElement('button');
-            // Use Language_Display_Name if available, else code
-            const name = (translations[lang] && translations[lang]['Language_Display_Name']) || lang;
-            
-            if (isMobile) {
-                btn.className = 'lang-btn w-full text-left px-3 py-1 text-xs hover:bg-[#6b3d92] hover:text-white transition-colors';
-            } else {
-                btn.className = 'lang-btn lang-option w-full text-left px-4 py-2 text-sm hover:bg-[#6b3d92] hover:text-white transition-colors cursor-pointer';
-            }
-            btn.setAttribute('data-lang', lang);
-            btn.setAttribute('data-lang-text', name);
-            btn.textContent = name;
-            btn.onclick = function() {
-                 setLanguage(lang);
-                 const mob = document.getElementById('mobile-lang-dropdown');
-                 if(mob && isMobile) mob.classList.add('hidden');
-            };
-            return btn;
-        };
-
-        const dropdown = document.querySelector('.lang-menu-content');
-        if (dropdown) {
-            dropdown.innerHTML = '';
-            languages.forEach(lang => dropdown.appendChild(createBtn(lang, false)));
-        }
-
-        const mobileDropdown = document.querySelector('#mobile-lang-dropdown > div');
-        if (mobileDropdown) {
-            mobileDropdown.innerHTML = '';
-            languages.forEach(lang => mobileDropdown.appendChild(createBtn(lang, true)));
-        }
-    }
-    async function downloadUpdatedHTML() {
-        try {
-            // Fetch original source
-            const response = await fetch('index.html');
-            if (!response.ok) throw new Error('Cannot read source file');
-            let source = await response.text();
-            
-            // Replace translations object
-            const newJson = JSON.stringify(translations, null, 4);
-            // Match 'let translations = { ... };' block accurately
-            // Using a simpler regex that looks for the start and assumes indentation pattern or ends with };
-            const regex = /(let|const)\s+translations\s*=\s*\{[\s\S]*?\};/;
-            
-            if (regex.test(source)) {
-                source = source.replace(regex, `let translations = ${newJson};`);
-                
-                // Trigger download
-                const blob = new Blob([source], { type: 'text/html' });
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement("a");
-                link.setAttribute("href", url);
-                link.setAttribute("download", "index.html");
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                alert("Success! Updated index.html downloaded.\nPlease replace your project file with this new file.");
-            } else {
-                throw new Error('Translations object not found in source.');
-            }
-        } catch (e) {
-            alert('Error generating updated HTML: ' + e.message);
-        }
-    }
-</script>
+    </script>
 </body>
 </html>
