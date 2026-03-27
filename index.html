@@ -433,16 +433,48 @@
                         <!-- Chat Messages Area -->
                         <div class="chat-messages" id="chat-messages">
                             <!-- Welcome message and suggested questions -->
-                            <div class="text-center py-8">
-                                <div class="w-20 h-20 bg-[#6b3d92]/10 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                            <div class="text-center py-4 md:py-8 h-full flex flex-col justify-center">
+                                <div class="w-16 h-16 md:w-20 md:h-20 bg-[#6b3d92]/10 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden shadow-sm">
                                     <img src="assets/img/VizzleAI.png" alt="AI Avatar" class="w-full h-full object-cover">
                                 </div>
-                                <p class="text-neutral-500 mb-6" data-lang-key="AI_Suggested_Questions_Title">常見問題</p>
-                                <div class="flex flex-wrap justify-center gap-3">
-                                    <button class="suggested-question" onclick="askQuestion(this.textContent)" data-lang-key="AI_Suggested_Q1">Vizzle 提供什麼服務？</button>
-                                    <button class="suggested-question" onclick="askQuestion(this.textContent)" data-lang-key="AI_Suggested_Q2">如何開始使用 Vizzle？</button>
-                                    <button class="suggested-question" onclick="askQuestion(this.textContent)" data-lang-key="AI_Suggested_Q3">你們的定價方案是什麼？</button>
-                                    <button class="suggested-question" onclick="askQuestion(this.textContent)" data-lang-key="AI_Suggested_Q4">如何聯繫你們？</button>
+                                <p class="text-neutral-500 mb-6 font-medium" data-lang-key="AI_Suggested_Questions_Title">常見問題</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 w-full max-w-4xl mx-auto px-2 md:px-4">
+                                    <!-- Q1 Card -->
+                                    <button onclick="askQuestion(this.querySelector('[data-lang-key]').textContent)" class="group relative h-24 md:h-32 w-full rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-left border border-white/60 bg-white">
+                                        <div class="absolute inset-0">
+                                            <img src="assets/img/HKIA_SmartCity.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" alt="Service">
+                                            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent md:bg-gradient-to-t md:from-black/90 md:via-black/30 md:to-transparent"></div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 p-3 md:p-4 w-full h-full flex flex-col justify-center md:justify-end z-10">
+                                            <span class="block text-white/90 text-[10px] md:text-xs font-medium mb-0.5 uppercase tracking-wider bg-[#6b3d92]/80 px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">Service</span>
+                                            <span class="block text-white font-bold text-sm md:text-sm leading-tight drop-shadow-md mt-1" data-lang-key="AI_Suggested_Q1">Vizzle 提供什麼產品及服務？</span>
+                                        </div>
+                                    </button>
+                                
+                                    <!-- Q2 Card -->
+                                    <button onclick="askQuestion(this.querySelector('[data-lang-key]').textContent)" class="group relative h-24 md:h-32 w-full rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-left border border-white/60 bg-white">
+                                        <div class="absolute inset-0 bg-white">
+                                            <img src="assets/img/logo/centralmarket.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" alt="Cases">
+                                            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent md:bg-gradient-to-t md:from-black/90 md:via-black/30 md:to-transparent"></div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 p-3 md:p-4 w-full h-full flex flex-col justify-center md:justify-end z-10">
+                                             <span class="block text-white/90 text-[10px] md:text-xs font-medium mb-0.5 uppercase tracking-wider bg-[#6b3d92]/80 px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">Cases</span>
+                                            <span class="block text-white font-bold text-sm md:text-sm leading-tight drop-shadow-md mt-1" data-lang-key="AI_Suggested_Q2">客戶案例 / 個案研究</span>
+                                        </div>
+                                    </button>
+                                
+                                    <!-- Q3 Card -->
+                                    <button onclick="askQuestion(this.querySelector('[data-lang-key]').textContent)" class="group relative h-24 md:h-32 w-full rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-left border border-white/60 bg-white">
+                                        <div class="absolute inset-0 bg-white">
+                                            <img src="assets/img/VizzleAI.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" alt="About">
+                                            <div class="absolute inset-0 bg-gradient-to-r from-[#6b3d92]/90 via-[#6b3d92]/40 to-transparent md:bg-gradient-to-t md:from-[#6b3d92]/90 md:via-[#6b3d92]/40 md:to-transparent"></div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 p-3 md:p-4 w-full h-full flex flex-col justify-center md:justify-end z-10">
+                                             <span class="block text-white/90 text-[10px] md:text-xs font-medium mb-0.5 uppercase tracking-wider bg-black/30 px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">About</span>
+                                            <span class="block text-white font-bold text-sm md:text-sm leading-tight drop-shadow-md mt-1" data-lang-key="AI_Suggested_Q3">關於Vizzle (炫幻視界)</span>
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1074,16 +1106,48 @@
             
             // Restore welcome screen HTML
             chatMessages.innerHTML = `
-                <div class="text-center py-8">
-                    <div class="w-20 h-20 bg-[#6b3d92]/10 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                <div class="text-center py-4 md:py-8 h-full flex flex-col justify-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-[#6b3d92]/10 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden shadow-sm">
                         <img src="assets/img/VizzleAI.png" alt="AI Avatar" class="w-full h-full object-cover">
                     </div>
-                    <p class="text-neutral-500 mb-6">${t('AI_Suggested_Questions_Title')}</p>
-                    <div class="flex flex-wrap justify-center gap-3">
-                        <button class="suggested-question" onclick="askQuestion(this.textContent)">${t('AI_Suggested_Q1')}</button>
-                        <button class="suggested-question" onclick="askQuestion(this.textContent)">${t('AI_Suggested_Q2')}</button>
-                        <button class="suggested-question" onclick="askQuestion(this.textContent)">${t('AI_Suggested_Q3')}</button>
-                        <button class="suggested-question" onclick="askQuestion(this.textContent)">${t('AI_Suggested_Q4')}</button>
+                    <p class="text-neutral-500 mb-6 font-medium">${t('AI_Suggested_Questions_Title')}</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 w-full max-w-4xl mx-auto px-2 md:px-4">
+                        <!-- Q1 Card -->
+                        <button onclick="askQuestion(this.querySelector('[data-lang-key]').textContent)" class="group relative h-24 md:h-32 w-full rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-left border border-white/60 bg-white">
+                            <div class="absolute inset-0">
+                                <img src="assets/img/HKIA_SmartCity.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" alt="Service">
+                                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent md:bg-gradient-to-t md:from-black/90 md:via-black/30 md:to-transparent"></div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 p-3 md:p-4 w-full h-full flex flex-col justify-center md:justify-end z-10">
+                                <span class="block text-white/90 text-[10px] md:text-xs font-medium mb-0.5 uppercase tracking-wider bg-[#6b3d92]/80 px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">Service</span>
+                                <span class="block text-white font-bold text-sm md:text-sm leading-tight drop-shadow-md mt-1" data-lang-key="AI_Suggested_Q1">${t('AI_Suggested_Q1')}</span>
+                            </div>
+                        </button>
+                    
+                        <!-- Q2 Card -->
+                        <button onclick="askQuestion(this.querySelector('[data-lang-key]').textContent)" class="group relative h-24 md:h-32 w-full rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-left border border-white/60 bg-white">
+                            <div class="absolute inset-0 bg-white">
+                                <img src="assets/img/logo/centralmarket.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" alt="Cases">
+                                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent md:bg-gradient-to-t md:from-black/90 md:via-black/30 md:to-transparent"></div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 p-3 md:p-4 w-full h-full flex flex-col justify-center md:justify-end z-10">
+                                    <span class="block text-white/90 text-[10px] md:text-xs font-medium mb-0.5 uppercase tracking-wider bg-[#6b3d92]/80 px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">Cases</span>
+                                <span class="block text-white font-bold text-sm md:text-sm leading-tight drop-shadow-md mt-1" data-lang-key="AI_Suggested_Q2">${t('AI_Suggested_Q2')}</span>
+                            </div>
+                        </button>
+                    
+                        <!-- Q3 Card -->
+                        <button onclick="askQuestion(this.querySelector('[data-lang-key]').textContent)" class="group relative h-24 md:h-32 w-full rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-left border border-white/60 bg-white">
+                            <div class="absolute inset-0 bg-white">
+                                <img src="assets/img/VizzleAI.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90" alt="About">
+                                <div class="absolute inset-0 bg-gradient-to-r from-[#6b3d92]/90 via-[#6b3d92]/40 to-transparent md:bg-gradient-to-t md:from-[#6b3d92]/90 md:via-[#6b3d92]/40 md:to-transparent"></div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 p-3 md:p-4 w-full h-full flex flex-col justify-center md:justify-end z-10">
+                                    <span class="block text-white/90 text-[10px] md:text-xs font-medium mb-0.5 uppercase tracking-wider bg-black/30 px-2 py-0.5 rounded-full w-fit backdrop-blur-sm">About</span>
+                                <span class="block text-white font-bold text-sm md:text-sm leading-tight drop-shadow-md mt-1" data-lang-key="AI_Suggested_Q3">${t('AI_Suggested_Q3')}</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             `;
