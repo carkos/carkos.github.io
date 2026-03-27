@@ -13,7 +13,13 @@
     <link rel="preconnect" href="https://code.iconify.design">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
+    <!-- Load Shared Data -->
+    <script src="assets/data/translations.js"></script>
+    
     <script>
+        let translations = window.DEFAULT_TRANSLATIONS || {};
+    /* Old translations block removed */
+    /*
         let translations = {
     "zh-HK": {
         "Language_Display_Name": "繁",
@@ -199,7 +205,11 @@
         "Contact_Info_Email": "info@im-vizzle.com"
     }
 };
+    */
     </script>
+    
+    <!-- Load Knowledge Base Logic -->
+    <script src="assets/js/knowledge-base.js"></script>
     
     <style type="text/tailwindcss">
         @layer utilities {
@@ -940,22 +950,8 @@
         // AI Chat System (Client-side)
         // ============================================
         
-
-        // Knowledge Base Storage (Read-only for Frontend)
-        let knowledgeBase = {
-            files: [],
-            lastUpdate: null,
-            content: [] 
-        };
-
-        // Load knowledge base from localStorage
-        function loadKnowledgeBase() {
-            const saved = localStorage.getItem('vizzle_knowledge_base');
-            if (saved) {
-                knowledgeBase = JSON.parse(saved);
-            }
-        }
-
+        // Knowledge Base logic is now loaded from assets/js/knowledge-base.js
+        // Global 'knowledgeBase' variable is available.
 
         // ============================================
         // Chat System
