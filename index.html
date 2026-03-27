@@ -404,15 +404,29 @@
                     <!-- AI Chat Card -->
                     <div class="flex flex-col h-[60vh] md:h-[600px] bg-white/50 backdrop-blur-md border border-white/60 shadow-lg rounded-xl overflow-hidden transition-all duration-300">
                         <!-- Chat Header -->
-                        <div class="bg-gradient-to-r from-[#6a3d92] to-[#a25dae] text-white p-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
-                                    <img src="assets/img/VizzleAI.png" alt="AI Avatar" class="w-full h-full object-cover">
+                        <div class="bg-gradient-to-r from-[#6a3d92] to-[#a25dae] text-white p-4 md:p-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
+                                        <img src="assets/img/VizzleAI.png" alt="AI Avatar" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h1 class="text-xl md:text-2xl font-bold" data-lang-key="AI_Welcome_Title">您好，我是 Vizzle AI 助手</h1>
+                                        <p class="text-white/80 text-sm" data-lang-key="AI_Welcome_Subtitle">有任何關於我們產品、服務或公司的問題，請隨時向我提問</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h1 class="text-xl md:text-2xl font-bold" data-lang-key="AI_Welcome_Title">您好，我是 Vizzle AI 助手</h1>
-                                    <p class="text-white/80 text-sm" data-lang-key="AI_Welcome_Subtitle">有任何關於我們產品、服務或公司的問題，請隨時向我提問</p>
-                                </div>
+                                <!-- Reset Chat Button -->
+                                <button 
+                                    onclick="resetChat()" 
+                                    class="flex items-center gap-2 px-3 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-all duration-200 text-sm group"
+                                    id="reset-chat-btn"
+                                    data-lang-title="AI_Reset_Button_Tooltip"
+                                >
+                                    <svg class="w-5 h-5 group-hover:rotate-180 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="hidden md:inline" data-lang-key="AI_Reset_Button">重新開始</span>
+                                </button>
                             </div>
                         </div>
                         
@@ -614,34 +628,36 @@
         <section id="contact" class="w-full flex flex-col justify-between relative">
             <div class="flex-grow flex items-center justify-center section-padding">
                 <div class="container-custom">
-                    <div class="max-w-2xl mx-auto">
-                        <div class="glass-card text-center">
-                            <h2 class="text-2xl font-bold mb-6" data-lang-key="Navigation_Menu_Contact">聯繫我們</h2>
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-center gap-4">
-                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center">
+                    <div class="glass-card text-center max-w-sm mx-auto">
+                        <h2 class="text-2xl font-bold mb-6" data-lang-key="Navigation_Menu_Contact">聯繫我們</h2>
+                        <div class="space-y-4 flex flex-col items-center">
+                                <!-- Company -->
+                                <div class="flex items-center gap-4 w-full max-w-xs">
+                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="iconify text-[#6b3d92]" data-icon="fa-solid:building"></span>
                                     </div>
-                                    <div class="text-left">
-                                        <p class="text-sm text-neutral-500">公司名稱</p>
+                                    <div class="text-left flex-1">
+                                        <p class="text-sm text-neutral-500" data-lang-key="Contact_Label_Company">公司名稱</p>
                                         <p class="font-medium" data-lang-key="Contact_Info_Company">Vizzle 炫幻視界</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-center gap-4">
-                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center">
+                                <!-- Phone -->
+                                <div class="flex items-center gap-4 w-full max-w-xs">
+                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="iconify text-[#6b3d92]" data-icon="fa-solid:phone"></span>
                                     </div>
-                                    <div class="text-left">
-                                        <p class="text-sm text-neutral-500">聯繫電話</p>
+                                    <div class="text-left flex-1">
+                                        <p class="text-sm text-neutral-500" data-lang-key="Contact_Label_Phone">聯繫電話</p>
                                         <p class="font-medium" data-lang-key="Contact_Info_Phone">+852 9660 5893</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center justify-center gap-4">
-                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center">
+                                <!-- Email -->
+                                <div class="flex items-center gap-4 w-full max-w-xs">
+                                    <div class="w-10 h-10 bg-[#6b3d92]/10 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="iconify text-[#6b3d92]" data-icon="fa-solid:envelope"></span>
                                     </div>
-                                    <div class="text-left">
-                                        <p class="text-sm text-neutral-500">電子郵箱</p>
+                                    <div class="text-left flex-1">
+                                        <p class="text-sm text-neutral-500" data-lang-key="Contact_Label_Email">電子郵箱</p>
                                         <p class="font-medium" data-lang-key="Contact_Info_Email">info@im-vizzle.com</p>
                                     </div>
                                 </div>
@@ -1008,6 +1024,67 @@
             chatForm.dispatchEvent(new Event('submit'));
         }
 
+        // Reset chat to initial state
+        function resetChat() {
+            // Clear conversation history
+            conversationHistory = [];
+            
+            // Get current language for suggested questions
+            const lang = localStorage.getItem('preferredLanguage') || 'zh-HK';
+            
+            // Get translations with fallback to defaults
+            const customTrans = localStorage.getItem('vizzle_custom_translations');
+            let activeTranslations = translations;
+            if (customTrans) {
+                try {
+                    const customTranslations = JSON.parse(customTrans);
+                    activeTranslations = {};
+                    for (const langCode of ['zh-HK', 'zh-CN', 'en-US']) {
+                        activeTranslations[langCode] = {
+                            ...(translations[langCode] || {}),
+                            ...(customTranslations[langCode] || {})
+                        };
+                    }
+                } catch (e) {
+                    console.error("Failed to load custom translations", e);
+                }
+            }
+            
+            // Helper function to get translation
+            const t = (key) => {
+                if (activeTranslations[lang] && activeTranslations[lang][key]) {
+                    return activeTranslations[lang][key];
+                }
+                return translations[lang]?.[key] || key;
+            };
+            
+            // Restore welcome screen HTML
+            chatMessages.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="w-20 h-20 bg-[#6b3d92]/10 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                        <img src="assets/img/VizzleAI.png" alt="AI Avatar" class="w-full h-full object-cover">
+                    </div>
+                    <p class="text-neutral-500 mb-6">${t('AI_Suggested_Questions_Title')}</p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button class="suggested-question" onclick="askQuestion(this.textContent)">${t('AI_Suggested_Q1')}</button>
+                        <button class="suggested-question" onclick="askQuestion(this.textContent)">${t('AI_Suggested_Q2')}</button>
+                        <button class="suggested-question" onclick="askQuestion(this.textContent)">${t('AI_Suggested_Q3')}</button>
+                        <button class="suggested-question" onclick="askQuestion(this.textContent)">${t('AI_Suggested_Q4')}</button>
+                    </div>
+                </div>
+            `;
+            
+            // Clear input
+            chatInput.value = '';
+            
+            // Add animation to reset button
+            const resetBtn = document.getElementById('reset-chat-btn');
+            if (resetBtn) {
+                resetBtn.classList.add('scale-95');
+                setTimeout(() => resetBtn.classList.remove('scale-95'), 150);
+            }
+        }
+
         // Process user message (This is where you'll connect to your LLM backend)
         async function processUserMessage(message) {
             // Add to conversation history
@@ -1200,10 +1277,20 @@
             
             if (customTrans) {
                 try {
-                    // Use custom translations if they exist
-                    activeTranslations = JSON.parse(customTrans);
+                    // Use custom translations if they exist, but merge with defaults for missing keys
+                    const customTranslations = JSON.parse(customTrans);
+                    activeTranslations = {};
+                    
+                    // For each language, merge custom translations with defaults (custom takes priority)
+                    for (const langCode of ['zh-HK', 'zh-CN', 'en-US']) {
+                        activeTranslations[langCode] = {
+                            ...(translations[langCode] || {}),  // Default translations as base
+                            ...(customTranslations[langCode] || {})  // Custom translations override
+                        };
+                    }
                 } catch(e) {
                     console.error("Failed to load custom translations", e);
+                    activeTranslations = translations;
                 }
             }
 
@@ -1218,6 +1305,14 @@
                     } else {
                         el.textContent = activeTranslations[lang][key];
                     }
+                }
+            });
+            
+            // Handle title attributes (tooltips)
+            document.querySelectorAll('[data-lang-title]').forEach(el => {
+                const key = el.getAttribute('data-lang-title');
+                if (activeTranslations[lang] && activeTranslations[lang][key] !== undefined) {
+                    el.title = activeTranslations[lang][key];
                 }
             });
             
