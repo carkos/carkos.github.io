@@ -110,12 +110,16 @@
 
             <!-- Language Management Section -->
             <div id="tab-language" class="max-w-6xl mx-auto hidden">
-                <header class="mb-8 flex justify-between items-center">
+                <header class="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div>
                         <h2 class="text-2xl font-bold text-gray-800">多語言管理</h2>
                         <p class="text-gray-500">直接編輯網站上的文字內容，修改後即時生效。</p>
                     </div>
-                    <div class="flex gap-2">
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="exportConfiguration()" class="btn-secondary text-sm bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 px-3 py-2 rounded">
+                            <span class="iconify inline mr-1" data-icon="fa-solid:download"></span>
+                            導出配置JSON
+                        </button>
                         <button onclick="resetTranslations()" class="btn-danger text-sm">重置為預設</button>
                         <button onclick="saveTranslations()" class="btn-primary flex items-center gap-2">
                             <span class="iconify" data-icon="fa-solid:save"></span>
@@ -123,16 +127,21 @@
                         </button>
                     </div>
                 </header>
+                
+                <!-- Search/Filter -->
+                <div class="mb-4">
+                    <input type="text" id="lang-search" placeholder="搜索關鍵字或 Key..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] outline-none" onkeyup="filterTranslations()">
+                </div>
 
                 <div class="glass-panel overflow-hidden">
                     <div class="overflow-x-auto max-h-[70vh]">
                         <table class="trans-table">
                             <thead>
                                 <tr>
-                                    <th class="w-1/4">Key (開發標識)</th>
-                                    <th class="w-1/4">繁體中文 (zh-HK)</th>
-                                    <th class="w-1/4">简体中文 (zh-CN)</th>
-                                    <th class="w-1/4">English (en-US)</th>
+                                    <th class="w-1/4 bg-gray-100 z-10">字段說明 (Key)</th>
+                                    <th class="w-1/4 bg-gray-100 z-10">繁體中文 (zh-HK)</th>
+                                    <th class="w-1/4 bg-gray-100 z-10">简体中文 (zh-CN)</th>
+                                    <th class="w-1/4 bg-gray-100 z-10">English (en-US)</th>
                                 </tr>
                             </thead>
                             <tbody id="trans-tbody">
@@ -460,49 +469,175 @@
         // ===================================
         let currentTranslations = {};
 
+        // Key Descriptions for better UX
+        const KEY_DESCRIPTIONS = {
+            "Language_Display_Name": "語言選擇器顯示名稱",
+            "Page_Meta_Title": "瀏覽器標籤頁標題",
+            
+            // AI Chat
+            "AI_Welcome_Title": "AI 聊天窗口歡迎標題",
+            "AI_Welcome_Subtitle": "AI 聊天窗口歡迎副標題",
+            "AI_Input_Placeholder": "聊天輸入框提示文字",
+            "AI_Send_Button": "發送按鈕文字",
+            "AI_Suggested_Questions_Title": "常見問題標題",
+            "AI_Suggested_Q1": "建議問題 1 (服務介紹)",
+            "AI_Suggested_Q2": "建議問題 2 (如何開始)",
+            "AI_Suggested_Q3": "建議問題 3 (定價方案)",
+            "AI_Suggested_Q4": "建議問題 4 (聯繫方式)",
+            "AI_Typing": "AI 正在輸入提示",
+
+            // Home - Trust
+            "Home_Trust_Title": "合作夥伴/信任企業標題",
+
+            // Home - About
+            "Home_About_Title": "關於我們區塊 - 標籤",
+            "Home_About_Subtitle": "關於我們區塊 - 主標題",
+            "Home_About_Description": "關於我們區塊 - 描述文本",
+            "Home_About_Stat1": "統計數據 1 (數值)",
+            "Home_About_Stat1_Label": "統計數據 1 (標籤)",
+            "Home_About_Stat2": "統計數據 2 (數值)",
+            "Home_About_Stat2_Label": "統計數據 2 (標籤)",
+            "Home_About_Stat3": "統計數據 3 (數值)",
+            "Home_About_Stat3_Label": "統計數據 3 (標籤)",
+
+            // Home - Awards
+            "Home_Awards_Title": "獎項區塊 - 標籤",
+            "Home_Awards_Subtitle": "獎項區塊 - 主標題",
+            "Home_Awards_Gov_Title": "政府支持列表標題",
+            "Home_Awards_Gov_1": "政府支持項目 1",
+            "Home_Awards_Gov_2": "政府支持項目 2",
+            "Home_Awards_Gov_3": "政府支持項目 3",
+            "Home_Awards_Gov_4": "政府支持項目 4",
+            "Home_Awards_Gov_5": "政府支持項目 5",
+            "Home_Awards_Industry_Title": "行業獎項列表標題",
+            "Home_Awards_Industry_1": "行業獎項 1",
+            "Home_Awards_Industry_2": "行業獎項 2",
+            "Home_Awards_Industry_3": "行業獎項 3",
+            "Home_Awards_Industry_4": "行業獎項 4",
+            "Home_Awards_Industry_5": "行業獎項 5",
+
+            // Navigation
+            "Navigation_Menu_Home": "導航菜單 - 首頁",
+            "Navigation_Menu_About": "導航菜單 - 關於我們",
+            "Navigation_Menu_Awards": "導航菜單 - 獎項",
+            "Navigation_Menu_Contact": "導航菜單 - 聯繫我們",
+            
+            // Footer & Contact
+            "Footer_Copyright": "頁腳版權聲明",
+            "Contact_Info_Company": "聯繫信息 - 公司名稱",
+            "Contact_Info_Phone": "聯繫信息 - 電話",
+            "Contact_Info_Email": "聯繫信息 - 電郵",
+            "Admin_Title": "後台標題 (Admin Only)",
+            "Admin_Description": "後台描述 (Admin Only)",
+            "Admin_Upload_Title": "上傳標題 (Admin Only)",
+            "Admin_Upload_Drag": "拖放提示 (Admin Only)",
+            "Admin_Upload_Formats": "格式提示 (Admin Only)",
+            "Admin_Knowledge_Title": "知識庫標題 (Admin Only)",
+            "Admin_Knowledge_Empty": "空知識庫提示 (Admin Only)",
+            "Admin_Upload_Button": "上傳按鈕 (Admin Only)",
+            "Admin_Clear_Button": "清空按鈕 (Admin Only)",
+            "Admin_Status_Ready": "狀態就緒 (Admin Only)",
+            "Admin_Status_Empty": "狀態空 (Admin Only)",
+            "Admin_File_Remove": "移除按鈕 (Admin Only)",
+            "Admin_Sync_Status": "同步狀態 (Admin Only)",
+            "Admin_Last_Update": "最後更新 (Admin Only)"
+        };
+
+        // Group Definitions
+        const KEY_GROUPS = {
+            "AI_": "🤖 AI 智能助手",
+            "Home_": "🏠 首頁內容",
+            "Navigation_": "🧭 導航菜單",
+            "Footer_": "🦶 頁腳區域",
+            "Contact_": "📞 聯繫信息",
+            "Admin_": "⚙️ 後台管理",
+            "Language_": "🌐 全局設定",
+            "Page_": "📄 頁面元數據"
+        };
+
+        function getGroup(key) {
+            for (const prefix in KEY_GROUPS) {
+                if (key.startsWith(prefix)) return KEY_GROUPS[prefix];
+            }
+            return "📝 其他內容";
+        }
+
         function loadLanguageEditor() {
-            // Try to load custom translations from storage, otherwise use defaults
             const saved = localStorage.getItem('vizzle_custom_translations');
             currentTranslations = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_TRANSLATIONS));
-            
             renderTranslationTable();
         }
 
-        function renderTranslationTable() {
+        function renderTranslationTable(filterText = "") {
             const tbody = document.getElementById('trans-tbody');
             tbody.innerHTML = '';
 
-            // Get all keys from default translations (Base source of truth)
             const keys = Object.keys(DEFAULT_TRANSLATIONS['zh-HK']).sort();
-
+            
+            // Group keys
+            const groupedKeys = {};
             keys.forEach(key => {
-                const tr = document.createElement('tr');
-                
-                // Key Column
-                const tdKey = document.createElement('td');
-                tdKey.className = 'font-mono text-xs text-purple-600 font-medium select-all';
-                tdKey.textContent = key;
-                tr.appendChild(tdKey);
+                // Filter Logic
+                const desc = KEY_DESCRIPTIONS[key] || "";
+                if (filterText && !key.toLowerCase().includes(filterText.toLowerCase()) && !desc.toLowerCase().includes(filterText.toLowerCase())) {
+                    return;
+                }
 
-                // Language Columns
-                ['zh-HK', 'zh-CN', 'en-US'].forEach(lang => {
-                    const td = document.createElement('td');
-                    const input = document.createElement('textarea');
-                    input.className = 'trans-input resize-y';
-                    input.rows = 2;
-                    // Use custom if exists, else default
-                    input.value = currentTranslations[lang][key] || DEFAULT_TRANSLATIONS[lang][key] || '';
-                    
-                    input.addEventListener('change', (e) => {
-                        currentTranslations[lang][key] = e.target.value;
-                    });
-                    
-                    td.appendChild(input);
-                    tr.appendChild(td);
-                });
-
-                tbody.appendChild(tr);
+                const group = getGroup(key);
+                if (!groupedKeys[group]) groupedKeys[group] = [];
+                groupedKeys[group].push(key);
             });
+
+            // Render Groups
+            for (const groupName in groupedKeys) {
+                // Group Header
+                const groupHeader = document.createElement('tr');
+                groupHeader.innerHTML = `<td colspan="4" class="bg-gray-200 font-bold text-gray-700 py-2 px-4 border-b border-gray-300 mt-4 sticky top-10">${groupName}</td>`;
+                tbody.appendChild(groupHeader);
+
+                groupedKeys[groupName].forEach(key => {
+                    const tr = document.createElement('tr');
+                    
+                    // Key Column with Description
+                    const tdKey = document.createElement('td');
+                    tdKey.className = 'py-3 px-4 border-b border-gray-200 align-top bg-gray-50';
+                    
+                    const desc = KEY_DESCRIPTIONS[key] || key;
+                    const keyHtml = `
+                        <div class="flex flex-col">
+                            <span class="text-sm font-semibold text-gray-800">${desc}</span>
+                            <span class="font-mono text-xs text-gray-400 select-all mt-1 cursor-pointer hover:text-purple-600" title="Click to copy key">${key}</span>
+                        </div>
+                    `;
+                    tdKey.innerHTML = keyHtml;
+                    tr.appendChild(tdKey);
+
+                    // Language Columns
+                    ['zh-HK', 'zh-CN', 'en-US'].forEach(lang => {
+                        const td = document.createElement('td');
+                        td.className = 'py-2 px-2 border-b border-gray-200 align-top';
+                        
+                        const input = document.createElement('textarea');
+                        input.className = 'trans-input w-full p-2 border rounded text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-y';
+                        input.rows = 3;
+                        input.value = currentTranslations[lang][key] || DEFAULT_TRANSLATIONS[lang][key] || '';
+                        
+                        input.addEventListener('change', (e) => {
+                            currentTranslations[lang][key] = e.target.value;
+                        });
+                        
+                        td.appendChild(input);
+                        tr.appendChild(td);
+                    });
+
+                    tbody.appendChild(tr);
+                });
+            }
+        }
+
+        function filterTranslations() {
+            const text = document.getElementById('lang-search').value;
+            renderTranslationTable(text);
         }
 
         function saveTranslations() {
@@ -516,6 +651,20 @@
                 loadLanguageEditor(); // Reloads from defaults
                 alert('已重置為預設值。');
             }
+        }
+
+        function exportConfiguration() {
+            const configData = JSON.stringify(currentTranslations, null, 4);
+            const blob = new Blob([configData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'vizzle_translations_config.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
 
         // Init
