@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-HK">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,10 +105,11 @@
 
                 <div class="glass-panel p-6 mb-8">
                     <div id="upload-zone" class="border-2 border-dashed border-[#6b3d92]/30 rounded-xl p-12 text-center transition-all hover:border-[#6b3d92] hover:bg-[#6b3d92]/5 cursor-pointer bg-gray-50">
-                        <input type="file" id="file-input" multiple accept=".pdf,.xls,.xlsx,.html,.htm,.doc,.docx,.txt,.json,.csv" class="hidden">
+                        <input type="file" id="file-input" multiple accept=".pdf,.xls,.xlsx,.html,.htm,.doc,.docx,.txt,.json,.csv,.jpg,.jpeg,.png,.gif,.webp,.svg,.mp4,.webm,.mp3,.wav" class="hidden">
                         <span class="iconify text-5xl text-[#6b3d92]/50 mb-4 mx-auto block" data-icon="fa-solid:cloud-arrow-up"></span>
-                        <p class="text-gray-700 font-medium mb-2">拖放文件到這裡，或點擊選擇文件</p>
-                        <p class="text-sm text-gray-400">支援 PDF, Excel, Word, HTML, TXT 等格式</p>
+                        <p class="text-gray-700 font-medium mb-2">拖放檔案到這裡，或點擊選擇檔案</p>
+                        <p class="text-sm text-gray-400">支援 PDF, Excel, Word, HTML, TXT, 圖片, 影片, 音訊 等格式</p>
+                        <p class="text-xs text-gray-300 mt-2">⚠️ 圖片/影片/音訊限制 2-5MB (LocalStorage 限制)</p>
                     </div>
                 </div>
 
@@ -118,20 +119,20 @@
                         <div class="flex items-center gap-3 w-full md:w-auto">
                             <div class="relative w-full md:w-64">
                                 <span class="iconify absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" data-icon="fa-solid:search"></span>
-                                <input type="text" id="kb-search" placeholder="搜索文件..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] outline-none text-sm" onkeyup="handleKBSearch(this.value)">
+                                <input type="text" id="kb-search" placeholder="搜尋檔案..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] outline-none text-sm" onkeyup="handleKBSearch(this.value)">
                             </div>
                             <select id="kb-filter-type" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#6b3d92] outline-none" onchange="handleKBFilter(this.value)">
-                                <option value="all">所有类型</option>
-                                <option value="document">文档 (PDF/Doc/Txt)</option>
-                                <option value="data">数据 (Excel/CSV/JSON)</option>
+                                <option value="all">所有類型</option>
+                                <option value="document">文件 (PDF/Doc/Txt)</option>
+                                <option value="data">數據 (Excel/CSV/JSON)</option>
                                 <option value="other">其他</option>
                             </select>
                         </div>
                         <div class="flex items-center gap-3">
-                            <span id="kb-stats" class="text-sm text-gray-500">0 个文件</span>
+                            <span id="kb-stats" class="text-sm text-gray-500">0 個檔案</span>
                             <button id="btn-batch-delete" onclick="batchDeleteFiles()" class="hidden flex items-center gap-2 bg-red-50 text-red-600 hover:bg-red-100 px-3 py-2 rounded-lg text-sm transition-colors">
                                 <span class="iconify" data-icon="fa-solid:trash-alt"></span>
-                                <span>批量删除</span>
+                                <span>批量刪除</span>
                             </button>
                             <button onclick="clearKnowledgeBase()" class="text-sm text-gray-400 hover:text-red-500 underline">清空全部</button>
                         </div>
@@ -148,17 +149,17 @@
                                         </div>
                                     </th>
                                     <th scope="col" class="px-6 py-3 cursor-pointer hover:bg-gray-100" onclick="sortKB('name')">
-                                        文件名 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
+                                        檔案名稱 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
                                     </th>
                                     <th scope="col" class="px-6 py-3 w-48 text-gray-500">
-                                        存取路径
+                                        存取路徑
                                     </th>
                                     <th scope="col" class="px-6 py-3 w-32 cursor-pointer hover:bg-gray-100" onclick="sortKB('size')">
                                         大小 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
                                     </th>
-                                    <th scope="col" class="px-6 py-3 w-32">类型</th>
+                                    <th scope="col" class="px-6 py-3 w-32">類型</th>
                                     <th scope="col" class="px-6 py-3 w-48 cursor-pointer hover:bg-gray-100" onclick="sortKB('uploadedAt')">
-                                        上传时间 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
+                                        上傳時間 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
                                     </th>
                                     <th scope="col" class="px-6 py-3 w-24 text-center">操作</th>
                                 </tr>
@@ -186,19 +187,19 @@
                     <div class="flex flex-wrap gap-2">
                         <button onclick="exportConfiguration()" class="btn-secondary flex items-center">
                             <span class="iconify inline mr-1" data-icon="fa-solid:download"></span>
-                            導出配置
+                            匯出設定
                         </button>
                         <button onclick="resetTranslations()" class="btn-danger text-sm">重置為預設</button>
                         <button onclick="saveTranslations()" class="btn-primary flex items-center gap-2">
                             <span class="iconify" data-icon="fa-solid:save"></span>
-                            保存修改
+                            儲存修改
                         </button>
                     </div>
                 </header>
                 
                 <!-- Search/Filter -->
                 <div class="mb-4">
-                    <input type="text" id="lang-search" placeholder="搜索關鍵字或 Key..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] outline-none" onkeyup="filterTranslations()">
+                    <input type="text" id="lang-search" placeholder="搜尋關鍵字或 Key..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] outline-none" onkeyup="filterTranslations()">
                 </div>
 
                 <div class="glass-panel overflow-hidden">
@@ -206,9 +207,9 @@
                         <table class="trans-table">
                             <thead>
                                 <tr>
-                                    <th class="w-1/4 bg-gray-100 z-10">字段說明 (Key)</th>
+                                    <th class="w-1/4 bg-gray-100 z-10">欄位說明 (Key)</th>
                                     <th class="w-1/4 bg-gray-100 z-10">繁體中文 (zh-HK)</th>
-                                    <th class="w-1/4 bg-gray-100 z-10">简体中文 (zh-CN)</th>
+                                    <th class="w-1/4 bg-gray-100 z-10">簡體中文 (zh-CN)</th>
                                     <th class="w-1/4 bg-gray-100 z-10">English (en-US)</th>
                                 </tr>
                             </thead>
@@ -340,33 +341,79 @@
 
             let url = '';
             let isText = false;
+            let isDataURL = false;
             let textContent = '';
+            let dataURL = '';
 
             // 1. Resolve Content
             if (file.source === 'server') {
                 url = `assets/knowledge/${file.name}`;
             } else {
-                // Local File
-                // Try to find text content
+                // Local File - get stored content
                 const kbContent = window.knowledgeBase.content.find(c => c.filename === file.name);
-                if (kbContent && kbContent.text && !kbContent.text.startsWith('[UPLOADED_FILE:')) {
-                    isText = true;
-                    textContent = kbContent.text;
-                    // Create blob for download
-                    const blob = new Blob([textContent], { type: file.type || 'text/plain' });
-                    url = URL.createObjectURL(blob);
+                
+                // Debug log
+                console.log('Preview Debug - File:', file.name);
+                console.log('Preview Debug - Content found:', !!kbContent);
+                if (kbContent) {
+                    console.log('Preview Debug - Text starts with:', kbContent.text ? kbContent.text.substring(0, 50) : 'null');
+                }
+                
+                if (kbContent && kbContent.text) {
+                    const storedText = kbContent.text;
+                    
+                    // Check if it's a DataURL (base64 encoded binary)
+                    if (storedText.startsWith('data:')) {
+                        isDataURL = true;
+                        dataURL = storedText;
+                        url = storedText;
+                        console.log('Preview Debug - Is DataURL, length:', storedText.length);
+                    } 
+                    // Check if it's a placeholder (file too large or unsupported)
+                    else if (storedText.startsWith('[UPLOADED_FILE:')) {
+                        // Check if it's a "too large" message
+                        if (storedText.includes('too large')) {
+                            content.innerHTML = `
+                                <div class="text-center p-8">
+                                    <span class="iconify text-6xl text-yellow-400 mb-4 mx-auto block" data-icon="fa-solid:file-circle-exclamation"></span>
+                                    <p class="text-gray-600 font-medium text-lg">檔案過大無法預覽</p>
+                                    <p class="text-gray-400 text-sm mt-2 max-w-md mx-auto">${storedText}</p>
+                                    <p class="text-gray-400 text-sm mt-1">LocalStorage 限制約 5MB，請重新上傳較小的檔案。</p>
+                                </div>
+                            `;
+                            downloadBtn.href = '#';
+                            downloadBtn.classList.add('hidden');
+                            return;
+                        } else {
+                            content.innerHTML = `
+                                <div class="text-center p-8">
+                                    <span class="iconify text-6xl text-gray-300 mb-4 mx-auto block" data-icon="fa-solid:eye-slash"></span>
+                                    <p class="text-gray-600 font-medium text-lg">預覽不可用</p>
+                                    <p class="text-gray-400 text-sm mt-2 max-w-md mx-auto">此檔案類型不支援預覽。</p>
+                                </div>
+                            `;
+                            downloadBtn.href = '#';
+                            downloadBtn.classList.add('hidden');
+                            return;
+                        }
+                    } 
+                    // It's plain text content
+                    else {
+                        isText = true;
+                        textContent = storedText;
+                        const blob = new Blob([textContent], { type: file.type || 'text/plain' });
+                        url = URL.createObjectURL(blob);
+                    }
                 } else {
-                    // Binary local file (not persisted in content)
                     content.innerHTML = `
                         <div class="text-center p-8">
                             <span class="iconify text-6xl text-gray-300 mb-4 mx-auto block" data-icon="fa-solid:eye-slash"></span>
-                            <p class="text-gray-600 font-medium text-lg">預覽不可用</p>
-                            <p class="text-gray-400 text-sm mt-2 max-w-md mx-auto">此為本地上傳的二進制文件（圖片/PDF/視頻），出於性能考慮未完整存儲在瀏覽器中。</p>
-                            <p class="text-gray-400 text-sm mt-1">請重新上傳或直接使用文件。</p>
+                            <p class="text-gray-600 font-medium text-lg">找不到檔案內容</p>
+                            <p class="text-gray-400 text-sm mt-2">檔案可能已被清除或未正確上傳。</p>
                         </div>
                     `;
                     downloadBtn.href = '#';
-                    downloadBtn.classList.add('hidden'); // Cannot download what we don't have
+                    downloadBtn.classList.add('hidden');
                     return;
                 }
             }
@@ -381,17 +428,68 @@
             const name = file.name.toLowerCase();
 
             try {
-                if (type.includes('image') || name.match(/\.(jpg|jpeg|png|gif|webp|svg)$/)) {
+                // Image Preview
+                if (type.includes('image') || name.match(/\.(jpg|jpeg|png|gif|webp|svg|bmp|ico)$/i)) {
+                    console.log('Preview Debug - Rendering as image, URL length:', url.length);
                     const img = new Image();
                     img.src = url;
                     img.className = "max-w-full max-h-full object-contain rounded shadow-lg";
+                    img.onload = () => console.log('Preview Debug - Image loaded successfully');
+                    img.onerror = (e) => {
+                        console.error('Preview Debug - Image load error:', e);
+                        content.innerHTML = `<div class="text-center p-8 text-red-500">
+                            <span class="iconify text-4xl mb-2 mx-auto block" data-icon="fa-solid:image"></span>
+                            圖片載入失敗
+                            <p class="text-sm text-gray-400 mt-2">檔案類型: ${type}</p>
+                            <p class="text-xs text-gray-300 mt-1">Data URL 前綴: ${url.substring(0, 30)}...</p>
+                        </div>`;
+                    };
                     content.innerHTML = '';
                     content.appendChild(img);
-                } else if (type.includes('video') || name.match(/\.(mp4|webm|ogg)$/)) {
-                    content.innerHTML = `<video src="${url}" controls class="max-w-full max-h-full rounded shadow-lg outline-none"></video>`;
-                } else if (type.includes('pdf') || name.endsWith('.pdf')) {
-                    content.innerHTML = `<iframe src="${url}" class="w-full h-full border-none bg-white"></iframe>`;
-                } else if (isText || type.includes('text') || type.includes('json') || type.includes('javascript') || name.match(/\.(txt|md|csv|html|css|js|json|xml)$/)) {
+                } 
+                // Video Preview
+                else if (type.includes('video') || name.match(/\.(mp4|webm|ogg|mov)$/i)) {
+                    const video = document.createElement('video');
+                    video.src = url;
+                    video.controls = true;
+                    video.className = "max-w-full max-h-full rounded shadow-lg outline-none";
+                    video.onerror = () => {
+                        content.innerHTML = `<div class="text-center p-8 text-red-500">影片載入失敗</div>`;
+                    };
+                    content.innerHTML = '';
+                    content.appendChild(video);
+                } 
+                // Audio Preview
+                else if (type.includes('audio') || name.match(/\.(mp3|wav|ogg|m4a)$/i)) {
+                    const audio = document.createElement('audio');
+                    audio.src = url;
+                    audio.controls = true;
+                    audio.className = "w-full max-w-lg";
+                    audio.onerror = () => {
+                        content.innerHTML = `<div class="text-center p-8 text-red-500">音訊載入失敗</div>`;
+                    };
+                    content.innerHTML = '<div class="flex items-center justify-center w-full h-full p-8"><div class="text-center"><span class="iconify text-6xl text-[#6b3d92] mb-4 mx-auto block" data-icon="fa-solid:music"></span></div></div>';
+                    content.querySelector('.text-center').appendChild(audio);
+                } 
+                // PDF Preview
+                else if (type.includes('pdf') || name.endsWith('.pdf')) {
+                    // Use embed for better PDF support (works with DataURL too)
+                    content.innerHTML = `
+                        <object data="${url}" type="application/pdf" class="w-full h-full">
+                            <div class="text-center p-8">
+                                <span class="iconify text-6xl text-gray-300 mb-4 mx-auto block" data-icon="fa-solid:file-pdf"></span>
+                                <p class="text-gray-600 font-medium text-lg">PDF 預覽不可用</p>
+                                <p class="text-gray-400 text-sm mt-2 mb-4">您的瀏覽器不支援內嵌 PDF 預覽</p>
+                                <a href="${url}" download="${file.name}" class="bg-[#6b3d92] text-white px-6 py-2 rounded-lg hover:bg-[#5a327a] transition-colors inline-flex items-center gap-2">
+                                    <span class="iconify" data-icon="fa-solid:download"></span>
+                                    下載 PDF
+                                </a>
+                            </div>
+                        </object>
+                    `;
+                } 
+                // Text/Code Preview
+                else if (isText || type.includes('text') || type.includes('json') || type.includes('javascript') || name.match(/\.(txt|md|csv|html|css|js|json|xml|yaml|yml)$/i)) {
                     // Fetch if server
                     if (file.source === 'server' && !textContent) {
                         try {
@@ -402,18 +500,17 @@
                         }
                     }
                     content.innerHTML = `<pre class="w-full h-full p-6 text-sm font-mono bg-gray-900 text-gray-100 overflow-auto whitespace-pre-wrap rounded-lg shadow-inner"><code>${escapeHtml(textContent)}</code></pre>`;
-                } else {
-                    // Fallback for Office docs or unknown
-                    // Try Google Docs Viewer for Server files ONLY (if public, but we assume local here so might fail, but worth a shot for internal networks sometimes)
-                    // Actually, stick to simple message.
+                } 
+                // Fallback for Office docs or unknown
+                else {
                     content.innerHTML = `
                         <div class="text-center p-8">
                             <span class="iconify text-6xl text-gray-300 mb-4 mx-auto block" data-icon="fa-solid:file-circle-question"></span>
                             <p class="text-gray-600 font-medium text-lg">無法在線預覽此格式</p>
-                            <p class="text-gray-400 text-sm mt-2 mb-6">文件類型: ${file.type || 'Unknown'}</p>
+                            <p class="text-gray-400 text-sm mt-2 mb-6">檔案類型: ${file.type || 'Unknown'}</p>
                             <a href="${url}" download="${file.name}" class="bg-[#6b3d92] text-white px-6 py-2 rounded-lg hover:bg-[#5a327a] transition-colors inline-flex items-center gap-2">
                                 <span class="iconify" data-icon="fa-solid:download"></span>
-                                下載文件
+                                下載檔案
                             </a>
                         </div>
                     `;
@@ -539,10 +636,10 @@
             const tbody = document.getElementById('kb-table-body');
             const stats = document.getElementById('kb-stats');
             
-            stats.textContent = `${totalItems} 個文件`;
+            stats.textContent = `${totalItems} 個檔案`;
 
             if (totalItems === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-gray-400">沒有找到文件</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-gray-400">沒有找到檔案</td></tr>`;
                 renderPagination(0);
                 return;
             }
@@ -574,7 +671,7 @@
                         <td class="w-4 p-4">
                             <div class="flex items-center">
                                 <input type="checkbox" class="kb-checkbox w-4 h-4 text-[#6b3d92] bg-gray-100 border-gray-300 rounded focus:ring-[#6b3d92]" 
-                                    ${isServer ? 'disabled title="系統文件不可刪除"' : ''}
+                                    ${isServer ? 'disabled title="系統檔案不可刪除"' : ''}
                                     ${isSelected ? 'checked' : ''}
                                     onchange="toggleFileSelection('${file.id}')">
                             </div>
@@ -744,13 +841,13 @@
         }
 
         function deleteSingleFile(id) {
-            if (!confirm('確定要移除此文件嗎？')) return;
+            if (!confirm('確定要移除此檔案嗎？')) return;
             const index = parseInt(id.split('-')[1]);
             KB.remove(index, renderKnowledgeList);
         }
 
         function batchDeleteFiles() {
-            if (!confirm(`確定要刪除選中的 ${kbState.selectedFiles.size} 個文件嗎？`)) return;
+            if (!confirm(`確定要刪除選中的 ${kbState.selectedFiles.size} 個檔案嗎？`)) return;
             
             // Get indices to remove (descending order)
             const indices = Array.from(kbState.selectedFiles)
@@ -785,7 +882,7 @@
             e.preventDefault();
             uploadZone.classList.remove('border-[#6b3d92]', 'bg-[#6b3d92]/5');
             KB.addFiles(e.dataTransfer.files, (count) => {
-                alert(`成功上傳 ${count} 個文件！`);
+                alert(`成功上傳 ${count} 個檔案！`);
                 renderKnowledgeList();
             });
         });
@@ -794,7 +891,7 @@
         });
         fileInput.addEventListener('change', (e) => {
             KB.addFiles(e.target.files, (count) => {
-                alert(`成功上傳 ${count} 個文件！`);
+                alert(`成功上傳 ${count} 個檔案！`);
                 renderKnowledgeList();
             });
         });
@@ -887,7 +984,7 @@
 
         function saveTranslations() {
             localStorage.setItem('vizzle_custom_translations', JSON.stringify(currentTranslations));
-            alert('語言設定已保存！刷新前台頁面即可看到更改。');
+            alert('語言設定已儲存！重新整理前台頁面即可看到更改。');
         }
 
         function resetTranslations() {

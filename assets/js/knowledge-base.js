@@ -126,9 +126,27 @@ function getFileIcon(type) {
     const icons = {
         'application/pdf': 'fa-solid:file-pdf',
         'application/vnd.ms-excel': 'fa-solid:file-excel',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'fa-solid:file-excel',
+        'application/msword': 'fa-solid:file-word',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'fa-solid:file-word',
         'text/plain': 'fa-solid:file-lines',
+        'text/html': 'fa-solid:file-code',
         'application/json': 'fa-solid:file-code',
-        'text/csv': 'fa-solid:file-csv'
+        'text/csv': 'fa-solid:file-csv',
+        // Images
+        'image/jpeg': 'fa-solid:file-image',
+        'image/png': 'fa-solid:file-image',
+        'image/gif': 'fa-solid:file-image',
+        'image/webp': 'fa-solid:file-image',
+        'image/svg+xml': 'fa-solid:file-image',
+        // Videos
+        'video/mp4': 'fa-solid:file-video',
+        'video/webm': 'fa-solid:file-video',
+        'video/ogg': 'fa-solid:file-video',
+        // Audio
+        'audio/mpeg': 'fa-solid:file-audio',
+        'audio/wav': 'fa-solid:file-audio',
+        'audio/ogg': 'fa-solid:file-audio'
     };
     return icons[type] || 'fa-solid:file';
 }
@@ -138,13 +156,70 @@ function getFileIcon(type) {
 function readFileContent(file) {
     return new Promise((resolve) => {
         const reader = new FileReader();
-        if (file.type.match(/text.*/) || file.type.match(/.*json.*/) || file.type === 'text/html' || file.type === 'text/csv') {
+        
+        console.log('readFileContent - File:', file.name, 'Type:', file.type, 'Size:', file.size);
+        
+        // Text-based files - read as text for AI processing
+        if ((file.type && file.type.match(/text.*/)) || (file.type && file.type.match(/.*json.*/)) || file.type === 'text/html' || file.type === 'text/csv') {
+            console.log('readFileContent - Reading as text');
             reader.onload = (e) => resolve(e.target.result);
             reader.readAsText(file);
-        } else {
-            // Binary Fallback
-            reader.onload = () => resolve(`[UPLOADED_FILE: ${file.name}]`);
-            reader.readAsDataURL(file);
+        } 
+        // Image files - store as base64 DataURL for preview
+        else if ((file.type && file.type.match(/image.*/)) || file.name.match(/\.(jpg|jpeg|png|gif|webp|svg|bmp|ico)$/i)) {
+            // Check file size limit (2MB for images in localStorage)
+            if (file.size > 2 * 1024 * 1024) {
+                console.log('readFileContent - Image too large');
+                resolve(`[UPLOADED_FILE: ${file.name} - Image too large for preview (max 2MB)]`);
+            } else {
+                console.log('readFileContent - Reading image as DataURL');
+                reader.onload = (e) => {
+                    console.log('readFileContent - DataURL created, length:', e.target.result.length);
+                    resolve(e.target.result); // Full DataURL
+                };
+                reader.onerror = (e) => {
+                    console.error('readFileContent - Error reading image:', e);
+                    resolve(`[UPLOADED_FILE: ${file.name} - Read error]`);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        // PDF files - store as base64 DataURL for preview
+        else if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+            // Check file size limit (3MB for PDFs)
+            if (file.size > 3 * 1024 * 1024) {
+                resolve(`[UPLOADED_FILE: ${file.name} - PDF too large for preview (max 3MB)]`);
+            } else {
+                console.log('readFileContent - Reading PDF as DataURL');
+                reader.onload = (e) => resolve(e.target.result);
+                reader.readAsDataURL(file);
+            }
+        }
+        // Video files - store as base64 DataURL for preview
+        else if ((file.type && file.type.match(/video.*/)) || file.name.match(/\.(mp4|webm|ogg|mov)$/i)) {
+            // Check file size limit (5MB for videos - localStorage limit consideration)
+            if (file.size > 5 * 1024 * 1024) {
+                resolve(`[UPLOADED_FILE: ${file.name} - Video too large for preview (max 5MB)]`);
+            } else {
+                console.log('readFileContent - Reading video as DataURL');
+                reader.onload = (e) => resolve(e.target.result);
+                reader.readAsDataURL(file);
+            }
+        }
+        // Audio files
+        else if ((file.type && file.type.match(/audio.*/)) || file.name.match(/\.(mp3|wav|ogg|m4a)$/i)) {
+            if (file.size > 3 * 1024 * 1024) {
+                resolve(`[UPLOADED_FILE: ${file.name} - Audio too large for preview (max 3MB)]`);
+            } else {
+                console.log('readFileContent - Reading audio as DataURL');
+                reader.onload = (e) => resolve(e.target.result);
+                reader.readAsDataURL(file);
+            }
+        }
+        // Other binary files - just store placeholder
+        else {
+            console.log('readFileContent - Unknown file type, storing placeholder');
+            resolve(`[UPLOADED_FILE: ${file.name}]`);
         }
     });
 }
