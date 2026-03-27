@@ -196,10 +196,44 @@
                         </button>
                     </div>
                 </header>
-                
-                <!-- Search/Filter -->
-                <div class="mb-4">
-                    <input type="text" id="lang-search" placeholder="搜尋關鍵字或 Key..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] outline-none" onkeyup="filterTranslations()">
+
+                <!-- 部署提醒 -->
+                <div class="mb-6 bg-amber-50 border border-amber-200 rounded-xl p-4">
+                    <div class="flex items-start gap-3">
+                        <span class="iconify text-amber-500 text-xl mt-0.5" data-icon="fa-solid:exclamation-triangle"></span>
+                        <div>
+                            <h4 class="font-semibold text-amber-800 mb-1">⚠️ 部署到 Server 前必讀</h4>
+                            <p class="text-sm text-amber-700 mb-2">
+                                目前修改只存在瀏覽器 <code class="bg-amber-100 px-1 rounded">localStorage</code>，部署後會遺失！
+                                請在部署前執行以下步驟：
+                            </p>
+                            <ol class="text-sm text-amber-700 list-decimal list-inside space-y-1">
+                                <li>點擊「<strong>匯出設定</strong>」下載 <code class="bg-amber-100 px-1 rounded">vizzle_translations_config.json</code></li>
+                                <li>將下載的 JSON 內容複製</li>
+                                <li>打開 <code class="bg-amber-100 px-1 rounded">assets/data/translations.js</code></li>
+                                <li>將 <code class="bg-amber-100 px-1 rounded">DEFAULT_TRANSLATIONS</code> 的內容替換為匯出的 JSON</li>
+                                <li>儲存檔案後重新部署</li>
+                            </ol>
+                            <button onclick="generateTranslationsFile()" class="mt-3 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-sm font-medium transition-colors">
+                                📋 生成可複製的 translations.js 內容
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search/Filter and Group Controls -->
+                <div class="mb-4 flex flex-col sm:flex-row gap-3">
+                    <input type="text" id="lang-search" placeholder="搜尋關鍵字或 Key..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b3d92] outline-none" onkeyup="filterTranslations()">
+                    <div class="flex gap-2">
+                        <button onclick="expandAllGroups()" class="px-3 py-2 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors flex items-center gap-1">
+                            <span class="iconify" data-icon="fa-solid:expand-alt"></span>
+                            全部展開
+                        </button>
+                        <button onclick="collapseAllGroups()" class="px-3 py-2 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors flex items-center gap-1">
+                            <span class="iconify" data-icon="fa-solid:compress-alt"></span>
+                            全部收起
+                        </button>
+                    </div>
                 </div>
 
                 <div class="glass-panel overflow-hidden">
@@ -219,6 +253,38 @@
                         </table>
                     </div>
                 </div>
+
+                <style>
+                    /* 可折疊分組樣式 */
+                    .group-header {
+                        cursor: pointer;
+                        user-select: none;
+                        transition: all 0.2s ease;
+                    }
+                    .group-header:hover {
+                        background: linear-gradient(135deg, #e9e3f0 0%, #f3f0f7 100%) !important;
+                    }
+                    .group-header .group-icon {
+                        transition: transform 0.3s ease;
+                    }
+                    .group-header.collapsed .group-icon {
+                        transform: rotate(-90deg);
+                    }
+                    .group-row {
+                        transition: opacity 0.2s ease;
+                    }
+                    .group-row.hidden {
+                        display: none;
+                    }
+                    .group-count {
+                        background: #6b3d92;
+                        color: white;
+                        font-size: 0.75rem;
+                        padding: 2px 8px;
+                        border-radius: 9999px;
+                        margin-left: 8px;
+                    }
+                </style>
             </div>
 
         </main>
@@ -913,7 +979,47 @@
             const saved = localStorage.getItem('vizzle_custom_translations');
             // window.DEFAULT_TRANSLATIONS comes from translations.js
             currentTranslations = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(window.DEFAULT_TRANSLATIONS));
+            loadCollapsedState(); // 載入折疊狀態
             renderTranslationTable();
+        }
+
+        // 存儲折疊狀態
+        let collapsedGroups = {};
+
+        function loadCollapsedState() {
+            try {
+                const saved = localStorage.getItem('vizzle_collapsed_groups');
+                if (saved) collapsedGroups = JSON.parse(saved);
+            } catch (e) {
+                collapsedGroups = {};
+            }
+        }
+
+        function saveCollapsedState() {
+            localStorage.setItem('vizzle_collapsed_groups', JSON.stringify(collapsedGroups));
+        }
+
+        function toggleGroup(groupName) {
+            collapsedGroups[groupName] = !collapsedGroups[groupName];
+            saveCollapsedState();
+            renderTranslationTable(document.getElementById('lang-search').value);
+        }
+
+        function expandAllGroups() {
+            collapsedGroups = {};
+            saveCollapsedState();
+            renderTranslationTable(document.getElementById('lang-search').value);
+        }
+
+        function collapseAllGroups() {
+            // 獲取所有分組名稱
+            const keys = Object.keys(window.DEFAULT_TRANSLATIONS['zh-HK']).sort();
+            keys.forEach(key => {
+                const group = getGroup(key);
+                collapsedGroups[group] = true;
+            });
+            saveCollapsedState();
+            renderTranslationTable(document.getElementById('lang-search').value);
         }
 
         function renderTranslationTable(filterText = "") {
@@ -935,45 +1041,63 @@
             });
 
             for (const groupName in groupedKeys) {
+                const isCollapsed = collapsedGroups[groupName];
+                const keyCount = groupedKeys[groupName].length;
+
+                // 可折疊的分組標題
                 const groupHeader = document.createElement('tr');
-                groupHeader.innerHTML = `<td colspan="4" class="bg-gray-200 font-bold text-gray-700 py-2 px-4 border-b border-gray-300 mt-4 sticky top-10">${groupName}</td>`;
+                groupHeader.className = `group-header ${isCollapsed ? 'collapsed' : ''}`;
+                groupHeader.onclick = () => toggleGroup(groupName);
+                groupHeader.innerHTML = `
+                    <td colspan="4" class="bg-gradient-to-r from-purple-100 to-purple-50 font-bold text-gray-700 py-3 px-4 border-b border-purple-200 sticky top-10">
+                        <div class="flex items-center">
+                            <span class="iconify group-icon text-purple-600 mr-2" data-icon="fa-solid:chevron-down"></span>
+                            <span>${groupName}</span>
+                            <span class="group-count">${keyCount}</span>
+                        </div>
+                    </td>
+                `;
                 tbody.appendChild(groupHeader);
 
-                groupedKeys[groupName].forEach(key => {
-                    const tr = document.createElement('tr');
-                    
-                    const tdKey = document.createElement('td');
-                    tdKey.className = 'py-3 px-4 border-b border-gray-200 align-top bg-gray-50';
-                    
-                    const desc = window.KEY_DESCRIPTIONS[key] || key;
-                    const keyHtml = `
-                        <div class="flex flex-col">
-                            <span class="text-sm font-semibold text-gray-800">${desc}</span>
-                            <span class="font-mono text-xs text-gray-400 select-all mt-1 cursor-pointer hover:text-purple-600" title="Click to copy key">${key}</span>
-                        </div>
-                    `;
-                    tdKey.innerHTML = keyHtml;
-                    tr.appendChild(tdKey);
+                // 分組內容行
+                if (!isCollapsed) {
+                    groupedKeys[groupName].forEach(key => {
+                        const tr = document.createElement('tr');
+                        tr.className = 'group-row';
+                        
+                        const tdKey = document.createElement('td');
+                        tdKey.className = 'py-3 px-4 border-b border-gray-200 align-top bg-gray-50';
+                        
+                        const desc = window.KEY_DESCRIPTIONS[key] || key;
+                        const keyHtml = `
+                            <div class="flex flex-col">
+                                <span class="text-sm font-semibold text-gray-800">${desc}</span>
+                                <span class="font-mono text-xs text-gray-400 select-all mt-1 cursor-pointer hover:text-purple-600" title="Click to copy key" onclick="event.stopPropagation(); navigator.clipboard.writeText('${key}')">${key}</span>
+                            </div>
+                        `;
+                        tdKey.innerHTML = keyHtml;
+                        tr.appendChild(tdKey);
 
-                    ['zh-HK', 'zh-CN', 'en-US'].forEach(lang => {
-                        const td = document.createElement('td');
-                        td.className = 'py-2 px-2 border-b border-gray-200 align-top';
-                        
-                        const input = document.createElement('textarea');
-                        input.className = 'trans-input w-full p-2 border rounded text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-y';
-                        input.rows = 3;
-                        input.value = currentTranslations[lang][key] || window.DEFAULT_TRANSLATIONS[lang][key] || '';
-                        
-                        input.addEventListener('change', (e) => {
-                            currentTranslations[lang][key] = e.target.value;
+                        ['zh-HK', 'zh-CN', 'en-US'].forEach(lang => {
+                            const td = document.createElement('td');
+                            td.className = 'py-2 px-2 border-b border-gray-200 align-top';
+                            
+                            const input = document.createElement('textarea');
+                            input.className = 'trans-input w-full p-2 border rounded text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-y';
+                            input.rows = 3;
+                            input.value = currentTranslations[lang][key] || window.DEFAULT_TRANSLATIONS[lang][key] || '';
+                            
+                            input.addEventListener('change', (e) => {
+                                currentTranslations[lang][key] = e.target.value;
+                            });
+                            
+                            td.appendChild(input);
+                            tr.appendChild(td);
                         });
-                        
-                        td.appendChild(input);
-                        tr.appendChild(td);
-                    });
 
-                    tbody.appendChild(tr);
-                });
+                        tbody.appendChild(tr);
+                    });
+                }
             }
         }
 
@@ -1007,6 +1131,75 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+        }
+
+        // 生成完整的 translations.js 內容，方便用戶直接複製貼上
+        function generateTranslationsFile() {
+            const fileContent = `// assets/data/translations.js
+
+// Default Translations Data
+const DEFAULT_TRANSLATIONS = ${JSON.stringify(currentTranslations, null, 4)};
+
+// Key Descriptions for better UX (Admin Panel)
+const KEY_DESCRIPTIONS = ${JSON.stringify(window.KEY_DESCRIPTIONS, null, 4)};
+
+// Group Definitions
+const KEY_GROUPS = ${JSON.stringify(window.KEY_GROUPS, null, 4)};
+
+// Make available globally
+window.DEFAULT_TRANSLATIONS = DEFAULT_TRANSLATIONS;
+window.KEY_DESCRIPTIONS = KEY_DESCRIPTIONS;
+window.KEY_GROUPS = KEY_GROUPS;`;
+
+            // 創建 modal 顯示內容
+            const escapedContent = fileContent
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+            
+            const modalHtml = '<div id="translation-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onclick="closeTranslationModal(event)">' +
+                '<div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">' +
+                    '<div class="p-6 border-b flex justify-between items-center">' +
+                        '<h3 class="text-xl font-bold">📋 translations.js 內容</h3>' +
+                        '<button onclick="closeTranslationModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>' +
+                    '</div>' +
+                    '<div class="p-6 overflow-auto flex-1">' +
+                        '<p class="text-sm text-gray-600 mb-4">✅ 請複製以下內容，並完全覆蓋 <code class="bg-gray-100 px-1 rounded">assets/data/translations.js</code> 檔案的所有內容。</p>' +
+                        '<textarea id="translation-code" class="w-full h-96 p-4 bg-gray-900 text-green-400 font-mono text-sm rounded-lg resize-none" readonly>' + escapedContent + '</textarea>' +
+                    '</div>' +
+                    '<div class="p-6 border-t bg-gray-50 flex gap-3 justify-end">' +
+                        '<button onclick="closeTranslationModal()" class="px-4 py-2 text-gray-600 hover:text-gray-800">關閉</button>' +
+                        '<button onclick="copyTranslationsCode()" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium">📋 複製內容</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+            
+            // 移除舊的 modal（如果存在）
+            const oldModal = document.getElementById('translation-modal');
+            if (oldModal) oldModal.remove();
+            
+            // 添加新 modal
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+        }
+
+        function closeTranslationModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            const modal = document.getElementById('translation-modal');
+            if (modal) modal.remove();
+        }
+
+        function copyTranslationsCode() {
+            const textarea = document.getElementById('translation-code');
+            // 獲取原始內容（textarea 的 value 已經是解碼後的）
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                alert('✅ 已複製！請貼上到 assets/data/translations.js 檔案中。');
+            }).catch(err => {
+                // 備用方法
+                textarea.select();
+                document.execCommand('copy');
+                alert('✅ 已複製！請貼上到 assets/data/translations.js 檔案中。');
+            });
         }
 
         // Init Check
