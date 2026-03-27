@@ -37,6 +37,10 @@
         .kb-row.selected { background-color: #f3e8ff; }
         .sort-icon { display: inline-block; transition: transform 0.2s; }
         .sort-asc .sort-icon { transform: rotate(180deg); }
+        
+        /* Modal Animation */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fade-in { animation: fadeIn 0.2s ease-out; }
     </style>
 </head>
 <body>
@@ -146,6 +150,9 @@
                                     <th scope="col" class="px-6 py-3 cursor-pointer hover:bg-gray-100" onclick="sortKB('name')">
                                         文件名 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
                                     </th>
+                                    <th scope="col" class="px-6 py-3 w-48 text-gray-500">
+                                        存取路径
+                                    </th>
                                     <th scope="col" class="px-6 py-3 w-32 cursor-pointer hover:bg-gray-100" onclick="sortKB('size')">
                                         大小 <span class="sort-icon iconify inline ml-1" data-icon="fa-solid:sort"></span>
                                     </th>
@@ -216,6 +223,36 @@
         </main>
     </div>
 
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm transition-opacity" onclick="closePreview()">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-5xl h-[85vh] flex flex-col overflow-hidden relative animate-fade-in mx-4" onclick="event.stopPropagation()">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-100 bg-white z-10">
+                <div class="flex items-center gap-3 overflow-hidden">
+                    <span class="iconify text-2xl text-[#6b3d92]" id="preview-icon" data-icon="fa-solid:file"></span>
+                    <h3 id="preview-title" class="font-bold text-gray-800 text-lg truncate">Preview</h3>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a id="preview-download" href="#" download class="flex items-center gap-1 text-sm bg-gray-100 hover:bg-[#6b3d92] hover:text-white px-3 py-1.5 rounded-lg transition-colors" title="Download">
+                        <span class="iconify" data-icon="fa-solid:download"></span>
+                        <span class="hidden sm:inline">下載</span>
+                    </a>
+                    <button onclick="closePreview()" class="p-2 text-gray-400 hover:text-red-500 transition-colors rounded-full hover:bg-red-50">
+                        <span class="iconify text-xl" data-icon="fa-solid:times"></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Content -->
+            <div id="preview-content" class="flex-1 bg-gray-50 overflow-auto flex items-center justify-center p-0 relative">
+                <!-- Dynamic Content injected here -->
+            </div>
+            <!-- Footer (Optional Info) -->
+            <div id="preview-footer" class="bg-gray-50 border-t border-gray-200 px-4 py-2 text-xs text-gray-500 hidden sm:block">
+                <!-- File info -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // ===================================
         // Authentication System (SHA-256 Secured)
@@ -273,6 +310,127 @@
             document.getElementById('tab-knowledge').classList.add('hidden');
             document.getElementById('tab-language').classList.add('hidden');
             document.getElementById('tab-' + tabName).classList.remove('hidden');
+        }
+
+        function closePreview() {
+            document.getElementById('preview-modal').classList.add('hidden');
+            document.getElementById('preview-content').innerHTML = '';
+        }
+
+        async function previewFile(id) {
+            const files = getProcessedFiles();
+            const file = files.find(f => f.id === id);
+            if (!file) return;
+
+            const modal = document.getElementById('preview-modal');
+            const title = document.getElementById('preview-title');
+            const content = document.getElementById('preview-content');
+            const downloadBtn = document.getElementById('preview-download');
+            const icon = document.getElementById('preview-icon');
+            const footer = document.getElementById('preview-footer');
+
+            // Reset
+            content.innerHTML = '<div class="animate-spin rounded-full h-10 w-10 border-b-2 border-[#6b3d92]"></div>';
+            modal.classList.remove('hidden');
+            title.textContent = file.name;
+            icon.setAttribute('data-icon', KB.utils.getIcon(file.type));
+            
+            // Footer Info
+            footer.innerHTML = `Type: ${file.type || 'Unknown'} | Size: ${KB.utils.formatSize(file.size)} | Source: ${file.source === 'server' ? 'Server File' : 'Local Storage'}`;
+
+            let url = '';
+            let isText = false;
+            let textContent = '';
+
+            // 1. Resolve Content
+            if (file.source === 'server') {
+                url = `assets/knowledge/${file.name}`;
+            } else {
+                // Local File
+                // Try to find text content
+                const kbContent = window.knowledgeBase.content.find(c => c.filename === file.name);
+                if (kbContent && kbContent.text && !kbContent.text.startsWith('[UPLOADED_FILE:')) {
+                    isText = true;
+                    textContent = kbContent.text;
+                    // Create blob for download
+                    const blob = new Blob([textContent], { type: file.type || 'text/plain' });
+                    url = URL.createObjectURL(blob);
+                } else {
+                    // Binary local file (not persisted in content)
+                    content.innerHTML = `
+                        <div class="text-center p-8">
+                            <span class="iconify text-6xl text-gray-300 mb-4 mx-auto block" data-icon="fa-solid:eye-slash"></span>
+                            <p class="text-gray-600 font-medium text-lg">預覽不可用</p>
+                            <p class="text-gray-400 text-sm mt-2 max-w-md mx-auto">此為本地上傳的二進制文件（圖片/PDF/視頻），出於性能考慮未完整存儲在瀏覽器中。</p>
+                            <p class="text-gray-400 text-sm mt-1">請重新上傳或直接使用文件。</p>
+                        </div>
+                    `;
+                    downloadBtn.href = '#';
+                    downloadBtn.classList.add('hidden'); // Cannot download what we don't have
+                    return;
+                }
+            }
+
+            // Set Download Link
+            downloadBtn.href = url;
+            downloadBtn.download = file.name;
+            downloadBtn.classList.remove('hidden');
+
+            // 2. Render Preview based on Type
+            const type = (file.type || '').toLowerCase();
+            const name = file.name.toLowerCase();
+
+            try {
+                if (type.includes('image') || name.match(/\.(jpg|jpeg|png|gif|webp|svg)$/)) {
+                    const img = new Image();
+                    img.src = url;
+                    img.className = "max-w-full max-h-full object-contain rounded shadow-lg";
+                    content.innerHTML = '';
+                    content.appendChild(img);
+                } else if (type.includes('video') || name.match(/\.(mp4|webm|ogg)$/)) {
+                    content.innerHTML = `<video src="${url}" controls class="max-w-full max-h-full rounded shadow-lg outline-none"></video>`;
+                } else if (type.includes('pdf') || name.endsWith('.pdf')) {
+                    content.innerHTML = `<iframe src="${url}" class="w-full h-full border-none bg-white"></iframe>`;
+                } else if (isText || type.includes('text') || type.includes('json') || type.includes('javascript') || name.match(/\.(txt|md|csv|html|css|js|json|xml)$/)) {
+                    // Fetch if server
+                    if (file.source === 'server' && !textContent) {
+                        try {
+                            const res = await fetch(url);
+                            textContent = await res.text();
+                        } catch (e) {
+                            textContent = "Error loading content: " + e.message;
+                        }
+                    }
+                    content.innerHTML = `<pre class="w-full h-full p-6 text-sm font-mono bg-gray-900 text-gray-100 overflow-auto whitespace-pre-wrap rounded-lg shadow-inner"><code>${escapeHtml(textContent)}</code></pre>`;
+                } else {
+                    // Fallback for Office docs or unknown
+                    // Try Google Docs Viewer for Server files ONLY (if public, but we assume local here so might fail, but worth a shot for internal networks sometimes)
+                    // Actually, stick to simple message.
+                    content.innerHTML = `
+                        <div class="text-center p-8">
+                            <span class="iconify text-6xl text-gray-300 mb-4 mx-auto block" data-icon="fa-solid:file-circle-question"></span>
+                            <p class="text-gray-600 font-medium text-lg">無法在線預覽此格式</p>
+                            <p class="text-gray-400 text-sm mt-2 mb-6">文件類型: ${file.type || 'Unknown'}</p>
+                            <a href="${url}" download="${file.name}" class="bg-[#6b3d92] text-white px-6 py-2 rounded-lg hover:bg-[#5a327a] transition-colors inline-flex items-center gap-2">
+                                <span class="iconify" data-icon="fa-solid:download"></span>
+                                下載文件
+                            </a>
+                        </div>
+                    `;
+                }
+            } catch (e) {
+                content.innerHTML = `<div class="text-red-500 p-4">Error generating preview: ${e.message}</div>`;
+            }
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
         }
 
         // ===================================
@@ -396,6 +554,21 @@
                 const size = file.size ? KB.utils.formatSize(file.size) : 'Unknown';
                 const date = file.uploadedAt ? new Date(file.uploadedAt).toLocaleDateString() : '-';
                 
+                // Path Logic
+                let pathHtml = '';
+                if (isServer) {
+                    const url = `assets/knowledge/${file.name}`;
+                    pathHtml = `<a href="${url}" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline text-xs flex items-center gap-1 max-w-[200px] truncate" title="${url}">
+                        <span class="iconify flex-shrink-0" data-icon="fa-solid:external-link-alt"></span>
+                        ${file.name}
+                    </a>`;
+                } else {
+                    pathHtml = `<span class="text-gray-400 text-xs flex items-center gap-1 cursor-help" title="Stored in Browser LocalStorage">
+                        <span class="iconify" data-icon="fa-solid:database"></span>
+                        Browser Storage
+                    </span>`;
+                }
+
                 return `
                     <tr class="kb-row bg-white border-b hover:bg-gray-50 transition-colors ${isSelected ? 'selected' : ''}">
                         <td class="w-4 p-4">
@@ -407,19 +580,29 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <div class="flex items-center gap-2">
-                                <span class="iconify text-lg text-gray-500" data-icon="${icon}"></span>
-                                <span class="truncate max-w-xs" title="${file.name}">${file.name}</span>
+                            <div class="flex items-center gap-2 cursor-pointer group" onclick="previewFile('${file.id}')">
+                                <span class="iconify text-lg text-gray-500 group-hover:text-[#6b3d92] transition-colors" data-icon="${icon}"></span>
+                                <span class="truncate max-w-xs group-hover:text-[#6b3d92] transition-colors" title="${file.name}">${file.name}</span>
                                 ${isServer ? '<span class="px-2 py-0.5 rounded text-xs bg-blue-100 text-blue-800 ml-2">系統</span>' : ''}
                             </div>
                         </td>
-                        <td class="px-6 py-4">${size}</td>
-                        <td class="px-6 py-4 truncate max-w-[150px]" title="${file.type}">${file.type || 'Unknown'}</td>
-                        <td class="px-6 py-4">${date}</td>
+                        <td class="px-6 py-4">
+                            ${pathHtml}
+                        </td>
+                        <td class="px-6 py-4 text-xs text-gray-500">${size}</td>
+                        <td class="px-6 py-4 truncate max-w-[150px] text-xs" title="${file.type}">${file.type || 'Unknown'}</td>
+                        <td class="px-6 py-4 text-xs text-gray-500">${date}</td>
                         <td class="px-6 py-4 text-center">
-                            ${!isServer ? `
-                            <button onclick="deleteSingleFile('${file.id}')" class="font-medium text-red-600 hover:underline hover:text-red-800">刪除</button>
-                            ` : '<span class="text-gray-300 cursor-not-allowed">鎖定</span>'}
+                            <div class="flex items-center justify-center gap-3">
+                                <button onclick="previewFile('${file.id}')" class="text-gray-400 hover:text-[#6b3d92] transition-colors" title="預覽">
+                                    <span class="iconify" data-icon="fa-solid:eye"></span>
+                                </button>
+                                ${!isServer ? `
+                                <button onclick="deleteSingleFile('${file.id}')" class="text-gray-400 hover:text-red-600 transition-colors" title="刪除">
+                                    <span class="iconify" data-icon="fa-solid:trash-alt"></span>
+                                </button>
+                                ` : '<span class="text-gray-200 cursor-not-allowed"><span class="iconify" data-icon="fa-solid:lock"></span></span>'}
+                            </div>
                         </td>
                     </tr>
                 `;
