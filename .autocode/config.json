@@ -5,7 +5,7 @@
   "AllowedTools": null,
   "AgentId": "Planner",
   "ModelId": "zai-org/glm-5-maas",
-  "OverrideAgentModel": false,
+  "OverrideAgentModel": true,
   "ImageBatchCount": 1,
   "TokenThreshold": null,
   "SummarizationModelId": null,

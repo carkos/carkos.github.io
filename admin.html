@@ -326,8 +326,8 @@
         // ===================================
         
         const AUTH_HASH = {
-            id: 'c775e7b757ede630cd0aa1113bd102661ab38829ca52a6422ab782862f268646', 
-            pass: '00676420f67daec780a52bd853359d8779eb56d77bd837d9967266743820257e' 
+            id: '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 
+            pass: 'd83cd2f2cb49935a4b03dfcb619168448eb3c40c8fd433bd5cd9127429cafbeb' 
         };
 
         async function sha256(message) {
@@ -353,6 +353,17 @@
             
             const hashedId = await sha256(inputId);
             const hashedPass = await sha256(inputPass);
+
+            // Debug - 可以在瀏覽器 Console 查看除錯資訊
+            console.log('=== 登入除錯 ===');
+            console.log('輸入的 ID:', inputId);
+            console.log('輸入的 Password:', inputPass);
+            console.log('計算的 ID Hash:', hashedId);
+            console.log('計算的 Pass Hash:', hashedPass);
+            console.log('預期的 ID Hash:', AUTH_HASH.id);
+            console.log('預期的 Pass Hash:', AUTH_HASH.pass);
+            console.log('ID Match:', hashedId === AUTH_HASH.id);
+            console.log('Pass Match:', hashedPass === AUTH_HASH.pass);
 
             if (hashedId === AUTH_HASH.id && hashedPass === AUTH_HASH.pass) {
                 sessionStorage.setItem('vizzle_admin_auth', 'true');

@@ -60,7 +60,9 @@ const DEFAULT_TRANSLATIONS = {
         "Admin_File_Remove": "移除",
         "Admin_Sync_Status": "同步狀態",
         "Admin_Last_Update": "最後更新",
-        "AI_Reset_Button": "新對話"
+        "AI_Reset_Button": "新對話",
+        "Chip_Service": "優勢",
+        "Chip_Cases": "分析"
     },
     "zh-CN": {
         "Language_Display_Name": "简",
@@ -120,7 +122,9 @@ const DEFAULT_TRANSLATIONS = {
         "Admin_File_Remove": "移除",
         "Admin_Sync_Status": "同步状态",
         "Admin_Last_Update": "最后更新",
-        "AI_Reset_Button": "新对话"
+        "AI_Reset_Button": "新对话",
+        "Chip_Service": "优势",
+        "Chip_Cases": "分析"
     },
     "en-US": {
         "Language_Display_Name": "EN",
@@ -179,7 +183,10 @@ const DEFAULT_TRANSLATIONS = {
         "Admin_Status_Empty": "Please upload documents first",
         "Admin_File_Remove": "Remove",
         "Admin_Sync_Status": "Sync Status",
-        "Admin_Last_Update": "Last Update"
+        "Admin_Last_Update": "Last Update",
+        "AI_Reset_Button": "New Chat",
+        "Chip_Service": "Advantages",
+        "Chip_Cases": "Analysis"
     }
 };
 
@@ -247,7 +254,10 @@ const KEY_DESCRIPTIONS = {
     "Admin_Status_Empty": "狀態空 (Admin Only)",
     "Admin_File_Remove": "移除按鈕 (Admin Only)",
     "Admin_Sync_Status": "同步狀態 (Admin Only)",
-    "Admin_Last_Update": "最後更新 (Admin Only)"
+    "Admin_Last_Update": "最後更新 (Admin Only)",
+    "Chip_Service": "建議問題卡片 - 服務標籤",
+    "Chip_Cases": "建議問題卡片 - 案例標籤",
+    "Chip_About": "建議問題卡片 - 關於標籤"
 };
 
 // Group Definitions
@@ -259,7 +269,8 @@ const KEY_GROUPS = {
     "Contact_": "📞 聯繫信息",
     "Admin_": "⚙️ 後台管理",
     "Language_": "🌐 全局設定",
-    "Page_": "📄 頁面元數據"
+    "Page_": "📄 頁面元數據",
+    "Chip_": "🏷️ 標籤/Chip"
 };
 
 // Make available globally
